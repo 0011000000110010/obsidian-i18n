@@ -94,7 +94,7 @@ class I18NModal extends Modal {
         // 获取译文目录
         // 1. 网络译文模式开启
         // 2. 所选文件地址存在于数据库
-        if (!(this.settings.I18N_LANGUAGE in this.settings.I18N_NDT_APIS)) new Notice(t('SETTING_NDT_NPTICE'));
+        if (this.settings。I18N_NDT_MODE && !(this.settings。I18N_LANGUAGE in this.settings.I18N_NDT_APIS)) new Notice(t('SETTING_NDT_NPTICE'));
         if (this.settings.I18N_NDT_MODE && this.settings.I18N_LANGUAGE in this.settings.I18N_NDT_APIS) {
             try {
                 const data = await this.api.directory();
