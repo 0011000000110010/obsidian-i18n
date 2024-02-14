@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-i18n",
+  "name": "I18N",
+  "version": "1.0.0",
+  "description": "国际化翻译插件",
+  "author": "zero",
+  "authorUrl": "",
+	"fundingUrl": "",
+  "isDesktopOnly": false
+}
