@@ -1,5 +1,6 @@
 {
     "plugins":[
-        "obsidian-icon-folder"
+        "obsidian-icon-folder",
+        "copilot"
     ]
 }
