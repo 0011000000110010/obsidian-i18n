@@ -1,7 +1,6 @@
 import * as fs from 'fs-extra'
 import { Notice } from 'obsidian';
 import { State as state, Translation } from './types';
-import { regexs } from './data';
 
 // ==============================
 //            状态管理类
@@ -104,7 +103,7 @@ export class State {
  * @param mainStr mian.js 的内容
  * @returns 
  */
-export function generateTranslation(mainStr: string): Translation {
+export function generateTranslation(mainStr: string, regexs: RegExp[]): Translation {
 	const translationJson: Translation = {
 		"manifest": {
 			"author": "",
@@ -120,6 +119,7 @@ export function generateTranslation(mainStr: string): Translation {
 	}
 	return translationJson
 }
+
 
 // import { exec, execSync } from 'child_process';
 // 选择目录

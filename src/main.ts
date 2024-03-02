@@ -6,11 +6,13 @@ import { App, ButtonComponent, ExtraButtonComponent, Modal, Notice, Plugin, Requ
 import { DEFAULT_SETTINGS, I18nSettings } from './settings/data';
 import { I18nSettingTab } from './settings/ui';
 
+import { regexs, regexs_1 } from './data';
 import { Plugin as plugin } from './types';
 import { API } from './api';
 import { t } from './lang/inxdex';
 import { State, generateTranslation } from './utils';
 import { logVersion, logState, logMode, logLanguage } from './log';
+
 
 // ==============================
 //          [入口] I18n
@@ -89,6 +91,7 @@ class I18NModal extends Modal {
         // ==============================
         this.plugins = Object.values(this.app.plugins.manifests);
         this.plugins = this.plugins.filter(item => item.id !== 'obsidian-i18n');
+        this.plugins.sort((item1, item2) => { return item1.name.localeCompare(item2.name) });
         if (this.log) logMode(this.settings.I18N_LDT_MODE, this.settings.I18N_NDT_MODE, this.settings.I18N_NIT_MODE);
 
         // 获取译文目录
@@ -238,7 +241,8 @@ class I18NModal extends Modal {
                     const isLangDoc = fs.pathExistsSync(langDoc);
                     if (!isLangDoc) {
                         const mainStr = fs.readFileSync(path.join(pluginDir, 'main.js')).toString();
-                        const translationJson = generateTranslation(mainStr);
+                        const translationJson = generateTranslation(mainStr, regexs);
+                        for (const key in translationJson.dict) translationJson.dict[key] = key;
                         fs.ensureDirSync(path.join(pluginDir, 'lang'));
                         fs.writeJsonSync(langDoc, translationJson);
                         new Notice(`[${plugin.name}] ${t('BATCH_GENERATE_NPTICE')}`);
@@ -366,18 +370,18 @@ class I18NModal extends Modal {
                     NITGenerateButton.setDisabled(true);
                     try {
                         const mainStr = fs.readFileSync(mainDoc).toString();
-                        const translationJson = generateTranslation(mainStr);
-                        const regex = /(?<=")(.*)(?=")|(?<=')(.*)(?=')/
+                        const translationJson = generateTranslation(mainStr, regexs_1);
+                        const regex = /(['"`])(.*)(\1)/;
                         let temp = 0;
                         for (const key in translationJson.dict) {
                             new Notice(`${t('NIT_GENERATE_NPTICE')} ${temp += 1}/${Object.keys(translationJson.dict).length}`);
                             const tempArray = key.match(regex);
                             if (tempArray != null) {
                                 if (this.settings.I18N_NIT_API == 'BAIDU') {
-                                    const response = await this.api.baidu(tempArray[0]);
+                                    const response = await this.api.baidu(tempArray[2]);
                                     if ('trans_result' in response.json) {
-                                        translationJson.dict[key] = key.replace(tempArray[0], response.json['trans_result'][0]['dst']);
-                                        if (this.log) console.table([tempArray[0], response.json['trans_result'][0]['dst']]);
+                                        translationJson.dict[key] = key.replace(tempArray[2], response.json['trans_result'][0]['dst']);
+                                        if (this.log) console.table([tempArray[2], response.json['trans_result'][0]['dst']]);
                                     }
                                     await sleep(500);
                                 }
@@ -514,11 +518,13 @@ class I18NModal extends Modal {
                         // 1. 获取 main.js 字符串
                         const mainStr = fs.readFileSync(mainDoc).toString();
                         // 2. 获取 译文json 
-                        const translationJson = generateTranslation(mainStr);
+                        const translationJson = generateTranslation(mainStr, regexs);
+                        for (const key in translationJson.dict) translationJson.dict[key] = key;  
                         // 3. 确保语言目录存在
                         fs.ensureDirSync(langDir);
                         // 4. 将 译文json 写入文件
                         fs.writeJsonSync(langDoc, translationJson);
+                        new Notice(t('LDT_GENERATE_NPTICE'));
                     } catch (error) {
                         new Notice(`⚠ ${error}`);
                         console.error(`⚠ ${error}`);
