@@ -16,7 +16,7 @@ export default {
     BATCH_GENERATE_TEXT: '生成',
     BATCH_GENERATE_TOOLTIP: '批量生成插件译文',
     BATCH_GENERATE_NPTICE: '生成完成',
-    BATCH_GENERATE_NPTICE_2: '[批量生成] 生成完成',
+    BATCH_GENERATE_NPTICE_2: '[批量生成] 生成完成 请前往插件目录进行手动翻译工作',
 
     BATCH_DELETE_TEXT: '删除',
     BATCH_DELETE_TOOLTIP: '批量删除插件译文',
@@ -30,7 +30,7 @@ export default {
     DELETE_PLUGINDIR_NPTICE_2: '重启 Obsidian 生效',
     LDT_GENERATE_TEXT: '生成',
     LDT_GENERATE_TOOLTIP: '生成未翻译译文',
-    LDT_GENERATE_NPTICE: '',
+    LDT_GENERATE_NPTICE: '生成完成 请前往插件目录进行手动翻译工作',
     LDT_TRENSLATOR_TEXT: '翻译',
     LDT_TRENSLATOR_TOOLTIP: '对插件进行翻译',
     LDT_TRENSLATOR_NPTICE: '重启 Obsidian 生效',
