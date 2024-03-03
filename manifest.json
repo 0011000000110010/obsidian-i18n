@@ -1,8 +1,8 @@
 {
-  "id": "obsidian-i18n",
+  "id": "i18n",
   "name": "I18N",
   "version": "1.0.0",
-  "description": "国际化翻译插件",
+  "description": "To internationalize the Obsidian plugin",
   "author": "zero",
   "authorUrl": "",
 	"fundingUrl": "",
