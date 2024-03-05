@@ -90,7 +90,7 @@ class I18NModal extends Modal {
         //           初始化区域       	     
         // ==============================
         this.plugins = Object.values(this.app.plugins.manifests);
-        this.plugins = this.plugins.filter(item => item.id !== 'obsidian-i18n');
+        this.plugins = this.plugins.filter(item => item.id !== 'i18n');
         this.plugins.sort((item1, item2) => { return item1.name.localeCompare(item2.name) });
         if (this.log) logMode(this.settings.I18N_LDT_MODE, this.settings.I18N_NDT_MODE, this.settings.I18N_NIT_MODE);
 
