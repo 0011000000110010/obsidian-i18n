@@ -6,7 +6,6 @@ export interface I18nSettings {
 	 * @default zh-cn
 	 */
 	I18N_LANGUAGE: string,
-	I18N_LOG: boolean;
 	I18N_BATCH: boolean;
 	I18N_LDT_MODE: boolean,
 	I18N_LDT_GENERATE: boolean,
@@ -21,7 +20,6 @@ export interface I18nSettings {
 
 export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_LANGUAGE: 'zh-cn',
-	I18N_LOG: false,
 	I18N_BATCH: false,
 	I18N_LDT_MODE: true,
 	I18N_LDT_GENERATE: false,
