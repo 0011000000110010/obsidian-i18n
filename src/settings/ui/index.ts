@@ -1,8 +1,7 @@
-import { App, PluginSettingTab } from 'obsidian';
+import { App, PluginSettingTab, Setting } from 'obsidian';
 import I18N from "../../main";
 
 import I18nLanguage from './i18n-language';
-import I18nLog from './i18n-log';
 import i18nBatch from './i18n-batch';
 import I18nLdtMode from './i18n-ldt-mode';
 import I18nLdtGenerate from './i18n-ldt-generate';
@@ -27,20 +26,19 @@ class I18nSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 		containerEl.empty();
 
-		containerEl.createEl('h2', { text: t('SETTING_BASE_TITLE') });
+		new Setting(containerEl).setName(t('SETTING_BASE_TITLE')).setHeading();
 		new I18nLanguage(this).display();
-		new I18nLog(this).display();
 		new i18nBatch(this).display();
 
-		containerEl.createEl('h2', { text: t('SETTING_LDT_TITLE') });
+		new Setting(containerEl).setName(t('SETTING_LDT_TITLE')).setHeading();
 		new I18nLdtMode(this).display();
 		new I18nLdtGenerate(this).display();
 
-		containerEl.createEl('h2', { text: t('SETTING_NDT_TITLE') });
+		new Setting(containerEl).setName(t('SETTING_NDT_TITLE')).setHeading();
 		new I18nNdtMode(this).display();
 		new I18nNdtApi(this).display();
-		
-		containerEl.createEl('h2', { text: t('SETTING_NIT_TITLE') });
+
+		new Setting(containerEl).setName(t('SETTING_NIT_TITLE')).setHeading();
 		new I18nNitMode(this).display();
 		new I18nNitApi(this).display();
 		new I18nNitBaiDu(this).display();
