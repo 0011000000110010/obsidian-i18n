@@ -24,7 +24,9 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_LDT_MODE: true,
 	I18N_LDT_GENERATE: false,
 	I18N_NDT_MODE: false,
-	I18N_NDT_APIS: {},
+	I18N_NDT_APIS: {
+		"zh-cn": "https://raw.githubusercontent.com/0011000000110010/obsidian-i18n/main/lang/zh-cn"
+	},
 	I18N_NIT_MODE: false,
 	I18N_NIT_API: 'BAIDU',
 	I18N_NIT_APIS: {
