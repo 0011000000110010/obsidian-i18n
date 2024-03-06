@@ -2,16 +2,14 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import { exec } from 'child_process';
 
-import { App, ButtonComponent, ExtraButtonComponent, Modal, Notice, Plugin, RequestUrlResponse, Setting, moment } from 'obsidian';
+import { App, ButtonComponent, ExtraButtonComponent, Modal, Notice, Plugin, PluginManifest, RequestUrlResponse, Setting } from 'obsidian';
 import { DEFAULT_SETTINGS, I18nSettings } from './settings/data';
 import { I18nSettingTab } from './settings/ui';
 
 import { regexs, regexs_1 } from './data';
-import { Plugin as plugin } from './types';
 import { API } from './api';
 import { t } from './lang/inxdex';
 import { State, generateTranslation } from './utils';
-import { logVersion, logState, logMode, logLanguage } from './log';
 
 
 // ==============================
@@ -23,8 +21,10 @@ export default class I18N extends Plugin {
 
     // 生命周期函数在用户激活 Obsidian 插件时触发。这将是您设置插件大部分功能的地方。该方法在插件更新时也会被触发。
     async onload() {
-        logVersion(this.manifest.name, this.manifest.version);
-        logLanguage(t('LANGUAGE'), moment.locale());
+        console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `,
+        `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`,
+        `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`,
+        );
         // 加载配置
         await this.loadSettings();
 
@@ -58,12 +58,11 @@ class I18NModal extends Modal {
     i18n: I18N;
     settings: I18nSettings;
     basePath: string;
-    log: boolean;
     api: API;
 
     ndtMark = false;
     // [本地][变量] 插件列表
-    plugins: plugin[] = [];
+    plugins: PluginManifest[] = [];
     // [网络][变量] 网络文件目录 Directory
     directory: string[] = [];
 
@@ -73,9 +72,8 @@ class I18NModal extends Modal {
     constructor(app: App, i18n: I18N) {
         super(app);
         this.i18n = i18n;
-        this.basePath = path.normalize(this.app.vault.adapter.basePath);
+        this.basePath = path.normalize(this.app.vault.adapter.getBasePath());
         this.settings = i18n.settings;
-        this.log = this.settings.I18N_LOG;
         this.api = new API(this.i18n);
     }
 
@@ -92,7 +90,6 @@ class I18NModal extends Modal {
         this.plugins = Object.values(this.app.plugins.manifests);
         this.plugins = this.plugins.filter(item => item.id !== 'i18n');
         this.plugins.sort((item1, item2) => { return item1.name.localeCompare(item2.name) });
-        if (this.log) logMode(this.settings.I18N_LDT_MODE, this.settings.I18N_NDT_MODE, this.settings.I18N_NIT_MODE);
 
         // 获取译文目录
         // 1. 网络译文模式开启
@@ -102,7 +99,6 @@ class I18NModal extends Modal {
             try {
                 const data = await this.api.directory();
                 this.directory = data.json['plugins'];
-                if (this.log) console.table(data.json['plugins']);
                 this.ndtMark = true;
             } catch (error) {
                 new Notice(`⚠ ${error}`);
@@ -129,7 +125,7 @@ class I18NModal extends Modal {
             batchDeleteButton.setDisabled(true);
             try {
                 for (const plugin of this.plugins) {
-                    const pluginDir = path.join(this.basePath, plugin.dir);
+                    const pluginDir = path.join(this.basePath, plugin.dir ?? '');
                     const langDir = path.join(pluginDir, 'lang');
                     const stateDoc = path.join(pluginDir, 'lang', 'state.json');
                     const mainDoc = path.join(pluginDir, 'main.js');
@@ -163,7 +159,7 @@ class I18NModal extends Modal {
             batchRestoreButton.setDisabled(true);
             try {
                 for (const plugin of this.plugins) {
-                    const pluginDir = path.join(this.basePath, plugin.dir);
+                    const pluginDir = path.join(this.basePath, plugin.dir ?? '');
                     const mainDoc = path.join(pluginDir, 'main.js');
                     const stateObj = new State(path.join(pluginDir, 'lang', 'state.json'));
                     // 1. 状态文件存在
@@ -196,7 +192,7 @@ class I18NModal extends Modal {
             batchTrenslatorButton.setDisabled(true);
             try {
                 for (const plugin of this.plugins) {
-                    const pluginDir = path.join(this.basePath, plugin.dir);
+                    const pluginDir = path.join(this.basePath, plugin.dir ?? '');
                     const mainDoc = path.join(pluginDir, 'main.js');
                     const langDoc = path.join(pluginDir, 'lang', `${this.settings.I18N_LANGUAGE}.json`);
                     const stateDoc = path.join(pluginDir, 'lang', 'state.json');
@@ -209,7 +205,6 @@ class I18NModal extends Modal {
                         let mainString = fs.readFileSync(mainDoc).toString();
                         for (const key in translationJson.dict) {
                             mainString = mainString.replaceAll(key, translationJson.dict[key]);
-                            if (this.log) console.table([key, translationJson.dict[key]]);
                         }
                         fs.writeFileSync(mainDoc, mainString);
                         stateObj.update(true, plugin.version, translationJson.manifest.version);
@@ -236,7 +231,7 @@ class I18NModal extends Modal {
             batchGenerateButton.setDisabled(true);
             try {
                 for (const plugin of this.plugins) {
-                    const pluginDir = path.join(this.basePath, plugin.dir);
+                    const pluginDir = path.join(this.basePath, plugin.dir ?? '');
                     const langDoc = path.join(pluginDir, 'lang', `${this.settings.I18N_LANGUAGE}.json`);
                     const isLangDoc = fs.pathExistsSync(langDoc);
                     if (!isLangDoc) {
@@ -260,7 +255,7 @@ class I18NModal extends Modal {
         //           主逻辑	     
         // ==============================
         for (const plugin of this.plugins) {
-            const pluginDir = path.join(this.basePath, plugin.dir);
+            const pluginDir = path.join(this.basePath, plugin.dir ?? '');
 
             const langDir = path.join(pluginDir, 'lang');
             const langDoc = path.join(pluginDir, 'lang', `${this.settings.I18N_LANGUAGE}.json`);
@@ -285,8 +280,6 @@ class I18NModal extends Modal {
                     console.error(`⚠ ${error}`);
                 }
             }
-            // 显示当前文件状态
-            if (this.log) logState(plugin.name, isLangDir, isStateDoc, isLangDoc);
 
             // ====================
             // 插件更新(更新)
@@ -319,13 +312,15 @@ class I18NModal extends Modal {
             openPluginDir.setTooltip(t('OPEN_PLUGINDIR_TOOLTIP'));
             openPluginDir.onClick(() => {
                 openPluginDir.setDisabled(true);
-                const command = `powershell.exe -Command "ii ${pluginDir}"`;
-                exec(command, (error, stdout, stderr) => {
-                    if (error) {
-                        new Notice(`⚠ ${error}`);
-                        console.error(`⚠ ${error}`);
-                    }
-                });
+                if(navigator.userAgent.match(/Win/i)){
+                    const command = `powershell.exe -Command "ii ${pluginDir}"`;
+                    exec(command, (error, stdout, stderr) => {
+                        if (error) {
+                            new Notice(`⚠ ${error}`);
+                            console.error(`⚠ ${error}`);
+                        }
+                    });
+                }
                 openPluginDir.setDisabled(false);
             });
 
@@ -381,7 +376,6 @@ class I18NModal extends Modal {
                                     const response = await this.api.baidu(tempArray[2]);
                                     if ('trans_result' in response.json) {
                                         translationJson.dict[key] = key.replace(tempArray[2], response.json['trans_result'][0]['dst']);
-                                        if (this.log) console.table([tempArray[2], response.json['trans_result'][0]['dst']]);
                                     }
                                     await sleep(500);
                                 }
@@ -470,7 +464,6 @@ class I18NModal extends Modal {
                         // 4. 翻译 main.js
                         for (const key in translationJson.dict) {
                             mainString = mainString.replaceAll(key, translationJson.dict[key]);
-                            if (this.log) console.table([key, translationJson.dict[key]]);
                         }
                         // 5. 写入 main.js
                         fs.writeFileSync(mainDoc, mainString);
@@ -519,7 +512,7 @@ class I18NModal extends Modal {
                         const mainStr = fs.readFileSync(mainDoc).toString();
                         // 2. 获取 译文json 
                         const translationJson = generateTranslation(mainStr, regexs);
-                        for (const key in translationJson.dict) translationJson.dict[key] = key;  
+                        for (const key in translationJson.dict) translationJson.dict[key] = key;
                         // 3. 确保语言目录存在
                         fs.ensureDirSync(langDir);
                         // 4. 将 译文json 写入文件

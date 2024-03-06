@@ -1,18 +1,3 @@
-/** 插件 */
-export interface Plugin {
-	id: string;
-	name: string;
-	version: string;
-	description: string;
-	author: string;
-	authorUrl: string;
-	fundingUrl: string;
-	isDesktopOnly: boolean;
-	dir: string;
-	minAppVersion: string;
-	helpUrl: string;
-}
-
 /** 状态 */
 export interface State {
 	/** 状态 */
