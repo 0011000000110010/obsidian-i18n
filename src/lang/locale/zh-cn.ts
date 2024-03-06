@@ -46,7 +46,7 @@ export default {
     NIT_GENERATE_TOOLTIP: '生成已翻译译文',
     NIT_GENERATE_NPTICE: '生成中',
 
-    SETTING_BASE_TITLE: '[i18n] 基础设置',
+    SETTING_BASE_TITLE: '基础设置',
     SETTING_LANGUAGE: '语言',
     SETTING_LANGUAGE_DESC: '选择需要翻译的语言',
     SETTING_LOG: '日志',
@@ -54,13 +54,13 @@ export default {
     SETTING_BATCH: '批量',
     SETTING_BATCH_DESC: '是否开启批量操作',
 
-    SETTING_LDT_TITLE: '[i18n] 本地文件模式',
+    SETTING_LDT_TITLE: '本地文件模式',
     SETTING_LDT_MODE: '模式',
     SETTING_LDT_MODE_DESC: '开启本地文件模式 将会开启翻译还原生成功能',
     SETTING_LDT_GENERATE: '生成',
     SETTING_LDT_GENERATE_DESC: '开启本地译文自动生成功能',
 
-    SETTING_NDT_TITLE: '[i18n] 网络文件模式',
+    SETTING_NDT_TITLE: '网络文件模式',
     SETTING_NDT_MODE: '模式',
     SETTING_NDT_MODE_DESC: '开启网络文件模式 将会从网络下载译文',
     SETTING_NDT_APIS: '接口',
@@ -68,7 +68,7 @@ export default {
     SETTING_NDT_API_ADD: '添加',
     SETTING_NDT_NPTICE: '[网络译文模式] 当前语言 API 不存在',
 
-    SETTING_NIT_TITLE: '[i18n] 网络接口模式',
+    SETTING_NIT_TITLE: '网络接口模式',
     SETTING_NIT_MODE: '模式',
     SETTING_NIT_MODE_DESC: '开启网络接口模式 将会从网络API翻译文本',
     SETTING_NIT_APIS: '接口',
