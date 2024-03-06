@@ -1,6 +1,7 @@
 {
     "plugins":[
         "obsidian-icon-folder",
-        "copilot"
+        "copilot",
+        "table-editor-obsidian"
     ]
 }
