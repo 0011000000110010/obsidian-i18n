@@ -1,10 +1,10 @@
 {
   "id": "i18n",
   "name": "I18N",
-  "version": "1.0.2",
-  "description": "To internationalize the Obsidian plugin",
+  "version": "1.0.3",
+  "minAppVersion": "1.5.8",
+  "description": "To internationalize the plugin",
   "author": "zero",
-  "authorUrl": "",
-	"fundingUrl": "",
-  "isDesktopOnly": false
+  "authorUrl": "https://github.com/0011000000110010/",
+  "isDesktopOnly": true
 }
