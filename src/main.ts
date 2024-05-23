@@ -376,6 +376,8 @@ class I18NModal extends Modal {
                                     const response = await this.api.baidu(tempArray[2]);
                                     if ('trans_result' in response.json) {
                                         translationJson.dict[key] = key.replace(tempArray[2], response.json['trans_result'][0]['dst']);
+                                    }else{
+                                        translationJson.dict[key] = key;
                                     }
                                     await sleep(500);
                                 }
@@ -525,17 +527,6 @@ class I18NModal extends Modal {
                     this.reload();
                 });
             }
-            // const TEST = new ButtonComponent(block.controlEl);
-            // TEST.setButtonText('TEST');
-            // TEST.onClick(async () => {
-            //     TEST.setDisabled(true);
-            //     try {
-            //     } catch (error) {
-            //         new Notice(`⚠ ${error}`);
-            //         console.error(`⚠ ${error}`);
-            //     }
-            //     this.reload();
-            // });
             // =========================================================================================
         }
     }
