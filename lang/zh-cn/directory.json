@@ -2,6 +2,7 @@
     "plugins":[
         "obsidian-icon-folder",
         "copilot",
-        "table-editor-obsidian"
+        "table-editor-obsidian",
+        "obsidian-hider"
     ]
 }
