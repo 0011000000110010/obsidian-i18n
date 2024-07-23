@@ -10,8 +10,10 @@ import I18nNdtApi from './i18n-ndt-api';
 import I18nNitMode from './i18n-nit-mode';
 import I18nNitApi from './i18n-nit-api';
 import I18nNitBaiDu  from './i18n-nit-baidu';
+import CanZi from './i18n-canzi';
 
 import { t } from "src/lang/inxdex";
+
 
 
 class I18nSettingTab extends PluginSettingTab {
@@ -42,6 +44,9 @@ class I18nSettingTab extends PluginSettingTab {
 		new I18nNitMode(this).display();
 		new I18nNitApi(this).display();
 		new I18nNitBaiDu(this).display();
+
+		new Setting(containerEl).setName('额外').setHeading();
+		new CanZi(this).display();
 
 	}
 }

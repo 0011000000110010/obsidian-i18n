@@ -15,7 +15,8 @@ export interface I18nSettings {
 	I18N_NIT_MODE: boolean,
 	I18N_NIT_APIS: {
 		BAIDU: BAIDU
-	}
+	},
+	CanZi: boolean,
 }
 
 export const DEFAULT_SETTINGS: I18nSettings = {
@@ -36,5 +37,6 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 			APP_ID: '',
 			KEY: ''
 		}
-	}
+	},
+	CanZi: false,
 }

@@ -34,7 +34,3 @@ export const regexs_1 = [
     /.appendText\(\s*(['"`])(.+?)\1\s*\)/g,
     /.innerText\s*=\s*(['"`]).*?\1/g
 ]
-
-
-// keyof typeof
-

@@ -10,7 +10,7 @@ import { regexs, regexs_1 } from './data';
 import { API } from './api';
 import { t } from './lang/inxdex';
 import { State, generateTranslation } from './utils';
-
+// import { TableControlsView, TableControlsViewType } from './view';
 
 // ==============================
 //          [入口] I18n
@@ -22,14 +22,22 @@ export default class I18N extends Plugin {
     // 生命周期函数在用户激活 Obsidian 插件时触发。这将是您设置插件大部分功能的地方。该方法在插件更新时也会被触发。
     async onload() {
         console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `,
-        `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`,
-        `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`,
+            `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`,
+            `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`,
         );
         // 加载配置
         await this.loadSettings();
 
         // 功能页
-        this.addRibbonIcon('globe-2', 'I18N', (evt: MouseEvent) => { new I18NModal(this.app, this).open() });
+        this.addRibbonIcon('globe-2', 'I18N', (evt: MouseEvent) => {
+            new I18NModal(this.app, this).open();
+            // this.activateView();
+        });
+        // 视图页面
+        // this.registerView(
+        //     TableControlsViewType,
+        //     (leaf) => new TableControlsView(leaf, this.settings),
+        // );
 
         // 状态栏
         // this.addStatusBarItem().setText(`[语言] ${this.settings.I18N_LANGUAGE}`);
@@ -40,7 +48,20 @@ export default class I18N extends Plugin {
 
     // 命周期函数在插件被禁用时触发。插件所调用的任何资源必须在这里得到释放，以防止在您的插件被禁用后对 Obsidian 的性能产生影响。
     async onunload() {
+        // this.app.workspace.detachLeavesOfType(TableControlsViewType);
     }
+    // async activateView() {
+    //     this.app.workspace.detachLeavesOfType(TableControlsViewType);
+
+    //     await this.app.workspace.getRightLeaf(false).setViewState({
+    //         type: TableControlsViewType,
+    //         active: true,
+    //     });
+
+    //     this.app.workspace.revealLeaf(
+    //         this.app.workspace.getLeavesOfType(TableControlsViewType)[0]
+    //     );
+    // }
 
     async loadSettings() {
         this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
@@ -239,7 +260,7 @@ class I18NModal extends Modal {
                         const translationJson = generateTranslation(mainStr, regexs);
                         for (const key in translationJson.dict) translationJson.dict[key] = key;
                         fs.ensureDirSync(path.join(pluginDir, 'lang'));
-                        fs.writeJsonSync(langDoc, translationJson);
+                        fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
                         new Notice(`[${plugin.name}] ${t('BATCH_GENERATE_NPTICE')}`);
                     }
                 }
@@ -312,7 +333,7 @@ class I18NModal extends Modal {
             openPluginDir.setTooltip(t('OPEN_PLUGINDIR_TOOLTIP'));
             openPluginDir.onClick(() => {
                 openPluginDir.setDisabled(true);
-                if(navigator.userAgent.match(/Win/i)){
+                if (navigator.userAgent.match(/Win/i)) {
                     const command = `powershell.exe -Command "ii ${pluginDir}"`;
                     exec(command, (error, stdout, stderr) => {
                         if (error) {
@@ -376,7 +397,7 @@ class I18NModal extends Modal {
                                     const response = await this.api.baidu(tempArray[2]);
                                     if ('trans_result' in response.json) {
                                         translationJson.dict[key] = key.replace(tempArray[2], response.json['trans_result'][0]['dst']);
-                                    }else{
+                                    } else {
                                         translationJson.dict[key] = key;
                                     }
                                     await sleep(500);
@@ -387,7 +408,7 @@ class I18NModal extends Modal {
                             }
                         }
                         fs.ensureDirSync(langDir);
-                        fs.writeJsonSync(langDoc, translationJson);
+                        fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
                     } catch (error) {
                         new Notice(`⚠ ${error}`);
                         console.error(`⚠ ${error}`);
@@ -518,7 +539,7 @@ class I18NModal extends Modal {
                         // 3. 确保语言目录存在
                         fs.ensureDirSync(langDir);
                         // 4. 将 译文json 写入文件
-                        fs.writeJsonSync(langDoc, translationJson);
+                        fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
                         new Notice(t('LDT_GENERATE_NPTICE'));
                     } catch (error) {
                         new Notice(`⚠ ${error}`);
@@ -528,6 +549,54 @@ class I18NModal extends Modal {
                 });
             }
             // =========================================================================================
+
+            // ====================
+            // Obsidian-Plugin-Localization 蚕子 插件支持
+            // ====================
+            if (this.settings.CanZi && !isLangDoc) {
+                const CanZiButton = new ButtonComponent(block.controlEl);
+                if (!this.settings.CanZi) CanZiButton.setClass('display-none');
+                CanZiButton.setButtonText('蚕子译文格式');
+                CanZiButton.onClick(() => {
+                    CanZiButton.setDisabled(true);
+                    try {
+                        // 1. 获取 main.js 字符串
+                        const mainStr = fs.readFileSync(mainDoc).toString();
+                        // 2. 获取 译文json 
+                        const translationJson = generateTranslation(mainStr, regexs);
+                        for (const key in translationJson.dict) translationJson.dict[key] = key;
+                        // 3. 确保语言目录存在
+                        fs.ensureDirSync(langDir);
+
+                        // 临时字符串
+                        const lines: string[] = [];
+                        lines.push("汉化:  QQ:");
+                        lines.push("=========================================");
+                        for (const key in translationJson.dict) {
+                            const a1 = translationJson.dict[key];
+                            const a2 = a1.replace(/[\r\n]+/g, '');
+                            lines.push(a2);
+                            const b1 = key;
+                            const b2 = b1.replace(/[\r\n]+/g, '');
+                            lines.push(b2);
+                        }
+                        const tempDir = plugin.dir;
+                        let lastPart = '插件'
+                        if (tempDir != null) {
+                            const parts = tempDir.split('/');
+                            lastPart = parts[parts.length - 1];
+                        }
+                        lines.forEach(line => {
+                            fs.appendFileSync(path.join(langDir, `${lastPart}.txt`), line + '\n');
+                        });
+                        new Notice(t('LDT_GENERATE_NPTICE'));
+                    } catch (error) {
+                        new Notice(`⚠ ${error}`);
+                        console.error(`⚠ ${error}`);
+                    }
+                    this.reload();
+                });
+            }
         }
     }
 
