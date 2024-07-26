@@ -665,9 +665,9 @@ export class I18NModal extends Modal {
 
             const EDITEmailButton = new ButtonComponent(block.controlEl);
             EDITEmailButton.setButtonText('提交');
-            if (!(this.settings.I18N_MODE === "edit" 
-                && isLangDoc 
-                && this.settings.I18N_EDIT_EMAIL != '' 
+            if (!(this.settings.I18N_MODE === "edit"
+                && isLangDoc
+                && this.settings.I18N_EDIT_EMAIL != ''
                 && this.settings.I18N_EDIT_KEY != '')) EDITEmailButton.setClass('display-none');
             EDITEmailButton.onClick(async () => {
                 EDITEmailButton.setDisabled(true);
@@ -825,7 +825,7 @@ export class I18NModal extends Modal {
                     // 7. 空json译文
                     const translationJson: Translation = {
                         "manifest": {
-                            "author": "",
+                            "author": `${this.settings.I18N_AUTHOR}`,
                             "version": "-1"
                         },
                         "dict": {}
