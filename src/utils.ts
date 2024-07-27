@@ -2,6 +2,7 @@ import * as fs from 'fs-extra'
 import { Notice } from 'obsidian';
 import { State as state, Translation } from './data/types';
 
+
 // ==============================
 //            状态管理类
 // ==============================
@@ -103,7 +104,7 @@ export class State {
  * @param mainStr mian.js 的内容
  * @returns 
  */
-export function generateTranslation(mainStr: string, regexs: RegExp[], author = ""): Translation {
+export function generateTranslation(mainStr: string, author = "", regexps: string[], flags: string): Translation {
 	const translationJson: Translation = {
 		"manifest": {
 			"author": author,
@@ -111,8 +112,8 @@ export function generateTranslation(mainStr: string, regexs: RegExp[], author = 
 		},
 		"dict": {}
 	}
-	for (const regex in regexs) {
-		const temp_array = mainStr.match(regexs[regex]);
+	for (let i = 0; i < regexps.length; i++) {
+		const temp_array = mainStr.match(new RegExp(regexps[i], flags));
 		if (temp_array != null)
 			for (const i in temp_array)
 				translationJson.dict[temp_array[i]] = temp_array[i]

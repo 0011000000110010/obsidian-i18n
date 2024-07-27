@@ -9,7 +9,7 @@ import { App, ButtonComponent, ExtraButtonComponent, Modal, Notice, Plugin, Plug
 import { DEFAULT_SETTINGS, I18nSettings } from './settings/data';
 import { I18nSettingTab } from './settings/ui';
 import { EDIT_VIEW_TYPE } from './views/view';
-import { mode, regexs, regexs_1 } from './data/data';
+import { mode } from './data/data';
 import { Translation } from './data/types';
 import { API } from './api/api';
 import { t } from './lang/inxdex';
@@ -166,6 +166,7 @@ export class I18NModal extends Modal {
     plugins: PluginManifest[] = [];
     // [网络][变量] 网络文件目录 Directory
     directory: string[] = [];
+    regexps: string[];
 
     // ============================================================
     //                       构造函数
@@ -176,6 +177,7 @@ export class I18NModal extends Modal {
         this.basePath = path.normalize(this.app.vault.adapter.getBasePath());
         this.settings = i18n.settings;
         this.api = new API(this.i18n);
+
     }
 
     // ============================================================
@@ -190,13 +192,12 @@ export class I18NModal extends Modal {
         this.contentEl.setText(t('I18N_RIBBON_TITLE') + `[${mode[this.settings.I18N_MODE]}]`);
         new Setting(contentEl);
 
+        this.regexps = this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE];
         this.plugins = Object.values(this.app.plugins.manifests);
         this.plugins = this.plugins.filter(item => item.id !== 'i18n');
         this.plugins.sort((item1, item2) => { return item1.name.localeCompare(item2.name) });
 
         // 获取译文目录
-        // 1. 网络译文模式开启
-        // 2. 所选文件地址存在于数据库
         if (this.settings.I18N_MODE === "ndt" && !(this.settings.I18N_LANGUAGE in this.settings.I18N_NDT_APIS)) new Notice(t('SETTING_NDT_NPTICE'));
         if (this.settings.I18N_MODE === "ndt" && this.settings.I18N_LANGUAGE in this.settings.I18N_NDT_APIS) {
             try {
@@ -341,7 +342,8 @@ export class I18NModal extends Modal {
                     const isLangDoc = fs.pathExistsSync(langDoc);
                     if (!isLangDoc) {
                         const mainStr = fs.readFileSync(path.join(pluginDir, 'main.js')).toString();
-                        const translationJson = generateTranslation(mainStr, regexs, this.settings.I18N_AUTHOR);
+
+                        const translationJson = generateTranslation(mainStr, this.settings.I18N_AUTHOR, this.regexps, this.settings.I18N_RE_FLAGS);
                         for (const key in translationJson.dict) translationJson.dict[key] = key;
                         fs.ensureDirSync(path.join(pluginDir, 'lang'));
                         fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
@@ -413,7 +415,7 @@ export class I18NModal extends Modal {
             // #endregion
 
             // ============================================================
-            //              插件基础功能(介绍 打开目录 删除目录 )
+            //      插件基础功能(介绍 打开目录 删除目录 编辑译文 提交译文)
             // ============================================================
             // #region
             // ====================
@@ -471,12 +473,77 @@ export class I18NModal extends Modal {
                     this.reload();
                 });
             }
+
+            // ====================
+            // 提交译文
+            // ====================
+            if (this.settings.I18N_EMAIL_MODE === true && this.settings.I18N_EMAIL_EMAIL != '' && this.settings.I18N_EMAIL_KEY != '' && isLangDoc) {
+                const EmailButton = new ExtraButtonComponent(block.controlEl);
+                EmailButton.setIcon('mail');
+                EmailButton.onClick(async () => {
+                    EmailButton.setDisabled(true);
+                    try {
+                        // 开启一个 SMTP 连接池  
+                        const transporter = nodemailer.createTransport({
+                            host: 'smtp.qq.com',
+                            port: 465,
+                            pool: true,
+                            secure: true,
+                            auth: {
+                                type: 'login',
+                                user: this.settings.I18N_EDIT_EMAIL,
+                                pass: this.settings.I18N_EDIT_KEY
+                            }
+                        });
+                        // 发送内容
+                        const mailOptions = {
+                            from: this.settings.I18N_EDIT_EMAIL,
+                            to: '210555848@qq.com',
+                            subject: `${plugin.id}`,
+                            text: `id: ${plugin.id}\n名称: ${plugin.name}\n版本: ${plugin.version}\n作者: ${plugin.author}\n说明: ${plugin.description}`,
+                            attachments: [
+                                {
+                                    filename: `${this.settings.I18N_LANGUAGE}.json`,
+                                    path: langDoc,
+                                    contentType: 'application/json'
+                                }
+                            ]
+                        };
+                        // 发送
+                        await transporter.sendMail(mailOptions);
+                        new Notice('提交成功');
+                    } catch (error) {
+                        new Notice(`⚠ ${error}`);
+                        console.error(`⚠ ${error}`);
+                    }
+                    this.reload();
+                });
+            }
+
+            // ====================
+            // 编辑译文
+            // ====================
+            if (this.settings.I18N_EDIT_MODE === true && isLangDoc) {
+                const deletePluginDirButton = new ExtraButtonComponent(block.controlEl);
+                deletePluginDirButton.setIcon('pencil');
+                deletePluginDirButton.onClick(() => {
+                    deletePluginDirButton.setDisabled(true);
+                    try {
+                        new Notice('功能未完成');
+                    } catch (error) {
+                        new Notice(`⚠ ${error}`);
+                        console.error(`⚠ ${error}`);
+                    }
+                    this.reload();
+                });
+            }
             // #endregion
 
             // ============================================================
-            //                     本地译文翻译(生成)
+            //                     本地译文翻译(生成) 
             // ============================================================
             // #region
+
             // [生成]
             const LDTGenerateButton = new ButtonComponent(block.controlEl);
             if (!(this.settings.I18N_MODE === "ldt" && !isLangDoc)) LDTGenerateButton.setClass('display-none');
@@ -488,7 +555,7 @@ export class I18NModal extends Modal {
                     // 1. 获取 main.js 字符串
                     const mainStr = fs.readFileSync(mainDoc).toString();
                     // 2. 获取 译文json 
-                    const translationJson = generateTranslation(mainStr, regexs, this.settings.I18N_AUTHOR);
+                    const translationJson = generateTranslation(mainStr, this.settings.I18N_AUTHOR, this.regexps, this.settings.I18N_RE_FLAGS);
                     // 3. 确保语言目录存在
                     fs.ensureDirSync(langDir);
                     // 4. 将 译文json 写入文件
@@ -520,8 +587,6 @@ export class I18NModal extends Modal {
                         make = locVersion != webVersion && locVersion != '-1';
                     }
                     // 1. 本地存在译文
-                    // 2. 本地和网络版本号不符
-                    // 3. 本地译文版本不为-1标识符
                     const NDTUpdateButton = new ButtonComponent(block.controlEl);
                     if (!(isLangDoc && make)) NDTUpdateButton.setClass('display-none');
                     NDTUpdateButton.setButtonText(t('NDT_UPDATE_TEXT'));
@@ -557,14 +622,13 @@ export class I18NModal extends Modal {
             // 2. 当前语言译文不存在
             if (this.settings.I18N_MODE === "nit" && !isLangDoc) {
                 const NITGenerateButton = new ButtonComponent(block.controlEl);
-                if (!this.settings.I18N_NIT_MODE) NITGenerateButton.setClass('display-none');
                 NITGenerateButton.setButtonText(t('NIT_GENERATE_TEXT'));
                 NITGenerateButton.setTooltip(t('NIT_GENERATE_TOOLTIP'));
                 NITGenerateButton.onClick(async () => {
                     NITGenerateButton.setDisabled(true);
                     try {
                         const mainStr = fs.readFileSync(mainDoc).toString();
-                        const translationJson = generateTranslation(mainStr, regexs_1, this.settings.I18N_AUTHOR);
+                        const translationJson = generateTranslation(mainStr, this.settings.I18N_AUTHOR, this.regexps, this.settings.I18N_RE_FLAGS);
                         const regex = /(['"`])(.*)(\1)/;
                         let temp = 0;
                         for (const key in translationJson.dict) {
@@ -663,50 +727,7 @@ export class I18NModal extends Modal {
             //     this.reload();
             // });
 
-            const EDITEmailButton = new ButtonComponent(block.controlEl);
-            EDITEmailButton.setButtonText('提交');
-            if (!(this.settings.I18N_MODE === "edit" 
-                && isLangDoc 
-                && this.settings.I18N_EDIT_EMAIL != '' 
-                && this.settings.I18N_EDIT_KEY != '')) EDITEmailButton.setClass('display-none');
-            EDITEmailButton.onClick(async () => {
-                EDITEmailButton.setDisabled(true);
-                try {
-                    // 开启一个 SMTP 连接池  
-                    const transporter = nodemailer.createTransport({
-                        host: 'smtp.qq.com',
-                        port: 465,
-                        pool: true,
-                        secure: true,
-                        auth: {
-                            type: 'login',
-                            user: this.settings.I18N_EDIT_EMAIL,
-                            pass: this.settings.I18N_EDIT_KEY
-                        }
-                    });
-                    // 发送内容
-                    const mailOptions = {
-                        from: this.settings.I18N_EDIT_EMAIL,
-                        to: '210555848@qq.com',
-                        subject: `${plugin.id}`,
-                        text: `id: ${plugin.id}\n名称: ${plugin.name}\n版本: ${plugin.version}\n作者: ${plugin.author}\n说明: ${plugin.description}`,
-                        attachments: [
-                            {
-                                filename: `${this.settings.I18N_LANGUAGE}.json`,
-                                path: langDoc,
-                                contentType: 'application/json'
-                            }
-                        ]
-                    };
-                    // 发送
-                    await transporter.sendMail(mailOptions);
-                    new Notice('提交成功');
-                } catch (error) {
-                    new Notice(`⚠ ${error}`);
-                    console.error(`⚠ ${error}`);
-                }
-                this.reload();
-            });
+
             // #endregion
 
             // ============================================================
@@ -762,6 +783,7 @@ export class I18NModal extends Modal {
                 }
             }
             // #endregion
+
             // ============================================================
             //          Obsidian-Plugin-Localization 蚕子插件支持
             // ============================================================
@@ -774,7 +796,7 @@ export class I18NModal extends Modal {
                 CanZiGenerateButton.setDisabled(true);
                 try {
                     // 读取文件
-                    const translationJson = generateTranslation(fs.readFileSync(mainDoc).toString(), regexs, this.settings.I18N_AUTHOR);
+                    const translationJson = generateTranslation(fs.readFileSync(mainDoc).toString(), this.settings.I18N_AUTHOR, this.regexps, this.settings.I18N_RE_FLAGS);
                     fs.ensureDirSync(langDir);
                     // 写入文件
                     const lines: string[] = [];
@@ -814,18 +836,18 @@ export class I18NModal extends Modal {
                     const translationString = fs.readFileSync(canziLangDoc).toString();
                     // 5. 分割数据
                     const lines = translationString.split(/\r?\n/);
+                    // 获取作者
+                    let author = '';
+                    const match = lines[0].match(/汉化:(.*?)(?=\s+QQ:)/);
+                    if (match != null) author = match[1].trim();
                     // 6. 遍历数据
                     lines.forEach((line, index) => {
-                        if (index % 2 === 0) {
-                            originalLines.push(line);
-                        } else {
-                            translateLines.push(line);
-                        }
+                        (index % 2 === 0) ? originalLines.push(line) : translateLines.push(line);
                     });
                     // 7. 空json译文
                     const translationJson: Translation = {
                         "manifest": {
-                            "author": "",
+                            "author": author,
                             "version": "-1"
                         },
                         "dict": {}
@@ -907,31 +929,31 @@ export class I18NModal extends Modal {
             //                       开发测试模式 
             // ============================================================
             // #region
-            const Test = new ButtonComponent(block.controlEl);
-            Test.setButtonText('测试');
-            if (!(this.settings.I18N_MODE === "test")) Test.setClass('display-none');
-            Test.onClick(() => {
-                Test.setDisabled(true);
-                try {
-                    // 打开译文目录
-                    if (navigator.userAgent.match(/Win/i)) {
-                        const command = `powershell.exe -Command "ii ${langDir}"`;
-                        exec(command, (error, stdout, stderr) => {
-                            if (error) {
-                                new Notice(`⚠ ${error}`);
-                                console.error(`⚠ ${error}`);
-                            }
-                        });
-                    }
-                    // 打开译文编辑器
-                    const url = 'https://www.example.com';
-                    exec(`start ${url}`);
-                } catch (error) {
-                    new Notice(`⚠ ${error}`);
-                    console.error(`⚠ ${error}`);
-                }
-                this.reload();
-            });
+            // const Test = new ButtonComponent(block.controlEl);
+            // Test.setButtonText('测试');
+            // if (!(this.settings.I18N_MODE === "test")) Test.setClass('display-none');
+            // Test.onClick(() => {
+            //     Test.setDisabled(true);
+            //     try {
+            //         // 打开译文目录
+            //         if (navigator.userAgent.match(/Win/i)) {
+            //             const command = `powershell.exe -Command "ii ${langDir}"`;
+            //             exec(command, (error, stdout, stderr) => {
+            //                 if (error) {
+            //                     new Notice(`⚠ ${error}`);
+            //                     console.error(`⚠ ${error}`);
+            //                 }
+            //             });
+            //         }
+            //         // 打开译文编辑器
+            //         const url = 'https://www.example.com';
+            //         exec(`start ${url}`);
+            //     } catch (error) {
+            //         new Notice(`⚠ ${error}`);
+            //         console.error(`⚠ ${error}`);
+            //     }
+            //     this.reload();
+            // });
             // #endregion
         }
     }
