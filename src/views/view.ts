@@ -1,20 +1,19 @@
 import { ItemView, WorkspaceLeaf } from "obsidian";
-import { CustomFrame } from "./frame";
 
 export const EDIT_VIEW_TYPE = 'i18n-edit-view'
 
 export class EditView extends ItemView {
-    private frame: CustomFrame;
+    private frame: HTMLIFrameElement;
 
     constructor(leaf: WorkspaceLeaf) {
         super(leaf);
-        this.frame = new CustomFrame();
     }
 
     onload(): void {
-        this.contentEl.empty();
-        this.contentEl.addClass("custom-frames-view");
-        this.frame.create(this.contentEl);
+        this.frame = this.contentEl.doc.createElement("iframe");
+        this.frame.src = 'https://0011000000110010.github.io/obsidian-i18n-edit/'
+        this.frame.addClass('edit');
+        this.contentEl.appendChild(this.frame);
     }
 
     focus(): void {

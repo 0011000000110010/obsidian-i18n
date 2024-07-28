@@ -8,7 +8,7 @@ import { App, ButtonComponent, ExtraButtonComponent, Modal, Notice, Plugin, Plug
 
 import { DEFAULT_SETTINGS, I18nSettings } from './settings/data';
 import { I18nSettingTab } from './settings/ui';
-import { EDIT_VIEW_TYPE } from './views/view';
+import { EDIT_VIEW_TYPE, EditView } from './views/view';
 import { mode } from './data/data';
 import { Translation } from './data/types';
 import { API } from './api/api';
@@ -22,6 +22,7 @@ import { State, generateTranslation } from './utils';
 export default class I18N extends Plugin {
     // [变量] 总配置文件
     settings: I18nSettings;
+    dangqianchajian: string = '';
 
     // 当Obsidian启动时默认调用
     async onload() {
@@ -38,16 +39,20 @@ export default class I18N extends Plugin {
         // 功能页
         this.addRibbonIcon('globe-2', 'I18N', (evt: MouseEvent) => { new I18NModal(this.app, this).open(); });
 
+        // 注册译文编辑视图
+        this.registerView(EDIT_VIEW_TYPE, (leaf) => new EditView(leaf));
         // 激活译文编辑视图
         // this.activateEditView();
-        // 注册译文编辑视图
-        // this.registerView(EDIT_VIEW_TYPE, (leaf) => new EditView(leaf));
+        if (this.settings.I18N_EDIT_MODE) {
+            this.serve();
+        }
 
         // 状态栏
         // this.addStatusBarItem().setText(`[模式] ${mode[this.settings.I18N_MODE]}`);
 
         // 设置页
         this.addSettingTab(new I18nSettingTab(this.app, this));
+
     }
 
     // 命周期函数在插件被禁用时触发。
@@ -140,16 +145,74 @@ export default class I18N extends Plugin {
     }
 
     // 激活译文编辑视图
-    // async activateEditView() {
-    //     this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE);
-    //     await this.app.workspace.getRightLeaf(false).setViewState({
-    //         type: EDIT_VIEW_TYPE,
-    //         active: true,
-    //     });
-    //     this.app.workspace.revealLeaf(
-    //         this.app.workspace.getLeavesOfType(EDIT_VIEW_TYPE)[0]
-    //     );
-    // }
+    async activateEditView() {
+        this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE);
+        await this.app.workspace.getRightLeaf(false).setViewState({
+            type: EDIT_VIEW_TYPE,
+            active: true,
+        });
+        this.app.workspace.revealLeaf(
+            this.app.workspace.getLeavesOfType(EDIT_VIEW_TYPE)[0]
+        );
+    }
+
+    // 本地服务器
+    serve() {
+        try {
+            const http = require('http');
+            const host = '127.0.0.1';
+            const port = 3000;
+            const server = http.createServer(async (req: any, res: any) => {
+                // 添加请求头obsidian-i18n-edit/
+                res.setHeader('Access-Control-Allow-Origin', 'https://0011000000110010.github.io');
+                res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+                res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+                // 什么验证什么东西
+                if (req.method === 'OPTIONS') {
+                    res.writeHead(204);
+                    res.end();
+                    return;
+                }
+                const method = req.method;
+                const url = req.url;
+                const path = url.split('?')[0];
+                let translationJson: Translation;
+
+                if (method === 'GET' && path === '/api/plugin/get') {
+                    // 1. 获取译文JSON
+                    const translationString = fs.readFileSync(this.dangqianchajian);
+                    // 2. 返回状态码
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    // 3. 返回数据
+                    res.end(translationString);
+                } else if (method === 'POST' && path === '/api/plugin/save') {
+                    try {
+                        req.on('data', (chunk: Translation) => {
+                            // 1. 获取编辑后的译文
+                            translationJson = JSON.parse(chunk.toString())
+                            // 2. 保存到文件
+                            fs.writeJSONSync(this.dangqianchajian, translationJson);
+                        });
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ message: 'JSON received successfully' }));
+                    } catch (err) {
+                        console.error('Error parsing JSON:', err);
+                        res.writeHead(400, { 'Content-Type': 'text/plain' });
+                        res.end('Bad Request: Invalid JSON');
+                    }
+                } else {
+                    res.writeHead(404, { 'Content-Type': 'text/plain' });
+                    res.end('404 Not Found');
+                }
+            });
+            server.listen(port, host, () => {
+                console.log(`Server running at http://${host}:${port}/`);
+            });
+        } catch (error) {
+            new Notice(`⚠ ${error}`);
+            console.error(`⚠ ${error}`);
+        }
+    }
 }
 
 // ==============================
@@ -177,7 +240,6 @@ export class I18NModal extends Modal {
         this.basePath = path.normalize(this.app.vault.adapter.getBasePath());
         this.settings = i18n.settings;
         this.api = new API(this.i18n);
-
     }
 
     // ============================================================
@@ -529,7 +591,13 @@ export class I18NModal extends Modal {
                 deletePluginDirButton.onClick(() => {
                     deletePluginDirButton.setDisabled(true);
                     try {
-                        new Notice('功能未完成');
+                        // 更改当前编辑插件
+                        this.i18n.dangqianchajian = langDoc;
+                        console.log(this.i18n.dangqianchajian);
+                        // 打开视图就好了
+                        this.i18n.activateEditView();
+                        // 关闭当前页面
+                        // this.onClose();
                     } catch (error) {
                         new Notice(`⚠ ${error}`);
                         console.error(`⚠ ${error}`);
@@ -929,30 +997,27 @@ export class I18NModal extends Modal {
             //                       开发测试模式 
             // ============================================================
             // #region
+
             // const Test = new ButtonComponent(block.controlEl);
-            // Test.setButtonText('测试');
-            // if (!(this.settings.I18N_MODE === "test")) Test.setClass('display-none');
+            // Test.setButtonText('开启');
             // Test.onClick(() => {
-            //     Test.setDisabled(true);
+
+            //     // this.reload();
+            // });
+            // const Test1 = new ButtonComponent(block.controlEl);
+            // Test1.setButtonText('选择');
+            // Test1.onClick(() => {
             //     try {
-            //         // 打开译文目录
-            //         if (navigator.userAgent.match(/Win/i)) {
-            //             const command = `powershell.exe -Command "ii ${langDir}"`;
-            //             exec(command, (error, stdout, stderr) => {
-            //                 if (error) {
-            //                     new Notice(`⚠ ${error}`);
-            //                     console.error(`⚠ ${error}`);
-            //                 }
-            //             });
-            //         }
-            //         // 打开译文编辑器
-            //         const url = 'https://www.example.com';
-            //         exec(`start ${url}`);
+            //         // 更改当前编辑插件
+            //         this.i18n.dangqianchajian = langDoc;
+            //         console.log(this.i18n.dangqianchajian);
+            //         // 打开视图就好了
+            //         this.i18n.activateEditView();
             //     } catch (error) {
             //         new Notice(`⚠ ${error}`);
             //         console.error(`⚠ ${error}`);
             //     }
-            //     this.reload();
+            //     // this.reload();
             // });
             // #endregion
         }
