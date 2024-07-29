@@ -7,15 +7,22 @@ export interface I18nSettings {
 	I18N_MODE: string;
 	// 自动更新
 	I18N_AUTOMATIC_UPDATE: boolean;
+
 	// 一键
 	I18N_BATCH: boolean;
 	// 签名
 	I18N_AUTHOR: string;
-	// 编辑模式
+	// 译文编辑
 	I18N_EDIT_MODE: boolean;
+	// 译文转换
+	I18N_CONVERT_MODE: boolean;
+	// 译文提交
+	I18N_SUBMIT_REANSLATION_MODE: boolean;
+	// 译文求译
+	I18N_REQUEST_REANSLATION_MODE: boolean;
+
 
 	I18N_LDT_MODE: boolean;
-
 	I18N_NDT_MODE: boolean;
 	I18N_NIT_API: string;
 
@@ -27,10 +34,11 @@ export interface I18nSettings {
 		BAIDU: BAIDU
 	};
 
-	I18N_EMAIL_MODE: boolean;
+	// 邮箱配置
 	I18N_EMAIL_EMAIL: string;
 	I18N_EMAIL_KEY: string;
 
+	// 匹配配置
 	I18N_RE_MODE: string;
 	I18N_RE_FLAGS: string;
 	I18N_RE_MODE_DISPLAY: boolean;
@@ -47,35 +55,21 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_BATCH: false,
 	I18N_AUTHOR: '',
 	I18N_LDT_MODE: true,
+
+	// 译文编辑
 	I18N_EDIT_MODE: false,
+	// 译文转换
+	I18N_CONVERT_MODE: false,
+	// 译文提交
+	I18N_SUBMIT_REANSLATION_MODE: false,
+	// 译文求译
+	I18N_REQUEST_REANSLATION_MODE: false,
 
-	I18N_NDT_MODE: false,
-	I18N_NDT_APIS: {
-		// https://gitee.com/zero--two/obsidian-i18n-translation/raw/master/zh-cn/directory.json
-		// "zh-cn": "https://raw.githubusercontent.com/0011000000110010/obsidian-i18n/main/lang/zh-cn"
-		"zh-cn": "https://gitee.com/zero--two/obsidian-i18n-translation/raw/master/zh-cn/"
-	},
-	I18N_NDT_APIS_DISPLAY: false,
-	I18N_NIT_MODE: false,
-	I18N_NIT_API: 'BAIDU',
-	I18N_NIT_APIS: {
-		BAIDU: {
-			FROM: 'auto',
-			TO: 'zh',
-			APP_ID: '',
-			KEY: ''
-		}
-	},
-	I18N_EMAIL_MODE: false,
-	I18N_EMAIL_EMAIL: '',
-	I18N_EMAIL_KEY: '',
-
-
+	// 匹配模式配置
 	I18N_RE_MODE: '默认',
 	I18N_RE_FLAGS: 'gs',
-	I18N_RE_MODE_DISPLAY: false,
 	I18N_RE_MODES: ['默认'],
-	I18N_RE_DATAS_DISPLAY: false,
+	I18N_RE_MODE_DISPLAY: false,
 	I18N_RE_DATAS: {
 		'默认': ["Notice\\(\\s*(.+?)\\s*\\)/gs",
 			".setText\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
@@ -89,4 +83,28 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 			".innerText\\s*=\\s*(['\"`]).*?\\1"
 		]
 	},
+	I18N_RE_DATAS_DISPLAY: false,
+
+	// 网络文件配置
+	I18N_NDT_MODE: false,
+	I18N_NDT_APIS_DISPLAY: false,
+	I18N_NDT_APIS: {
+		"zh-cn": "https://gitee.com/zero--two/obsidian-i18n-translation/raw/master/zh-cn/"
+	},
+
+	// 网络接口配置
+	I18N_NIT_MODE: false,
+	I18N_NIT_API: 'BAIDU',
+	I18N_NIT_APIS: {
+		BAIDU: {
+			FROM: 'auto',
+			TO: 'zh',
+			APP_ID: '',
+			KEY: ''
+		}
+	},
+
+	// 邮箱地址配置
+	I18N_EMAIL_EMAIL: '',
+	I18N_EMAIL_KEY: '',
 }

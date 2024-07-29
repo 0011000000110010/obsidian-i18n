@@ -13,6 +13,5 @@ export const languages = {
 export const mode = {
     "ldt": "本地文件模式",
     "ndt": "网络文件模式",
-    "nit": "网络接口模式",
-    "canzi": "蚕子软件支持"
+    "nit": "网络接口模式"
 }

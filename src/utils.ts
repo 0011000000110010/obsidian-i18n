@@ -122,6 +122,10 @@ export function generateTranslation(mainStr: string, author = "", regexps: strin
 }
 
 
+export function PNotice(prefix: string, text: any) {
+	new Notice(`[${prefix}] ${text}`);
+}
+
 // import { exec, execSync } from 'child_process';
 // 选择目录
 // const command = `powershell.exe -Command "& {Add-Type -AssemblyName System.Windows.Forms; $folderDialog = New-Object System.Windows.Forms.FolderBrowserDialog; $folderDialog.Description = '请选择文件夹'; $folderDialog.RootFolder = [System.Environment+SpecialFolder]::MyComputer; $result = $folderDialog.ShowDialog(); if ($result -eq [System.Windows.Forms.DialogResult]::OK) { Write-Output $folderDialog.SelectedPath } else { Write-Output '' }}"`

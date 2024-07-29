@@ -6,13 +6,7 @@ export default class I18nREModes extends BaseSetting {
 		let modeString = '';
 		const i18nREModes = new Setting(this.containerEl);
 		i18nREModes.setName('模式编辑');
-		i18nREModes.setDesc('可自定义正则表达式用来获取数据');
-		// .addOptions(regexs)
-		// 	.setValue('')
-		// 	.onChange(async (value) => {
-		// 		temp_ndt_lang = value;
-		// 	})
-		// );
+		i18nREModes.setDesc('新增和删除正则表达式匹配模式');
 		i18nREModes.addText(cb => cb
 			.setPlaceholder('模式')
 			.onChange((value) => {

@@ -7,7 +7,7 @@ export default class I18nREDatas extends BaseSetting {
 		let regexpString = '';
 		const i18nREDatas = new Setting(this.containerEl);
 		i18nREDatas.setName('数据编辑');
-		i18nREDatas.setDesc('可自定义正则表达式用来获取数据');
+		i18nREDatas.setDesc('新增和删除正则表达式模式数据');
 		i18nREDatas.addText(cb => cb
 			.setPlaceholder('RegExp')
 			.onChange((value) => {

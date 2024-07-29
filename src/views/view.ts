@@ -10,6 +10,7 @@ export class EditView extends ItemView {
     }
 
     onload(): void {
+        // 或者webview
         this.frame = this.contentEl.doc.createElement("iframe");
         this.frame.src = 'https://0011000000110010.github.io/obsidian-i18n-edit/'
         this.frame.addClass('edit');
