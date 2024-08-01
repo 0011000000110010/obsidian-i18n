@@ -5,6 +5,7 @@
         "table-editor-obsidian",
         "obsidian-hider",
         "obsidian-minimal-settings",
-        "obsidian-style-settings"
+        "obsidian-style-settings",
+        "dataview"
     ]
 }
