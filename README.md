@@ -56,7 +56,7 @@ obsidian-i18n通过读取其他插件内文本并输出为词典（待翻译）�
 
 obsidian-i18n的工作原理：
 
-![工作原理](images/obsidian-i18n工作原理 1.webp)
+![工作原理](images/obsidian-i18n工作原理.webp)
 
 
 ##### 网络文件模式：最省心，但适配数量有限
