@@ -1,0 +1,14 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "name: \"Keystroke\"": "name: \"按键\"",
+        "name: \"Bold\"": "name: \"粗体\"",
+        "name: \"Open Book Explorer\"": "name: \"打开图书资源管理器\"",
+        "name: \"Open Advance Book Explorer\"": "name: \"打开高级图书资源管理器\"",
+        "name: \"Search Book\"": "name: \"搜索图书\"",
+        "name: 'Open Book Of Project'": "name: '打开项目手册'"
+    }
+}

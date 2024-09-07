@@ -1,0 +1,23 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setTitle(\"Set color\"": ".setTitle(\"设置颜色\"",
+        "this.titleEl.innerText = \"Set color\"": "this.titleEl.innerText = \"设置颜色\"",
+        "placeholder: \"Color name\"": "placeholder: \"颜色名称\"",
+        ".createElement(\"span\", null, \"No colors in the palette\"": ".createElement(\"span\", null, \"调色板中没有颜色\"",
+        ".createElement(\"span\", null, \"Add Color\"": ".createElement(\"span\", null, \"添加颜色\"",
+        "createElement(\"h2\", null, \"Palette\"": "createElement(\"h2\", null, \"调色板\"",
+        "createElement(\"h2\", null, \"Options\"": "createElement(\"h2\", null, \"选项\"",
+        "SettingItemDescription, null, \"Folders will cascade their colors to sub-folders and notes, unless their colors are explicitly set.\"": "SettingItemDescription, null, \"除非明确设置了文件夹和笔记的颜色，否则它们的颜色会层叠传递给子文件夹和笔记。\"",
+        "SettingItemDescription, null, \"Color the background instead of the text.\"": "SettingItemDescription, null, \"为背景着色，而非为文本着色。\"",
+        "SettingItemName, null, \"Cascade Colors\"": "SettingItemName, null, \"逐级颜色\"",
+        "SettingItemName, null, \"Color Background\"": "SettingItemName, null, \"背景颜色\"",
+        "\"You have unsaved palette changes.\"": "\"您的调色板有未保存的更改。\"",
+        "\"Revert changes\"": "\"撤销更改\"",
+        "\"Save\"": "\"保存\"",
+        " \"None\"": " \"无名\""
+    }
+}

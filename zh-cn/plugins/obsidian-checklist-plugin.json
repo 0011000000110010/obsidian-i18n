@@ -1,0 +1,36 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: \"General Settings\"": "text: \"通用设置\"",
+        ".setName(\"General\")": ".setName(\"常规\")",
+        ".setName(\"Tag name\")": ".setName(\"标签名称\")",
+        ".setDesc('e.g. \"todo\" will match #todo. You may add mutliple tags separated by a newline. Leave empty to capture all')": ".setDesc('例如，“todo”将与#todo匹配。您可以添加由换行符分隔的多个标记。保留为空以捕获所有')",
+        ".setName(\"Show Completed?\")": ".setName(\"显示已完成？\")",
+        ".setName(\"Show All Todos In File?\")": ".setName(\"是否显示文件中的所有Todo？\")",
+        ".setDesc(\"Show all items in file if tag is present, or only items attached to the block where the tag is located. Only has an effect if Tag Name is not empty\")": ".setDesc(\"如果存在标记，则显示文件中的所有项目，或者仅显示附着到标记所在块的项目。仅当“标记名称”不为空时才有效\")",
+        ".setName(\"Grouping & Sorting\")": ".setName(\"分组和排序\")",
+        ".setName(\"Group By\")": ".setName(\"分组\")",
+        ".setName(\"Item Sort\")": ".setName(\"项目排序\")",
+        ".setDesc(\"Time sorts are based on last time the file for a particular item was edited\")": ".setDesc(\"时间排序基于上次编辑特定项目的文件的时间\")",
+        ".setName(\"Group Sort\")": ".setName(\"分组排序\")",
+        ".setDesc(\"Time sorts are based on last time the file for the newest or oldest item in a group was edited\")": ".setDesc(\"时间排序基于上次编辑组中最新或最旧项目的文件的时间\")",
+        ".setName(\"Styling\")": ".setName(\"样式\")",
+        ".setName(\"Look and Feel\")": ".setName(\"外观和感觉\")",
+        ".setName(\"Advanced\")": ".setName(\"高级的\")",
+        ".setName(\"Include Files\")": ".setName(\"包括文件\")",
+        ".setDesc(\"Include all files that match this glob pattern. Examples on plugin page/github readme. Leave empty to check all files.\")": ".setDesc(\"包括与此glob模式匹配的所有文件。插件页面/github自述文件上的示例。保留为空以检查所有文件。\")",
+        ".setName(\"Auto Refresh List?\")": ".setName(\"是否自动刷新列表？\")",
+        "  name: \"chevron\",": "  name: \"chevron\",",
+        "  name: \"Show Checklist Pane\",": "  name: \"显示检查表窗格\",",
+        "  name: \"Refresh List\",": "  name: \"刷新列表\",",
+        "setDesc(`It's recommended to leave this on unless you are expereince performance issues due to a large vault. You can then reload manually using the \"Checklist: refresh\" command`": "setDesc(`建议您保持此状态，除非您遇到由于大型保险库而导致的性能问题。然后，您可以使用“Checklist: refresh”命令手动重新加载`",
+        "\"Todo List\"": "\"待办清单\"",
+        "\"Search tasks\"": "\"搜索任务\"",
+        "text(\"No checklists found in all files\"": "text(\"在所有文件中找不到检查表\"",
+        "text(\"No checklists found for tag\"": "text(\"未找到标签的检查表\"",
+        "\"Show Tags?\"": "\"展示哪些标签？\""
+    }
+}

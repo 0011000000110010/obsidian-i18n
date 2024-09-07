@@ -1,0 +1,23 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "name: \"Paste URL and auto fetch title\"": "name: \"粘贴链接并自动获取标题\"",
+        "name: \"Normal paste (no fetching behavior)\"": "name: \"正常粘贴（无获取行为）\"",
+        "name: \"Enhance existing URL with link and title\"": "name: \"用链接和标题增强现有链接\"",
+        ".setDesc(\"Fetch the link title when pasting a link in the editor with the default paste command\"": ".setDesc(\"使用默认粘贴命令在编辑器中粘贴链接时获取链接标题\"",
+        ".setDesc(\"Fetch the link title when drag and dropping a link from another program\"": ".setDesc(\"从其他程序拖放链接时获取链接标题\"",
+        ".setDesc(\"Set the maximum length of the title. Set to 0 to disable.\"": ".setDesc(\"设置标题的最大长度。设为 0 则禁用。\"",
+        ".setDesc(\"Whether to replace a text selection with link and fetched title\"": ".setDesc(\"是否用链接和获取的标题替换文本选择\"",
+        ".setDesc(\"List of strings (comma separated) that disable autocompleting website titles. Can be URLs or arbitrary text.\"": ".setDesc(\"禁止自动完成网站标题的字符串列表（逗号分隔）。可以是 URL 或任意文本。\"",
+        ".setDesc(\"Use experimental new scraper, seems to work well on desktop but not mobile.\"": ".setDesc(\"使用试验性的新刮削器，在桌面端似乎效果不错，但在手机端效果不佳。\"",
+        ".setName(\"Enhance Default Paste\"": ".setName(\"增强默认粘贴\"",
+        ".setName(\"Enhance Drop Events\"": ".setName(\"增强拖拽事件\"",
+        ".setName(\"Maximum title length\"": ".setName(\"最大标题长度\"",
+        ".setName(\"Replace Selection\"": ".setName(\"替换选择\"",
+        ".setName(\"Website Blacklist\"": ".setName(\"网站黑名单\"",
+        ".setName(\"Use New Scraper\"": ".setName(\"使用新的刮削器\""
+    }
+}
