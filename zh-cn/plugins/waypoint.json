@@ -1,0 +1,26 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "setDesc(\"Select the style of folder note used.\"": "setDesc(\"选择所用文件夹注释的样式。\"",
+        "setDesc(\"If enabled, folder notes will be listed alongside other notes in the generated waypoints.\"": "setDesc(\"如果启用，文件夹注释将与生成的路点中的其他注释一起列出。\"",
+        "setDesc(\"If enabled, non-Markdown files will be listed alongside other notes in the generated waypoints.\"": "setDesc(\"如果启用，非 Markdown 文件将与生成的路点中的其他注释一起列出。\"",
+        "setDesc(\"If enabled, the name of the folder note containing the waypoint will be listed at the top of the generated waypoints.\"": "setDesc(\"如果启用，包含航路点的文件夹注释的名称将列在生成的航路点的顶部。\"",
+        "setDesc(\"If enabled, the waypoint generator will stop scanning nested folders when it encounters a folder note. Otherwise, it will only stop if the folder note contains a waypoint.\"": "setDesc(\"如果启用，当遇到文件夹注释时，航路点生成器将停止扫描嵌套文件夹。否则，只有当文件夹注释包含一个航路点时，它才会停止。\"",
+        "setDesc(\"If enabled, links will be generated like [[My Page]] instead of [My Page](../Folder/My%Page.md).\"": "setDesc(\"如果启用，将生成类似[[My Page]]的链接，而不是[My Page](../Folder/My%Page.md)。\"",
+        "setDesc(\"Text flag that triggers waypoint generation in a folder note. Must be surrounded by double-percent signs.\"": "setDesc(\"在文件夹备注中触发航路点生成的文本标志。必须用两个百分比的标志包围。\"",
+        "setName(\"Folder Note Style\"": "setName(\"文件夹注释样式\"",
+        "setName(\"Show Folder Notes\"": "setName(\"显示文件夹备注\"",
+        "setName(\"Show Non-Markdown Files\"": "setName(\"显示非降价文件\"",
+        "setName(\"Show Enclosing Note\"": "setName(\"显示装箱说明\"",
+        "setName(\"Stop Scan at Folder Notes\"": "setName(\"停止扫描文件夹笔记\"",
+        "setName(\"Use WikiLinks\"": "setName(\"使用 Wiki 链接\"",
+        "setName(\"Waypoint Flag\"": "setName(\"航路点标志\"",
+        ", \"Folder Name Inside\"": ", \"内部文件夹名称\"",
+        ", \"Folder Name Outside\"": ", \"外部文件夹名称\"",
+        "text: \"For instructions on how to use this plugin, check out the README on \"": "text: \"有关如何使用此插件的说明，请查看上的自述文件 \"",
+        "text: \" or get in touch with the author \"": "text: \" 或与作者取得联系 \""
+    }
+}

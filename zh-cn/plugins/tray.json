@@ -1,0 +1,38 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "desc: \"Open Obsidian automatically whenever you log into your computer.\"": "desc: \"每当您登录计算机时，都会自动打开Obsidian。\"",
+        "desc: \"New quick notes will be placed in this folder.\"": "desc: \"新的快速笔记将放置在此文件夹中。\"",
+        "\"Window management\"": "\"窗口管理\"",
+        "\"Quick notes\"": "\"快速笔记\"",
+        "Minimises Obsidian automatically whenever the app is launched. If the": "无论何时启动应用程序，都会自动最小化Obsidian。如果",
+        "\"Run in background\" option is enabled, windows will be hidden to the system": "\"后台运行\" 选项被启用，窗口将对系统隐藏",
+        "tray/menubar instead of minimised to the taskbar/dock.": "任务栏/菜单栏，而不是最小化到任务栏/底部。",
+        "Hides the app and continues to run it in the background instead of quitting": "隐藏应用程序并继续在后台运行，而不是退出",
+        "it when pressing the window close button or toggle focus hotkey.": "当按下窗口关闭按钮或切换焦点热键时。",
+        "Hides the window's icon from from the dock/taskbar. Enabling the tray icon first": "从dock/任务栏隐藏窗口的图标。首先启用托盘图标",
+        "is recommended if using this option. This may not work on Linux-based OSes.": "如果使用此选项，则建议使用。这可能在基于Linux的操作系统上不起作用。",
+        "Adds an icon to your system tray/menubar to bring hidden Obsidian windows": "在系统任务栏/菜单栏中添加一个图标，以显示隐藏的黑名单窗口",
+        "back into focus on click or force a full quit/relaunch of the app through": "点击或强制完全退出/重新启动应用程序",
+        "the right-click menu.": "右键单击菜单。",
+        "Set the image used by the tray/menubar icon. Recommended size: 16x16": "设置托盘/菜单栏图标使用的图像。建议尺寸：16x16",
+        "<br>Preview: <img data-preview style=\"height: 16px; vertical-align: bottom;\">": "<br>预览: <img data-preview style=\"height: 16px; vertical-align: bottom;\">",
+        "Set a title to identify the tray/menubar icon by. The": "设置用于标识任务栏/菜单栏图标的标题",
+        "<code>{{vault}}</code> placeholder will be replaced by the vault name.": "<code>{{vault}}</code> 占位符将替换为库名称。",
+        "<br>Preview: <b class=\"u-pop\" data-preview></b>": "<br>预览: <b class=\"u-pop\" data-preview></b>",
+        "New quick notes will use a filename of this pattern.": "新的快速笔记将使用此模式的文件名。",
+        "This hotkey is registered globally and will be detected even if Obsidian does": "此热键是全局注册的，即使Obsidian进行了注册，也会被检测到",
+        "not have keyboard focus. Format:": "没有键盘焦点。格式：",
+        "<a href=\"https://www.electronjs.org/docs/latest/api/accelerator\" target=\"_blank\" rel=\"noopener\">": "<a href=\"https://www.electronjs.org/docs/latest/api/accelerator\" target=\"_blank\" rel=\"noopener\">",
+        "Electron accelerator</a>": "电子加速器</a>",
+        "ACTION_HIDE = \"Hide Vault\"": "ACTION_HIDE = \"隐藏库\"",
+        "ACTION_SHOW = \"Show Vault\"": "ACTION_SHOW = \"显示库\"",
+        "ACTION_QUICK_NOTE = \"Quick Note\"": "ACTION_QUICK_NOTE = \"快速笔记\"",
+        "ACTION_RELAUNCH = \"Relaunch Obsidian\"": "ACTION_RELAUNCH = \"重启 Obsidian\"",
+        "ACTION_CLOSE = \"Close Vault\"": "ACTION_CLOSE = \"关闭库\"",
+        "\"Example: notes/quick\"": "\"示例: notes/quick\""
+    }
+}

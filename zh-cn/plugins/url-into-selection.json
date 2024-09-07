@@ -1,0 +1,24 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "throw new TypeError(\"Class extends value \" + String(b) + \" is not a constructor or null\");": "throw new TypeError(\"类扩展值 \" + String(b) + \" 不是构造函数或 null\");",
+        "if (f) throw new TypeError(\"Generator is already executing.\");": "if (f) throw new TypeError(\"生成器已经在执行。\");",
+        "throw new TypeError('Arguments to path.resolve must be strings');": "throw new TypeError('path.resolve 的参数必须是字符串');",
+        "throw new TypeError('Arguments to path.join must be strings');": "throw new TypeError('path.join的参数必须是字符串');",
+        ".setName(\"Fallback Regular expression\")": ".setName(\"回退正则表达式\")",
+        ".setDesc(\"Regular expression used to match URLs when default match fails.\")": ".setDesc(\"用于在默认匹配失败时匹配URL的正则表达式。\")",
+        ".setName(\"Behavior on pasting URL when nothing is selected\")": ".setName(\"未选择任何内容时粘贴URL的行为\")",
+        ".setDesc(\"Auto Select: Automatically select word surrounding the cursor.\")": ".setDesc(\"自动选择：自动选择光标周围的单词。\")",
+        "0: \"Do nothing\",": "0: \"啥都不干\",",
+        "1: \"Auto Select\",": "1: \"自动选择\",",
+        "2: \"Insert [](url)\",": "2: \"插入 [](url)\",",
+        "3: \"Insert <url>\"": "3: \"插入 <url>\"",
+        ".setName('Whitelist for image embed syntax')": ".setName('图像嵌入语法的白名单')",
+        "el.appendText(\"![selection](url) will be used for URL that matches the following list.\");": "el.appendText(\"![选择]（url）将用于与以下列表匹配的url。\");",
+        "el.appendText(\"Rules are regex-based, split by line break.\");": "el.appendText(\"规则是基于regex的，按换行符拆分。\");",
+        ".setPlaceholder('Example:\\nyoutu\\.?be|vimeo')": ".setPlaceholder('示例：\\nyoutu\\.?be|vimeo')"
+    }
+}

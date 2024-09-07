@@ -1,0 +1,37 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".Notice(`Create ${file.name} success`": ".Notice(`创建 ${file.name} 成功`",
+        ".Notice(`${file.name}: ${res.message}, create failed`": ".Notice(`${file.name}: ${res.message}, 创建失败`",
+        ".Notice(`Update ${file.name} success`": ".Notice(`更新 ${file.name} 成功`",
+        ".Notice(`${file.name}: ${res.message}, update failed`": ".Notice(`${file.name}: ${res.message}, 更新失败`",
+        ".Notice(`${file.name} vikaLink not found`": ".Notice(`${file.name} 未找到 vika 链接`",
+        ".Notice(`${file.name}: ${res.message}, delete failed`": ".Notice(`${file.name}: ${res.message}, 删除失败`",
+        ".Notice(`${file.name} delete success`": ".Notice(`${file.name} 删除成功`",
+        ".Notice(`Download ${file.name} success`": ".Notice(`下载 ${file.name} 成功`",
+        ".Notice(`${file.name}: ${res.message}, Download failed`": ".Notice(`${file.name}: ${res.message}, 下载失败`",
+        ".Notice(`${file.name} create success`": ".Notice(`${file.name} 创建成功`",
+        ".Notice(`${file.name}: ${res == null ? void 0 : res.message}, update failed`": ".Notice(`${file.name}: ${res == null ? void 0 : res.message}, 更新失败`",
+        ".Notice(`Update Note in Folder: ${file.parent.path} finished`": ".Notice(`更新文件夹: ${file.parent.path} 完成`",
+        ".Notice(`Update Note in Vault: ${this.app.vault.getName()} finished`": ".Notice(`更新库: ${this.app.vault.getName()} 完成`",
+        ".Notice(`${folder}: ${res.message} success`": ".Notice(`${folder}: ${res.message} 成功`",
+        ".Notice(`${folder}: ${res.message} download failed`": ".Notice(`${folder}: ${res.message} 下载失败`",
+        ".Notice(\"Start Refresh\"": ".Notice(\"开始刷新\"",
+        ".Notice(\"Refresh Success\"": ".Notice(\"刷新成功\"",
+        ".Notice(`Refresh Failed: ${e}`": ".Notice(`刷新失败: ${e}`",
+        "name: \"Create: this Note\"": "name: \"创建:此笔记\"",
+        "name: \"Update: this Note\"": "name: \"更新:此笔记\"",
+        "name: \"Update: this Folder\"": "name: \"更新:此文件夹\"",
+        "name: \"Update: this Vault\"": "name: \"更新:此保险库\"",
+        "name: \"Delete: this Note & Record\"": "name: \"删除:此笔记和记录\"",
+        "name: \"Download: this Note\"": "name: \"下载:此笔记\"",
+        "name: \"Download: this Folder\"": "name: \"下载:此文件夹\"",
+        "setButtonText(\"Refresh\"": "setButtonText(\"刷新\"",
+        "text: \"Vika Sync Settings\"": "text: \"Vika 同步 设置\"",
+        "text: \"Datasheet List\"": "text: \"数据表列表\"",
+        "selector(text_items, items, false, \"Choose a datasheet\", 20);": "selector(text_items, items, false, \"选择一个数据表\", 20);"
+    }
+}

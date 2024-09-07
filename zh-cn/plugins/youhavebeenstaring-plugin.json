@@ -1,0 +1,25 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "staringText: 'You have been staring at your vault for ',": "staringText: '你已经盯着OB看了有',",
+        "totalStaringText: 'Your total staring time in this vault is ',": "totalStaringText: '你在当前库使用总时间是',",
+        "pausedText: 'Your staring counter is paused'": "pausedText: '已暂停统计使用时间'",
+        "containerEl.createEl('h3', { text: 'YouHaveBeenStaring settings' });": "containerEl.createEl('h3', { text: '显示使用时间设置' });",
+        ".setName('Show total staring duration')": ".setName('统计总用时')",
+        ".setDesc('Displays the total duration you have been staring on your vault (well at least when this plugin was able to measure it).')": ".setDesc('显示你一直使用OB的总用时(好吧，至少当这个插件能够测量它)。')",
+        ".setName('Display total recorded staring time as human readable')": ".setName('显示总记录的使用时间为人类可读')",
+        ".setDesc('The recorded staring time is shown as text, such as \\'10 hours\\'. Turning this off will show the total recorded time in HH:mm fashion.')": ".setDesc('记录的使用时间以文本形式显示，例如\\'10小时\\'。关闭此选项将以HH:mm方式显示记录的总时间。')",
+        ".setName('Status bar text of staring time')": ".setName('状态栏文本的开始时间')",
+        ".setDesc('Overrides the status bar text displaying your staring time.')": ".setDesc('覆盖显示您的使用时间的状态栏文本。')",
+        ".setPlaceholder('You have been staring at your vault for ')": ".setPlaceholder('你已经使用了 ')",
+        ".setName('Status bar text of total staring time')": ".setName('状态栏文本的总时长')",
+        ".setDesc('Overrides the status bar text displaying your total staring time for this vault.')": ".setDesc('覆盖显示此当前库使用总时长的状态栏文本。')",
+        ".setPlaceholder('Your total staring time in this vault is ')": ".setPlaceholder('你在当库使用总时长是')",
+        ".setName('Status bar text when staring counter is paused')": ".setName('状态栏文本计时器暂停')",
+        ".setDesc('Overrides the status bar text shown when you disabled the staring time counting.')": ".setDesc('暂停状态栏文本计时器。')",
+        ".setPlaceholder('Your staring counter is paused')": ".setPlaceholder('暂停状态栏文本计时器')"
+    }
+}

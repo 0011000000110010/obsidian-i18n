@@ -1,0 +1,10 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: \"Change Theme\"": "text: \"改变主题\"",
+        "name: 'Open Theme Picker',": "name: '打开主题选择器',"
+    }
+}
