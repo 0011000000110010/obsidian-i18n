@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "button.setButtonText(\"Delete\"": "button.setButtonText(\"删除\"",
+        "text: 'Use this settings screen to add/update dividers to your ribbon. Clicking \"New Divider\" below will immediately add the divider.'": "text: '使用此设置屏幕在功能区中添加或更新分隔线。单击下方的「新建分隔线」将立即添加分隔线。'",
+        "text: \"New divider\"": "text: \"新建分隔线\"",
+        ".setName(\"Divider\")": ".setName(\"分隔线\")",
+        "`Divider: ${divider.id}`,": "`分隔线：${divider.id}`,"
+    }
+}

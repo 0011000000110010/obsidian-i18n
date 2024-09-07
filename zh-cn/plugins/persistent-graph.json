@@ -1,0 +1,11 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: \"Settings for PersistentGraphPlugin\"": "text: \"PersistentGraphPlugin 设置\"",
+        "setName(\"Automatically restore node positions\"": "setName(\"自动恢复节点位置\"",
+        "setDesc(\"Restore node positions every time a graph view is opened\"": "setDesc(\"每次打开图形视图时恢复节点位置\""
+    }
+}

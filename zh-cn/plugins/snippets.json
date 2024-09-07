@@ -1,0 +1,12 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: \"Snippets\",": "text: \"代码段设置\",",
+        ".setName('Code fences')": ".setName('代码栏')",
+        ".setDesc('config for each language')": ".setDesc('每种语言的配置')",
+        "text: \"This plugin is experimental\",": "text: \"这个插件是实验性的\","
+    }
+}

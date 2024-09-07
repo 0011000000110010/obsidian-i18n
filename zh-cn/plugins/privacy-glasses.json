@@ -1,0 +1,37 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "this.addRibbonIcon('glasses', 'Toggle Privacy Glasses', () => {": "this.addRibbonIcon('glasses', '切换隐私滤镜', () => {",
+        "name: 'Toggle Privacy Glasses',": "name: '切换隐私滤镜',",
+        "let pgOnMsg = 'Privacy Glasses On';": "let pgOnMsg = '隐私滤镜 开';",
+        "let pgOffMsg = 'Privacy Glasses Off';": "let pgOffMsg = '隐私滤镜 关';",
+        "containerEl.createEl('h3', { text: 'Privacy Glasses v' + this.plugin.manifest.version });": "containerEl.createEl('h3', { text: '隐私滤镜 v' + this.plugin.manifest.version });",
+        "containerEl.createEl('span', { text: ': documentation, report issues, contact info' });": "containerEl.createEl('span', { text: ': 文档，报告问题，联系信息' });",
+        "containerEl.createEl('span', { text: ': tip jar' });": "containerEl.createEl('span', { text: ': ' });",
+        "containerEl.createEl('p', { text: 'To activate/deactivate Privacy Glasses, click the glasses icon on the left-hand ribbon or run the \"Toggle Privacy Glasses\" command in the Command Palette (Ctrl-P). The command can also be bound to a keyboard shortcut if you wish.' });": "containerEl.createEl('p', { text: '要激活/关闭隐私滤镜，点击左侧ribbon上的Glasses图标，或者在command Palette (Ctrl-P)中运行“切换隐私滤镜”命令。如果您愿意，该命令还可以绑定到键盘快捷键。' });",
+        "containerEl.createEl('p', { text: 'Experimental settings that don\\'t always work as well as you might like are marked with a \"⚠️\". They are safe to use but can behave in annoying ways.' });": "containerEl.createEl('p', { text: '实验设置并不总是像你想的那样好，用“⚠️”标记。它们使用起来是安全的，但可能会有令人讨厌的行为。' });",
+        ".setName('Privacy Glasses Activated')": ".setName('隐私滤镜激活')",
+        ".setDesc('Indicates whether or not the plugin is currently activated.')": ".setDesc('指示插件当前是否激活。')",
+        "let sliderElDesc = 'Higher is blurrier. Default=60, current=';": "let sliderElDesc = '更改模糊等级(只影响下面选择的“模糊文本”)。 默认=60, 当前=';",
+        ".setName('Blur Level (only affects elements for which \"Blurry Text\" is selected below)')": ".setName('模糊等级')",
+        ".setName('Obfuscation method for Edit Mode')": ".setName('编辑模式的模糊方法')",
+        ".setDesc('How to obfuscate the document\\'s text in Edit Mode')": ".setDesc('如何在编辑模式混淆文档的文本')",
+        ".addOption('', '[Off]')": ".addOption('', '[关]')",
+        ".addOption('blurEdit', 'Blurry Text')": ".addOption('blurEdit', '模糊的文本')",
+        ".addOption('blockEdit', 'Solid Blocks')": ".addOption('blockEdit', '固体块')",
+        ".addOption('circlesEdit', 'Circles ⚠️')": ".addOption('circlesEdit', '圈 ⚠️')",
+        ".setName('Obfuscation method for Preview Mode')": ".setName('预览模式的模糊方法')",
+        ".setDesc('How to obfuscate the document\\'s text in Preview Mode')": ".setDesc('如何在预览模式混淆文档的文本')",
+        ".addOption('blurPreview', 'Blurry Text')": ".addOption('blurPreview', '模糊的文本')",
+        ".addOption('blockPreview', 'Solid Blocks ⚠️')": ".addOption('blockPreview', '固体块 ⚠️')",
+        ".addOption('circlesPreview', 'Circles ⚠️')": ".addOption('circlesPreview', '圈 ⚠️')",
+        ".setName('Obfuscation method for Sidebars')": ".setName('侧边栏的混淆方法')",
+        ".setDesc('How to obfuscate your file list, tags, outline, etc in Obsidian\\'s sidebars')": ".setDesc('如何混淆你的文件列表，标签，大纲等在黑曜石\\的侧边栏')",
+        ".addOption('blurUI', 'Blurry Text')": ".addOption('blurUI', '模糊的文本')",
+        ".addOption('blockUI', 'Solid Blocks')": ".addOption('blockUI', '固体块')",
+        ".addOption('circlesUI', 'Circles')": ".addOption('circlesUI', '圈')"
+    }
+}

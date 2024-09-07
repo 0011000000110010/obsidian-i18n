@@ -1,0 +1,10 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setDesc(\"Default token for pkmer downloader\"": ".setDesc(\"pkmer下载程序的默认令牌\"",
+        "text: \"Obsidian PKMer Market\"": "text: \"PKMer 社区插件市场\""
+    }
+}

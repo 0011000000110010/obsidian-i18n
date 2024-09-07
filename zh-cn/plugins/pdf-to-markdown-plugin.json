@@ -1,0 +1,16 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "if (f) throw new TypeError(\"Generator is already executing.\");": "if (f) throw new TypeError(\"生成器已在执行。\");",
+        "containerEl.createEl(\"h2\", { text: \"Extract Highlights Plugin\" });": "containerEl.createEl(\"h2\", { text: \"提取高亮插件\" });",
+        "containerEl.createEl(\"p\", { text: \"When invoked, will parse the currently focused PDF and copy its content to the cilpboard.\" });": "containerEl.createEl(\"p\", { text: \"调用时，将解析当前聚焦的PDF并将其内容复制到剪切板。\" });",
+        ".setName('Create new file')": ".setName('创建新文件')",
+        ".setDesc('If enabled, will automatically create a new .md file from the PDF')": ".setDesc('如果启用，将自动从 PDF 创建一个新的 .md 文件')",
+        ".setName('Copy content to clipboard')": ".setName('将内容复制到剪贴板')",
+        ".setDesc('If enabled, will copy the extracted Markdown to your clipboard')": ".setDesc('如果启用，会将提取的 Markdown 复制到剪贴板')",
+        "new obsidian.Notice(\"No text found\");": "new obsidian.Notice(\"没有找到文字\");"
+    }
+}

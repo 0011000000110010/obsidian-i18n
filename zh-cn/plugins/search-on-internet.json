@@ -1,0 +1,31 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "query: 'https://www.google.com/search?&q={{query}}',": "query: 'https://www.baidu.com/s?wd={{query}}',",
+        "name: 'Google',": "name: '百度',",
+        ".setName('Open in iframe')": ".setName('在 iframe 中打开')",
+        ".setDesc('If set to true, this will open your searches in an iframe within Obsidian. ' +": ".setDesc('如果设置为 true，这将在 Obsidian 内的 iframe 中打开您的搜索。' +",
+        "'Otherwise, it will open in your default browser.')": "'否则，它将在您的默认浏览器中打开。')",
+        ".setTooltip('Delete')": ".setTooltip('删除')",
+        "return text.setPlaceholder('Search name')": "return text.setPlaceholder('搜索名称')",
+        "}).setName('Name')": "}).setName('名称')",
+        ".setDesc('Name of the search. Click the cross to delete the search.');": ".setDesc('搜索的名称。单击叉号删除搜索。');",
+        ".setName('Encode')": ".setName('编码')",
+        ".setDesc('If set to true, this will encode raw text to be used in URLs. ' +": ".setDesc('如果设置为 true，这将对在 URL 中使用的原始文本进行编码。' +",
+        "'Otherwise, it will not encode your query.')": "'否则，它将不会对您的查询进行编码。')",
+        "var t = text.setPlaceholder('Search query')": "var t = text.setPlaceholder('搜索查询')",
+        ".setDesc('URL to open when executing the search. ' +": ".setDesc('执行搜索时要打开的URL。' +",
+        "'Use {{query}} to refer to the query, which is either the selected text, or the title of a note.');": "'使用{{query}}引用查询，该查询可以是选定的文本，也可以是笔记的标题。');",
+        "}).setName('Tags')": "}).setName('标签')",
+        ".setDesc('Only add search to notes with these comma-separated tags. Leave empty to use all tags.');": ".setDesc('仅将搜索添加到具有这些逗号分隔标签的笔记。留空以使用所有标签。');",
+        "_this.setInstructions([{ command: '↑↓', purpose: 'to navigate' },": "_this.setInstructions([{ command: '↑↓', purpose: '导航' },",
+        "{ command: '↵', purpose: \"to search \" + _this.query },": "{ command: '↵', purpose: \"搜索 \" + _this.query },",
+        "{ command: 'esc', purpose: 'to dismiss' }]);": "{ command: 'esc', purpose: '退出' }]);",
+        "el.innerHTML = \"Search on: \" + el.innerHTML;": "el.innerHTML = \"使用 \" + el.innerHTML + \"搜索\" ;",
+        "return 'Search on Internet';": "return '使用网络搜索';",
+        "item.setTitle('Search on ' + searchsetting.name)": "item.setTitle('使用 ' + searchsetting.name + ' 搜索')"
+    }
+}

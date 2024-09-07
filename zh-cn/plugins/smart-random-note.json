@@ -1,0 +1,24 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "containerEl.createEl('h2', { text: 'Smart Random Note Settings ' });": "containerEl.createEl('h2', { text: '智能随机笔记设置' });",
+        ".setName('Open in New Leaf')": ".setName('在新的一页中打开')",
+        ".setDesc('Default setting for opening random notes')": ".setDesc('默认随机打开笔记')",
+        ".setName('Enable Ribbon Icon')": ".setName('启用功能区图标')",
+        ".setDesc('Place an icon on the ribbon to open a random note from search')": ".setDesc('在功能区上放置一个图标以从搜索中打开随机笔记')",
+        "super('Smart Random Note: ' + message, timeout);": "super('智能随机笔记：' + message, timeout);",
+        "new SmartRandomNoteNotice('The core search plugin is not enabled', 5000);": "new SmartRandomNoteNotice('核心搜索插件未启用', 5000);",
+        "new SmartRandomNoteNotice('No search results available', 5000);": "new SmartRandomNoteNotice('没有可用的搜索结果', 5000);",
+        "new SmartRandomNoteNotice(\"Can't open note. No markdown files available to open.\", 5000);": "new SmartRandomNoteNotice(\"无法打开笔记。没有可打开的markdown文件。\", 5000);",
+        "new SmartRandomNoteNotice(\"Can't insert link. No active note to insert link into\", 5000);": "new SmartRandomNoteNotice(\"无法插入链接。没有要插入链接的活动注释\", 5000);",
+        "new SmartRandomNoteNotice(\"Can't insert link. The active file is not a markdown file in edit mode.\", 5000);": "new SmartRandomNoteNotice(\"无法插入链接。活动文件不是编辑模式下的标记文件。\", 5000);",
+        "this.ribbonIconEl = this.addRibbonIcon('dice', 'Open Random Note from Search', this.handleOpenRandomNoteFromSearch);": "this.ribbonIconEl = this.addRibbonIcon('dice', '从搜索中打开随机笔记', this.handleOpenRandomNoteFromSearch);",
+        "name: 'Open Random Note',": "name: '随机打开笔记',",
+        "name: 'Open Tagged Random Note',": "name: '从标签中随机打开笔记',",
+        "name: 'Open Random Note from Search',": "name: '从搜索中随机打开笔记',",
+        "name: 'Insert Link at Cursor to Random Note from Search',": "name: '在光标处插入指向搜索中随机注释的链接',"
+    }
+}

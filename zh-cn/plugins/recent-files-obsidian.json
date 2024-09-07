@@ -1,0 +1,19 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "return 'Recent Files';": "return '最近文件';",
+        "display: 'Recent Files',": "display: '最近文件',",
+        "text: 'Recent Files List'": "text: '最近文件列表'",
+        "link.text = 'MDN - Regular expressions';": "link.text = 'MDN - 正则表达式';",
+        "fragment.append('RegExp patterns to ignore. One pattern per line. See ');": "fragment.append('要忽略的 RegExp 模式。每行一个模式。点击 ');",
+        "fragment.append(' for help.');": "fragment.append(' 获取帮助');",
+        ".setName('Omitted pathname patterns')": ".setName('省略路径模式')",
+        ".setName('List length')": ".setName('列表长度')",
+        ".setDesc('Maximum number of filenames to keep in the list.')": ".setDesc('列表中保留的文件名的最大数目。')",
+        "donateText.appendText('If this plugin adds value for you and you would like to help support ' +": "donateText.appendText('如果这个插件为你增加了价值，你想帮助支持继续开发，' +",
+        "'continued development, please use the buttons below:');": "'请点击下面的按钮:');"
+    }
+}
