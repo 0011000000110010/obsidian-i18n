@@ -1,0 +1,31 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "containerEl.createEl('h2', { text: 'Activity History Settings' });": "containerEl.createEl('h2', { text: '活动历史设置' });",
+        ".setName('Tracked Projects:')": ".setName('已跟踪的项目:')",
+        ".setName('Track Project:')": ".setName('添加跟踪项目:')",
+        ".setDesc('Add project to tracking list. e.g. write `Project 1` to track the project located in `/Project 1`')": ".setDesc('将项目添加到跟踪列表。例如，写“项目1”以跟踪位于“/项目1”中的项目')",
+        ".setPlaceholder(`Project Example`)": ".setPlaceholder(`项目实例`)",
+        ".setName('Stop Tracking Project:')": ".setName('停止跟踪项目:')",
+        ".setDesc('Remove project from the tracking list. e.g. `Project 1`')": ".setDesc('从跟踪列表中删除项目。例如“/项目1”')",
+        ".setName('Activity 1 Color:')": ".setName('项目 1 颜色:')",
+        ".setDesc('Color for lowest activity. Placeholder shows current color.')": ".setDesc('最低活跃项目的颜色。占位符显示当前颜色。')",
+        ".addOption('yearly', 'Yearly')": ".addOption('yearly', '每年')",
+        ".addOption('monthly', 'Monthly')": ".addOption('monthly', '每月')",
+        ".setName('Activity 2 Color:')": ".setName('项目 2 颜色:')",
+        ".setDesc('Color for low activity. Placeholder shows current color.')": ".setDesc('低活跃性项目的颜色。占位符显示当前颜色。')",
+        ".setName('Activity 3 Color:')": ".setName('项目 3 颜色:')",
+        ".setDesc('Color for medium activity. Placeholder shows current color.')": ".setDesc('中活跃性项目的颜色。占位符显示当前颜色。')",
+        ".setName('Activity 4 Color:')": ".setName('项目 4 颜色:')",
+        ".setDesc('Color for highest activity. Placeholder shows current color.')": ".setDesc('最高活跃性项目的颜色。占位符显示当前颜色。')",
+        ".setName('Text color:')": ".setName('文本颜色:')",
+        ".setDesc('Text color. Placeholder shows current color.')": ".setDesc('文本的颜色。占位符显示当前颜色。')",
+        ".setName('Empty color:')": ".setName('空的颜色:')",
+        ".setDesc('Empty color. Placeholder shows current color.')": ".setDesc('空的颜色。占位符显示当前颜色。')",
+        ".setName('Cell Radius:')": ".setName('Cell 半径:')",
+        ".setDesc('Cell Radius. integer, default is 1 = square, the higher the more round.')": ".setDesc('Cell 半径。整数，默认是 1=方形，越高越圆。')"
+    }
+}

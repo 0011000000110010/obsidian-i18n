@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setDesc(\"Open DevTools (Command+Option+I or Control+Shift+I) to copy the debug logs.\"": ".setDesc(\"打开 DevTools(Cmd+Option+I 或 Ctrl+Shift+I)复制调试日志。\"",
+        ".setName(\"Zooming in when clicking on the bullet\"": ".setName(\"单击项目符号时放大\"",
+        ".setName(\"Debug mode\"": ".setName(\"调试模式\"",
+        "name: \"Zoom in\"": "name: \"下钻\"",
+        "name: \"Zoom out the entire document\"": "name: \"上钻\""
+    }
+}

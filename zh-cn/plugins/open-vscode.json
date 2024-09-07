@@ -1,0 +1,17 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "this.ribbonIcon = this.addRibbonIcon('vscode-logo', 'VSCode', () => {": "this.ribbonIcon = this.addRibbonIcon('vscode-logo', '在Visual Studio Code中打开库', () => {",
+        "name: 'Open as Visual Studio Code workspace',": "name: '在Visual Studio Code中打开库',",
+        "containerEl.createEl(\"h2\", { text: \"Settings\" });": "containerEl.createEl(\"h2\", { text: \"设置\" });",
+        ".setName('Ribbon Icon')": ".setName('显示图标')",
+        ".setDesc('Turn on if you want to have a Ribbon Icon.')": ".setDesc('在侧边栏显示一个 VSCode 图标。')",
+        ".setName('Use URL')": ".setName('使用 URL')",
+        ".setDesc('Open VSCode using a `vscode://` URL instead of executing the `code` command.')": ".setDesc('使用 “VSCode://” URL打开 VSCode，而不是执行 “code”命令。')",
+        ".setName('Default template for executing the `code` command')": ".setName('默认模板')",
+        ".setDesc('You can use the following placeholders: {{vaultpath}}')": ".setDesc('执行 “code” 命令的默认模板，您可以使用以占位符: {{vaultpath}}')"
+    }
+}
