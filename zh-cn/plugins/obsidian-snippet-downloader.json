@@ -1,0 +1,28 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setTooltip(\"Add new repository\"": ".setTooltip(\"添加新代码库\"",
+        ".setTooltip(\"Update all repository\"": ".setTooltip(\"更新所有代码库\"",
+        ".setTooltip(\"Delete this repository from the list\"": ".setTooltip(\"从列表中删除此代码库\"",
+        ".setTooltip(\"Update this repository\"": ".setTooltip(\"更新此代码库\"",
+        ".setTooltip(\"Update this snippet\"": ".setTooltip(\"更新此片段\"",
+        ".setTooltip(\"Remove this snippet\"": ".setTooltip(\"删除此片段\"",
+        ".setName(\"Repo Link\"": ".setName(\"代码库链接\"",
+        ".setName(\"Excluded Snippet\"": ".setName(\"排除的代码段\"",
+        ".setName(\"Repository Snippet List\"": ".setName(\"代码库片段列表\"",
+        "text: \"Repo Links\"": "text: \"代码库链接\"",
+        "text: \"Snippet Manager Settings\"": "text: \"Snippet Manager - CSS片段下载管理器设置\"",
+        "span.innerText = \"Type the snippet name you want to exclude from the list, without the extension.\\nYou can also use regex, for example: \";": "span.innerText = \"输入要从列表中排除的片段名称，去掉扩展名。\\n你也可以使用正则表达式，譬如：\";",
+        "text: \" will match all snippets.\\n\\n\"": "text: \" 会匹配所有片段。\\n\\n\"",
+        "link.innerText = \"You can check your regex here.\"": "link.innerText = \"您可在此查阅正则表达式。\"",
+        "text: \"Note: \"": "text: \"注意：\"",
+        "text: \"This does not delete the linked snippet, this should be done from your \"": "text: \"这不会删除链接的片段，而应从您的 \"",
+        "text: \" folder\"": "text: \" 文件夹删除。\"",
+        ".setButtonText(\"Submit\")": ".setButtonText(\"提交\")",
+        "text: `The following is a list of the repository added via the command palette `": "text: `以下是通过命令窗口添加的代码库列表。`",
+        "text: `Click the x button next to a repository to remove it from the list.`": "text: `移除点击代码库旁边的 x 按钮。`"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setName('Browser')": ".setName('浏览器')",
+        ".setDesc('Open external link with...')": ".setDesc('指定用于打开链接的浏览器...')",
+        ".setName('Customization')": ".setName('定制')",
+        ".setDesc('Customization profiles in JSON')": ".setDesc('JSON 定制配置文件')"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "            .setName('Default location for new notes')": "            .setName('新笔记的默认位置')",
+        "            .setDesc('Where newly created notes are placed.')": "            .setDesc('放置新笔记的位置。')",
+        "                .setName('Folder for new notes')": "                .setName('新笔记文件夹')",
+        "            .setName('File name prefix')": "            .setName('文件名前缀')",
+        "            .setName('Transclude by default')": "            .setName('默认嵌入')",
+        "            .setDesc('When content has been extracted/split into a new note, include a transclusion of the new note')": "            .setDesc('当内容已被提取/拆分为新笔记时，包含新笔记的嵌入')",
+        "            .setName('Note link template')": "            .setName('备注链接模板')",
+        "            .setName('Refactored note template')": "            .setName('重构笔记模板')",
+        "            .setName('Exclude First Line')": "            .setName('排除第一行')",
+        "            .setName('Include Heading')": "            .setName('包括标题')",
+        "                .setName('Heading format')": "                .setName('标题格式')",
+        "                .setDesc('Set format of the heading to be included in note content')": "                .setDesc('设置要包含在注释内容中的标题格式')"
+    }
+}

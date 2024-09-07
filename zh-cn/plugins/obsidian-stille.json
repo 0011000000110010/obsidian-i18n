@@ -1,0 +1,21 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setDesc(\"This is the opacity level for text that is unfocused. This value should be a decimal value from 0.0 to 1.0.\"": ".setDesc(\"这是非聚焦文本的不透明度级别。该值应为 0.0 至 1.0 之间的十进制值。\"",
+        ".setDesc(`Use this to toggle the visibility of the status bar label for ${nameOfApplication}.`": ".setDesc(`使用此选项可切换 ${nameOfApplication} 状态栏标签的可见性。`",
+        ".setDesc(`Dim the title of the note when ${nameOfApplication} is on.`": ".setDesc(`当 ${nameOfApplication} 开启时，调暗注释的标题。`",
+        ".setName(\"Opacity level for unfocused text\"": ".setName(\"未聚焦文本的不透明度\"",
+        ".setName(\"Toggle status bar label\"": ".setName(\"切换状态栏标签\"",
+        ".setName(\"Dim title\"": ".setName(\"调暗标题\"",
+        "text: `Learn more about ${nameOfApplication}`,": "text: `了解更多关于 ${nameOfApplication} 的信息`,",
+        "text: `If ${nameOfApplication} has helped you focus, consider buying me a slice of pizza \\u{1F355} `": "text: `若 ${nameOfApplication} 帮您集中了注意力，考虑为我买一块比萨吧 \\u{1F355} `",
+        "text: `${nameOfApplication} \\u2014 Focus on your writing.`": "text: `${nameOfApplication} \\u2014 专注于写作。`",
+        "this.settings.statusBarLabelText = `${nameOfApplication} on`;": "this.settings.statusBarLabelText = `${nameOfApplication} 开启`;",
+        "this.settings.statusBarLabelText = `${nameOfApplication} off`;": "this.settings.statusBarLabelText = `${nameOfApplication} 关闭`;",
+        "name: \"Toggle Stille\",": "name: \"切换 Stille\",",
+        "this.addRibbonIcon(\"moon\", \"Toggle Stille\", () => {": "this.addRibbonIcon(\"moon\", \"切换 Stille\", () => {"
+    }
+}
