@@ -1,0 +1,25 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "Title:\"Filter menu\"": "Title:\"过滤器菜单\"",
+        "Text:\"No filters\"": "Text:\"无过滤器\"",
+        "Text:\"No data\"": "Text:\"无数据\"",
+        "Title:\"Sort\"": "Title:\"分类\"",
+        "Text:\"OK\"": "Text:\"好啊\"",
+        "Text:\"Cancel\"": "Text:\"取消\"",
+        "description:\"No Data\"": "description:\"无数据\"",
+        "text:\"reference\"": "text:\"参考\"",
+        "title:\"Invaild target folder\"": "title:\"无效的目标文件夹\"",
+        "setName(\"Maximum Brief Length\"": "setName(\"最大短纤维长度\"",
+        "setDesc(\"Maximum length of brief generated from 1st paragraph of notes when not description field is set in frontmatter\"": "setDesc(\"当在frontmatter中未设置描述字段时，从注释的第一段生成的摘要的最大长度\"",
+        "setName(\"Use First Heading 1 as File Title\"": "setName(\"使用第一标题1作为文件标题\"",
+        "setDesc(\"Applied when title field is not set in the frontmatter, fallback to filename when no Heading 1 found\"": "setDesc(\"当标题字段未设置在标题中时应用，当未找到标题1时回退到文件名\"",
+        "setName(\"Title Field Name\"": "setName(\"标题字段名称\"",
+        "setDesc(\"Used to find title set in note's frontmatter\"": "setDesc(\"用于查找便笺标题中的标题集\"",
+        "setName(\"Description Field Name\"": "setName(\"描述字段名称\"",
+        "setDesc(\"Used to find description set in note's frontmatter\"": "setDesc(\"用于查找注释标题中的描述集\""
+    }
+}

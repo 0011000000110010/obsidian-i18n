@@ -1,0 +1,9 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "button.innerText = 'Copy';": "button.innerText = '复制';"
+    }
+}

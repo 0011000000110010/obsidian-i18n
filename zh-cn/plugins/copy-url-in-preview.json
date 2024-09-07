@@ -1,0 +1,15 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".then(new obsidian.Notice(\"Image copied to the clipboard!\", SUCCESS_TIMEOUT));": ".then(new obsidian.Notice(\"图像复制到剪贴板!\", SUCCESS_TIMEOUT));",
+        "new obsidian.Notice(\"Error, could not copy the image!\");": "new obsidian.Notice(\"错误，无法复制图像!\");",
+        ".setTitle(\"Copy image to clipboard\")": ".setTitle(\"复制图像到剪贴板\")",
+        "new obsidian.Notice(`no handler for ${Proto} protocol`);": "new obsidian.Notice(`${Proto} 协议没有处理程序`);",
+        ".setTitle(\"Copy URL\")": ".setTitle(\"复制链接\")",
+        "new obsidian.Notice(\"URL copied to your clipboard\", SUCCESS_TIMEOUT);": "new obsidian.Notice(\"链接已复制到剪贴板！\", SUCCESS_TIMEOUT);",
+        "new obsidian.Notice(\"No handler for this image type!\");": "new obsidian.Notice(\"没有此图像类型的处理程序!\");"
+    }
+}

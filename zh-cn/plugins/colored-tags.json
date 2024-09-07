@@ -1,0 +1,30 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setDesc(\"Select palette\"": ".setDesc(\"选择调色板\"",
+        ".setDesc(\"If the colors of some tags don't fit, you can shift the palette.\"": ".setDesc(\"如果某些标签的颜色不合适，可以移动调色板。\"",
+        ".setDesc(\"Show accessibility options\"": ".setDesc(\"显示辅助功能选项\"",
+        ".setDesc(\"Use only white and black colors for texts\"": ".setDesc(\"文本只使用白色和黑色\"",
+        ".setDesc(\"Dangerous actions or insanely unstable options that could be changed or removed in any time\"": ".setDesc(\"随时可能更改或删除的危险操作，又或是不稳定选项\"",
+        ".setDesc(\"It helps to make text readable\"": ".setDesc(\"有助于文字的可读性\"",
+        ".setDesc(\"\\u{1F6A8} All colors of all tags will be recalculated as if it was the first launch of the plugin. Requires restart of Obsidian.\"": ".setDesc(\"\\u{1F6A8} 所有标签的颜色都将重新计算，就像首次启动插件一般。需要重新启动 Obsidian。\"",
+        ".setName(\"Palette\"": ".setName(\"调色板\"",
+        ".setName(\"Custom palette\"": ".setName(\"自定义调色板\"",
+        ".setName(\"Palette shift\"": ".setName(\"调色板移动\"",
+        ".setName(\"\\u{1F9BE} Accessibility\"": ".setName(\"\\u{1F9BE} 辅助功能\"",
+        ".setName(\"High text contrast\"": ".setName(\"高文字对比度\"",
+        ".setName(\"\\u{1F9EA} Experimental\"": ".setName(\"\\u{1F9EA} 实验性\"",
+        ".setName(\"Mix colors\"": ".setName(\"混合颜色\"",
+        ".setName(\"Gradient transition\"": ".setName(\"渐变过渡\"",
+        ".setName(\"Reset config\"": ".setName(\"重置配置\"",
+        " \"\\u{1F338} Adaptive soft\"": " \"\\u{1F338} 自适应软件\"",
+        "\"\\u{1F33A} Adaptive bright\"": "\"\\u{1F33A} 自适应明亮\"",
+        "[\"custom\" /* CUSTOM */]: \"Custom\"": "[\"custom\" /* CUSTOM */]: \"自定义\"",
+        ".setButtonText(\"Reset\"": ".setButtonText(\"重置\"",
+        ".Notice(`\\u2705 Reset is done": ".Notice(`\\u2705 重置已完成",
+        "Please restart Obsidian`": "请重启 Obsidian`"
+    }
+}

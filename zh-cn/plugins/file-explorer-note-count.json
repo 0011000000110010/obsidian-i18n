@@ -1,0 +1,20 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: 'File Explorer Note Count Settings'": "text: '文件资源管理器笔记计数设置'",
+        "text: 'Folder Note Core'": "text: '文件夹笔记核心'",
+        ".setName('Show All Numbers'": ".setName('显示所有编号'",
+        ".setDesc('Turn on this option if you want to see the number of notes even after you expand the collapsed folders'": ".setDesc('若您想在展开折叠文件夹后仍能看到笔记的数量，请打开此选项'",
+        ".setName('Exclude Folder Note from Counts'": ".setName('从计数中排除文件夹笔记'",
+        ".setName('Show Only Markdown Notes'": ".setName('仅显示 Markdown 笔记'",
+        ".setDesc('Turn off this option to choose file that should be counted'": ".setDesc('关闭此选项以选择应计算在内的文件'",
+        ".setName('Filter List'": ".setName('过滤列表'",
+        ".setName('Enable Blacklist'": ".setName('启用黑名单'",
+        ".setDesc('Turn on this option to use Filter List to exclude files'": ".setDesc('打开此选项可使用过滤列表排除文件'",
+        "frag.appendText('Only work with');": "frag.appendText('仅当');",
+        "frag.appendText(' Installed and Enabled');": "frag.appendText('安装并启用后才能生效');"
+    }
+}

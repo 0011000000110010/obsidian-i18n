@@ -1,0 +1,20 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "\"Restore &Defaults\"": "\"恢复默认值 &D\"",
+        "\"Update hotkey label and attribute\"": "\"更新热键标签和属性\"",
+        "\"Invoke key grabber\"": "\"激活按键捕捉器\"",
+        "\"Set color via color selection dialog\"": "\"通过颜色选择对话框设置颜色\"",
+        "\"Generate color preview pixmap and place it on button\"": "\"生成颜色预览图块并放置在按钮上\"",
+        "\"Restore colors and fields back to defaults\"": "\"恢复颜色和字段至默认值\"",
+        "\"hotkey\"": "\"热键\"",
+        "\"Check for modified names and rename fields accordingly\"": "\"检查修改过的名称并相应地重命名字段\"",
+        "\"Apply changes on OK button press\"": "\"在确定按钮按下时应用更改\"",
+        "\"Field rename action aborted\"": "\"字段重命名操作已取消\"",
+        "\"Reset existing instance of IO Editor\"": "\"重置现有的 IO 编辑器实例\"",
+        "\"Dismiss changes on Close button press\"": "\"在关闭按钮按下时放弃更改\""
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: \"Settings for Adjacency Matrix Maker\",": "text: \"邻接矩阵生成器的设置\",",
+        "text: \"Main colour\",": "text: \"前景色\",",
+        "text: \"Background colour\",": "text: \"背景色\",",
+        "type: \"color\",": "type: \"颜色\",",
+        ".setName(\"Image name\")": ".setName(\"图像名\")",
+        ".setDesc(\"The value used to name a saved image. The name will have the datetime appended automatically\")": ".setDesc(\"用于命名已保存的映像的值。该名称将自动附加日期时间\")",
+        ".setPlaceholder(\"Default name\")": ".setPlaceholder(\"默认名\")",
+        ".setName(\"Folder path\")": ".setName(\"文件夹路径\")",
+        ".setDesc('The folder to save the image in. The default is the root of your vault \\'/\\'. If you do change it, leave out the first slash in front. e.g. To save the image in \"Attachments\", type in \"Attachments\" (no quotes)')": ".setDesc('保存图像的文件夹。默认值是保险库的根目录\\'/\\'。如果你改变了它，省略前面的第一个斜杠。例如，要将图像保存在“附件”中，请键入“附件”(无引号)')",
+        "this.addRibbonIcon(\"matrix\", \"Adjacency Matrix\", this.makeAdjacencyMatrix);": "this.addRibbonIcon(\"matrix\", \"邻接矩阵\", this.makeAdjacencyMatrix);",
+        "id: \"adjacency-matrix\",": "id: \"邻接矩阵\",",
+        "name: \"Open Adjacency Matrix\",": "name: \"开放的邻接矩阵\",",
+        "console.log(\"unloading adjacency matrix maker plugin\");": "console.log(\"卸载邻接矩阵制造者插件\");",
+        "contentEl.createEl(\"h2\", { text: `Adjacency matrix of: ${vaultName}` });": "contentEl.createEl(\"h2\", { text: `邻接矩阵： ${vaultName}` });",
+        "text: \"Save Image\",": "text: \"保存图片\",",
+        "text: \"Reset Scale\",": "text: \"重置比例\",",
+        "tooltip.style.transform = `translate(${x + 15}px, ${y - canvas.height - 80}px)`;": "tooltip.style.transform = `翻译(${x + 15}px, ${y - canvas.height - 80}px)`;",
+        "new obsidian.Notice(\"Image saved\");": "new obsidian.Notice(\"图片已保存\");",
+        "new obsidian.Notice(\"Chosen folder path does not exist in your vault\");": "new obsidian.Notice(\"所选文件夹路径在您的仓库中不存在\");"
+    }
+}

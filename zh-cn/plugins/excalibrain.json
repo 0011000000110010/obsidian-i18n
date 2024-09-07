@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "OPEN_DRAWING:\"Save snapshot for editing\"": "OPEN_DRAWING:\"保存快照以进行编辑\"",
+        "SHOW_HIDE_ATTACHMENTS:\"Show/Hide attachments\"": "SHOW_HIDE_ATTACHMENTS:\"显示/隐藏附件\"",
+        "SHOW_HIDE_URLS:\"Show/Hide URLs in central notes as graph nodes\"": "SHOW_HIDE_URLS:\"将中心注释中的URL显示/隐藏为图形节点\"",
+        "REFRESH_VIEW:\"Refresh\"": "REFRESH_VIEW:\"刷新\"",
+        "AUTO_OPEN_DOCUMENT:\"Synchronize navigation. When plugs are connected, changes to ExcaliBrain focus will be reflected in the active  Obsidian tab and vice versa.\\n\\nYou can link/unlink this button to the '<> Display central node as embedded frame' button in the ExcaliBrain settings.\"": "AUTO_OPEN_DOCUMENT:\"同步导航。连接插头后，ExcaliBrain焦点的变化将反映在活动的黑石选项卡中，反之亦然。\\n\\n您可以将此按钮链接/取消链接到ExcaliBrain设置中的'<>将中心节点显示为嵌入框架'按钮。\""
+    }
+}

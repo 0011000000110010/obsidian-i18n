@@ -1,0 +1,39 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ".setButtonText(\"Create\"": ".setButtonText(\"创建\"",
+        "text: \"Create Palette\"": "text: \"创建调色板\"",
+        ".setText(\"Invalid Colors\"": ".setText(\"无效颜色\"",
+        ".setText(\"Invalid Settings\"": ".setText(\"无效设置\"",
+        ".setText(\"Invalid Colors & Settings\"": ".setText(\"无效的颜色和设置\"",
+        ".setText(\"Invalid Gradient\"": ".setText(\"无效渐变\"",
+        ".setText(\"OR\"": ".setText(\"或者\"",
+        "Error(\"Invalid Color\"": "Error(\"颜色无效\"",
+        "Error(\"Unknown color name: \"": "Error(\"未知颜色名称：\"",
+        "Error(\"URL or colors were not provided.\"": "Error(\"未提供网络链接或颜色。\"",
+        "Error(\"URL provided is not valid.\"": "Error(\"提供的网络链接无效。\"",
+        "Error(\"Selected text is not a link.\"": "Error(\"所选文本不是链接。\"",
+        "Error(\"Selected text is not a codeblock with a link.\"": "Error(\"选定的文本不是带有链接的代码块。\"",
+        "Error(\"Selected codeblock can not be converted to hex.\"": "Error(\"选定的代码块不能转换为十六进制（hex）。\"",
+        ".setName(\"Color Picker\"": ".setName(\"颜色选择器\"",
+        ".setName(\"Gradient\"": ".setName(\"渐变\"",
+        ".setName(\"Direction\"": ".setName(\"方向\"",
+        ".setName(\"Height\"": ".setName(\"高度\"",
+        ".setName(\"Notice Duration\"": ".setName(\"通知期限\"",
+        ".setName(\"Palette Error Pulse\"": ".setName(\"调色板误差脉冲\"",
+        ".setDesc(\"How long error messages are show for in seconds (0 for indefinite)\"": ".setDesc(\"错误消息以秒为单位显示多长时间（0 表示无限期）\"",
+        ".setDesc(\"Whether the affected palette should pulse when encountering an error\"": ".setDesc(\"遇到错误时受影响的调色板是否应该脉冲\"",
+        ".Notice(message ? message : `Palette:": ".Notice(message ? message : `调色板：",
+        "Colors are defined incorrectly": "颜色定义不正确",
+        "Issues parsing settings": "问题解析设置",
+        "Colors and settings are defined incorrectly": "颜色和设置定义不正确",
+        "Gradients require more than 1 color to display": "渐变效果需要超过 1 种颜色才能显示",
+        ".Notice(`Copied": ".Notice(`已复制",
+        ".Notice(`Added": ".Notice(`已添加",
+        ".addOption(\"column\", \"column\").addOption(\"row\", \"row\")": ".addOption(\"column\", \"列\").addOption(\"row\", \"行\")",
+        "name: \"Create\",": "name: \"创建\","
+    }
+}

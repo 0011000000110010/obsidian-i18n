@@ -1,0 +1,21 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "setDesc('Position of the checkbox for inline boolean fields (eg. \"value:: true\" and \"[[value:: true]]\"). Reload Obisidian for the change to take effect.'": "setDesc('内联布尔字段复选框的位置（例如“value:：true”和“[[value:：true]]”）。重新加载Obisidian以使更改生效。'",
+        "setDesc(\"Character that triggers regexp search in autocompletion (needs to be at start)\"": "setDesc(\"在自动完成中触发正则搜索的字符（需要在开头）\"",
+        "setDesc(\"Add new autocomplete field\"": "setDesc(\"添加新的自动完成字段\"",
+        "setName(\"Boolean inline field checkbox position\"": "setName(\"布尔内联字段复选框位置\"",
+        "setName(\"Autocompletion Regexp Trigger\"": "setName(\"自动完成正则触发器\"",
+        "setName(\"Add New\"": "setName(\"新增\"",
+        "\"Settings for Better Inline Fields plugin\"": "\"Better Inline Fields 插件设置\"",
+        "addOption(\"left\", \"Beginning of line\")": "addOption(\"left\", \"行首\")",
+        "addOption(\"right\", \"After value\")": "addOption(\"right\", \"在值后\")",
+        "addOption(\"replace\", \"Replace value\")": "addOption(\"replace\", \"替换值\")",
+        "addOption(\"none\", \"None\")": "addOption(\"none\", \"无\")",
+        "setPlaceholder(\"Inline field name\"": "setPlaceholder(\"内联字段名称\"",
+        "setPlaceholder(\"Folder\"": "setPlaceholder(\"文件夹\""
+    }
+}
