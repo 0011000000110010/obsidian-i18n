@@ -2,9 +2,9 @@
 
 ---
 
-<p align="center">这一款obsidian插件，用于翻译其他obsidian插件。
+<p align="center">obsidian-i18n是用于翻译其他obsidian插件的插件。
 
-<p align="center">obsidian-i18n通过读取其他插件内文本并输出为词典（待翻译），然后提供三种方式（本地自行翻译、利用在线工具翻译和下载网络分享的词典）来翻译此词典。并且提供了词典的加载与卸载功能。
+<p align="center">obsidian-i18n通过读取其他插件内文本并输出为词典（待翻译），然后提供三种方式（本地自行翻译、利用在线工具翻译和下载网络分享的词典）来翻译此词典。并且提供了词典的加载与卸载功能，确保出现任何问题时，您可以切换回原始版本。
 
 <p align="center">综上，obsidian-i18n是一个obsidian插件翻译的一站式解决方案。</p>
 
