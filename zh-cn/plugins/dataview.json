@@ -1,7 +1,7 @@
 {
     "manifest": {
         "author": "zero",
-        "version": "-1"
+        "version": "1.0.0"
     },
     "dict": {
         ".setName(\"Enable inline queries\")": ".setName(\"启用内联查询\")",
