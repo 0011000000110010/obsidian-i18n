@@ -1,0 +1,36 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "name: 'applyStyles'": "name: 'app 样式'",
+        "name: 'computeStyles'": "name: '计算样式'",
+        "name: 'eventListeners'": "name: '事件监听器'",
+        "name: 'popperOffsets'": "name: '弹出偏移'",
+        "name: 'preventOverflow'": "name: '防止溢出'",
+        "name: \"sameWidth\"": "name: \"相同宽度\"",
+        "name: \"Open Workspaces Plus\"": "name: \"打开工作区增强版\"",
+        "name: `Save current workspace`": "name: `保存当前工作区`",
+        "name: \"Open Workspaces Plus Modes\"": "name: \"打开工作区增强版模式\"",
+        "name: `Load: ${workspaceName}`": "name: `加载: ${workspaceName}`",
+        ".setName(\"Flomo Login\"": ".setName(\"Flomo 登录\"",
+        ".setName(\"Flomo Home\"": ".setName(\"Flomo 主页\"",
+        ".setName(\"Memo Home\"": ".setName(\"Memo 主页\"",
+        ".setName(\"Moments\"": ".setName(\"时刻\"",
+        ".setName(\"Canvas\"": ".setName(\"白板\"",
+        ".setName(\"Experimental Options\"": ".setName(\"实验性选项\"",
+        ".setDesc(\"enter your credential\"": ".setDesc(\"输入您的凭证信息。\"",
+        ".setDesc(\"set the flomo home location\"": ".setDesc(\"设置 Flomo 的主页位置。\"",
+        ".setDesc(\"your memos are at: FlomoHome / MemoHome\"": ".setDesc(\"您的备忘录位于:Flomo主页 / Memo主页\"",
+        ".setDesc(\"set moments style: flow(default) | skip\"": ".setDesc(\"设置时刻风格:flow(默认)| skip\"",
+        ".setDesc(\"set canvas options: link | content(default) | skip\"": ".setDesc(\"设置画布选项:link | content(默认)| skip\"",
+        ".setDesc(\"set experimental options\"": ".setDesc(\"设置实验性选项\"",
+        "name: \"Open Flomo Importer\"": "name: \"打开 Flomo 导入器\"",
+        "this.addRibbonIcon(\"target\", \"Flomo Importer\"": "this.addRibbonIcon(\"target\", \"Flomo 导入器\"",
+        ".addOption(\"copy_with_link\", \"Generate Moments\"": ".addOption(\"copy_with_link\", \"生成时刻\"",
+        ".addOption(\"skip\", \"Skip Moments\"": ".addOption(\"skip\", \"跳过时刻\"",
+        "createExpOpt(contentEl, \"Merge memos by date\"": "createExpOpt(contentEl, \"按日期合并备忘录\"",
+        "createExpOpt(contentEl, \"Convert bidirectonal link. example: [[abc]]\")": "createExpOpt(contentEl, \"转换双向链接。例如: [[abc]]\")"
+    }
+}

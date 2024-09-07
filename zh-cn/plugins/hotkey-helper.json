@@ -1,0 +1,16 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        ",name:\"Open the Community Plugins settings\"": ",name:\"打开社区插件设置\"",
+        ",name:\"Browse or search the Community Plugins catalog\"": ",name:\"浏览或搜索社区插件目录\"",
+        ",name:\"Open settings for plugin...\"": ",name:\"打开插件设置……\"",
+        ",name:\"Open hotkeys for plugin...\"": ",name:\"打开插件快捷键……\"",
+        ".setTooltip(\"Options\"": ".setTooltip(\"选项\"",
+        "\"Select a plugin to open its settings...\"": "\"选择一款插件，打开其设置……\"",
+        ".setTooltip(`Configure hotkeys": ".setTooltip(`配置快捷键",
+        "(${c.length}/${this.commandsByPlugin[o].length} assigned${l?\"; \"+l+\" conflicting\":\"\"})`": "（${c.length}/${this.commandsByPlugin[o].length} 已分配${l?\"，\"+l+\" 冲突\":\"\"}）`"
+    }
+}

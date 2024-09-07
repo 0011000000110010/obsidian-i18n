@@ -1,0 +1,30 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: \"Settings for \"": "text: \"设置 \"",
+        "setName(\"Nickname\")": "setName(\"昵称\")",
+        "setDesc(\"The name for your formatting command in the command palette.\")": "setDesc(\"选项板中【格式化命令】的名称。\")",
+        "setName(\"Left\")": "setName(\"左侧标识\")",
+        "setDesc(\"The opening tag, or the left part of a highlight (==), bold (**), etc.\")": "setDesc(\"开始标记，如高亮或粗体等语法的左侧部分（== 或 **）。\")",
+        "setName(\"Right\")": "setName(\"右侧标识\")",
+        "setDesc(\"The closing tag, or the right part of a highlight (==), bold (**), etc.\")": "setDesc(\"结束标记，如高亮或粗体等语法的右侧部分（== 或 **）。\")",
+        "text: \"Skip some section types\"": "text: \"略过某些类型的内容\"",
+        "setName('Skip List Items')": "setName('略过列表项')",
+        "setDesc('Turn this toggle ON to exclude text in list items.')": "setDesc('启用此项，可以排除列表项文本。')",
+        "setName(\"Skip Headings\")": "setName(\"略过标题行\")",
+        "setDesc(\"Turn this toggle ON to exclude text in headings.\")": "setDesc(\"启用此项，可以排除标题行文本。\")",
+        "setName(\"Format word if selection is empty\")": "setName(\"如果未选任何内容，则设置单词格式\")",
+        "setDesc(\"Turn this toggle ON if you want the command to format the word that the cursor is touching when nothing is selected.\")": "setDesc(\"启用此项，当您在未选择任何内容时，将格式化光标所在的单词。\")",
+        "setName('Skip Blockquotes')": "setName('略过块引用')",
+        "setDesc('Turn this toggle ON to exclude text in blockquotes.')": "setDesc('启用此项，可以排除块引用的符号文本。')",
+        "confirm(\"Are you sure you want to delete \"": "confirm(\"确定要删除 \"",
+        "nickname: \"Bold, even over multiple lines\"": "nickname: \"粗体（支持多行文本）\"",
+        "nickname: \"Cyan Highlighter, even over multiple lines\"": "nickname: \"高亮（支持多行文本）\"",
+        "nickname: \"Empty format\"": "nickname: \"空格式\"",
+        "setButtonText(\"Add new formatting style\")": "setButtonText(\"添加新样式\")",
+        "setButtonText(\"Delete this style\")": "setButtonText(\"删除新样式\")"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "name: 'Jump to Link'": "name: '跳转到链接点'",
+        "name: \"Jump to Anywhere Regex\"": "name: \"跳转到符合正则的位置\"",
+        "name: \"Lightspeed Jump\"": "name: \"匹配跳转\"",
+        "Name(\"cm-contentContainer\"": "Name(\"cm内容容器\"",
+        "text: 'Settings for Jump To Link.'": "text: '参数设置（跳转到链接点）'",
+        "setName('Presentation'": "setName('演示'",
+        "setDesc('How to show links'": "setDesc('如何显示链接'",
+        "setName('Characters used for link hints'": "setName('用于提示链接的字符'",
+        "setDesc('The characters placed next to each link after enter link-hint mode.'": "setDesc('进入提示链接模式后，放置在链接点旁边的字符。'",
+        "setName('Jump To Anywhere'": "setName('跳转到任意位置'",
+        "setDesc(\"Regex based navigating in editor mode\"": "setDesc(\"编辑器模式下基于正则的导航\"",
+        "setName('Lightspeed regex case sensitivity'": "setName('匹配正则表达式（区分大小写）'",
+        "setDesc('If enabled, the regex for matching will be case sensitive.'": "setDesc('启用后，匹配正则表达式将区分大小写。'"
+    }
+}

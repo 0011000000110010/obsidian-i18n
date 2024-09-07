@@ -1,0 +1,19 @@
+{
+    "manifest": {
+        "author": "",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: \"General settings\"": "text: \"常规设置\"",
+        "\"Title separator\"": "\"标题分隔符\"",
+        "text: \"Early access features\"": "text: \"早期访问功能\"",
+        "text: \"Almost finished features with some \"": "text: \"未来一些 \"",
+        "text: \" to be fixed.\"": "text: \" 待修复.\"",
+        "text: \"Insider features\"": "text: \"Insider功能\"",
+        "\"Autolink support\"": "\"Autolink 支持\"",
+        "Adds ability to work with links like": "添加了使用以下链接的功能如",
+        "feature1SettingDesc.appendText(\" see \")": "feature1SettingDesc.appendText(\" 参见 \")",
+        "text: \"docs\"": "text: \"文档\"",
+        "text: \"Incomplete features currently under development. Enable these features to \"": "text: \"目前正在开发的功能不完整。启用这些功能 \""
+    }
+}

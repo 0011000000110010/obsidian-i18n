@@ -1,0 +1,43 @@
+{
+    "manifest": {
+        "author": "Fendi",
+        "version": "1.0.0"
+    },
+    "dict": {
+        "text: 'Run expand query'": "text: '运行 expand 查询'",
+        "text: 'Settings for Text Expander'": "text: 'Text Expander 设置'",
+        "desc: 'headings from founded files. $header:## - return all level 2 headings. $header:Title - return all heading which match the string. Can be prepended like: - !$header:## to transclude the headings.'": "desc: '创建的文件中的标题. $header:## - 返回所有2级标题. $header:Title - 返回与该字符串匹配的所有标题. 可以像: - !$header:## 转录标题.'",
+        "desc: 'add index number to each produced file'": "desc: '为每个生成的文件添加索引号'",
+        "desc: 'name of the founded file'": "desc: '建立的文件的名称'",
+        "desc: 'link based on Obsidian settings'": "desc: '基于 Obsidian 设置的链接'",
+        "desc: 'specified count of lines from the found file'": "desc: '从找到的文件中指定的行计数'",
+        "desc: 'value from the frontmatter key in the found file'": "desc: '值来自找到的文件中的 Fronmatter 键'",
+        "desc: 'all content from the found file'": "desc: '找到的文件中的所有内容'",
+        "desc: 'return file extension'": "desc: '返回文件扩展名'",
+        "desc: 'created time formatted'": "desc: '格式化的创建时间'",
+        "desc: 'created time'": "desc: '创建时间'",
+        "desc: 'size of the file'": "desc: '文件大小'",
+        "desc: 'path to the found file'": "desc: '被找到文件的路径'",
+        "desc: 'parent folder name'": "desc: '父文件夹名称'",
+        "desc: 'block ids from the found files. Can be prepended.'": "desc: '找到的文件中的块 ID。可以放在前面。'",
+        "desc: 'extract found selections'": "desc: '提取找到的选定内容'",
+        "desc: 'extract line with matches'": "desc: '提取包含匹配项的行'",
+        "setDesc('Expand all queries in a file once you open it'": "setDesc('打开文件后展开文件中的所有查询'",
+        "setDesc('Text expander don\\'": "setDesc('文本扩展器打开\\'",
+        "setDesc('You can specify the text which will appear at the bottom of the generated text.'": "setDesc('您可以指定将显示在生成的文本底部的文本。'",
+        "setDesc('You can specify default template'": "setDesc('可以指定默认模板'",
+        "setDesc('You can specify should text expander exclude results from current file or not'": "setDesc('可以指定文本扩展器是否排除当前文件中的结果'",
+        "setDesc('Line prefixed by this symbol will be recognized as header'": "setDesc('以此符号前缀的行将被识别为标题'",
+        "setDesc('Line prefixed by this symbol will be recognized as footer'": "setDesc('以此符号为前缀的行将被识别为页脚'",
+        "setDesc('REGEXP - DESCRIPTION'": "setDesc('正则表达式-说明'",
+        "setName('Auto Expand'": "setName('自动扩展'",
+        "setName('Delay'": "setName('延迟'",
+        "setName('Line ending'": "setName('行尾'",
+        "setName('Default template'": "setName('默认模板'",
+        "setName('Exclude current file'": "setName('排除当前文件'",
+        "setName('Prefixes'": "setName('前缀'",
+        "setName('Header'": "setName('标题'",
+        "setName('Footer'": "setName('脚注'",
+        "setName('Sequences'": "setName('序列'"
+    }
+}
