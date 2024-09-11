@@ -1,7 +1,13 @@
 {
     "manifest": {
+        "id": "obsidian42-brat",
         "author": "zero",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "pluginVersion": "1.0.2"
+    },
+    "description": {
+        "original": "Easily install a beta version of a plugin for testing.",
+        "translation": "轻松安装插件的测试版进行测试。"
     },
     "dict": {
         ".setButtonText(\"Add Beta plugin\")": ".setButtonText(\"添加测试版插件\")",
