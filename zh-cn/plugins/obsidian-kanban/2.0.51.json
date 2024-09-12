@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "id": "obsidian-kanban",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "2.0.51"
+    },
+    "description": {
+        "original": "Create markdown-backed Kanban boards in Obsidian.",
+        "translation": "在 Obsidian 中创建支持 Markdown 的看板。"
+    },
+    "dict": {}
+}
