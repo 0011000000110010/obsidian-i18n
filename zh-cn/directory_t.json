@@ -1,5 +1,10 @@
 [
     {
+        "id": "obsidian-advanced-slides",
+        "authors": ["zero"],
+        "versions": ["1.20.0"]
+    },
+    {
         "id": "obsidian42-brat",
         "authors": ["zero"],
         "versions": ["1.0.2"]
