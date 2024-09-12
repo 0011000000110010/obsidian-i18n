@@ -1,0 +1,26 @@
+{
+    "manifest": {
+        "id": "obsidian-mind-map",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "1.1.0"
+    },
+    "description": {
+        "original": "A plugin to preview notes as Markmap mind maps",
+        "translation": "把笔记渲染为思维导图"
+    },
+    "dict": {
+        ".setName('Preview Split')": ".setName('预览分屏')",
+        ".setName('Node Min Height')": ".setName('节点最小高度')",
+        ".setName('Node Text Line Height')": ".setName('节点文本行高')",
+        ".setName('Vertical Spacing')": ".setName('垂直间距')",
+        ".setName('Horizontal Spacing')": ".setName('水平间距')",
+        ".setName('Horizontal padding')": ".setName('水平内边距')",
+        ".setDesc('Split direction for the Mind Map Preview')": ".setDesc('思维导图预览的拆分方向')",
+        ".setDesc('Minimum height for the mind map nodes')": ".setDesc('思维导图节点的最小高度')",
+        ".setDesc('Line height for content in mind map nodes')": ".setDesc('思维导图节点中的内容行高')",
+        ".setDesc('Vertical spacing of the mind map nodes')": ".setDesc('思维导图节点的垂直间距')",
+        ".setDesc('Horizontal spacing of the mind map nodes')": ".setDesc('思维导图节点的水平间距')",
+        ".setDesc('Leading space before the content of mind map nodes')": ".setDesc('思维导图节点内容前的空格')"
+    }
+}
