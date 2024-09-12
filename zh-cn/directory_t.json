@@ -1,5 +1,10 @@
 [
     {
+        "id": "better-word-count",
+        "authors": ["曲淡歌"],
+        "versions": ["0.10.1"]
+    },
+    {
         "id": "obsidian-annotator",
         "authors": ["曲淡歌"],
         "versions": ["0.2.11"]
