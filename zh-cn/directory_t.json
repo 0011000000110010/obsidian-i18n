@@ -1,5 +1,10 @@
 [
     {
+        "id": "obsidian-annotator",
+        "authors": ["曲淡歌"],
+        "versions": ["0.2.11"]
+    },
+    {
         "id": "templater-obsidian",
         "authors": ["曲淡歌"],
         "versions": ["2.7.1"]
