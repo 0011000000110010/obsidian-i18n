@@ -1,0 +1,31 @@
+{
+    "manifest": {
+        "id": "table-editor-obsidian",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "0.22.0"
+    },
+    "description": {
+        "original": "Improved table navigation, formatting, manipulation, and formulas",
+        "translation": "改进的表格导航、格式设置、操作和公式"
+    },
+    "dict": {
+        ".setText(\"Include table headers\")": ".setText(\"包含表格标题\")",
+        ".setText(\"Advanced Tables\")": ".setText(\"高级表格\")",
+        ".setText(\"Align:\")": ".setText(\"对齐：\")",
+        ".setText(\"Move:\")": ".setText(\"移动：\")",
+        ".setText(\"Edit:\")": ".setText(\"好的，请提供需要翻译的英文文本内容。\")",
+        ".setText(\"Sort/F:\")": ".setText(\"排序/过滤:\")",
+        ".setText(\"Misc:\")": ".setText(\"杂项：\")",
+        ".setName(\"Bind enter to table navigation\")": ".setName(\"将回车键绑定到表格导航\")",
+        ".setName(\"Bind tab to table navigation\")": ".setName(\"将 Tab 键绑定到表格导航\")",
+        ".setName(\"Pad cell width using spaces\")": ".setName(\"使用空格填充单元格宽度\")",
+        ".setName(\"Show icon in sidebar\")": ".setName(\"在侧边栏显示图标\")",
+        ".setDesc(\n      'Requires restart of Obsidian. If enabled, when the cursor is in a table, enter advances to the next row. Disabling this can help avoid conflicting with tag or CJK autocompletion. If disabling, bind \"Go to ...\" in the Obsidian Hotkeys settings.'\n    )": ".setDesc(\n      '需要重启 Obsidian。如果启用，在表格中时，按下 Enter 键会进入下一行。禁用此功能可以避免与标签或 CJK 自动补全冲突。如果禁用，请在 Obsidian 的快捷键设置中绑定“前往...”。'\n    )",
+        ".setDesc(\n      'Requires restart of Obsidian. If enabled, when the cursor is in a table, tab/shift+tab navigate between cells. Disabling this can help avoid conflicting with tag or CJK autocompletion. If disabling, bind \"Go to ...\" in the Obsidian Hotkeys settings.'\n    )": ".setDesc(\n      '需要重启 Obsidian。如果启用，在表格中时，可以通过 Tab/Shift+Tab 在单元格之间导航。禁用此功能可避免与标签或CJK自动补全冲突。如果禁用，请在 Obsidian 的快捷键设置中绑定“前往...”。'\n    )",
+        ".setDesc(\n      \"If enabled, table cells will have spaces added to match the width of the longest cell in the column.\"\n    )": ".setDesc(\n      \"如果启用，表格单元格将添加空格以匹配列中最长单元格的宽度。\"\n    )",
+        ".setDesc(\n      \"If enabled, a button which opens the table controls toolbar will be added to the Obsidian sidebar. The toolbar can also be opened with a Hotkey. Changes only take effect on reload.\"\n    )": ".setDesc(\n      \"如果启用，将在 Obsidian 侧边栏中添加一个打开表格控制工具栏的按钮。工具栏也可以通过快捷键打开。更改仅在重新加载后生效。\"\n    )",
+        ".appendText(\n      \"If this plugin adds value for you and you would like to help support continued development, please use the buttons below:\"\n    )": ".appendText(\n      \"如果此插件对你有帮助并且你希望支持其持续开发，请使用以下按钮：\"\n    )",
+        ".createEl(\"h2\", { text: \"Advanced Tables Plugin - Settings\" })": ".createEl(\"h2\", { text: \"高级表格插件 - 设置\" })"
+    }
+}
