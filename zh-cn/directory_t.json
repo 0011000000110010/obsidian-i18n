@@ -3,5 +3,10 @@
         "id": "obsidian42-brat",
         "authors": ["zero"],
         "versions": ["1.0.2"]
+    },
+    {
+        "id": "calendar",
+        "author": ["曲淡歌"],
+        "version": ["1.0.0"]
     }
 ]
