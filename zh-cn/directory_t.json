@@ -8,5 +8,10 @@
         "id": "calendar",
         "authors": ["曲淡歌"],
         "versions": ["1.5.10"]
-    }
+    },
+    {
+        "id": "dataview",
+        "authors": ["曲淡歌"],
+        "versions": ["0.5.67"]
+    }   
 ]
