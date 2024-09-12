@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "id": "tag-wrangler",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "0.6.1"
+    },
+    "description": {
+        "original": "Rename, merge, toggle, and search tags from the tag pane",
+        "translation": "从标签窗格重命名、合并、切换和搜索标签"
+    },
+    "dict": {}
+}
