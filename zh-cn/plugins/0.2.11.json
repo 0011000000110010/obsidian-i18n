@@ -1,0 +1,45 @@
+{
+    "manifest": {
+        "id": "obsidian-annotator",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "0.2.11"
+    },
+    "description": {
+        "original": "This is a sample plugin for Obsidian. It allows you to open and annotate PDF and EPUB files.",
+        "translation": "允许你打开和标注 PDF 和 EPUB 文件。"
+    },
+    "dict": {
+        ".setName(\"Custom Default Path\")": ".setName(\"自定义默认路径\")",
+        ".setName(\"Epub reader mode\")": ".setName(\"EPUB阅读模式\")",
+        ".setName(\"Font Size\")": ".setName(\"字体大小\")",
+        ".setName(\"Use Annotation Mode By Default\")": ".setName(\"默认使用注释模式\")",
+        ".setName(\"Include Prefix\")": ".setName(\"包含前缀\")",
+        ".setName(\"Include Postfix\")": ".setName(\"好的，请提供需要翻译的英文文本。\")",
+        ".setName(\"Highlight highlighted text\")": ".setName(\"高亮显示高亮的文本\")",
+        ".setName(\"Use Dark Mode By Default\")": ".setName(\"默认使用深色模式\")",
+        ".setName(\"Sepia\")": ".setName(\"棕褐色\")",
+        ".setName(\"Contrast\")": ".setName(\"对比度\")",
+        ".setName(\"Brightness\")": ".setName(\"亮度\")",
+        ".setName(\"Annotate.tv resource URL\")": ".setName(\"Annotate.tv 资源 URL\")",
+        ".setName(\"Enable Debug Logging\")": ".setName(\"启用调试日志记录\")",
+        ".setDesc(`Base font size in percents. Current: ${this.plugin.settings.epubSettings.fontSize}%`)": ".setDesc(`基础字体大小（百分比）。当前： ${this.plugin.settings.epubSettings.fontSize}%`)",
+        ".setDesc(\"Whether to use annotation mode by default when opening a note with annotation-target\")": ".setDesc(\"在打开带有注释目标的笔记时，默认是否使用注释模式\")",
+        ".setDesc(\"Whether to include the %%PREFIX%% region of the annotation markdown. Allows you to see some text before the highlighted region.\")": ".setDesc(\"是否包含注释markdown中的 %%PREFIX%%  允许你在高亮区域前看到一些文本。\")",
+        ".setDesc(\"Whether to include the %%POSTFIX%% region of the annotation markdown. Allows you to see some text after the highlighted region.\")": ".setDesc(\"是否包含注释markdown中的%%POSTFIX%%区域。允许你查看高亮区域后的部分文本。\")",
+        ".setDesc(\"Whether to wrap the %%HIGHLIGHT%% region text in == ==, so that the text becomes highlighted. Useful for distinguishing the highlight from the pre- and postfix.\")": ".setDesc(\"是否将 %%HIGHLIGHT%% 区域用 == == 包裹, 以高亮文本. 这对于区分高亮部分与前后缀很有用.\")",
+        ".setDesc(\"Whether to use dark mode by default when opening pdfs/epubs.\")": ".setDesc(\"是否在打开PDF/EPUB时默认使用深色模式.\")",
+        ".setDesc(\"The amount of sepia in dark mode\")": ".setDesc(\"暗色模式中的棕褐色程度\")",
+        ".setDesc(\"The amount of contrast in dark mode\")": ".setDesc(\"暗色模式下的对比度\")",
+        ".setDesc(\"The amount of brightness in dark mode\")": ".setDesc(\"在深色模式下的亮度程度\")",
+        ".setDesc(\"Not bundled with the plugin due to potential copyright issues.\")": ".setDesc(\"由于潜在的版权问题，未捆绑在插件中。\")",
+        ".setDesc(\"If this is enabled, more things are printed to the console.\")": ".setDesc(\"如果启用此选项，将有更多内容打印到控制台。\")",
+        ".createEl(\"h2\",{text:\"Annotator Settings\"})": ".createEl(\"h2\",{text:\"Annotator 设置\"})",
+        ".createEl(\"h3\",{text:\"Annotation Target Settings\"})": ".createEl(\"h3\",{text:\"Annotation 目标设置\"})",
+        ".createEl(\"h3\",{text:\"Epub Reader Settings\"})": ".createEl(\"h3\",{text:\"Epub 阅读器设置\"})",
+        ".createEl(\"h3\",{text:\"Annotation Markdown Settings\"})": ".createEl(\"h3\",{text:\"Annotation Markdown 设置\"})",
+        ".createEl(\"h3\",{text:\"Dark Mode Settings\"})": ".createEl(\"h3\",{text:\"暗色模式设置\"})",
+        ".createEl(\"h3\",{text:\"Annotate.TV settings\"})": ".createEl(\"h3\",{text:\"Annotate.TV 设置\"})",
+        ".createEl(\"h3\",{text:\"Developer Settings\"})": ".createEl(\"h3\",{text:\"开发者设置\"})"
+    }
+}
