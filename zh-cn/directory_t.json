@@ -1,5 +1,10 @@
 [
     {
+        "id": "nldates-obsidian",
+        "authors": ["曲淡歌"],
+        "versions": ["0.6.2"]
+    },
+    {
         "id": "better-word-count",
         "authors": ["曲淡歌"],
         "versions": ["0.10.1"]
