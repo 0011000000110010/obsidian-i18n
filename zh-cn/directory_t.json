@@ -1,12 +1,42 @@
 [
     {
+        "id": "obsidian-icon-folder",
+        "authors": ["曲淡歌"],
+        "versions": ["2.14.3"]
+    },
+    {
+        "id": "homepage",
+        "authors": ["曲淡歌"],
+        "versions": ["4.0.4"]
+    },
+    {
+        "id": "global-proxy",
+        "authors": ["曲淡歌"],
+        "versions": ["1.0.4"]
+    },
+    {
+        "id": "obsidian-git",
+        "authors": ["曲淡歌"],
+        "versions": ["2.26.0"]
+    },
+    {
+        "id": "obsidian-day-planner",
+        "authors": ["曲淡歌"],
+        "versions": ["0.22.1"]
+    },
+    {
+        "id": "table-editor-obsidian",
+        "authors": ["曲淡歌"],
+        "versions": ["0.22.0"]
+    },
+    {
         "id": "obsidian-advanced-slides",
-        "authors": ["zero"],
+        "authors": ["曲淡歌"],
         "versions": ["1.20.0"]
     },
     {
         "id": "obsidian42-brat",
-        "authors": ["zero"],
+        "authors": ["曲淡歌"],
         "versions": ["1.0.2"]
     },
     {
