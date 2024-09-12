@@ -1,0 +1,23 @@
+{
+    "manifest": {
+        "id": "homepage",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "4.0.4"
+    },
+    "description": {
+        "original": "Open a specified note, canvas, or workspace on startup, or set it for quick access later.",
+        "translation": "在启动时打开指定的笔记、画布或工作区，或设置以便后续快速访问。"
+    },
+    "dict": {
+        ".setButtonText(\"Add...\")": ".setButtonText(\"添加...\")",
+        ".setButtonText(\"Copy debug info\")": ".setButtonText(\"复制调试信息\")",
+        ".setName(\"Homepage\")": ".setName(\"主页\")",
+        ".setName(\"Separate mobile homepage\")": ".setName(\"单独的移动设备首页\")",
+        ".setDesc(\"For mobile devices, store the homepage and its settings separately.\")": ".setDesc(\"对于移动设备，单独存储主页及其设置。\")",
+        ".addToggle(\"Open on startup\",\"When launching Obsidian, open the homepage.\",\"openOnStartup\",d=>this.display())": ".addToggle(\"启动时打开\",\"当obsidian启动时, 打开主页.\",\"openOnStartup\",d=>this.display())",
+        ".addToggle(\"Open when empty\",\"When there are no tabs open, open the homepage.\",\"openWhenEmpty\")": ".addToggle(\"为空时打开\",\"当标签页为空时，打开主页.\",\"openWhenEmpty\")",
+        ".addToggle(\"Use when opening normally\",\"Use homepage settings when opening it normally, such as from a link or the file browser.\",\"alwaysApply\")": ".addToggle(\"打开时应用设置\",\"当主页正常打开时，应用主页设置，比如从链接或文件管理器打开\",\"alwaysApply\")",
+        ".addHeading(\"Commands\",\"commandsHeading\")": ".addHeading(\"命令\",\"命令标题\")"
+    }
+}
