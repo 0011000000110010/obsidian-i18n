@@ -1,0 +1,19 @@
+{
+    "manifest": {
+        "id": "recent-files-obsidian",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "1.5.0"
+    },
+    "description": {
+        "original": "List files by most recently opened",
+        "translation": "按最近打开的时间列出文件"
+    },
+    "dict": {
+        ".setName(\"Omitted pathname patterns\")": ".setName(\"忽略的路径名模式\")",
+        ".setName(\"List length\")": ".setName(\"列表长度\")",
+        ".setDesc(\"Maximum number of filenames to keep in the list.\")": ".setDesc(\"列表中文件名的最大数量。\")",
+        ".appendText(\"If this plugin adds value for you and you would like to help support continued development, please use the buttons below:\")": ".appendText(\"如果这个插件对你有帮助并且你希望支持我继续开发，请使用下方的按钮：\")",
+        ".createEl(\"h2\",{text:\"Recent Files List\"})": ".createEl(\"h2\",{text:\"最近文件列表\"})"
+    }
+}
