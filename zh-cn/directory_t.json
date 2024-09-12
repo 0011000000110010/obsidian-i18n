@@ -1,5 +1,60 @@
 [
     {
+        "id": "templater-obsidian",
+        "authors": ["曲淡歌"],
+        "versions": ["2.7.1"]
+    },
+    {
+        "id": "obsidian-tasks-plugin",
+        "authors": ["曲淡歌"],
+        "versions": ["7.10.0"]
+    },
+    {
+        "id": "tag-wrangler",
+        "authors": ["曲淡歌"],
+        "versions": ["0.6.1"]
+    },
+    {
+        "id": "obsidian-style-settings",
+        "authors": ["曲淡歌"],
+        "versions": ["1.0.9"]
+    },
+    {
+        "id": "recent-files-obsidian",
+        "authors": ["曲淡歌"],
+        "versions": ["1.5.0"]
+    },
+    {
+        "id": "quickadd",
+        "authors": ["曲淡歌"],
+        "versions": ["1.11.1"]
+    },
+    {
+        "id": "obsidian-outliner",
+        "authors": ["曲淡歌"],
+        "versions": ["4.8.1"]
+    },
+    {
+        "id": "omnisearch",
+        "authors": ["曲淡歌"],
+        "versions": ["1.24.1"]
+    },
+    {
+        "id": "obsidian-minimal-settings",
+        "authors": ["曲淡歌"],
+        "versions": ["8.1.1"]
+    },
+    {
+        "id": "obsidian-mind-map",
+        "authors": ["曲淡歌"],
+        "versions": ["1.1.0"]
+    },
+    {
+        "id": "obsidian-kanban",
+        "authors": ["曲淡歌"],
+        "versions": ["2.0.51"]
+    },
+    {
         "id": "obsidian-icon-folder",
         "authors": ["曲淡歌"],
         "versions": ["2.14.3"]
