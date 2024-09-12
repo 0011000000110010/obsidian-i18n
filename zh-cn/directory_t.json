@@ -14,4 +14,9 @@
         "authors": ["曲淡歌"],
         "versions": ["0.5.67"]
     }   
+    {
+        "id": "obsidian-admonition",
+        "authors": ["曲淡歌"],
+        "versions": ["10.3.2"]
+    } 
 ]
