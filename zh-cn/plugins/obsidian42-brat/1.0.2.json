@@ -2,7 +2,7 @@
     "manifest": {
         "id": "obsidian42-brat",
         "author": "zero",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "pluginVersion":"1.0.2"
     },
     "description": {
@@ -48,7 +48,7 @@
         ".innerText = \"Learn more about my work at:\"": ".innerText = \"了解我的工作请访问：\"",
         "text: \"Add Plugin\"": "text: \"添加插件\"",
         "text: \"Add Theme\"": "text: \"添加主题\"",
-        "text: \"Never mind\"": "text: \"Never mind\"",
+        "text: \"Never mind\"": "text: \"取消\"",
         "text: \"This does not delete the plugin, this should be done from the  Community Plugins tab in Settings.\"": "text: \"这不会删除插件，您应该从“设置”中的“社区插件”选项卡中删除它。\"",
         ".Notice(\"Failed to read the daily note template\")": ".Notice(\"无法读取每日笔记模板\")",
         ".Notice(\"Unable to create new file.\")": ".Notice(\"无法创建新文件\")",
