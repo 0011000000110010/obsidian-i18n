@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "id": "global-proxy",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "1.0.4"
+    },
+    "description": {
+        "original": "Use network proxy throughout Obsidian according to the rules configured in this plugin.",
+        "translation": "根据此插件中配置的规则在整个 Obsidian 中使用网络代理。"
+    },
+    "dict": {".setName(\"Enable proxy\")":".setName(\"启用代理\")",".setName(\"Socks Proxy\")":".setName(\"Socks 代理\")",".setName(\"Http Proxy\")":".setName(\"Http 代理\")",".setName(\"Https Proxy\")":".setName(\"Https 代理\")",".setName(\"Plugin Tokens\")":".setName(\"插件令牌\")",".setName(\"Blacklist\")":".setName(\"黑名单\")",".setDesc(\"Change your proxy status\")":".setDesc(\"更改你的代理状态\")",".setDesc(\"Set up your socks proxy\")":".setDesc(\"设置你的 Socks 代理\")",".setDesc(\"Set up your http proxy\")":".setDesc(\"设置你的 Http 代理\")",".setDesc(\"Set up your https proxy\")":".setDesc(\"设置你的 Https 代理\")",".setDesc(\"For proxy specified plugins\")":".setDesc(\"用于指定代理的插件\")",".setDesc(\"Proxy blacklist\")":".setDesc(\"代理黑名单\")",".setPlaceholder(\"<scheme>://<host>:<port>\")":".setPlaceholder(\"<scheme>://<host>:<port>\")",".setPlaceholder(\"[URL_SCHEME://] HOSTNAME_PATTERN [:<port>]\\n. HOSTNAME_SUFFIX_PATTERN [:PORT]\\n[SCHEME://] IP_LITERAL [:PORT]\\nIP_LITERAL / PREFIX_LENGTH_IN_BITS\\n<local>\")":".setPlaceholder(\"[URL_SCHEME://] HOSTNAME_PATTERN [:<port>]\\n. HOSTNAME_SUFFIX_PATTERN [:PORT]\\n[SCHEME://] IP_LITERAL [:PORT]\\nIP_LITERAL / PREFIX_LENGTH_IN_BITS\\n<local>\")"}
+}
