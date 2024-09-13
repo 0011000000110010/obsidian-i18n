@@ -163,5 +163,10 @@
         "id": "obsidian-admonition",
         "authors": ["曲淡歌"],
         "versions": ["10.3.2"]
-    } 
+    },
+    {
+        "id":"obsidian-bartender",
+        "authors":["里安"],
+        "versions":["0.5.17-1"]
+    }
 ]
