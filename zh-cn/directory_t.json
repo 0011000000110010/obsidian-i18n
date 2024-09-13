@@ -1,5 +1,10 @@
 [
     {
+        "id": "highlightr-plugin",
+        "authors": ["曲淡歌"],
+        "versions": ["1.2.2"]
+    },
+    {
         "id": "obsidian-emoji-toolbar",
         "authors": ["曲淡歌"],
         "versions": ["0.4.1"]
