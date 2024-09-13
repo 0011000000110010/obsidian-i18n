@@ -1,5 +1,10 @@
 [
     {
+        "id": "obsidian-advanced-uri",
+        "authors": ["曲淡歌"],
+        "versions": ["1.44.1"]
+    },
+    {
         "id": "periodic-notes",
         "authors": ["曲淡歌"],
         "versions": ["0.0.17"]
