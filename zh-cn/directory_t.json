@@ -1,5 +1,10 @@
 [
     {
+        "id": "oz-image-plugin",
+        "authors": ["曲淡歌"],
+        "versions": ["2.2.6"]
+    },
+    {
         "id": "obsidian-textgenerator-plugin",
         "authors": ["曲淡歌"],
         "versions": ["0.7.37"]
