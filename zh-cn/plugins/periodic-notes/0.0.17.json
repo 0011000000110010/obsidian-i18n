@@ -1,0 +1,17 @@
+{
+    "manifest": {
+        "id": "periodic-notes",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "0.0.17"
+    },
+    "description": {
+        "original": "Create/manage your daily, weekly, and monthly notes",
+        "translation": "创建并管理你的日、周和月笔记"
+    },
+    "dict": {
+        "h3.textContent = \"Getting Started\"": "h3.textContent = \"让我们开始吧\"",
+        "button.textContent = \"Dismiss\"": "button.textContent = \"忽略\"",
+        "p.textContent = \"With this plugin, you can quickly create and navigate to daily, weekly,\\n      and monthly notes. Enable them below to get started.\"": "p.textContent = \"通过这个插件，你可以快速的创建并管理你的日、周和月笔记。\\n 启用下面的选项以开始使用。\""
+    }
+}
