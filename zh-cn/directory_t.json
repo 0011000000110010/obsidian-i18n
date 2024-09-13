@@ -1,5 +1,10 @@
 [
     {
+        "id": "obsidian-textgenerator-plugin",
+        "authors": ["曲淡歌"],
+        "versions": ["0.7.37"]
+    },
+    {
         "id": "obsidian-importer",
         "authors": ["曲淡歌"],
         "versions": ["1.6.5"]
