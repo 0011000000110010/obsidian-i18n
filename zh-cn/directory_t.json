@@ -1,5 +1,10 @@
 [
     {
+        "id": "obsidian-importer",
+        "authors": ["曲淡歌"],
+        "versions": ["1.6.5"]
+    },
+    {
         "id": "highlightr-plugin",
         "authors": ["曲淡歌"],
         "versions": ["1.2.2"]
