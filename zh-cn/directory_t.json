@@ -1,5 +1,10 @@
 [
     {
+        "id": "obsidian-checklist-plugin",
+        "authors": ["曲淡歌"],
+        "versions": ["2.2.13"]
+    },
+    {
         "id": "obsidian-advanced-uri",
         "authors": ["曲淡歌"],
         "versions": ["1.44.1"]
