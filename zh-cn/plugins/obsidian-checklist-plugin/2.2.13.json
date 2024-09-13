@@ -1,0 +1,31 @@
+{
+    "manifest": {
+        "id": "obsidian-checklist-plugin",
+        "author": "曲淡歌",
+        "version": "1.0.0",
+        "pluginVersion": "2.2.13"
+    },
+    "description": {
+        "original": "Combines checklists across pages into users sidebar",
+        "translation": "将勾选列表整合到用户侧边栏中"
+    },
+    "dict": {
+        ".setName(\"General\")": ".setName(\"通用\")",
+        ".setName(\"Tag name\")": ".setName(\"标签名称\")",
+        ".setName(\"Show Completed?\")": ".setName(\"显示已完成？\")",
+        ".setName(\"Show All Todos In File?\")": ".setName(\"显示文件中的所有待办事项？\")",
+        ".setName(\"Grouping & Sorting\")": ".setName(\"分组与排序\")",
+        ".setName(\"Group By\")": ".setName(\"分组依据\")",
+        ".setName(\"Item Sort\")": ".setName(\"项目排序\")",
+        ".setName(\"Group Sort\")": ".setName(\"分组排序\")",
+        ".setName(\"Styling\")": ".setName(\"样式\")",
+        ".setName(\"Look and Feel\")": ".setName(\"外观和感觉\")",
+        ".setName(\"Advanced\")": ".setName(\"高级\")",
+        ".setName(\"Include Files\")": ".setName(\"包含文件\")",
+        ".setName(\"Auto Refresh List?\")": ".setName(\"自动刷新列表？\")",
+        ".setDesc('e.g. \"todo\" will match #todo. You may add mutliple tags separated by a newline. Leave empty to capture all')": ".setDesc('e.g. \"todo\" 会匹配 #todo. 您可以添加多个由换行符分隔的标签。留空以捕获所有内容')",
+        ".setDesc(\"Include all files that match this glob pattern. Examples on plugin page/github readme. Leave empty to check all files.\")": ".setDesc(\"包含所有匹配此通配符模式的文件。示例见插件页面/GitHub 说明。留空以检查所有文件。\")",
+        ".setDesc(`It's recommended to leave this on unless you are expereince performance issues due to a large vault. You can then reload manually using the \"Checklist: refresh\" command`)": ".setDesc(`建议保持此选项开启，除非你因库过大而遇到性能问题。届时你可以手动使用\"Checklist: refresh\"命令进行刷新。`)",
+        ".createEl(\"h3\", {\n      text: \"General Settings\"\n    })": ".createEl(\"h3\", {\n      text: \"常规设置\"\n    })"
+    }
+}
