@@ -185,8 +185,8 @@
         "versions":["1.0.22"]
     },
     {
-        "id":"file-explorer-note-1.2.2",
+        "id":"file-explorer-note-count",
         "authors":["里安"],
-        "versions":["0.5.17-1"]
+        "versions":["1.2.2"]
     }
 ]
