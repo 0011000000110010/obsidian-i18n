@@ -1,5 +1,10 @@
 [
     {
+        "id": "make-md",
+        "authors": ["曲淡歌"],
+        "versions": ["0.9.1007"]
+    },
+    {
         "id": "oz-image-plugin",
         "authors": ["曲淡歌"],
         "versions": ["2.2.6"]
