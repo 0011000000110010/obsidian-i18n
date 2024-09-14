@@ -1,0 +1,21 @@
+{
+    "manifest": {
+        "id": "mousewheel-image-zoom",
+        "author": "里安",
+        "version": "1.0.0",
+        "pluginVersion": "1.0.22"
+    },
+    "description": {
+        "original": "This plugin enables you to increase/decrease the size of an image by scrolling",
+        "translation": "此插件允许您通过鼠标滚轮来增大/减小图片尺寸。"
+    },
+    "dict": {
+        ".setName('Trigger Key')": ".setName('触发键')",
+        ".setName('Step size')": ".setName('步进值')",
+        ".setName('Initial Size')": ".setName('初始大小')",
+        ".setDesc('Key that needs to be pressed down for mousewheel zoom to work.')": ".setDesc('需要同时按下，才能使鼠标滚轮缩放功能启用的键')",
+        ".setDesc('Step value by which the size of the image should be increased/decreased')": ".setDesc('每次滚动一小格滚轮，图片尺寸增加/减少的步进值')",
+        ".setDesc('Initial image size if no size was defined beforehand')": ".setDesc('如果之前没有定义图片大小，则图片的初始大小')",
+        ".createEl('h2', { text: 'Settings for mousewheel zoom' })": ".createEl('h2', { text: '鼠标滚轮缩放设置' })"
+    }
+}
