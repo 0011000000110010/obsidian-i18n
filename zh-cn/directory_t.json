@@ -1,5 +1,15 @@
 [
     {
+        "id":"buttons",
+        "author":["里安"],
+        "version":["0.5.1"]
+    },
+    {
+        "id":"obsidian-hover-editor",
+        "author":["里安"],
+        "version":["0.11.20"]
+    },
+    {
         "id": "obsidian-banners",
         "authors": ["里安"],
         "versions": ["1.3.3"]
