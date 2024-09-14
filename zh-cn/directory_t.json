@@ -1,38 +1,38 @@
 [
     {
         "id":"obsidian-hider",
-        "author":["zero"],
-        "version":["1.5.1"]
+        "authors":["zero"],
+        "versions":["1.5.1"]
     },
     {
         "id":"obsidian-auto-link-title",
-        "author":["宇桐非"],
-        "version":["1.5.4"]
+        "authors":["宇桐非"],
+        "versions":["1.5.4"]
     },
     {
         "id":"calendar-beta",
-        "author":["宇桐非"],
-        "version":["2.0.0"]
+        "authors":["宇桐非"],
+        "versions":["2.0.0"]
     },
     {
         "id":"obsidian-tagfolder",
-        "author":["里安"],
-        "version":["0.18.7"]
+        "authors":["里安"],
+        "versions":["0.18.7"]
     },
     {
         "id":"virtual-linker",
-        "author":["里安"],
-        "version":["1.5.0"]
+        "authors":["里安"],
+        "versions":["1.5.0"]
     },
     {
         "id":"buttons",
-        "author":["里安"],
-        "version":["0.5.1"]
+        "authors":["里安"],
+        "versions":["0.5.1"]
     },
     {
         "id":"obsidian-hover-editor",
-        "author":["里安","宇桐非"],
-        "version":["0.11.20"]
+        "authors":["里安","宇桐非"],
+        "versions":["0.11.20"]
     },
     {
         "id": "obsidian-banners",
