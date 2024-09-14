@@ -2,7 +2,7 @@
     "manifest": {
         "id": "obsidian-advanced-uri",
         "author": "曲淡歌",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "pluginVersion": "1.44.1"
     },
     "description": {
@@ -28,6 +28,18 @@
         ".setPlaceholder(\"Type your data to be written to the file or leave it empty to just open it\")": ".setPlaceholder(\"输入要写入文件的数据，或留空以直接打开文件\")",
         ".setPlaceholder(\"Replacement text\")": ".setPlaceholder(\"替换文本\")",
         ".setPlaceholder(\"Searched text. RegEx is supported\")": ".setPlaceholder(\"搜索文本。支持正则表达式。\")",
-        ".setPlaceholder(\"Choose a workspace\")": ".setPlaceholder(\"选择一个工作区\")"
+        ".setPlaceholder(\"Choose a workspace\")": ".setPlaceholder(\"选择一个工作区\")",
+        ".setTitle(\"Copy Advanced URI\")": ".setTitle(\"复制高级URI\")",
+        "name:\"Copy URI for file with options\"": "name:\"复制带有选项的文件URI\"",
+        "name:\"Copy URI for current file\"": "name:\"复制当前文件的URI\"",
+        "name:\"Copy URI for daily note\"": "name:\"复制每日笔记的URI\"",
+        "name:\"Copy URI for search and replace\"": "name:\"复制搜索和替换的URI\"",
+        "name:\"Copy URI for command\"": "name:\"复制命令的URI\"",
+        "name:\"Copy URI for current block\"": "name:\"复制当前区块的URI\"",
+        "name:\"Copy URI for workspace\"": "name:\"复制工作区的URI\"",
+        "name:\"Copy URI for selected canvas nodes\"": "name:\"复制选定画布节点的URI\"",
+        "name:\"Copy URI for current canvas viewport\"": "name:\"复制当前画布视口的URI\"",
+        ".addOption(\"name\",\"Name\")": ".addOption(\"name\",\"名称\")",
+        ".addOption(\"id\",\"ID\")": ".addOption(\"id\",\"ID\")"
     }
 }
