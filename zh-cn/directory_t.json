@@ -1,5 +1,10 @@
 [
     {
+        "id":"obsidian-hider",
+        "author":["zero"],
+        "version":["1.5.1"]
+    },
+    {
         "id":"obsidian-auto-link-title",
         "author":["宇桐非"],
         "version":["1.5.4"]
