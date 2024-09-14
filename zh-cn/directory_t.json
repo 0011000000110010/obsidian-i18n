@@ -1,5 +1,10 @@
 [
-{
+    {
+        "id": "buttons",
+        "authors": ["里安"],
+        "versions": ["0.5.1"]
+    },
+    {
         "id": "attachment-flow-plugin",
         "authors": ["宇桐非"],
         "versions": ["0.4.3"]
@@ -166,7 +171,7 @@
     },
     {
         "id": "obsidian42-brat",
-        "authors": ["曲淡歌"],
+        "authors": ["zero"],
         "versions": ["1.0.2"]
     },
     {
