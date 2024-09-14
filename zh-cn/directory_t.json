@@ -168,5 +168,25 @@
         "id":"obsidian-bartender",
         "authors":["里安"],
         "versions":["0.5.17-1"]
+    },
+    {
+        "id":"reveal-active-file-button",
+        "authors":["里安"],
+        "versions":["2.0.3"]
+    },
+    {
+        "id":"remember-cursor-position",
+        "authors":["里安"],
+        "versions":["1.0.9"]
+    },
+    {
+        "id":"mousewheel-image-zoom",
+        "authors":["里安"],
+        "versions":["1.0.22"]
+    },
+    {
+        "id":"file-explorer-note-1.2.2",
+        "authors":["里安"],
+        "versions":["0.5.17-1"]
     }
 ]
