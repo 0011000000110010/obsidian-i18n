@@ -1,5 +1,10 @@
 [
     {
+        "id":"virtual-linker",
+        "author":["里安"],
+        "version":["1.5.0"]
+    },
+    {
         "id":"buttons",
         "author":["里安"],
         "version":["0.5.1"]
