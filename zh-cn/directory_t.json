@@ -1,10 +1,5 @@
 [
     {
-        "id":"obsidian-hover-editor",
-        "author":["宇桐非"],
-        "version":["0.11.20"]
-
-    {
         "id":"obsidian-auto-link-title",
         "author":["宇桐非"],
         "version":["1.5.4"]
@@ -31,7 +26,7 @@
     },
     {
         "id":"obsidian-hover-editor",
-        "author":["里安"],
+        "author":["里安","宇桐非"],
         "version":["0.11.20"]
     },
     {
