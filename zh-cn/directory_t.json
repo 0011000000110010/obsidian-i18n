@@ -1,4 +1,9 @@
 [
+{
+        "id": "attachment-flow-plugin",
+        "authors": ["宇桐非"],
+        "versions": ["0.4.3"]
+    },
     {
         "id": "obsidian-pandoc",
         "authors": ["曲淡歌"],
