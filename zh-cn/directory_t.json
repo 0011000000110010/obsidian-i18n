@@ -1,5 +1,10 @@
 [
     {
+        "id": "obsidian-pandoc",
+        "authors": ["曲淡歌"],
+        "versions": ["0.4.1"]
+    },
+    {
         "id": "copilot",
         "authors": ["宇桐非"],
         "versions": ["2.6.6"]
