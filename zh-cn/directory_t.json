@@ -1,4 +1,9 @@
-[
+[   
+    {
+        "id":"obsidian-tagfolder",
+        "author":["里安"],
+        "version":["0.18.7"]
+    },
     {
         "id":"virtual-linker",
         "author":["里安"],
