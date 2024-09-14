@@ -2,7 +2,7 @@
     "manifest": {
         "id": "obsidian-git",
         "author": "曲淡歌",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "pluginVersion": "2.26.0"
     },
     "description": {
@@ -106,7 +106,6 @@
         ".setDesc(\"If and how the author is displayed\")": ".setDesc(\"作者的显示方式（如果有）\")",
         ".setDesc(\n        \"If and how the date and time of authoring the line is displayed\"\n      )": ".setDesc(\n        \"作者编写行的日期和时间的显示方式（如果有的话）\"\n      )",
         ".setPlaceholder(\"vault backup: {{date}}\")": ".setPlaceholder(\"保险库备份：{{date}}\")",
-        ".setPlaceholder(\"git\")": ".setPlaceholder(\"吉特\")",
         ".setPlaceholder(\"GIT_DIR=/path/to/git/dir\")": ".setPlaceholder(\"GIT_DIR=/path/to/git/目录\")",
         ".setPlaceholder(\"directory/directory-with-git-repo\")": ".setPlaceholder(\"目录/带 Git 仓库的目录\")",
         ".setPlaceholder(\n      \"Not supported files will be opened by default app!\"\n    )": ".setPlaceholder(\n      \"不支持的文件将默认由默认应用程序打开！\"\n    )",
