@@ -1,0 +1,35 @@
+{
+    "manifest": {
+        "id": "obsidian-hover-editor",
+        "author": "里安",
+        "version": "1.0.0",
+        "pluginVersion": "0.11.20"
+    },
+    "description": {
+        "original": "Transform the Page Preview hover popover into a fully working editor instance",
+        "translation": "Transform the Page Preview hover popover into a fully working editor instance"
+    },
+    "dict": {
+        ".setName(\"Default Mode\")": ".setName(\"默认模式\")",
+        ".setName(\"Auto Pin\")": ".setName(\"自动固定\")",
+        ".setName(\"Trigger hover preview on embeds\")": ".setName(\"在嵌入内容上触发悬停预览\")",
+        ".setName(\"Auto Focus\")": ".setName(\"自动聚焦\")",
+        ".setName(\"Minimize downwards\")": ".setName(\"向下最小化\")",
+        ".setName(\"Snap to edges\")": ".setName(\"边缘对齐\")",
+        ".setName(\"Show view header by default\")": ".setName(\"默认显示视图标题\")",
+        ".setName(\"Click to zoom image\")": ".setName(\"点击放大图片\")",
+        ".setName(\"Initial popover width\")": ".setName(\"初始弹出宽度\")",
+        ".setName(\"Initial popover height\")": ".setName(\"初始弹出高度\")",
+        ".setName(\"Hover Trigger Delay (ms)\")": ".setName(\"悬停触发延迟 (毫秒)\")",
+        ".setName(\"Hover Close Delay (ms)\")": ".setName(\"悬停关闭延迟 (毫秒)\")",
+        ".setDesc(\"Allow hover preview to trigger when hovering over any type of rendered embed such as images or block references\")": ".setDesc(\"允许在悬停于任何类型的渲染嵌入内容（如图片或块引用）时触发悬停预览\")",
+        ".setDesc(\"Set the hover editor as the active pane when opened\")": ".setDesc(\"打开时将悬停编辑器设置为活动窗格\")",
+        ".setDesc(\"When double clicking to minimize, the window will roll down instead of rolling up\")": ".setDesc(\"双击最小化时，窗口将向下滚动而不是向上滚动\")",
+        ".setDesc(`Show the view header by default when triggering a hover editor.\n         When disabled, view headers will only show if you click the view header icon to the left of the minimize button.`)": ".setDesc(`触发悬停编辑器时，默认显示视图标题。\n         当禁用时，只有当你点击最小化按钮左侧的视图标题图标时才会显示视图标题。`)",
+        ".setDesc(`Click and hold an image within a hover editor to temporarily maximize the popover and image to fill the entire viewport. \n        On mouse up, the hover editor will restore to its original size.`)": ".setDesc(`在悬停编辑器内点击并按住图片以暂时最大化弹出窗口和图片以填充整个视口。\n        在鼠标释放时，悬停编辑器将恢复到原始大小。`)",
+        ".setDesc(\"Enter any valid CSS unit\")": ".setDesc(\"输入任何有效的CSS单位\")",
+        ".setDesc(\"How long to wait before showing a Hover Editor when hovering over a link\")": ".setDesc(\"在悬停于链接之前等待多久才显示悬停编辑器\")",
+        ".setDesc(\"How long to wait before closing a Hover Editor once the mouse leaves\")": ".setDesc(\"鼠标离开后等待多久才关闭悬停编辑器\")",
+        ".appendText(\" \"+a.name)}),v.addEventListener(\"click\",()=>this.plugin.app.openWithDefaultApp(a.path)),v.setAttribute(\"aria-label\",i18next.t(\"interface.embed-open-in-default-app-tooltip\")": ".appendText(\" \"+a.name)}),v.addEventListener(\"click\",()=>this.plugin.app.openWithDefaultApp(a.path)),v.setAttribute(\"aria-label\",i18next.t(\"界面.嵌入默认应用打开提示\")"
+    }
+}
