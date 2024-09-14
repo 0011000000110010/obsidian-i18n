@@ -1,0 +1,30 @@
+{
+    "manifest": {
+        "id": "obsidian-auto-link-title",
+        "author": "宇桐非",
+        "version": "1.5.4",
+        "pluginVersion": "1.5.4"
+    },
+    "description": {
+        "original": "This plugin automatically fetches the titles of links from the web",
+        "translation": "This plugin automatically fetches the titles of links from the web"
+    },
+    "dict": {
+        ".setName(\"Enhance Default Paste\")": ".setName(\"增强默认粘贴\")",
+        ".setName(\"Enhance Drop Events\")": ".setName(\"增强拖放事件\")",
+        ".setName(\"Maximum title length\")": ".setName(\"标题最大长度\")",
+        ".setName(\"Preserve selection as title\")": ".setName(\"保留选择作为标题\")",
+        ".setName(\"Website Blacklist\")": ".setName(\"网站黑名单\")",
+        ".setName(\"Use New Scraper\")": ".setName(\"使用新抓取器\")",
+        ".setDesc(\"Fetch the link title when pasting a link in the editor with the default paste command\")": ".setDesc(\"使用默认粘贴命令在编辑器中粘贴链接时获取链接标题\")",
+        ".setDesc(\"Fetch the link title when drag and dropping a link from another program\")": ".setDesc(\"从另一个程序中拖放链接时获取链接标题\")",
+        ".setDesc(\"Set the maximum length of the title. Set to 0 to disable.\")": ".setDesc(\"设置标题的最大长度。设置为0以禁用。\")",
+        ".setDesc(\"Whether to prefer selected text as title over fetched title when pasting\")": ".setDesc(\"粘贴时是否优先选择选中文本作为标题而不是获取的标题\")",
+        ".setDesc(\"List of strings (comma separated) that disable autocompleting website titles. Can be URLs or arbitrary text.\")": ".setDesc(\"阻止自动完成网站标题的字符串列表（逗号分隔）。可以是URL或任意文本。\")",
+        ".setDesc(\"Use experimental new scraper, seems to work well on desktop but not mobile.\")": ".setDesc(\"使用实验性的新抓取器，似乎在桌面端表现良好但在移动端不行。\")",
+        ".setPlaceholder(\"localhost, tiktok.com\")": ".setPlaceholder(\"localhost, tiktok.com\")",
+        "name: \"Paste URL and auto fetch title\"": "name: \"粘贴URL并自动获取标题\"",
+        "name: \"Normal paste (no fetching behavior)\"": "name: \"普通粘贴（无获取行为）\"",
+        "name: \"Enhance existing URL with link and title\"": "name: \"增强现有URL，附带链接和标题\""
+    }
+}
