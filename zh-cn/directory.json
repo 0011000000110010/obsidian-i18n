@@ -2,15 +2,13 @@
     {
         "id": "obsidian-another-quick-switcher",
         "translations": [
-            {"author":"宇桐非","translationVersion":"2.4.7","pluginVersion":"2.4.7"},
             {"author":"宇桐非","translationVersion":"2.4.7","pluginVersion":"2.4.7"}
         ]
     },
     {
-        "id": "obsidian-another-quick-switcher",
+        "id": "virtual-linker",
         "translations": [
-            {"author":"宇桐非","translationVersion":"2.4.7","pluginVersion":"2.4.7"},
-            {"author":"宇桐非","translationVersion":"2.4.7","pluginVersion":"2.4.7"}
+            {"author":"里安","translationVersion":"1.0.0","pluginVersion":"1.5.0"}
         ]
     }
 ]
