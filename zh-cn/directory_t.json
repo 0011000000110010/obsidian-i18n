@@ -1,5 +1,10 @@
 [
     {
+        "id":"media-extended",
+        "authors":["宇桐非"],
+        "versions":["3.2.6"]
+    },
+    {
         "id":"obsidian-another-quick-switcher",
         "authors":["宇桐非"],
         "versions":["11.6.0"]
