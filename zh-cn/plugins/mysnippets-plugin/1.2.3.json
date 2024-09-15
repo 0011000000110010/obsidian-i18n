@@ -1,0 +1,39 @@
+{
+    "manifest": {
+        "id": "mysnippets-plugin",
+        "author": "宇桐非",
+        "version": "1.2.3",
+        "pluginVersion": "1.2.3"
+    },
+    "description": {
+        "original": "MySnippets is a plugin that adds a status bar menu allowing the user to quickly toggle their snippets on and off 🖌.",
+        "translation": "MySnippets is a plugin that adds a status bar menu allowing the user to quickly toggle their snippets on and off 🖌."
+    },
+    "dict": {
+        ".setText(\"Create a CSS Snippet\")": ".setText(\"创建一个 CSS 片段\")",
+        ".setButtonText(\"Create Snippet\")": ".setButtonText(\"创建片段\")",
+        ".setName(\"CSS Snippet Title\")": ".setName(\"CSS 片段标题\")",
+        ".setName(\"CSS Snippet Styles\")": ".setName(\"CSS 片段样式\")",
+        ".setName(\"Glass menu effect\")": ".setName(\"玻璃菜单效果\")",
+        ".setName(\"Auto open new snippet\")": ".setName(\"自动打开新片段\")",
+        ".setName(\"Set new snippet status\")": ".setName(\"设置新片段状态\")",
+        ".setName(\"CSS snippet template\")": ".setName(\"CSS 片段模板\")",
+        ".setDesc(\"Write the title for this CSS snippet file.\")": ".setDesc(\"为此 CSS 片段文件写入标题。\")",
+        ".setDesc(\"Add in styling for this CSS snippet file.\")": ".setDesc(\"为此 CSS 片段文件添加样式。\")",
+        ".setDesc(\"Choose to change the background from the secondary background color of your theme to a glass background.\")": ".setDesc(\"选择将背景从主题的辅助背景颜色更改为玻璃背景。\")",
+        ".setDesc(\"Choose whether or not to open CSS snippet files immeditaley after creating them. It will open in your default app.\")": ".setDesc(\"选择是否在创建 CSS 片段文件后立即打开它们。它将在您的默认应用程序中打开。\")",
+        ".setDesc(\"Choose whether or not to have newly created CSS snippet files toggled on automatically upon creation.\")": ".setDesc(\"选择是否在创建新的 CSS 片段文件时自动切换为启用。\")",
+        ".setDesc(\"Set default CSS styling as a template for new CSS files you choose to create.\")": ".setDesc(\"设置默认的 CSS 样式作为创建新 CSS 文件的模板。\")",
+        ".setTooltip(`Open snippet`)": ".setTooltip(`打开片段`)",
+        ".setTooltip(\"Reload snippets\")": ".setTooltip(\"重新加载片段\")",
+        ".setTooltip(\"Open snippets folder\")": ".setTooltip(\"打开片段文件夹\")",
+        ".setTooltip(\"Create new snippet\")": ".setTooltip(\"创建新片段\")",
+        ".appendText(\"If you like this Plugin and are considering donating to support continued development, use the buttons below!\")": ".appendText(\"如果您喜欢这个插件并考虑捐赠以支持持续开发，请使用下方的按钮！\")",
+        ".createEl(\"h1\", { text: \"MySnippets\" })": ".createEl(\"h1\", { text: \"我的片段\" })",
+        ".createEl(\"p\", { text: \"Created by \" })": ".createEl(\"p\", { text: \"由 \" })",
+        ".createEl(\"a\", {\n            text: \"Chetachi 👩🏽‍💻\",\n            href: \"https://github.com/chetachiezikeuzor\",\n        });\n        containerEl.createEl(\"h2\", { text: \"Plugin Settings\" })": ".createEl(\"a\", {\n            text: \"Chetachi 👩🏽‍💻\",\n            href: \"https://github.com/chetachiezikeuzor\",\n        });\n        containerEl.createEl(\"h2\", { text: \"插件设置\" })",
+        ".setTitle(\"Actions\")": ".setTitle(\"操作\")",
+        "name: `Open snippets in status bar`": "name: `在状态栏中打开片段`",
+        "name: `Create new CSS snippet`": "name: `创建新的 CSS 片段`"
+    }
+}
