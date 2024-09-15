@@ -1,5 +1,10 @@
 [
     {
+        "id":"obsidian-another-quick-switcher",
+        "authors":["宇桐非"],
+        "versions":["11.6.0"]
+    },
+    {
         "id":"obsidian-folder-index",
         "authors":["里安"],
         "versions":["1.0.26"]
