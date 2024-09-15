@@ -1,5 +1,10 @@
 [
     {
+        "id":"obsidian-folder-index",
+        "authors":["里安"],
+        "versions":["1.0.26"]
+    },
+    {
         "id":"obsidian-hider",
         "authors":["zero"],
         "versions":["1.5.1"]
