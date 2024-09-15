@@ -11,4 +11,11 @@
             {"author":"里安","translationVersion":"1.0.0","pluginVersion":"1.5.0"}
         ]
     }
+    ,
+    {
+        "id": "obsidian-hider",
+        "translations": [
+            {"author":"zero","translationVersion":"1.0.0","pluginVersion":"1.5.1"}
+        ]
+    }
 ]
