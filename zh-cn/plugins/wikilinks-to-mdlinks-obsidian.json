@@ -1,9 +1,0 @@
-{
-    "manifest": {
-        "author": "Fendi",
-        "version": "1.0.0"
-    },
-    "dict": {
-        "name: \"Toggle selected wikilink to markdown link and vice versa\",": "name: \"将所选wiki链接切换为MD链接，反之亦然\","
-    }
-}

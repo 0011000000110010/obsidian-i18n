@@ -1,9 +1,0 @@
-{
-    "manifest": {
-        "author": "Fendi",
-        "version": "1.0.0"
-    },
-    "dict": {
-        "if (!states.hasOwnProperty(name)) throw new Error(\"Undefined state \" + name + \" in simple mode\");": "if (!states.hasOwnProperty(name)) throw new Error(\"简单模式下的未定义状态 \" + name);"
-    }
-}
