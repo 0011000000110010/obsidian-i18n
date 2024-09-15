@@ -1,9 +1,0 @@
-{
-    "manifest": {
-        "author": "Fendi",
-        "version": "1.0.0"
-    },
-    "dict": {
-        "name: \"Search and Replace in all files\"": "name: \"在所有文件总搜索和替换\""
-    }
-}
