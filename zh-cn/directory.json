@@ -1,5 +1,11 @@
 [
     {
+        "id": "floating-toc",
+        "translations": [
+            {"author":"宇桐非","translationVersion":"2.4.7","pluginVersion":"2.4.7"}
+        ]
+    },
+    {
         "id": "outliner-md",
         "translations": [
             {"author":"宇桐非","translationVersion":"0.1.9","pluginVersion":"0.1.9"}
