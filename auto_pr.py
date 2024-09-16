@@ -37,7 +37,7 @@ def branch_exists(branch_name):
     result = git_command(f"git ls-remote --heads origin {branch_name}")
     return bool(result.stdout.strip())
 
-def create_pull_request(info):
+def create_pull_request(info, issue_number):
     url = f"{GITEE_API_BASE}/repos/{REPO_OWNER}/{REPO_NAME}/pulls"
     
     branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
@@ -46,13 +46,14 @@ def create_pull_request(info):
         "access_token": os.environ['GITEE_ACCESS_TOKEN'],
         "title": branch_name,
         "head": f"ob-i18n/obsidian-i18n-translation:{branch_name}",
-        "base": "master"
+        "base": "master",
+        "body": f"关联 issue: #{issue_number}"  # 添加这一行来关联 issue
     }
     
     response = requests.post(url, json=payload)
     
     if response.status_code == 201:
-        print("Pull request 创建成功")
+        print(f"Pull request 创建成功，已关联 issue #{issue_number}")
     else:
         print(f"创建 Pull request 失败，状态码：{response.status_code}")
         print(f"错误信息：{response.text}")
@@ -92,7 +93,7 @@ def process_issues():
             git_command(f'git commit -m "Add {info["id"]} version {info["pluginVersion"]}"')
             git_command(f'git push -u origin {branch_name}')
             
-            create_pull_request(info)
+            create_pull_request(info, issue['number'])  # 传入 issue 编号
             
             git_command("git checkout master")
 
