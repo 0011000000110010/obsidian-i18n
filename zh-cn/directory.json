@@ -33,8 +33,8 @@
         "id": "buttons",
         "translations": [
             {
-                "author": "里安",
-                "translationVersion": "1.0.0",
+                "author": "里安&Fendi",
+                "translationVersion": "2024-09-15",
                 "pluginVersion": "0.5.1"
             },
             {
@@ -69,7 +69,7 @@
         "translations": [
             {
                 "author": "宇桐非",
-                "translationVersion": "1.0.0",
+                "translationVersion": "2.6.6",
                 "pluginVersion": "2.6.6"
             },
             {
