@@ -6,6 +6,7 @@ import requests
 GITEE_API_BASE = "https://gitee.com/api/v5"
 REPO_OWNER = "zero--two"
 REPO_NAME = "obsidian-i18n-translation"
+FORK_OWNER = "ob-i18n"  # 假设这是您的 Gitee 用户名
 
 def unescape_json(escaped_json):
     try:
@@ -58,7 +59,33 @@ def create_pull_request(info, issue_number):
         print(f"创建 Pull request 失败，状态码：{response.status_code}")
         print(f"错误信息：{response.text}")
 
+def sync_with_upstream():
+    print("正在同步仓库与上游...")
+    try:
+        # 添加上游仓库（如果还没有添加）
+        git_command("git remote add upstream https://gitee.com/zero--two/obsidian-i18n-translation.git")
+    except subprocess.CalledProcessError:
+        # 如果上游仓库已经存在，忽略错误
+        pass
+
+    # 获取上游的最新变更
+    git_command("git fetch upstream")
+
+    # 切换到主分支
+    git_command("git checkout master")
+
+    # 合并上游的变更
+    git_command("git merge upstream/master")
+
+    # 推送到自己的远程仓库
+    git_command("git push origin master")
+
+    print("仓库已成功与上游同步")
+
 def process_issues():
+    # 首先同步仓库
+    sync_with_upstream()
+
     issues = get_issues()
     for issue in issues:
         body_escaped = issue['body']
