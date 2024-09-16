@@ -1,10 +1,10 @@
 {
-    "id": "i18n",
-    "name": "I18N",
-    "version": "1.1.6",
-    "minAppVersion": "1.5.8",
-    "description": "插件国际化",
-    "author": "zero",
-    "authorUrl": "https://github.com/0011000000110010/",
-    "isDesktopOnly": true
+  "id": "i18n",
+  "name": "I18N",
+  "version": "1.2.2",
+  "minAppVersion": "1.5.8",
+  "description": "To internationalize the plugin",
+  "author": "zero",
+  "authorUrl": "https://github.com/0011000000110010/",
+  "isDesktopOnly": true
 }
