@@ -35,14 +35,14 @@ def update_directory():
                     
                     if plugin_id in id_to_entry:
                         translations = id_to_entry[plugin_id].get('translations', [])
-                        # 检查是否已存在相同版本的译文
-                        existing = next((t for t in translations if t['translationVersion'] == translation_info['translationVersion']), None)
+                        # 检查是否已存在相同pluginVersion的译文
+                        existing = next((t for t in translations if t['pluginVersion'] == translation_info['pluginVersion']), None)
                         if existing:
                             existing.update(translation_info)
-                            print(f"  更新了现有译文: {plugin_id} - {translation_info['translationVersion']}")
+                            print(f"  更新了现有译文: {plugin_id} - {translation_info['pluginVersion']}")
                         else:
                             translations.append(translation_info)
-                            print(f"  添加了新译文: {plugin_id} - {translation_info['translationVersion']}")
+                            print(f"  添加了新译文: {plugin_id} - {translation_info['pluginVersion']}")
                         id_to_entry[plugin_id]['translations'] = translations
                     else:
                         new_entry = {
