@@ -1,6 +1,7 @@
 import * as fs from 'fs-extra'
-import { Notice } from 'obsidian';
+import { Notice, PluginManifest } from 'obsidian';
 import { State as state, Translation } from './data/types';
+
 
 // ==============================
 //            状态管理类
@@ -98,28 +99,60 @@ export class State {
 	}
 }
 
-/**
- * 根据插件查找需要翻译的字段
- * @param mainStr mian.js 的内容
- * @returns 
- */
-export function generateTranslation(mainStr: string, regexs: RegExp[], author = ""): Translation {
+export function generateTranslation(id: string, author: string, version: string, pluginVersion: string, manifestJSON: PluginManifest, mainStr: string, reLength: number, regexps: string[], flags: string): Translation {
+	const description = manifestJSON.description;
 	const translationJson: Translation = {
 		"manifest": {
-			"author": author,
-			"version": "-1"
+			"id": id,
+			"author": author == "" ? "无名氏" : author,
+			"version": version,
+			"pluginVersion": pluginVersion
+		},
+		"description": {
+			"original": description,
+			"translation": description
 		},
 		"dict": {}
 	}
-	for (const regex in regexs) {
-		const temp_array = mainStr.match(regexs[regex]);
+	for (let i = 0; i < regexps.length; i++) {
+		const temp_array = mainStr.match(new RegExp(regexps[i], flags));
 		if (temp_array != null)
 			for (const i in temp_array)
-				translationJson.dict[temp_array[i]] = temp_array[i]
+				if (temp_array[i].length <= reLength)
+					translationJson.dict[temp_array[i]] = temp_array[i]
 	}
 	return translationJson
 }
 
+export function PNotice(prefix: string, text: any) {
+	new Notice(`[${prefix}] ${text}`);
+}
+
+export function NoticeSuccess(prefix: string, text: any, duration = 4000) {
+	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`);
+}
+export function NoticeInfo(prefix: string, text: any, duration = 4000) {
+	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_info`);
+}
+export function NoticeWarning(prefix: string, text: any, duration = 4000) {
+	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_warning`);
+}
+export function NoticeError(prefix: string, text: any, duration = 10000) {
+	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+}
+export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: any = "") {
+	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+	if (isSuccess) {
+		if (text != "") { new Notice(`[${prefix}] 成功\n${text}`, 4000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
+		else { new Notice(`[${prefix}] 成功`, 4000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
+	} else {
+		new Notice(`[${prefix}] 失败\n${text}`, 10000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+	}
+}
 
 // import { exec, execSync } from 'child_process';
 // 选择目录

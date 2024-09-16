@@ -5,7 +5,6 @@ import builtins from "builtin-modules";
 const banner =
 `/*
 这是 ESBUILD 生成/绑定 的文件
-
 如果你想查看源代码,请访问该插件的github存储库
 */
 `;

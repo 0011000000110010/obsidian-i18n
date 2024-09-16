@@ -1,8 +1,6 @@
-export const api = {
-    'BAIDU': '百度',
-}
+import { ApiTypes, BaiduErrorCode, Languages } from "./types"
 
-export const languages = {
+export const LANGUAGES: Languages = {
     "zh-cn": "简体中文",
     "zh-tw": "繁體中文",
     "en": "English",
@@ -10,35 +8,36 @@ export const languages = {
     'custom ': "自定义"
 }
 
-export const mode = {
-    "ldt": "本地文件模式",
-    "ndt": "网络文件模式",
-    "nit": "网络接口模式",
-    "edit": "译文编辑模式",
-    "canzi": "蚕子软件支持"
+export const API_TYPES: ApiTypes = {
+    'BAIDU': '百度',
+    'OPENAI': 'OpenAI'
 }
 
-export const regexs = [
-    /Notice\(\s*(.+?)\s*\)/gs,
-    /.setText\(\s*(['"`])(.+?)\1\s*\)/gs,
-    /.setButtonText\(\s*(['"`])(.+?)\1\s*\)/gs,
-    /.setName\(\s*(['"`])(.+?)\1\s*\)/gs,
-    /.setDesc\(\s*(['"`])(.+?)\1\s*\)/gs,
-    /.setPlaceholder\(\s*(['"`])(.+?)\1\s*\)/gs,
-    /.setTooltip\(\s*(['"`])(.+?)\1\s*\)/gs,
-    /.appendText\(\s*(['"`])(.+?)\1\s*\)/gs,
-    /.createEl\((['"`])([\w:-]+)\1,\s*\{\s*text:\s*(['"`])(.+?)\3\s*\}\s*\)/gs,
-    /.innerText\s*=\s*(['"`]).*?\1/gs
-]
+export const BAIDU_ERROR_CODE: BaiduErrorCode = {
+    "52000": "成功",
+    "52001": "请求超时",
+    "52002": "系统错误",
+    "52003": "未授权用户",
+    "54000": "必填参数为空",
+    "54001": "签名错误",
+    "54003": "访问频率受限",
+    "54004": "账户余额不足",
+    "54005": "长query请求频繁",
+    "58000": "客户端IP非法",
+    "58001": "译文语言方向不支持",
+    "58002": "服务当前已关闭",
+    "58003": "此IP已被封禁",
+    "90107": "认证未通过或未生效",
+    "20003": "请求内容存在安全风险 "
+}
 
-export const regexs_1 = [
-    /Notice\(\s*(.+?)\s*\)/g,
-    /.setText\(\s*(['"`])(.+?)\1\s*\)/g,
-    /.setButtonText\(\s*(['"`])(.+?)\1\s*\)/g,
-    /.setName\(\s*(['"`])(.+?)\1\s*\)/g,
-    /.setDesc\(\s*(['"`])(.+?)\1\s*\)/g,
-    /.setPlaceholder\(\s*(['"`])(.+?)\1\s*\)/g,
-    /.setTooltip\(\s*(['"`])(.+?)\1\s*\)/g,
-    /.appendText\(\s*(['"`])(.+?)\1\s*\)/g,
-    /.innerText\s*=\s*(['"`]).*?\1/g
-]
+export const I18N_SORT = {
+    '0': '正序',
+    '1': '倒序'
+}
+export const I18N_TYPE = {
+    '0': '全部',
+    '1': '提取',
+    '2': '翻译',
+    '3': '还原'
+}

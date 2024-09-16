@@ -39,12 +39,13 @@ delete to_lang.auto
 
 export default class I18nNitBaiDu extends BaseSetting {
     main(): void {
-        const i18nNITBAIDU = new Setting(this.containerEl);
-        i18nNITBAIDU.setName(t('SETTING_NIT_BAIDU'));
-        i18nNITBAIDU.setDesc(t('SETTING_NIT_BAIDU_DESC'));
-        if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNITBAIDU.setClass('display-none');
+        const i18nNitBaiDu = new Setting(this.containerEl);
+        i18nNitBaiDu.setName(t('SETTING_NIT_BAIDU'));
+        i18nNitBaiDu.setDesc(t('SETTING_NIT_BAIDU_DESC'));
+        if (!(this.settings.I18N_MODE_NIT)) i18nNitBaiDu.setClass('i18n_display-none');
+        if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNitBaiDu.setClass('i18n_display-none');
         // FROM
-        i18nNITBAIDU.addDropdown(cb => cb
+        i18nNitBaiDu.addDropdown(cb => cb
             .addOptions(from_lang)
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.FROM)
             .onChange((value) => {
@@ -53,7 +54,7 @@ export default class I18nNitBaiDu extends BaseSetting {
             })
         );
         // TO
-        i18nNITBAIDU.addDropdown(cb => cb
+        i18nNitBaiDu.addDropdown(cb => cb
             .addOptions(to_lang)
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.TO)
             .onChange((value) => {
@@ -62,7 +63,7 @@ export default class I18nNitBaiDu extends BaseSetting {
             })
         );
         // APPID
-        i18nNITBAIDU.addText(cb => cb
+        i18nNitBaiDu.addText(cb => cb
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.APP_ID)
             .setPlaceholder('APPID')
             .onChange((value) => {
@@ -71,7 +72,7 @@ export default class I18nNitBaiDu extends BaseSetting {
             })
         );
         // KEY
-        i18nNITBAIDU.addText(cb => cb
+        i18nNitBaiDu.addText(cb => cb
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.KEY)
             .setPlaceholder('KEY')
             .onChange((value) => {

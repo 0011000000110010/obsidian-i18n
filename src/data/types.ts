@@ -1,4 +1,3 @@
-/** 状态 */
 export interface State {
 	/** 状态 */
 	state: boolean;
@@ -8,7 +7,6 @@ export interface State {
 	translationVersion: string;
 }
 
-/** 百度API */
 export interface BAIDU {
 	/** 源语言 */
 	FROM: string,
@@ -20,7 +18,6 @@ export interface BAIDU {
 	KEY: string
 }
 
-/** 百度语言类型 */
 export interface LangBAIDU {
 	/** 自动识别 */
 	auto?: string;
@@ -28,13 +25,38 @@ export interface LangBAIDU {
 	[code: string]: any,
 }
 
-/** 译文类型 */
 export interface Translation {
-	/** 基础信息 */
 	manifest: {
+		id: string
 		author: string
 		version: string
-	},
-	/** 翻译字典 */
+		pluginVersion: string
+	}
+	description: {
+		original: string
+		translation: string
+	}
 	dict: Record<string, string>
 }
+
+export interface Manifest {
+	id: string
+	translations: Array<{
+		author: string;
+		translationVersion: string;
+		pluginVersion: string;
+	}>;
+}
+
+export type Languages = {
+	[key: string]: string;
+};
+
+export type ApiTypes = {
+	[key: string]: string;
+};
+
+export type BaiduErrorCode = {
+	[key: string]: string;
+};
+

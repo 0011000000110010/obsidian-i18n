@@ -2,6 +2,17 @@
 此CSS文件将包含在您的插件中，并且当您的插件启用时，可在应用程序中使用。
 如果您的插件不需要CSS，请删除此文件。
 */
-.display-none{
+.display-none {
     display: none;
+}
+
+.edit {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.bold {
+    font-weight: bold;
 }
