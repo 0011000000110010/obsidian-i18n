@@ -1,23 +1,21 @@
 [
     {
-        "id": "floating-toc",
-        "translations": [
-            {"author":"宇桐非","translationVersion":"2.4.7","pluginVersion":"2.4.7"}
-        ]
-    },
-    {
-        "id": "outliner-md",
-        "translations": [
-            {"author":"宇桐非","translationVersion":"0.1.9","pluginVersion":"0.1.9"}
-        ]
-    },
-    {
         "id": "attachment-flow-plugin",
         "translations": [
             {
                 "author": "宇桐非",
                 "translationVersion": "0.4.3",
                 "pluginVersion": "0.4.3"
+            }
+        ]
+    },
+    {
+        "id": "better-fn",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "2024-09-15",
+                "pluginVersion": "1.0.1"
             }
         ]
     },
@@ -37,6 +35,11 @@
             {
                 "author": "里安",
                 "translationVersion": "1.0.0",
+                "pluginVersion": "0.5.1"
+            },
+            {
+                "author": "里安&Fendi",
+                "translationVersion": "2024-09-15",
                 "pluginVersion": "0.5.1"
             }
         ]
@@ -68,6 +71,21 @@
                 "author": "宇桐非",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "2.6.6"
+            },
+            {
+                "author": "宇桐非",
+                "translationVersion": "2.6.6",
+                "pluginVersion": "2.6.6"
+            }
+        ]
+    },
+    {
+        "id": "customizable-menu",
+        "translations": [
+            {
+                "author": "里安",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.2.0"
             }
         ]
     },
@@ -88,6 +106,16 @@
                 "author": "里安",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.2.2"
+            }
+        ]
+    },
+    {
+        "id": "floating-toc",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "2.4.7",
+                "pluginVersion": "2.4.7"
             }
         ]
     },
@@ -212,6 +240,16 @@
         ]
     },
     {
+        "id": "obsidian-another-quick-switcher",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "11.6.0",
+                "pluginVersion": "11.6.0"
+            }
+        ]
+    },
+    {
         "id": "obsidian-auto-link-title",
         "translations": [
             {
@@ -252,6 +290,36 @@
         ]
     },
     {
+        "id": "obsidian-comments",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "2024-09-15",
+                "pluginVersion": "0.2.0"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-copy-block-link",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "2024-09-15",
+                "pluginVersion": "1.0.4"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-custom-frames",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "2.4.7",
+                "pluginVersion": "2.4.7"
+            }
+        ]
+    },
+    {
         "id": "obsidian-day-planner",
         "translations": [
             {
@@ -288,6 +356,16 @@
                 "author": "曲淡歌",
                 "translationVersion": "1.0.1",
                 "pluginVersion": "2.26.0"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-hider",
+        "translations": [
+            {
+                "author": "zero",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.5.1"
             }
         ]
     },
@@ -412,6 +490,16 @@
         ]
     },
     {
+        "id": "obsidian-zoom",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "2024-09-15",
+                "pluginVersion": "1.1.2"
+            }
+        ]
+    },
+    {
         "id": "obsidian42-brat",
         "translations": [
             {
@@ -428,6 +516,16 @@
                 "author": "曲淡歌",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.24.1"
+            }
+        ]
+    },
+    {
+        "id": "outliner-md",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "0.1.9",
+                "pluginVersion": "0.1.9"
             }
         ]
     },
@@ -492,6 +590,16 @@
         ]
     },
     {
+        "id": "smart-connections",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "2.1.101",
+                "pluginVersion": "2.1.101"
+            }
+        ]
+    },
+    {
         "id": "table-editor-obsidian",
         "translations": [
             {
@@ -518,26 +626,6 @@
                 "author": "曲淡歌",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "2.7.1"
-            }
-        ]
-    },
-    {
-        "id": "obsidian-another-quick-switcher",
-        "translations": [
-            {
-                "author": "宇桐非",
-                "translationVersion": "11.6.0",
-                "pluginVersion": "11.6.0"
-            }
-        ]
-    },
-    {
-        "id": "obsidian-hider",
-        "translations": [
-            {
-                "author": "zero",
-                "translationVersion": "1.0.0",
-                "pluginVersion": "1.5.1"
             }
         ]
     },
