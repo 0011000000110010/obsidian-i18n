@@ -7,24 +7,21 @@ def update_directory():
     directory_file = os.path.join(zh_cn_path, 'directory.json')
     
     print(f"正在读取 {directory_file}")
-    # 读取现有的directory.json
     with open(directory_file, 'r', encoding='utf-8') as f:
         directory = json.load(f)
     
-    # 创建一个字典来存储id到索引的映射
-    id_to_index = {item['id']: index for index, item in enumerate(directory)}
+    # 创建一个字典来存储id到条目的映射
+    id_to_entry = {item['id']: item for item in directory}
     
-    # 遍历zh-cn/plugins目录下的所有子目录
     for plugin_id in os.listdir(plugins_path):
         plugin_path = os.path.join(plugins_path, plugin_id)
         if os.path.isdir(plugin_path):
             print(f"正在处理插件: {plugin_id}")
-            # 获取插件目录下的JSON文件
             json_files = [f for f in os.listdir(plugin_path) if f.endswith('.json')]
-            if json_files:
-                json_file = os.path.join(plugin_path, json_files[0])
-                print(f"  找到JSON文件: {json_file}")
-                with open(json_file, 'r', encoding='utf-8') as f:
+            for json_file in json_files:
+                file_path = os.path.join(plugin_path, json_file)
+                print(f"  处理文件: {file_path}")
+                with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
                 
                 if 'manifest' in data:
@@ -36,23 +33,32 @@ def update_directory():
                     }
                     print(f"  提取的信息: {translation_info}")
                     
-                    # 更新或添加到directory
-                    if plugin_id in id_to_index:
-                        directory[id_to_index[plugin_id]]['translations'] = [translation_info]
-                        print(f"  更新了现有条目: {plugin_id}")
+                    if plugin_id in id_to_entry:
+                        translations = id_to_entry[plugin_id].get('translations', [])
+                        # 检查是否已存在相同版本的译文
+                        existing = next((t for t in translations if t['translationVersion'] == translation_info['translationVersion']), None)
+                        if existing:
+                            existing.update(translation_info)
+                            print(f"  更新了现有译文: {plugin_id} - {translation_info['translationVersion']}")
+                        else:
+                            translations.append(translation_info)
+                            print(f"  添加了新译文: {plugin_id} - {translation_info['translationVersion']}")
+                        id_to_entry[plugin_id]['translations'] = translations
                     else:
-                        directory.append({
+                        new_entry = {
                             "id": plugin_id,
                             "translations": [translation_info]
-                        })
+                        }
+                        directory.append(new_entry)
+                        id_to_entry[plugin_id] = new_entry
                         print(f"  添加了新条目: {plugin_id}")
                 else:
-                    print(f"  警告: {json_file} 中没有找到 'manifest' 键")
-            else:
-                print(f"  警告: {plugin_path} 中没有找到JSON文件")
+                    print(f"  警告: {file_path} 中没有找到 'manifest' 键")
+    
+    # 按照id的内容进行排序
+    directory.sort(key=lambda x: x['id'].lower())
     
     print(f"正在写入更新后的 {directory_file}")
-    # 将更新后的directory写回文件
     with open(directory_file, 'w', encoding='utf-8') as f:
         json.dump(directory, f, ensure_ascii=False, indent=4)
     
