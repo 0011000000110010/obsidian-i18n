@@ -48,7 +48,9 @@ def create_pull_request(info, issue_number):
         "title": branch_name,
         "head": f"ob-i18n/obsidian-i18n-translation:{branch_name}",
         "base": "master",
-        "body": f"关联 issue: #{issue_number}"  # 添加这一行来关联 issue
+        "body": f"关联 issue: #{issue_number}",  # 添加这一行来关联 issue
+        "prune_source_branch": "true",
+        "close_related_issue": "true"
     }
     
     response = requests.post(url, json=payload)
