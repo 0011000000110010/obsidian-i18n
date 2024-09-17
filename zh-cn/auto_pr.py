@@ -90,46 +90,51 @@ def sync_with_upstream():
     print("仓库已成功与上游同步")
 
 def process_issues():
-    # 首先同步仓库
     sync_with_upstream()
 
     issues = get_issues()
     for issue in issues:
-        body_escaped = issue['body']
-        body = unescape_json(body_escaped)
+        title = issue['title']
         
-        manifest = body.get('manifest', {})
-        info = {
-            'id': manifest.get('id', ''),
-            'pluginVersion': manifest.get('pluginVersion', ''),
-            'version': manifest.get('version', ''),
-            'author': manifest.get('author', '')
-        }
-        
-        if info['id'] and info['pluginVersion']:
-            branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
+        if "提交译文" in title or "提交修改" in title:
+            body_escaped = issue['body']
+            body = unescape_json(body_escaped)
             
-            if branch_exists(branch_name):
-                print(f"分支已存在，跳过 {info['id']} 版本 {info['pluginVersion']}")
-                continue
+            manifest = body.get('manifest', {})
+            info = {
+                'id': manifest.get('id', ''),
+                'pluginVersion': manifest.get('pluginVersion', ''),
+                'version': manifest.get('version', ''),
+                'author': manifest.get('author', '')
+            }
             
-            directory = f'zh-cn/plugins/{info["id"]}'
-            os.makedirs(directory, exist_ok=True)
-            
-            file_path = f'{directory}/{info["pluginVersion"]}.json'
-            with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(body, f, ensure_ascii=False, indent=2)
-            
-            print(f'已保存: {file_path}')
-            
-            git_command(f"git checkout -b {branch_name}")
-            git_command(f"git add {file_path}")
-            git_command(f'git commit -m "Add {info["id"]} version {info["pluginVersion"]}"')
-            git_command(f'git push -u origin {branch_name}')
-            
-            create_pull_request(info, issue['number'])  # 传入 issue 编号
-            
-            git_command("git checkout master")
+            if info['id'] and info['pluginVersion']:
+                branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
+                
+                if branch_exists(branch_name):
+                    print(f"分支已存在，跳过 {info['id']} 版本 {info['pluginVersion']}")
+                    continue
+                
+                directory = os.path.join('zh-cn', 'plugins', info['id'])
+                os.makedirs(os.path.join(ROOT_DIR, directory), exist_ok=True)
+                
+                file_path = os.path.join(directory, f"{info['pluginVersion']}.json")
+                full_file_path = os.path.join(ROOT_DIR, file_path)
+                with open(full_file_path, 'w', encoding='utf-8') as f:
+                    json.dump(body, f, ensure_ascii=False, indent=2)
+                
+                print(f'已保存: {full_file_path}')
+                
+                git_command(f"git checkout -b {branch_name}")
+                git_command(f"git add {file_path}")
+                git_command(f'git commit -m "Add {info["id"]} version {info["pluginVersion"]}"')
+                git_command(f'git push -u origin {branch_name}')
+                
+                create_pull_request(info, issue['number'])
+                
+                git_command("git checkout master")
+        else:
+            print(f"跳过 issue: {title}（不是提交译文或提交修改）")
 
 if __name__ == "__main__":
     process_issues()
