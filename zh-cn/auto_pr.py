@@ -89,10 +89,30 @@ def sync_with_upstream():
 
     print("仓库已成功与上游同步")
 
+def update_ignore_file(new_ids):
+    ignore_file = os.path.join(SCRIPT_DIR, 'ignore.json')
+    if os.path.exists(ignore_file):
+        with open(ignore_file, 'r', encoding='utf-8') as f:
+            ignore_list = json.load(f)
+    else:
+        ignore_list = []
+
+    ignore_list.extend(new_ids)
+    ignore_list = list(set(ignore_list))  # 去重
+    ignore_list.sort()  # 排序
+
+    with open(ignore_file, 'w', encoding='utf-8') as f:
+        json.dump(ignore_list, f, ensure_ascii=False, indent=1)
+
+    return ignore_list
+
 def process_issues():
+    # 首先同步仓库
     sync_with_upstream()
 
     issues = get_issues()
+    new_ignore_ids = []
+
     for issue in issues:
         title = issue['title']
         
@@ -133,8 +153,31 @@ def process_issues():
                 create_pull_request(info, issue['number'])
                 
                 git_command("git checkout master")
+        elif "标记汉化" in title:
+            body_escaped = issue['body']
+            body = unescape_json(body_escaped)
+            
+            plugin_id = body.get('id', '')
+            
+            if plugin_id:
+                new_ignore_ids.append(plugin_id)
+                print(f"添加插件 ID 到忽略列表: {plugin_id}")
+            else:
+                print(f"警告: 无法从 issue 中提取插件 ID（标题：{title}）")
         else:
-            print(f"跳过 issue: {title}（不是提交译文或提交修改）")
+            print(f"跳过 issue: {title}（不是提交译文、提交修改或标记汉化）")
+
+    if new_ignore_ids:
+        updated_ignore_list = update_ignore_file(new_ignore_ids)
+        print(f"更新后的忽略列表: {updated_ignore_list}")
+
+        # 提交更改
+        git_command("git add zh-cn/ignore.json")
+        git_command('git commit -m "Update ignore.json with new plugin IDs"')
+        git_command("git push origin master")
+        print("已提交并推送更改到 ignore.json")
+    else:
+        print("没有新的插件 ID 需要添加到忽略列表")
 
 if __name__ == "__main__":
     process_issues()
