@@ -1,5 +1,5 @@
 {
     "version": "1.2.3",
-    "content":"1\n2\n3\n4",
+    "content":"修复 云端翻译模式链接无法隐藏BUG\n修改 提交UI\n新增 更多标识颜色\n新增 检测插件是否存在新版本\n新增 更多提交格式 [提交译文、修改译文、忽略插件、请求翻译]",
     "submit":"MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
