@@ -8,6 +8,11 @@ REPO_OWNER = "zero--two"
 REPO_NAME = "obsidian-i18n-translation"
 FORK_OWNER = "ob-i18n"  # 假设这是您的 Gitee 用户名
 
+# 获取脚本所在目录的路径
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# 获取项目根目录的路径
+ROOT_DIR = os.path.dirname(SCRIPT_DIR)
+
 def unescape_json(escaped_json):
     try:
         return json.loads(escaped_json)
@@ -32,7 +37,7 @@ def get_issues():
         return []
 
 def git_command(command):
-    return subprocess.run(command, shell=True, check=True, capture_output=True, text=True)
+    return subprocess.run(command, shell=True, check=True, capture_output=True, text=True, cwd=ROOT_DIR)
 
 def branch_exists(branch_name):
     result = git_command(f"git ls-remote --heads origin {branch_name}")
@@ -46,9 +51,9 @@ def create_pull_request(info, issue_number):
     payload = {
         "access_token": os.environ['GITEE_ACCESS_TOKEN'],
         "title": branch_name,
-        "head": f"ob-i18n/obsidian-i18n-translation:{branch_name}",
+        "head": f"{FORK_OWNER}:{branch_name}",
         "base": "master",
-        "body": f"关联 issue: #{issue_number}",  # 添加这一行来关联 issue
+        "body": f"关联 issue: #{issue_number}",
         "prune_source_branch": "true",
         "close_related_issue": "true"
     }
