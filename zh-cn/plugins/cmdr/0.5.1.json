@@ -1,0 +1,32 @@
+{
+  "manifest": {
+    "id": "cmdr",
+    "author": "里安",
+    "version": "1.0.0",
+    "pluginVersion": "0.5.1"
+  },
+  "description": {
+    "original": "Customize your workspace by adding commands everywhere, create Macros and supercharge your mobile toolbar.",
+    "translation": "通过在各处添加命令来定制您的工作区，创建宏并增强您的移动工具栏。"
+  },
+  "dict": {
+    ".setText(\"Macro Builder\")": ".setText(\"宏构建器\")",
+    ".setButtonText(\"No Icon\")": ".setButtonText(\"无图标\")",
+    ".setName(\"Toolbar Row Count\")": ".setName(\"工具栏行数\")",
+    ".setName(\"Column Layout\")": ".setName(\"列布局\")",
+    ".setName(\"Bottom Offset\")": ".setName(\"底部偏移\")",
+    ".setName(\"Button Height\")": ".setName(\"按钮高度\")",
+    ".setName(\"Button Width\")": ".setName(\"按钮宽度\")",
+    ".setName(\"Toolbar Extra Spacing\")": ".setName(\"工具栏额外间距\")",
+    ".setDesc(\"Set how many Rows the Mobile Toolbar should have. Set this to 0 to remove the Toolbar.\")": ".setDesc(\"设置移动工具栏应有多少行。将其设置为0以移除工具栏。\")",
+    ".setDesc(\"Use a column based layout instead of the default row. This makes it easier to arrange the Commands.\")": ".setDesc(\"使用基于列的布局代替默认的行布局。这使得安排命令更加容易。\")",
+    ".setDesc(\"Offset the Toolbar from the Bottom of the Screen. This is useful if the toolbar is partially obscured by other UI Elements.\")": ".setDesc(\"从屏幕底部偏移工具栏。如果工具栏部分被其他UI元素遮挡，这将很有用。\")",
+    ".setDesc(`ID: ${a.id}`)": ".setDesc(`ID: ${a.id}`)",
+    ".setDesc(\"Change the Height of each Button inside the Mobile Toolbar (in px).\")": ".setDesc(\"更改移动工具栏内每个按钮的高度（以px为单位）。\")",
+    ".setDesc(\"Change the Width of each Button inside the Mobile Toolbar (in px).\")": ".setDesc(\"更改移动工具栏内每个按钮的宽度（以px为单位）。\")",
+    ".setDesc(\"Some Themes need extra spacing in the toolbar. If your Toolbar doesn't wrap properly, try increasing this value.\")": ".setDesc(\"某些主题需要工具栏中有额外的间距。如果您的工具栏无法正确换行，请尝试增加此值。\")",
+    ".setPlaceholder(\"48\")": ".setPlaceholder(\"48\")",
+    ".setTooltip(\"Reset to default - Requires a restart\")": ".setTooltip(\"重置为默认值 - 需要重启\")",
+    "(createEl(\"h3\",{text:\"Custom Icons\"})": "(createEl(\"h3\",{text:\"自定义图标\"})"
+  }
+}
