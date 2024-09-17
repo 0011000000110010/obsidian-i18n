@@ -60,6 +60,16 @@
         ]
     },
     {
+        "id": "cmdr",
+        "translations": [
+            {
+                "author": "里安",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.5.1"
+            }
+        ]
+    },
+    {
         "id": "copilot",
         "translations": [
             {
