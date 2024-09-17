@@ -120,6 +120,16 @@
         ]
     },
     {
+        "id": "global-search-and-replace",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.3.0"
+            }
+        ]
+    },
+    {
         "id": "highlightr-plugin",
         "translations": [
             {
@@ -603,8 +613,8 @@
         "id": "tag-wrangler",
         "translations": [
             {
-                "author": "曲淡歌",
-                "translationVersion": "1.0.0",
+                "author": "曲淡歌&Fendi",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "0.6.1"
             }
         ]
