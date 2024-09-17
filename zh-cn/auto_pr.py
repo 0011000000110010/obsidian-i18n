@@ -3,7 +3,6 @@ import os
 import subprocess
 import requests
 import time
-from datetime import datetime
 
 GITEE_API_BASE = "https://gitee.com/api/v5"
 REPO_OWNER = "zero--two"
@@ -84,6 +83,9 @@ def create_pull_request(pr_type, info, issue_number, branch_name=None):
         
         if response.status_code == 201:
             print(f"Pull request 创建成功: {title}")
+            return
+        elif response.status_code == 400 and "已存在具有相同源分支的 PR" in response.text:
+            print(f"已存在相同的 PR，跳过创建")
             return
         elif response.status_code == 400 and "源分支不存在" in response.text:
             print(f"尝试 {attempt + 1}/{max_retries}: 源分支可能还未同步，等待 5 秒后重试...")
@@ -196,8 +198,7 @@ def process_issues():
                 updated_ignore_list = update_ignore_file([plugin_id])
                 print(f"更新后的忽略列表: {updated_ignore_list}")
 
-                timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-                branch_name = f"ignore-{plugin_id}-{timestamp}"
+                branch_name = f"ignore-{plugin_id}"
                 
                 try:
                     git_command(f"git checkout -b {branch_name}")
