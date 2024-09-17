@@ -109,7 +109,7 @@ def main():
     
     # 加载JSON文件
     ranked_plugins = load_json_file('zh-cn/ranked_plugins.json')
-    directory = load_json_file('directory.json')
+    directory = load_json_file('zh-cn/directory.json')
     
     print(f"ranked_plugins.json 包含 {len(ranked_plugins)} 条记录")
     print(f"directory.json 包含 {len(directory)} 条记录")
