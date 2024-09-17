@@ -1,4 +1,5 @@
 [
- "obsidian-linter", 
- "cm-chs-patch"
+ "cm-chs-patch",
+ "obsidian-excalidraw-plugin",
+ "obsidian-linter"
 ]
