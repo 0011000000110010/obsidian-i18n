@@ -420,6 +420,16 @@
         ]
     },
     {
+        "id": "obsidian-local-images-plus",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "0.15.9",
+                "pluginVersion": "0.15.9"
+            }
+        ]
+    },
+    {
         "id": "obsidian-mind-map",
         "translations": [
             {
