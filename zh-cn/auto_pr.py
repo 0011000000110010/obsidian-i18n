@@ -2,6 +2,8 @@ import json
 import os
 import subprocess
 import requests
+import time
+from datetime import datetime
 
 GITEE_API_BASE = "https://gitee.com/api/v5"
 REPO_OWNER = "zero--two"
@@ -37,7 +39,15 @@ def get_issues():
         return []
 
 def git_command(command):
-    return subprocess.run(command, shell=True, check=True, capture_output=True, text=True, cwd=ROOT_DIR)
+    try:
+        result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True, cwd=ROOT_DIR)
+        print(f"执行命令: {command}")
+        print(f"输出: {result.stdout}")
+        return result
+    except subprocess.CalledProcessError as e:
+        print(f"命令执行失败: {command}")
+        print(f"错误输出: {e.stderr}")
+        raise
 
 def branch_exists(branch_name):
     result = git_command(f"git ls-remote --heads origin {branch_name}")
@@ -50,7 +60,8 @@ def create_pull_request(pr_type, info, issue_number):
         branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
         title = f"[{pr_type}] {branch_name}"
     elif pr_type == "标记汉化":
-        branch_name = f"ignore-{info['id']}"
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        branch_name = f"ignore-{info['id']}-{timestamp}"
         title = f"[标记汉化] {info['id']}自带中文"
     else:
         raise ValueError(f"未知的 PR 类型: {pr_type}")
@@ -60,18 +71,29 @@ def create_pull_request(pr_type, info, issue_number):
         "title": title,
         "head": f"{FORK_OWNER}:{branch_name}",
         "base": "master",
-        "body": f"关联 issue: #{issue_number}",
+        "body": f"关联 issue: #{issue_number}" if issue_number != "N/A" else f"更新 ignore.json，添加 {info['id']}",
         "prune_source_branch": "true",
-        "close_related_issue": "true"
+        "close_related_issue": "true" if issue_number != "N/A" else "false"
     }
     
-    response = requests.post(url, json=payload)
+    print(f"创建 PR 的请求数据: {payload}")
     
-    if response.status_code == 201:
-        print(f"Pull request 创建成功，已关联 issue #{issue_number}")
-    else:
-        print(f"创建 Pull request 失败，状态码：{response.status_code}")
-        print(f"错误信息：{response.text}")
+    max_retries = 3
+    for attempt in range(max_retries):
+        response = requests.post(url, json=payload)
+        
+        if response.status_code == 201:
+            print(f"Pull request 创建成功: {title}")
+            return
+        elif response.status_code == 400 and "源分支不存在" in response.text:
+            print(f"尝试 {attempt + 1}/{max_retries}: 源分支可能还未同步，等待 5 秒后重试...")
+            time.sleep(5)
+        else:
+            print(f"创建 Pull request 失败，状态码：{response.status_code}")
+            print(f"错误信息：{response.text}")
+            return
+    
+    print(f"在 {max_retries} 次尝试后仍未能创建 Pull request")
 
 def sync_with_upstream():
     print("正在同步仓库与上游...")
@@ -114,7 +136,6 @@ def update_ignore_file(new_ids):
     return ignore_list
 
 def process_issues():
-    # 首先同步仓库
     sync_with_upstream()
 
     issues = get_issues()
@@ -170,26 +191,46 @@ def process_issues():
             if plugin_id:
                 new_ignore_ids.append(plugin_id)
                 print(f"添加插件 ID 到忽略列表: {plugin_id}")
+                
+                # 为每个"标记汉化"的插件创建单独的分支和PR
+                updated_ignore_list = update_ignore_file([plugin_id])
+                print(f"更新后的忽略列表: {updated_ignore_list}")
+
+                timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+                branch_name = f"ignore-{plugin_id}-{timestamp}"
+                
+                try:
+                    git_command(f"git checkout -b {branch_name}")
+                except subprocess.CalledProcessError:
+                    print(f"分支 {branch_name} 已存在，切换到该分支")
+                    git_command(f"git checkout {branch_name}")
+                
+                git_command("git add zh-cn/ignore.json")
+                try:
+                    git_command(f'git commit -m "Add {plugin_id} to ignore.json"')
+                except subprocess.CalledProcessError as e:
+                    if "nothing to commit" in str(e.stderr):
+                        print("没有需要提交的更改")
+                        continue
+                    else:
+                        raise
+
+                git_command(f"git push -u origin {branch_name}")
+
+                # 等待一段时间，确保分支已经同步到远程
+                print("等待 5 秒，确保分支同步到远程...")
+                time.sleep(5)
+
+                create_pull_request("标记汉化", {'id': plugin_id}, issue['number'])
+
+                git_command("git checkout master")
+                print(f"已尝试创建 PR 以将 {plugin_id} 添加到 ignore.json")
             else:
                 print(f"警告: 无法从 issue 中提取插件 ID（标题：{title}）")
         else:
             print(f"跳过 issue: {title}（不是提交译文、提交修改或标记汉化）")
 
-    if new_ignore_ids:
-        updated_ignore_list = update_ignore_file(new_ignore_ids)
-        print(f"更新后的忽略列表: {updated_ignore_list}")
-
-        branch_name = "update-ignore-list"
-        git_command(f"git checkout -b {branch_name}")
-        git_command("git add zh-cn/ignore.json")
-        git_command('git commit -m "Update ignore.json with new plugin IDs"')
-        git_command(f"git push -u origin {branch_name}")
-
-        create_pull_request("标记汉化", {'id': ','.join(new_ignore_ids)}, "N/A")
-
-        git_command("git checkout master")
-        print("已创建 PR 以更新 ignore.json")
-    else:
+    if not new_ignore_ids:
         print("没有新的插件 ID 需要添加到忽略列表")
 
 if __name__ == "__main__":
