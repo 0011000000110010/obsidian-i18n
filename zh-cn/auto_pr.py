@@ -53,15 +53,15 @@ def branch_exists(branch_name):
     result = git_command(f"git ls-remote --heads origin {branch_name}")
     return bool(result.stdout.strip())
 
-def create_pull_request(pr_type, info, issue_number):
+def create_pull_request(pr_type, info, issue_number, branch_name=None):
     url = f"{GITEE_API_BASE}/repos/{REPO_OWNER}/{REPO_NAME}/pulls"
     
     if pr_type in ["提交译文", "提交修改"]:
         branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
         title = f"[{pr_type}] {branch_name}"
     elif pr_type == "标记汉化":
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        branch_name = f"ignore-{info['id']}-{timestamp}"
+        if not branch_name:
+            raise ValueError("标记汉化类型的 PR 必须提供 branch_name")
         title = f"[标记汉化] {info['id']}自带中文"
     else:
         raise ValueError(f"未知的 PR 类型: {pr_type}")
@@ -221,7 +221,7 @@ def process_issues():
                 print("等待 5 秒，确保分支同步到远程...")
                 time.sleep(5)
 
-                create_pull_request("标记汉化", {'id': plugin_id}, issue['number'])
+                create_pull_request("标记汉化", {'id': plugin_id}, issue['number'], branch_name)
 
                 git_command("git checkout master")
                 print(f"已尝试创建 PR 以将 {plugin_id} 添加到 ignore.json")
