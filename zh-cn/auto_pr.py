@@ -43,14 +43,21 @@ def branch_exists(branch_name):
     result = git_command(f"git ls-remote --heads origin {branch_name}")
     return bool(result.stdout.strip())
 
-def create_pull_request(info, issue_number):
+def create_pull_request(pr_type, info, issue_number):
     url = f"{GITEE_API_BASE}/repos/{REPO_OWNER}/{REPO_NAME}/pulls"
     
-    branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
+    if pr_type in ["提交译文", "提交修改"]:
+        branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
+        title = f"[{pr_type}] {branch_name}"
+    elif pr_type == "标记汉化":
+        branch_name = f"ignore-{info['id']}"
+        title = f"[标记汉化] {info['id']}自带中文"
+    else:
+        raise ValueError(f"未知的 PR 类型: {pr_type}")
     
     payload = {
         "access_token": os.environ['GITEE_ACCESS_TOKEN'],
-        "title": branch_name,
+        "title": title,
         "head": f"{FORK_OWNER}:{branch_name}",
         "base": "master",
         "body": f"关联 issue: #{issue_number}",
@@ -117,6 +124,7 @@ def process_issues():
         title = issue['title']
         
         if "提交译文" in title or "提交修改" in title:
+            pr_type = "提交译文" if "提交译文" in title else "提交修改"
             body_escaped = issue['body']
             body = unescape_json(body_escaped)
             
@@ -150,7 +158,7 @@ def process_issues():
                 git_command(f'git commit -m "Add {info["id"]} version {info["pluginVersion"]}"')
                 git_command(f'git push -u origin {branch_name}')
                 
-                create_pull_request(info, issue['number'])
+                create_pull_request(pr_type, info, issue['number'])
                 
                 git_command("git checkout master")
         elif "标记汉化" in title:
@@ -171,11 +179,16 @@ def process_issues():
         updated_ignore_list = update_ignore_file(new_ignore_ids)
         print(f"更新后的忽略列表: {updated_ignore_list}")
 
-        # 提交更改
+        branch_name = "update-ignore-list"
+        git_command(f"git checkout -b {branch_name}")
         git_command("git add zh-cn/ignore.json")
         git_command('git commit -m "Update ignore.json with new plugin IDs"')
-        git_command("git push origin master")
-        print("已提交并推送更改到 ignore.json")
+        git_command(f"git push -u origin {branch_name}")
+
+        create_pull_request("标记汉化", {'id': ','.join(new_ignore_ids)}, "N/A")
+
+        git_command("git checkout master")
+        print("已创建 PR 以更新 ignore.json")
     else:
         print("没有新的插件 ID 需要添加到忽略列表")
 
