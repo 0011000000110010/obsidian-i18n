@@ -2,7 +2,7 @@
     "manifest": {
         "id": "obsidian-style-settings",
         "author": "曲淡歌",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "pluginVersion": "1.0.9"
     },
     "description": {
@@ -17,7 +17,7 @@
         ".setName(`Export settings for: ${this.section}`)": ".setName(`导出设置：${this.section}`)",
         ".setName(\"Import style setting\")": ".setName(\"导入样式设置\")",
         ".setDesc(\"Import an entire or partial configuration. Warning: this may override existing settings\")": ".setDesc(\"导入整个或部分配置。警告：这可能会覆盖现有设置。\")",
-        ".setPlaceholder(\"Paste config here...\")": ".setPlaceholder(\"好的，请提供需要翻译的英文文本，我将为您翻译成简体中文。\")",
+        ".setPlaceholder(\"Paste config here...\")": ".setPlaceholder(\"在此处粘贴配置…\")",
         ".setPlaceholder(\"Search Style Settings...\")": ".setPlaceholder(\"搜索样式设置...\")",
         ".setTooltip(\"Reset all settings to default\")": ".setTooltip(\"重置所有设置为默认值\")",
         ".setTooltip(\"Export settings\")": ".setTooltip(\"导出设置\")",
