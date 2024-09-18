@@ -1,0 +1,33 @@
+{
+  "manifest": {
+    "id": "colored-tags",
+    "author": "无名氏",
+    "version": "1.0.0",
+    "pluginVersion": "5.0.1"
+  },
+  "description": {
+    "original": "为不同的标签着色。嵌套标签的颜色与根标签混合，以提高可读性。文本颜色对比度自动匹配，符合 WCAG 2.1 的 AA 级别标准。",
+    "translation": "为不同的标签着色。嵌套标签的颜色与根标签混合，以提高可读性。文本颜色对比度自动匹配，符合 WCAG 2.1 的 AA 级别标准。"
+  },
+  "dict": {
+    ".setButtonText(\"Reset\")": ".setButtonText(\"重置\")",
+    ".setName(\"Palette\")": ".setName(\"调色板\")",
+    ".setName(\"Custom palette\")": ".setName(\"自定义调色板\")",
+    ".setName(\"Palette shift\")": ".setName(\"调色板偏移\")",
+    ".setName(\"\\u{1F9BE} Accessibility\")": ".setName(\"\\u{1F9BE} 可访问性\")",
+    ".setName(\"High text contrast\")": ".setName(\"高文本对比度\")",
+    ".setName(\"\\u{1F9EA} Experimental\")": ".setName(\"\\u{1F9EA} 实验性\")",
+    ".setName(\"Mix colors\")": ".setName(\"混合颜色\")",
+    ".setName(\"Gradient transition\")": ".setName(\"渐变过渡\")",
+    ".setName(\"Reset config\")": ".setName(\"重置配置\")",
+    ".setDesc(\"Select palette\")": ".setDesc(\"选择调色板\")",
+    ".setDesc(\"\").addText((text) => {\n        text.inputEl.style.minWidth = \"100%\";\n        text.setValue(\n          this.plugin.settings.palette.custom\n        ).setPlaceholder(\"Paste palette\")": ".setDesc(\"\").addText((text) => {\n        text.inputEl.style.minWidth = \"100%\";\n        text.setValue(\n          this.plugin.settings.palette.custom\n        ).setPlaceholder(\"粘贴调色板\")",
+    ".setDesc(\n      \"If the colors of some tags don't fit, you can shift the palette.\"\n    )": ".setDesc(\n      \"如果某些标签的颜色不合适，您可以调整调色板。\"\n    )",
+    ".setDesc(\"Show accessibility options\")": ".setDesc(\"显示可访问性选项\")",
+    ".setDesc(\"Use only white and black colors for texts\")": ".setDesc(\"文本仅使用白色和黑色\")",
+    ".setDesc(\n      \"Dangerous actions or insanely unstable options that could be changed or removed in any time\"\n    )": ".setDesc(\n      \"危险操作或极度不稳定的选项，这些选项可能随时更改或移除\"\n    )",
+    ".setDesc(\"It helps to make text readable\")": ".setDesc(\"这有助于使文本可读\")",
+    ".setDesc(\n        \"\\u{1F6A8} All colors of all tags will be recalculated as if it was the first launch of the plugin. Requires restart of Obsidian.\"\n      )": ".setDesc(\n        \"\\u{1F6A8} 所有标签的所有颜色将重新计算，就像插件首次启动一样。需要重启 Obsidian。\"\n      )",
+    ".setPlaceholder(\"Paste palette\")": ".setPlaceholder(\"粘贴调色板\")"
+  }
+}
