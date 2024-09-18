@@ -474,7 +474,7 @@
         "translations": [
             {
                 "author": "曲淡歌",
-                "translationVersion": "1.0.0",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "1.0.9"
             }
         ]
@@ -646,6 +646,16 @@
                 "author": "曲淡歌",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "2.7.1"
+            }
+        ]
+    },
+    {
+        "id": "various-complements",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "9.1.0"
             }
         ]
     },
