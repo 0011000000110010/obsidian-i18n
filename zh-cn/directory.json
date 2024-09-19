@@ -1,5 +1,15 @@
 [
     {
+        "id": "advanced-canvas",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "3.1.0"
+            }
+        ]
+    },
+    {
         "id": "attachment-flow-plugin",
         "translations": [
             {
