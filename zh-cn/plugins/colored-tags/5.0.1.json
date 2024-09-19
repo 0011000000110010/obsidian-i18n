@@ -6,7 +6,7 @@
     "pluginVersion": "5.0.1"
   },
   "description": {
-    "original": "为不同的标签着色。嵌套标签的颜色与根标签混合，以提高可读性。文本颜色对比度自动匹配，符合 WCAG 2.1 的 AA 级别标准。",
+    "original": "Colorizes tags in different colors. Colors of nested tags are mixed with the root tag to improve readability. Text color contrast is automatically matched to comply with AA level of WCAG 2.1.",
     "translation": "为不同的标签着色。嵌套标签的颜色与根标签混合，以提高可读性。文本颜色对比度自动匹配，符合 WCAG 2.1 的 AA 级别标准。"
   },
   "dict": {
