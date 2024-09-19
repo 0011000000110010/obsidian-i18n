@@ -80,6 +80,16 @@
         ]
     },
     {
+        "id": "colored-tags",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "5.0.1"
+            }
+        ]
+    },
+    {
         "id": "copilot",
         "translations": [
             {
