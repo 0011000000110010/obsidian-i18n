@@ -360,6 +360,16 @@
         ]
     },
     {
+        "id": "obsidian-full-calendar",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.10.7"
+            }
+        ]
+    },
+    {
         "id": "obsidian-git",
         "translations": [
             {
