@@ -160,6 +160,16 @@
         ]
     },
     {
+        "id": "ink",
+        "translations": [
+            {
+                "author": "Simon",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.2.6"
+            }
+        ]
+    },
+    {
         "id": "make-md",
         "translations": [
             {
