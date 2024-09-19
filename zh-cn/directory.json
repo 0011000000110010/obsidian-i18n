@@ -310,6 +310,16 @@
         ]
     },
     {
+        "id": "obsidian-book-search-plugin",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.7.4"
+            }
+        ]
+    },
+    {
         "id": "obsidian-checklist-plugin",
         "translations": [
             {
