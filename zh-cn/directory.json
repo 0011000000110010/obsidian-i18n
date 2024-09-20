@@ -390,6 +390,16 @@
         ]
     },
     {
+        "id": "obsidian-file-link",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "2024-09-20",
+                "pluginVersion": "1.1.4"
+            }
+        ]
+    },
+    {
         "id": "obsidian-folder-index",
         "translations": [
             {
