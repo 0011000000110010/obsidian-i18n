@@ -610,6 +610,16 @@
         ]
     },
     {
+        "id": "oz-clear-unused-images",
+        "translations": [
+            {
+                "author": "䲜",
+                "translationVersion": "1.1.1",
+                "pluginVersion": "1.1.1"
+            }
+        ]
+    },
+    {
         "id": "oz-image-plugin",
         "translations": [
             {
