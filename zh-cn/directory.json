@@ -210,6 +210,16 @@
         ]
     },
     {
+        "id": "memos-sync",
+        "translations": [
+            {
+                "author": "䲜",
+                "translationVersion": "0.4.3",
+                "pluginVersion": "0.4.3"
+            }
+        ]
+    },
+    {
         "id": "mousewheel-image-zoom",
         "translations": [
             {
