@@ -725,6 +725,16 @@
         ]
     },
     {
+        "id": "simpread",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.1.1"
+            }
+        ]
+    },
+    {
         "id": "smart-connections",
         "translations": [
             {
