@@ -606,6 +606,11 @@
                 "author": "zero",
                 "translationVersion": "1.0.1",
                 "pluginVersion": "1.0.2"
+            },
+            {
+                "author": "zero",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.3"
             }
         ]
     },
@@ -663,8 +668,8 @@
         "id": "quickadd",
         "translations": [
             {
-                "author": "曲淡歌",
-                "translationVersion": "1.0.0",
+                "author": "曲淡歌&Fendi",
+                "translationVersion": "1.0.2",
                 "pluginVersion": "1.11.1"
             }
         ]
@@ -673,8 +678,8 @@
         "id": "recent-files-obsidian",
         "translations": [
             {
-                "author": "曲淡歌",
-                "translationVersion": "1.0.0",
+                "author": "曲淡歌&Fendi",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "1.5.0"
             }
         ]
