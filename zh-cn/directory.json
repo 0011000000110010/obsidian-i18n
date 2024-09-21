@@ -390,6 +390,16 @@
         ]
     },
     {
+        "id": "obsidian-daily-note-outline",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.5.0"
+            }
+        ]
+    },
+    {
         "id": "obsidian-day-planner",
         "translations": [
             {
