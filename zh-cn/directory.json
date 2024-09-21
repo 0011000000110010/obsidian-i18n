@@ -1,5 +1,15 @@
 [
     {
+        "id": "pdf-plus",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "0.40.9",
+                "pluginVersion": "0.40.9"
+            }
+        ]
+    },
+    {
         "id": "advanced-canvas",
         "translations": [
             {
