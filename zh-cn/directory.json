@@ -500,6 +500,16 @@
         ]
     },
     {
+        "id": "obsidian-latex-suite",
+        "translations": [
+            {
+                "author": "SimonVinci",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.9.5"
+            }
+        ]
+    },
+    {
         "id": "obsidian-local-images-plus",
         "translations": [
             {
