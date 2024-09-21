@@ -1,5 +1,5 @@
 {
-    "version": "1.2.5",
+    "version": "1.2.6",
     "content":"修复 当译文格式错误时显示编辑按钮的情况\n修复 译文更新按钮不显示的问题\n修复 开启编辑器后启动报错",  
     "submit":"MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
