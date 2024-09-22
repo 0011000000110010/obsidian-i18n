@@ -176,10 +176,10 @@ def process_issues():
                 
                 print(f'已保存: {full_file_path}')
                 
-                git_command(f"git checkout -b {branch_name}")
+                git_command(f"git checkout -b "{branch_name}"")
                 git_command(f"git add {file_path}")
                 git_command(f'git commit -m "Add {info["id"]} version {info["pluginVersion"]}"')
-                git_command(f'git push -u origin {branch_name}')
+                git_command(f'git push -u origin "{branch_name}"')
                 
                 create_pull_request(pr_type, info, issue['number'])
                 
@@ -201,10 +201,10 @@ def process_issues():
                 branch_name = f"ignore-{plugin_id}"
                 
                 try:
-                    git_command(f"git checkout -b {branch_name}")
+                    git_command(f"git checkout -b "{branch_name}"")
                 except subprocess.CalledProcessError:
                     print(f"分支 {branch_name} 已存在，切换到该分支")
-                    git_command(f"git checkout {branch_name}")
+                    git_command(f"git checkout "{branch_name}"")
                 
                 git_command("git add zh-cn/ignore.json")
                 try:
@@ -216,7 +216,7 @@ def process_issues():
                     else:
                         raise
 
-                git_command(f"git push -u origin {branch_name}")
+                git_command(f"git push -u origin "{branch_name}"")
 
                 # 等待一段时间，确保分支已经同步到远程
                 print("等待 5 秒，确保分支同步到远程...")
