@@ -72,6 +72,8 @@ def create_pull_request(pr_type, info, issue_number, branch_name=None):
         "head": f"{FORK_OWNER}:{branch_name}",
         "base": "master",
         "body": f"关联 issue: #{issue_number}" if issue_number != "N/A" else f"更新 ignore.json，添加 {info['id']}",
+        "assignees": "song_of_light",
+        "testers": "song_of_light",      
         "prune_source_branch": "true",
         "close_related_issue": "true" if issue_number != "N/A" else "false"
     }
