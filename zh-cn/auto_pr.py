@@ -161,6 +161,7 @@ def process_issues():
             
             if info['id'] and info['pluginVersion']:
                 branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
+                branch_name = branch_name.replace(" ", "_").replace("&", "and")  # 替换空格和&符号
                 
                 if branch_exists(branch_name):
                     print(f"分支已存在，跳过 {info['id']} 版本 {info['pluginVersion']}")
