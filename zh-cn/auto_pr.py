@@ -57,6 +57,7 @@ def create_pull_request(pr_type, info, issue_number, branch_name=None):
     
     if pr_type in ["提交译文", "提交修改"]:
         branch_name = f"{info['id']}-{info['pluginVersion']}-{info['version']}-{info['author']}"
+        branch_name = branch_name.replace(" ", "_").replace("&", "and")  # 替换空格和&符号
         title = f"[{pr_type}] {branch_name}"
     elif pr_type == "标记汉化":
         if not branch_name:
