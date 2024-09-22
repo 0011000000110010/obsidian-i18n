@@ -49,7 +49,7 @@ def git_command(command):
         raise
 
 def branch_exists(branch_name):
-    result = git_command(f"git ls-remote --heads origin ""{branch_name}"")
+    result = git_command(f"git ls-remote --heads origin "{branch_name}"")
     return bool(result.stdout.strip())
 
 def create_pull_request(pr_type, info, issue_number, branch_name=None):
