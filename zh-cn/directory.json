@@ -1,15 +1,5 @@
 [
     {
-        "id": "pdf-plus",
-        "translations": [
-            {
-                "author": "宇桐非",
-                "translationVersion": "0.40.9",
-                "pluginVersion": "0.40.9"
-            }
-        ]
-    },
-    {
         "id": "advanced-canvas",
         "translations": [
             {
@@ -593,8 +583,8 @@
         "id": "obsidian-style-settings",
         "translations": [
             {
-                "author": "曲淡歌",
-                "translationVersion": "1.0.1",
+                "author": "曲淡歌 & Fendi",
+                "translationVersion": "1.0.2",
                 "pluginVersion": "1.0.9"
             }
         ]
@@ -691,6 +681,16 @@
                 "author": "曲淡歌",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "2.2.6"
+            }
+        ]
+    },
+    {
+        "id": "pdf-plus",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "0.40.9",
+                "pluginVersion": "0.40.9"
             }
         ]
     },
