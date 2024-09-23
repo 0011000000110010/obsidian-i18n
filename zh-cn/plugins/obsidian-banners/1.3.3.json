@@ -1,8 +1,8 @@
 {
   "manifest": {
     "id": "obsidian-banners",
-    "author": "Simon",
-    "version": "1.0.0",
+    "author": "SimonVinci",
+    "version": "1.0.1",
     "pluginVersion": "1.3.3"
   },
   "description": {
