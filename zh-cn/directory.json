@@ -805,6 +805,16 @@
         ]
     },
     {
+        "id": "tag-page-preview",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.0.12"
+            }
+        ]
+    },
+    {
         "id": "tag-summary-plugin",
         "translations": [
             {
