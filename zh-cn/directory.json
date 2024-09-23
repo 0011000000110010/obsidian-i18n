@@ -695,6 +695,16 @@
         ]
     },
     {
+        "id": "open-gate",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.11.6"
+            }
+        ]
+    },
+    {
         "id": "outliner-md",
         "translations": [
             {
