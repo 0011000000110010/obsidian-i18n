@@ -1,0 +1,40 @@
+{
+  "manifest": {
+    "id": "memos-sync",
+    "author": "Fendi",
+    "version": "1.0.1",
+    "pluginVersion": "1.2.0"
+  },
+  "description": {
+    "original": "Syncing memos from a [Memos](https://github.com/usememos/memos) server to your daily note. Fully compatible with official Daily Notes plugin, Calendar plugin and Periodic Notes plugin.",
+    "translation": "Syncing memos from a [Memos](https://github.com/usememos/memos) server to your daily note. Fully compatible with official Daily Notes plugin, Calendar plugin and Periodic Notes plugin."
+  },
+  "dict": {
+    ".setName(\"Base URL\")": ".setName(\"基础 URL\")",
+    ".setName(\"Access Token\")": ".setName(\"访问 Token\")",
+    ".setName(\"Open ID\")": ".setName(\"开放 ID\")",
+    ".setName(\"Folder to sync\")": ".setName(\"要同步的文件夹\")",
+    ".setName(\"File name format\")": ".setName(\"文件名格式\")",
+    ".setName(\"Sync interval\")": ".setName(\"同步间隔\")",
+    ".setDesc(\n      \"* The host of your memos server.(e.g. https://demo.usememos.com)\"\n    )": ".setDesc(\n      \"* 备忘录服务器的主机.(例如. https://demo.usememos.com)\"\n    )",
+    ".setDesc(\"Set this if your memos version is over 0.15.0.\")": ".setDesc(\"如果您的备忘录版本超过0.15.0，请设置此选项。\")",
+    ".setDesc(\"Set this if your memos version is under 0.15.0.\")": ".setDesc(\"如果您的备忘录版本低于0.15.0，请设置此选项。\")",
+    ".setDesc(\"The folder to sync memos and resources.\")": ".setDesc(\"用于同步备忘录和资源的文件夹。\")",
+    ".setDesc(\"The format of the file name for memos.\")": ".setDesc(\"备忘录文件名的格式。\")",
+    ".setDesc(\"The interval to sync memos.\")": ".setDesc(\"同步备忘录的间隔。\")",
+    ".setPlaceholder(\"Enter your Base URL\")": ".setPlaceholder(\"输入您的基本URL\")",
+    ".setPlaceholder(\"Enter your access token\")": ".setPlaceholder(\"输入您的访问令牌\")",
+    ".setPlaceholder(\"Enter your open ID\")": ".setPlaceholder(\"输入您的 open ID\")",
+    ".setPlaceholder(\"Enter the folder name\")": ".setPlaceholder(\"输入文件夹名称\")",
+    ".createEl(\"h2\", { text: \"Settings for Memos Sync.\" })": ".createEl(\"h2\", { text: \"备忘录同步设置\" })",
+    ".addOption(\"created_at\", \"Created at\")": ".addOption(\"created_at\", \"创建于\")",
+    ".addOption(\"updated_at\", \"Updated at\")": ".addOption(\"updated_at\", \"更新于\")",
+    ".addOption(\"title\", \"Title\")": ".addOption(\"title\", \"标题\")",
+    ".addOption(\"0\", \"Close\")": ".addOption(\"0\", \"关闭\")",
+    ".addOption(\"5\", \"Every 5 minutes\")": ".addOption(\"5\", \"每5分钟\")",
+    ".addOption(\"15\", \"Every 15 minutes\")": ".addOption(\"15\", \"每15分钟\")",
+    ".addOption(\"30\", \"Every 30 minutes\")": ".addOption(\"30\", \"每30分钟\")",
+    ".addOption(\"60\", \"Every 1 hour\")": ".addOption(\"60\", \"每1小时\")",
+    ".addOption(\"120\", \"Every 2 hours\")": ".addOption(\"120\", \"每2小时\")"
+  }
+}
