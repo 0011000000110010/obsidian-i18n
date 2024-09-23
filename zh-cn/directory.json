@@ -600,6 +600,16 @@
         ]
     },
     {
+        "id": "obsidian-reminder-plugin",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.1.15"
+            }
+        ]
+    },
+    {
         "id": "obsidian-style-settings",
         "translations": [
             {
