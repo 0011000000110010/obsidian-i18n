@@ -236,6 +236,11 @@
                 "author": "䲜",
                 "translationVersion": "0.4.3",
                 "pluginVersion": "0.4.3"
+            },
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.2.0"
             }
         ]
     },
@@ -333,8 +338,8 @@
         "id": "obsidian-banners",
         "translations": [
             {
-                "author": "Simon",
-                "translationVersion": "1.0.0",
+                "author": "SimonVinci",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "1.3.3"
             }
         ]
@@ -580,6 +585,16 @@
         ]
     },
     {
+        "id": "obsidian-projects",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.17.4"
+            }
+        ]
+    },
+    {
         "id": "obsidian-style-settings",
         "translations": [
             {
@@ -596,6 +611,16 @@
                 "author": "里安",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "0.18.7"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-task-progress-bar",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.0.0"
             }
         ]
     },
@@ -771,6 +796,16 @@
                 "author": "里安",
                 "translationVersion": "1.0.1",
                 "pluginVersion": "0.22.0"
+            }
+        ]
+    },
+    {
+        "id": "tag-summary-plugin",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.1.5"
             }
         ]
     },
