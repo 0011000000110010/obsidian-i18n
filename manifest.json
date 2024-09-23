@@ -1,7 +1,7 @@
 {
     "id": "i18n",
     "name": "I18N",
-    "version": "1.2.8",
+    "version": "1.2.9",
     "minAppVersion": "1.5.8",
     "description": "插件国际化",
     "author": "zero & 曲淡歌",
