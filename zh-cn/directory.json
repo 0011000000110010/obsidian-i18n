@@ -270,6 +270,16 @@
         ]
     },
     {
+        "id": "note-refactor-obsidian",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.8.2"
+            }
+        ]
+    },
+    {
         "id": "obsidian-admonition",
         "translations": [
             {
