@@ -580,6 +580,16 @@
         ]
     },
     {
+        "id": "obsidian-plugin-groups",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.1.0"
+            }
+        ]
+    },
+    {
         "id": "obsidian-projects",
         "translations": [
             {
