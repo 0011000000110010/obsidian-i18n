@@ -140,6 +140,16 @@
         ]
     },
     {
+        "id": "editing-toolbar",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.4.16"
+            }
+        ]
+    },
+    {
         "id": "file-explorer-note-count",
         "translations": [
             {
