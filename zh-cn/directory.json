@@ -230,6 +230,16 @@
         ]
     },
     {
+        "id": "links",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.17.19"
+            }
+        ]
+    },
+    {
         "id": "make-md",
         "translations": [
             {
