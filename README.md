@@ -7,7 +7,7 @@
 <p align="center">综上，obsidian-i18n是一个obsidian插件翻译的一站式解决方案。</p>
 
 ---
-# 大纲
+# 目录 Table of Contents
 
 - [什么是i18n](#什么是i18n)
 - [obsidian的i18n](#obsidian的i18n)
@@ -15,12 +15,12 @@
 	- [敏感权限声明](#敏感权限声明)
   - [快速上手](#快速上手)
     - [安装插件](#安装插件)
-      - [brat安装（需要网络能正常连接github）](https://github.com/dangehub/obsidian-i18n/edit/main/README.md#brat%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81%E7%BD%91%E7%BB%9C%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5github)
+      - [brat安装（需要网络能正常连接github）](https://github.com/0011000000110010/obsidian-i18n/edit/main/README.md#brat%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81%E7%BD%91%E7%BB%9C%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5github)
       - [手动安装](#手动安装)
     - [选择适合自己的翻译方式](#选择适合自己的翻译方式)
-      - [云端文件模式](#云端文件模式：最省心，但适配数量有限)
+      - [云端文件模式](https://github.com/0011000000110010/obsidian-i18n/edit/main/README.md#%E4%BA%91%E7%AB%AF%E6%96%87%E4%BB%B6%E6%A8%A1%E5%BC%8F%E6%9C%80%E7%9C%81%E5%BF%83%E4%BD%86%E9%80%82%E9%85%8D%E6%95%B0%E9%87%8F%E6%9C%89%E9%99%90)
       - [本地文件模式](https://github.com/dangehub/obsidian-i18n/edit/main/README.md#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E6%A8%A1%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E7%A8%8B%E5%BA%A6%E6%9C%80%E9%AB%98)
-      - [机器翻译模式](#网络接口模式)
+      - [机器翻译模式](https://github.com/0011000000110010/obsidian-i18n/edit/main/README.md#%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A8%A1%E5%BC%8F%E8%BE%85%E5%8A%A9%E7%BF%BB%E8%AF%91%E4%BD%86%E5%8F%AF%E8%83%BD%E5%87%BA%E9%94%99)
 
 
 
@@ -48,7 +48,7 @@
 - 因为obsidian-i18n的翻译功能实现基于替换其他插件源代码中的文本，因此需要修改其他插件的源代码（会备份原文件）。
 - 本插件完全开源，代码可读，如果您担心安全问题，可自行下载编译。
 
-### 使用网络(可选)
+### 使用网络(可选）
 
 - 在线文件模式：从网络下载已翻译的词典
 - 机器翻译模式：接入各种api来快速翻译词典
