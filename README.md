@@ -2,9 +2,17 @@
 
 ---
 
-<p align="center">obsidian-i18n是用于翻译其他obsidian插件的插件。
-<p align="center">obsidian-i18n通过正则匹配其他插件源代码中可能需要被翻译的内容，并输出为词典（待翻译），然后提供三种方式（本地文件模式 、云端文件模式和机器翻译模式）来翻译此词典，然后借助i18n可动态的注入与卸载词典。
-<p align="center">综上，obsidian-i18n是一个obsidian插件翻译的一站式解决方案。</p>
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+obsidian-i18n是用于翻译其他obsidian插件的插件。
+
+obsidian-i18n通过正则匹配其他插件源代码中可能需要被翻译的内容，并输出为词典（待翻译），然后提供三种方式（本地文件模式 、云端文件模式和机器翻译模式）来翻译此词典，然后借助i18n动态的注入与卸载词典。
+
+综上，obsidian-i18n是一个obsidian插件国际化的一站式解决方案。
 
 ---
 # 目录 Table of Contents
@@ -172,4 +180,19 @@ A：用户在使用机器翻译前应当知晓：如果机器翻译后直接应�
 
 本项目采用MIT协议开源。
 
+
+<!-- links -->
+[your-project-path]:0011000000110010/obsidian-i18n
+[contributors-shield]: https://img.shields.io/github/contributors/0011000000110010/obsidian-i18n.svg?style=flat-square
+[contributors-url]: https://github.com/0011000000110010/obsidian-i18n/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/0011000000110010/obsidian-i18n.svg?style=flat-square
+[forks-url]: https://github.com/0011000000110010/obsidian-i18n/network/members
+[stars-shield]: https://img.shields.io/github/stars/0011000000110010/obsidian-i18n.svg?style=flat-square
+[stars-url]: https://github.com/0011000000110010/obsidian-i18n/stargazers
+[issues-shield]: https://img.shields.io/github/issues/0011000000110010/obsidian-i18n.svg?style=flat-square
+[issues-url]: https://img.shields.io/github/issues/0011000000110010/obsidian-i18n.svg
+[license-shield]: https://img.shields.io/github/license/0011000000110010/obsidian-i18n.svg?style=flat-square
+[license-url]: https://github.com/0011000000110010/obsidian-i18n/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/shaojintian
 
