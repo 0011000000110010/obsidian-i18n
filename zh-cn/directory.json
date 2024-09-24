@@ -715,6 +715,16 @@
         ]
     },
     {
+        "id": "open-with",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.3.2"
+            }
+        ]
+    },
+    {
         "id": "outliner-md",
         "translations": [
             {
