@@ -80,6 +80,16 @@
         ]
     },
     {
+        "id": "cmenu-plugin",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.1.2"
+            }
+        ]
+    },
+    {
         "id": "code-styler",
         "translations": [
             {
