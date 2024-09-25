@@ -600,6 +600,16 @@
         ]
     },
     {
+        "id": "obsidian-local-rest-api",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.5.4"
+            }
+        ]
+    },
+    {
         "id": "obsidian-map-view",
         "translations": [
             {
