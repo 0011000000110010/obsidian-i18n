@@ -80,6 +80,16 @@
         ]
     },
     {
+        "id": "code-styler",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.1.7"
+            }
+        ]
+    },
+    {
         "id": "colored-tags",
         "translations": [
             {
