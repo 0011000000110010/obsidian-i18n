@@ -120,6 +120,16 @@
         ]
     },
     {
+        "id": "creases",
+        "translations": [
+            {
+                "author": "简言",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.7.0"
+            }
+        ]
+    },
+    {
         "id": "custom-sort",
         "translations": [
             {
