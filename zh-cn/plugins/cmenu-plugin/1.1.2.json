@@ -1,0 +1,52 @@
+{
+  "manifest": {
+    "id": "cmenu-plugin",
+    "author": "Fendi",
+    "version": "1.0.0",
+    "pluginVersion": "1.1.2"
+  },
+  "description": {
+    "original": "cMenu is a plugin that adds a minimal text editor modal for a smoother writing/editing experience ✍🏽.",
+    "translation": "cMenu是一个插件，它添加了一个最小的文本编辑器模式，以获得更流畅的写作/编辑体验 ✍🏽."
+  },
+  "dict": {
+    ".setName(\"cMenu append method\")": ".setName(\"cMenu附加方法\")",
+    ".setDesc(\"Choose where cMenu will append upon regeneration. To see the change, hit the refresh button below, or in the status bar menu.\")": ".setDesc(\"选择cMenu在重新生成时附加的位置。要查看更改，请点击下面或状态栏菜单中的刷新按钮。\")",
+    ".setName(\"cMenu aesthetic\")": ".setName(\"cMenu美学\")",
+    ".setDesc(\"Choose between a glass morphism and default style for cMenu. To see the change, hit the refresh button below, or in the status bar menu.\")": ".setDesc(\"在玻璃变形和cMenu的默认样式之间进行选择。要查看更改，请点击下面或状态栏菜单中的刷新按钮。\")",
+    ".setName(\"cMenu columns\")": ".setName(\"cMenu列\")",
+    ".setDesc(\"Choose the number of columns per row to display on cMenu. To see the change, hit the refresh button below, or in the status bar menu.\")": ".setDesc(\"选择要在cMenu上显示的每行的列数。要查看更改，请点击下面或状态栏菜单中的刷新按钮。\")",
+    ".setName(\"cMenu refresh\")": ".setName(\"c菜单刷新\")",
+    ".setName(\"cMenu commands\")": ".setName(\"cMenu命令\")",
+    ".setDesc(\"Add a command onto cMenu from Obsidian's commands library. To reorder the commands, drag and drop the command items. To delete them, use the delete buttom to the right of the command item. cMenu will not automaticaly refresh after reordering commands. Use the refresh button above.\")": ".setDesc(\"将一个命令从Obsidian的命令库添加到cMenu中。若要重新排序命令，请拖放命令项。要删除它们，请使用命令项右侧的删除按钮。重新排序命令后，cMenu不会自动刷新。使用上面的刷新按钮。\")",
+    "  name: \"cMenu: Toggle bold\",": "  name: \"cMenu：切换粗体\",",
+    "  name: \"cMenu: Toggle italics\",": "  name: \"cMenu：切换斜体\",",
+    "  name: \"cMenu: Toggle strikethrough\",": "  name: \"cMenu：切换删除线\",",
+    "  name: \"cMenu: Toggle underline\",": "  name: \"cMenu：切换下划线\",",
+    "  name: \"cMenu: Toggle superscript\",": "  name: \"cMenu：切换上标\",",
+    "  name: \"cMenu: Toggle subscript\",": "  name: \"cMenu：切换下标\",",
+    "  name: \"cMenu: Toggle code\",": "  name: \"cMenu：切换代码\",",
+    "  name: \"cMenu: Toggle codeblock\",": "  name: \"cMenu：切换代码块\",",
+    "  name: \"cMenu: Toggle blockquote\",": "  name: \"cMenu：切换块引用\",",
+    "  name: \"Add embed\",": "  name: \"添加嵌入\",",
+    "  name: \"Insert markdown link\",": "  name: \"插入标记链接\",",
+    "  name: \"Add tag\",": "  name: \"添加标签\",",
+    "  name: \"Add internal link\",": "  name: \"添加内部链接\",",
+    "  name: \"Toggle bold\",": "  name: \"切换粗体\",",
+    "  name: \"Toggle italics\",": "  name: \"切换斜体\",",
+    "  name: \"Toggle strikethrough\",": "  name: \"切换删除线\",",
+    "  name: \"Toggle code\",": "  name: \"切换代码\",",
+    "  name: \"Toggle blockquote\",": "  name: \"切换块引用\",",
+    "  name: \"Toggle bullet\",": "  name: \"切换项目符号\",",
+    "  name: \"Toggle checklist status\",": "  name: \"切换检查表状态\",",
+    "  name: \"Toggle comment\",": "  name: \"切换注释\",",
+    "  name: \"Toggle highlight\",": "  name: \"切换高亮显示\",",
+    "  name: \"Toggle numbered list\",": "  name: \"切换编号列表\",",
+    "  name: \"Hide/show \",": "  name: \"隐藏/显示\",",
+    ".setTitle(\"Hide & Show\");": ".setTitle(\"隐藏和显示\");",
+    "cMenu will only refresh automatically after you have either added or deleted a command from it. To see UI changes to cMenu (above settings changes) use the refresh button. If you forget to refresh in settings, no worries. There is also a refresh button in the cMenu status bar menu.": "cMenu只有在添加或删除命令后才会自动刷新。要查看cMenu的UI更改（以上设置更改），请使用刷新按钮。如果忘记刷新设置，不用担心。cMenu状态栏菜单中还有一个刷新按钮。",
+    "Created by ": "作者",
+    "Plugin Settings": "插件设置",
+    "If you like this Plugin and are considering donating to support continued development, use the button below!": "如果你喜欢这个插件并考虑捐款支持继续开发，请使用下面的按钮！"
+  }
+}
