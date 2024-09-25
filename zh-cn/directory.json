@@ -300,6 +300,16 @@
         ]
     },
     {
+        "id": "mrj-jump-to-link",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.5.7"
+            }
+        ]
+    },
+    {
         "id": "mysnippets-plugin",
         "translations": [
             {
@@ -586,6 +596,16 @@
                 "author": "SimonVinci",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.9.5"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-list-callouts",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.2.8"
             }
         ]
     },
