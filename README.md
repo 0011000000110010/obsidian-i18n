@@ -188,7 +188,7 @@ obsidian-i18n的工作原理简图：
 
 ## 进阶设置
 
-详见 [obsidian-i18n Wiki](https://github.com/0011000000110010/obsidian-i18n/wiki/obsidian%E2%80%90i18n-wiki)
+详见 [obsidian-i18n Wiki](https://github.com/0011000000110010/obsidian-i18n/wiki)
 
 ## 开源协议
 
