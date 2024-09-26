@@ -170,6 +170,16 @@
         ]
     },
     {
+        "id": "digitalgarden",
+        "translations": [
+            {
+                "author": "Cong",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.57.2"
+            }
+        ]
+    },
+    {
         "id": "editing-toolbar",
         "translations": [
             {
