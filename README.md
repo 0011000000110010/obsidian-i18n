@@ -161,7 +161,7 @@ obsidian-i18n的工作原理简图：
 ## 常见问题 FAQ
 
 <details>
-  <summary>Q1:为什么i18n里没有插件/比实际插件数量少？</summary>
+  <summary>Q1：为什么i18n里没有插件/比实际插件数量少？</summary>
 
 你的字典格式错误，导致插件无法正确读取。请检查所有插件目录/lang/zh-cn.json，确认json格式是否正常，最简单的办法是删掉所有lang目录
 </details>
@@ -188,7 +188,7 @@ obsidian-i18n的工作原理简图：
 
 ## 进阶设置
 
-详见 [obsidian-i18n Wiki](https://github.com/0011000000110010/obsidian-i18n/wiki)
+详见 [obsidian-i18n Wiki](https://github.com/0011000000110010/obsidian-i18n/wiki/obsidian%E2%80%90i18n-wiki)
 
 ## 开源协议
 
