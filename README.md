@@ -1,12 +1,18 @@
-<h1 align="center">Obsidian i18n</h1>
+<h1 align="center"> <div style="width: 1%;">
+  <img src="images/logo.png" style="width: 8%;" alt="Click to see the source">
+</div> Obsidian i18n </h1>
+
+
 
 ---
-
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/0011000000110010/obsidian-i18n/total)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+
+
 
 obsidian-i18n是用于翻译其他obsidian插件的插件。
 
