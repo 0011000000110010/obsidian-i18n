@@ -14,7 +14,7 @@
 
 <h1 align="center"> 
 
-<img src="images/logo.png" width="100" height="100">
+<img src="images/logo.png" width="100">
 
  Obsidian i18n 
 
