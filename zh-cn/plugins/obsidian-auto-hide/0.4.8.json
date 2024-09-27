@@ -1,0 +1,22 @@
+{
+  "manifest": {
+    "id": "obsidian-auto-hide",
+    "author": "宇桐非",
+    "version": "0.4.8",
+    "pluginVersion": "0.4.8"
+  },
+  "description": {
+    "original": "Collapse sidebars when clicking on the editor/viewer panel",
+    "translation": "点击编辑器/查看面板时收起侧边栏。"
+  },
+  "dict": {
+    "text: \"Settings for Auto Hide plugin.\"": "text: \"Auto Hide 插件的设置。\"",
+    "text: \"EXPERIMENTAL!\"": "text: \"实验性功能！\"",
+    ".setName(\"Expand the sidebar with a ribbon\")": ".setName(\"通过丝带展开侧边栏\")",
+    ".setName(\"Expand the sidebar with a note title\")": ".setName(\"通过笔记标题展开侧边栏\")",
+    ".setName(\"Lock sidebar collapse\")": ".setName(\"锁定侧边栏折叠\")",
+    ".setDesc(\"Click on the blank area of ribbon to expand the sidebar.\")": ".setDesc(\"点击丝带的空白区域以展开侧边栏。\")",
+    ".setDesc(\"Click on the note title to expand the left sidebar.\")": ".setDesc(\"点击笔记标题以展开左侧边栏。\")",
+    ".setDesc(\"Add a pin that can temporarily lock the sidebar collapse.\")": ".setDesc(\"添加一个可以临时锁定侧边栏折叠的图钉。\")"
+  }
+}
