@@ -60,3 +60,11 @@ export type BaiduErrorCode = {
 	[key: string]: string;
 };
 
+
+export interface ValidationOptions {
+	checkFormat?: boolean;
+	checkAuthor?: boolean;
+	checkVersion?: boolean;
+	checkTranslations?: boolean;
+}
+

@@ -8,9 +8,9 @@ import { I18nSettings } from '../settings/data';
 
 import { Manifest, Translation } from 'src/data/types';
 import { API_TYPES, I18N_SORT, I18N_TYPE } from 'src/data/data';
-import { PNotice, NoticeError, State, generateTranslation, NoticeInfo, NoticeOperationResult } from '../utils';
-import { GitIssueModal } from './git-issue-modal';
-import { WizardModal } from './wizard-modal';
+import { NoticeError, State, generateTranslation, NoticeInfo, NoticeOperationResult, compareVersions, NoticePrimary } from '../utils';
+import { I18NSubmiteModal } from './i18n-submite-modal';
+import { WizardModal } from './i18n-wizard-modal';
 import { t } from '../lang/inxdex';
 import Url from 'src/url';
 
@@ -33,6 +33,7 @@ export class I18NModal extends Modal {
 
     regexps: string[];
     developerMode = false;
+
     // ============================================================
     //                       构造函数
     // ============================================================
@@ -42,50 +43,63 @@ export class I18NModal extends Modal {
         // @ts-ignore
         this.basePath = path.normalize(this.app.vault.adapter.getBasePath());
         this.settings = i18n.settings;
-        // @ts-ignore
+        // @ts-ignore 
         this.settingPlugins = this.app.setting;
         this.regexps = this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE];
     }
-
+    footEl: HTMLDivElement;
     // ============================================================
     //                        展示操作
     // ============================================================
-    public async showHead() {
+    public async showHead() { 
         //@ts-ignore
         const modalEl: HTMLElement = this.contentEl.parentElement;
         modalEl.addClass('i18n_modal');
         modalEl.removeChild(modalEl.getElementsByClassName('modal-close-button')[0]);
-
-        this.titleEl.addClass('i18n_modal_title_box');
+        this.titleEl.addClass('i18n_modal_title');
         this.contentEl.addClass('i18n_modal_item_box');
 
-        const test = new Setting(this.titleEl);
-        test.setClass('i18n_modal_title_box_1');
-        test.setName('遇到难题？速加Q群咨询！');
+        this.footEl = document.createElement("div");
+        this.footEl.addClass('i18n_modal_foot');
+        modalEl.appendChild(this.footEl);
 
-        const qqButton = new ButtonComponent(test.controlEl);
-        qqButton.setIcon('i18n_qq');
-        qqButton.setTooltip('一键直达，加入Q群共享精彩！');
-        qqButton.onClick(() => { window.open(Url.QQ_GROUP) });
+        const helpTitle = new Setting(this.titleEl);
+        helpTitle.setClass('i18n_modal_title_help');
+        helpTitle.setName(t('I18N_HELP_TITLE_NAME'));
 
-        const settingTabButton = new ButtonComponent(test.controlEl);
-        settingTabButton.setIcon('settings');
-        settingTabButton.setTooltip('打开插件设置');
-        settingTabButton.onClick(() => {
+        const helpQQButton = new ButtonComponent(helpTitle.controlEl);
+        helpQQButton.setIcon('i18n_qq');
+        helpQQButton.setTooltip(t('I18N_HELP_TITLE_QQ_BUTTON_TIP'));
+        helpQQButton.onClick(() => { window.open(Url.QQ_GROUP) });
+
+        const helpSettingButton = new ButtonComponent(helpTitle.controlEl);
+        helpSettingButton.setIcon('settings');
+        helpSettingButton.setTooltip(t('I18N_HELP_TITLE_SETTING_BUTTON_TIP'));
+        helpSettingButton.onClick(() => {
             this.settingPlugins.open();
             this.settingPlugins.openTabById(this.i18n.manifest.id);
             this.close();
         });
 
-        const helpButton = new ButtonComponent(test.controlEl);
+        const helpButton = new ButtonComponent(helpTitle.controlEl);
         helpButton.setIcon('circle-help');
-        helpButton.setTooltip('帮助');
+        helpButton.setTooltip(t('I18N_HELP_TITLE_HELP_BUTTON_TIP'));
         helpButton.onClick(() => { new WizardModal(this.app, this.i18n).open() });
 
-        const search = new Setting(this.titleEl);
-        search.setClass('i18n_modal_title_box_2');
-        search.setName('搜索');
-        search.addDropdown(cb => cb
+        if (this.developerMode) {
+            const reload = new ButtonComponent(helpTitle.controlEl);
+            reload.setIcon('refresh-ccw');
+            reload.setTooltip('刷新插件');
+            reload.onClick(async () => {
+                await this.reloadPlugin(this.i18n.manifest.id);
+                this.close();
+            });
+        }
+
+        const searchTitle = new Setting(this.titleEl);
+        searchTitle.setClass('i18n_modal_title_search');
+        searchTitle.setName(t('I18N_SEARCH_TITLE_NAME'));
+        searchTitle.addDropdown(cb => cb
             .addOptions(I18N_SORT)
             .setValue(this.settings.I18N_SORT)
             .onChange((value) => {
@@ -94,7 +108,7 @@ export class I18NModal extends Modal {
                 this.reloadShowData();
             })
         );
-        search.addDropdown(cb => cb
+        searchTitle.addDropdown(cb => cb
             .addOptions(I18N_TYPE)
             .setValue(this.settings.I18N_TYPE)
             .onChange((value) => {
@@ -103,7 +117,7 @@ export class I18NModal extends Modal {
                 this.reloadShowData();
             })
         );
-        search.addSearch(cb => cb
+        searchTitle.addSearch(cb => cb
             .setValue(this.settings.I18N_SEARCH_TEXT)
             .onChange((value) => {
                 this.settings.I18N_SEARCH_TEXT = value;
@@ -111,16 +125,6 @@ export class I18NModal extends Modal {
                 this.reloadShowData();
             })
         );
-
-        if (this.developerMode) {
-            const reload = new ButtonComponent(test.controlEl);
-            reload.setIcon('refresh-ccw');
-            reload.setTooltip('刷新插件');
-            reload.onClick(async () => {
-                await this.reloadPlugin(this.i18n.manifest.id);
-                this.close();
-            });
-        }
 
     }
     // ============================================================
@@ -136,7 +140,7 @@ export class I18NModal extends Modal {
         // @ts-ignore
         this.enabledPlugins = this.app.plugins.enabledPlugins;
         // 搜索
-        if (this.settings.I18N_SEARCH_TEXT == "") { this.showPlugins = this.plugins }
+        if (this.settings.I18N_SEARCH_TEXT == '') { this.showPlugins = this.plugins }
         else { this.showPlugins = this.plugins.filter(item => item.name.toLowerCase().indexOf(this.settings.I18N_SEARCH_TEXT.toLowerCase()) != -1); }
         // 分类
         const idsToRemove: string[] = [];
@@ -147,7 +151,6 @@ export class I18NModal extends Modal {
                 for (const plugin of this.showPlugins) {
                     // @ts-ignore
                     const pluginDir = path.join(this.basePath, plugin.dir);
-                    // const stateDoc = path.join(pluginDir, 'lang', 'state.json');
                     if (fs.pathExistsSync(path.join(pluginDir, 'lang', `${this.settings.I18N_LANGUAGE}.json`))) {
                         idsToRemove.push(plugin.id);
                     }
@@ -206,65 +209,61 @@ export class I18NModal extends Modal {
             const manifestDoc = path.join(pluginDir, 'manifest.json');
             const mainDoc = path.join(pluginDir, 'main.js');
             const duplicateDoc = path.join(pluginDir, 'duplicate.js');
+
             // 创建状态文件对象
             const stateObj = new State(stateDoc);
+
             // 当状态文件不存在时创建状态文件
             if (isLangDir && !isStateDoc) {
-                try {
-                    stateObj.insert();
-                    isStateDoc = fs.pathExistsSync(stateDoc);
-                } catch (error) {
-                    NoticeError('错误', `error`);
-                }
+                try { stateObj.insert(); isStateDoc = fs.pathExistsSync(stateDoc); }
+                catch (e) { NoticeError(t('I18N_STATE_HEAD'), e); }
             }
+            // 插件更新(更新还原插件状态)
+            if (isStateDoc && stateObj.state() && plugin.version != stateObj.pluginVersion())
+                try { fs.removeSync(duplicateDoc); stateObj.reset(); NoticePrimary(t('I18N_UPDATE_HEAD'), plugin.name); } catch (e) { NoticeError(t('I18N_UPDATE_HEAD'), e); }
 
-            // 本地译文介绍
+            // ====================
+            // 本地插件 vs 云端插件
+            // ====================
+            // 本地译文
             let localTranslationJson: Translation | undefined;
             // 云端译文介绍
-            let cloudTranslationManifestJson: Manifest | undefined;
+            let cloudTranslationJson: Manifest | undefined;
             // 判断 本地插件和云端插件 版本是否相同标记
-            let isPluginsVersionSameMark: boolean;
+            let isPluginsVersionSameMark: number;
             // 判断 本地译文和云端译文 版本是否相同标记
-            let isTranslationVersionSameMark: boolean = false;
+            let isTranslationVersionSameMark: number;
             // 云端最新版插件版本号
             let latestCloudVersion: string;
             // 译文格式是否正常标记
-            let translationFormatMark = true;
-
-            if (this.i18n.directoryMark) { cloudTranslationManifestJson = this.i18n.directory.find((manifest: Manifest) => manifest.id === plugin.id) }
-            if (cloudTranslationManifestJson != undefined) {
-                // 本地译文和云端译文 插件版本是否相同标记
-                isPluginsVersionSameMark = cloudTranslationManifestJson.translations.find(translation => translation.pluginVersion === plugin.version) !== undefined ? true : false;
+            let translationFormatMark: boolean = true;
+            // 当本地译文存在时 提取本地译文 并 判断译文格式
+            if (isLangDoc) { try { localTranslationJson = fs.readJsonSync(langDoc); translationFormatMark = true; } catch (e) { translationFormatMark = false } }
+            // 当云端译文存在时 获取云端译文
+            if (this.i18n.directoryMark) { cloudTranslationJson = this.i18n.directory.find((manifest: Manifest) => manifest.id === plugin.id) }
+            // 判断本地译文和云端译文 及 本地插件和云端插件
+            if (cloudTranslationJson !== undefined) {
+                // 判断 云端是否存在与本地插件相同版本的译文
+                const tempCloud = cloudTranslationJson.translations.find(translation => translation.pluginVersion === localTranslationJson?.manifest.pluginVersion) !== undefined ? true : false;
                 // 最新云端版本
-                latestCloudVersion = isPluginsVersionSameMark ? plugin.version : cloudTranslationManifestJson.translations.slice(-1)[0].pluginVersion;
-                const temp = cloudTranslationManifestJson.translations.find(translation => translation.pluginVersion === latestCloudVersion);
-                console.log(temp);
-                // 本地译文标记(判断本地译文和网络中最新译文是否匹配)
-                if (isLangDoc && temp != undefined) {
-                    isTranslationVersionSameMark = fs.readJsonSync(langDoc).manifest.version == temp.translationVersion ? false : true;
+                latestCloudVersion = tempCloud ? plugin.version : cloudTranslationJson.translations.slice(-1)[0].pluginVersion;
+                // 最新云端版本号对象
+                const temp = cloudTranslationJson.translations.find(translation => translation.pluginVersion === latestCloudVersion);
+                // 判断 本地译文和云端译文 版本是否相同标记
+                if (localTranslationJson !== undefined && temp != undefined) {
+                    isPluginsVersionSameMark = compareVersions(localTranslationJson.manifest.pluginVersion, temp.pluginVersion);
+                    isTranslationVersionSameMark = compareVersions(localTranslationJson.manifest.version, temp.translationVersion);
                 }
-            }
-
-            // 检查译文格式
-            if (isLangDoc) {
-                try {
-                    localTranslationJson = fs.readJsonSync(langDoc);
-                } catch (error) {
-                    translationFormatMark = false;
-                    NoticeError(`${plugin.name}`, '译文格式错误');
-                }
-            }
-
-            // ====================
-            // 插件更新(更新还原插件状态)
-            // ====================
-            if (isStateDoc && stateObj.state() && plugin.version != stateObj.pluginVersion()) {
-                try {
-                    fs.removeSync(duplicateDoc);
-                    stateObj.reset();
-                } catch (error) {
-                    PNotice('错误', error);
-                }
+                // 测试
+                // if (localTranslationJson !== undefined) {
+                //     console.log(`=====${plugin.id}=====`);
+                //     console.log(`本地最新插件版本 ${localTranslationJson.manifest.pluginVersion}`)
+                //     console.log(`云端最新插件版本 ${latestCloudVersion}`);
+                //     if (temp != undefined) {
+                //         console.log(`本地最新译文版本 ${localTranslationJson.manifest.version}`)
+                //         console.log(`云端最新译文版本 ${temp.translationVersion}`);
+                //     }
+                // }
             }
             // #endregion
 
@@ -275,77 +274,59 @@ export class I18NModal extends Modal {
             // ====================
             // 插件介绍头部
             // ====================
-            const block = new Setting(this.contentEl);
-            block.setClass('i18n_modal_item');
-            block.nameEl.addClass('i18n_modal_item_title');
-            let stateMark;
-
-            if (isLangDoc && stateObj.state() == true && translationFormatMark) {
-                const translationJson: Translation = fs.readJSONSync(langDoc);
-                if (translationJson.manifest.pluginVersion === plugin.version) {
-                    stateMark = ["success", "已翻译"];  // 未翻译
+            const itemEl = new Setting(this.contentEl);
+            itemEl.setClass('i18n_modal_item');
+            itemEl.nameEl.addClass('i18n_modal_item_title');
+            // @ts-ignore
+            let desc: { mark: number, label: { color: string; text: string; }, text: string }
+                = { mark: 1, label: { color: '', text: '' }, text: '' };
+            if (isLangDoc) {
+                if (translationFormatMark) {
+                    // (大的是负数小的是正数)
+                    if (compareVersions(plugin.version, localTranslationJson?.manifest.pluginVersion as string) === 1) {
+                        desc.label.color = 'orange';
+                        desc.label.text = t('I18N_ITEM_LABEL_D_NAME'); // 已过时
+                    } else {
+                        if (stateObj.state()) {
+                            desc.label.color = 'green';
+                            desc.label.text = t('I18N_ITEM_LABEL_B_NAME'); // 已翻译
+                        } else {
+                            desc.label.color = 'red';
+                            desc.label.text = t('I18N_ITEM_LABEL_C_NAME'); // 未翻译
+                        }
+                    }
+                    desc.text = `${t('I18N_ITEM_LABEL_BCD_DESC_AUTHOR')}:${localTranslationJson?.manifest.author}(${localTranslationJson?.manifest.version}) ${t('I18N_ITEM_LABEL_BCD_DESC_VERSION')}:${localTranslationJson?.manifest.pluginVersion}`;
                 } else {
-                    stateMark = ["warning", "已过时"]; // 已过时
-                }
-            } else if (isLangDoc && stateObj.state() == false && translationFormatMark) {
-
-                const translationJson: Translation = fs.readJSONSync(langDoc);
-                if (translationJson.manifest.pluginVersion === plugin.version) {
-                    stateMark = ["error", "未翻译"]; // 已翻译
-                } else {
-                    stateMark = ["warning", "已过时"]; // 已过时
+                    desc.label.color = 'red';
+                    desc.label.text = t('I18N_ITEM_LABEL_E_NAME');
+                    desc.text = t('I18N_ITEM_LABEL_E_DESC');
                 }
             } else {
-                stateMark = ["error", "无译文"]; // 无译文
+                desc.label.color = 'grey';
+                desc.label.text = t('I18N_ITEM_LABEL_A_NAME');
+                desc.text = t('I18N_ITEM_LABEL_A_DESC');
+            }
+            if (this.i18n.ignoreMark && this.i18n.ignorePlugins.includes(plugin.id)) {
+                desc.label.color = 'blue';
+                desc.label.text = t('I18N_ITEM_LABEL_F_NAME');
+                desc.text = t('I18N_ITEM_LABEL_F_DESC');
             }
 
-            block.nameEl.innerHTML = `
-            <span class="i18n_modal_item_state i18n_modal_item_state_${stateMark[0]}">${stateMark[1]}</span>
+            itemEl.nameEl.innerHTML = `
+            <span class="i18n_modal_item_state i18n_modal_item_state_${desc.label.color}">${desc.label.text}</span>
             <span class="i18n_modal_item_title">${plugin.name}</span> 
             <span class="i18n_modal_item_version" style="color:--simple-blue-2;">(${plugin.version})</span> 
             `;
-            // ====================
-            // 插件介绍详情
-            // ====================
-            if (isLangDoc) {
-                if (translationFormatMark) {
-                    // 本地存在译文
-                    block.descEl.createDiv({ text: `[本地] ${localTranslationJson?.manifest.author} (${localTranslationJson?.manifest.pluginVersion}) ` });
-                    block.descEl.createDiv({ text: '[本地] 欢迎共享您的译文' });
-                } else {
-                    // 译文格式有误
-                    block.descEl.createDiv({ text: '[译文] 译文格式错误' }).addClass('i18n_color_red');
-                    block.descEl.createDiv({ text: '[译文] 请仔细检查调整或删除后重试' }).addClass('i18n_color_red');
-                }
-            } else if (this.i18n.directoryMark && !this.i18n.ignoreMark) {
-                if (this.i18n.ignoreMark && this.i18n.ignorePlugins.includes(plugin.id)) {
-                    block.descEl.createDiv({ text: `[插件] 此插件可能自带翻译功能` });
-                    block.descEl.createDiv({ text: '‎' });
-                }
-                if (cloudTranslationManifestJson !== undefined) {
-                    const temp = cloudTranslationManifestJson.translations.find(translation => translation.pluginVersion === latestCloudVersion);
-                    block.descEl.createDiv({ text: `[云端] ${temp?.author} (${temp?.translationVersion})` });
-                    block.descEl.createDiv({ text: '‎' });
-                } else {
-                    block.descEl.createDiv({ text: `[云端] 云端无可下载译文` });
-                    block.descEl.createDiv({ text: '[云端] 欢迎共享您的译文' });
-                }
-            } else if (this.i18n.ignoreMark && this.i18n.ignorePlugins.includes(plugin.id)) {
-                block.descEl.createDiv({ text: `[插件] 此插件可能自带翻译功能` });
-                block.descEl.createDiv({ text: '‎' });
-            } else {
-                //不存在译文
-                block.descEl.createDiv({ text: `[本地] 您还未提取译文` });
-                block.descEl.createDiv({ text: '‎' });
-            }
+            itemEl.settingEl.onmouseover = (e) => { this.footEl.innerHTML = desc.text };
+            itemEl.settingEl.onmouseout = (e) => { this.footEl.innerHTML = t('I18N_ITEM_LABEL_G_DESC') };
 
             // ====================
             // 打开插件设置
             // ====================
             if (this.settings.I18N_OPEN_SETTINGS && this.enabledPlugins.has(plugin.id)) {
-                const openPluginSetting = new ExtraButtonComponent(block.controlEl);
+                const openPluginSetting = new ExtraButtonComponent(itemEl.controlEl);
                 openPluginSetting.setIcon('settings');
-                openPluginSetting.setTooltip('打开插件设置');
+                openPluginSetting.setTooltip(t('I18N_ITEM_OPEN_SETTING_BUTTON_TIP'));
                 openPluginSetting.onClick(() => {
                     openPluginSetting.setDisabled(true);
                     this.settingPlugins.open();
@@ -359,31 +340,32 @@ export class I18NModal extends Modal {
             // ====================
             // eslint-disable-next-line no-constant-condition
             if (true) {
-                const openPluginDir = new ExtraButtonComponent(block.controlEl);
-                openPluginDir.setIcon('folder-open');
-                openPluginDir.setTooltip('打开插件目录');
-                openPluginDir.onClick(() => {
-                    openPluginDir.setDisabled(true);
+                const openPluginDirButton = new ExtraButtonComponent(itemEl.controlEl);
+                openPluginDirButton.setIcon('folder-open');
+                openPluginDirButton.setTooltip(t('I18N_ITEM_OPEN_DIR_BUTTON_TIP'));
+                openPluginDirButton.onClick(() => {
+                    openPluginDirButton.setDisabled(true);
                     if (navigator.userAgent.match(/Win/i)) {
-                        const command = `powershell.exe -Command "Invoke-Item \\"${pluginDir}\\""`;
+                        // const command = `powershell.exe -Command "Invoke-Item \\"${pluginDir}\\""`;
+                        const command = `start ${pluginDir}`
                         exec(command, (error) => {
                             if (error) {
-                                NoticeOperationResult('打开目录', false, error);
+                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
                             } else {
-                                NoticeOperationResult('打开目录', true);
+                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
                             }
                         });
                     }
-                    openPluginDir.setDisabled(false);
+                    openPluginDirButton.setDisabled(false);
                 });
             }
             // ====================
             // 清空翻译文件(删除)
             // ====================
             if (isLangDir) {
-                const deletePluginDirButton = new ExtraButtonComponent(block.controlEl);
+                const deletePluginDirButton = new ExtraButtonComponent(itemEl.controlEl);
                 deletePluginDirButton.setIcon('trash');
-                deletePluginDirButton.setTooltip('删除译文目录');
+                deletePluginDirButton.setTooltip(t('I18N_ITEM_DELETE_DIR_BUTTON_TIP'));
                 deletePluginDirButton.onClick(() => {
                     deletePluginDirButton.setDisabled(true);
                     try {
@@ -407,9 +389,9 @@ export class I18NModal extends Modal {
                         // 递归删除所有文件
                         fs.removeSync(langDir);
                         this.reloadPlugin(plugin.id);
-                        NoticeOperationResult('删除译文', true);
+                        NoticeOperationResult(t('I18N_ITEM_DELETE_DIR_BUTTON_NOTICE_HEAD'), true);
                     } catch (error) {
-                        NoticeOperationResult('删除译文', false, error);
+                        NoticeOperationResult(t('I18N_ITEM_DELETE_DIR_BUTTON_NOTICE_HEAD'), false, error);
                     }
                     this.reloadShowData();
                 });
@@ -417,47 +399,23 @@ export class I18NModal extends Modal {
             // ====================
             // 编辑译文
             // ====================
-            if (this.settings.I18N_EDIT_MODE && isLangDoc) {
-                const deletePluginDirButton = new ExtraButtonComponent(block.controlEl);
-                deletePluginDirButton.setIcon('pencil');
-                deletePluginDirButton.setTooltip('编辑译文');
-                deletePluginDirButton.onClick(() => {
-                    deletePluginDirButton.setDisabled(true);
-                    if (navigator.userAgent.match(/Win/i)) {
-                        const command = `powershell.exe -Command "Invoke-Item \\"${langDoc}\\""`;
-                        exec(command, (error) => {
-                            if (error) { NoticeOperationResult('打开译文', false, error); }
-                            else { NoticeOperationResult('打开译文', true); }
-                        });
-                    }
-                    window.open('https://www.json.cn/jsonedit/');
-                    this.reloadShowData();
+            if (translationFormatMark && isLangDoc && this.settings.I18N_EDIT_MODE) {
+                const editTranslationButton = new ExtraButtonComponent(itemEl.controlEl);
+                editTranslationButton.setIcon('pencil');
+                editTranslationButton.setTooltip(t('I18N_ITEM_EDIT_TRANSLATION_BUTTON_TIP'));
+                editTranslationButton.onClick(() => {
+                    this.i18n.selectTranslation = langDoc;
+                    this.i18n.activateEditView();
                 });
             }
             // ====================
-            // 译文提交
+            // 译文提交模式
             // ====================
-            if (this.settings.I18N_SUBMIT_TRANSLATION_MODE && isLangDoc && translationFormatMark) {
-                const submitRernslationButton = new ExtraButtonComponent(block.controlEl);
-                submitRernslationButton.setIcon('cloud-upload');
-                submitRernslationButton.setTooltip('提交译文');
-                submitRernslationButton.onClick(() => {
-                    try {
-                        new GitIssueModal(this.app, plugin.id, plugin.version, async () => {
-                            const translationJson: Translation = fs.readJSONSync(langDoc);
-                            const titleJson = {
-                                id: plugin.id,
-                                author: translationJson.manifest.author,
-                                translationVersion: translationJson.manifest.version,
-                                pluginVersion: translationJson.manifest.pluginVersion
-                            }
-                            const url = await this.i18n.api.giteeIssue(JSON.stringify(titleJson), JSON.stringify(translationJson));
-                            if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`, '_blank');
-                        }).open();
-                    } catch (error) {
-                        NoticeOperationResult('译文提交', false, `${error}`)
-                    }
-                });
+            if (this.settings.I18N_SUBMIT_MODE && (this.i18n.tempSubmitUrl != undefined || this.i18n.settings.I18N_SUBMIT_URL != "")) {
+                const submitTranslationButton = new ExtraButtonComponent(itemEl.controlEl);
+                submitTranslationButton.setIcon('cloud-upload');
+                submitTranslationButton.setTooltip(t('I18N_ITEM_SUBMIT_TRANSLATION_BUTTON_TIP'));
+                submitTranslationButton.onClick(() => { new I18NSubmiteModal(this.app, this.i18n, plugin, langDoc).open() });
             }
             // #endregion
 
@@ -465,11 +423,12 @@ export class I18NModal extends Modal {
             //                     本地译文翻译(提取) 
             // ============================================================
             if (this.settings.I18N_MODE_LDT && !isLangDoc) {
-                const LDTGenerateButton = new ButtonComponent(block.controlEl);
-                LDTGenerateButton.setButtonText('提取');
-                LDTGenerateButton.setTooltip('提取译文');
-                LDTGenerateButton.onClick(() => {
-                    LDTGenerateButton.setDisabled(true);
+                const ExtractTranslationButton = new ButtonComponent(itemEl.controlEl);
+                ExtractTranslationButton.setClass('bt');
+                ExtractTranslationButton.setButtonText(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'));
+                ExtractTranslationButton.setTooltip(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TIP'));
+                ExtractTranslationButton.onClick(() => {
+                    ExtractTranslationButton.setDisabled(true);
                     try {
                         // 1. 获取 main.js 字符串
                         const mainStr = fs.readFileSync(mainDoc).toString();
@@ -481,66 +440,70 @@ export class I18NModal extends Modal {
                         fs.ensureDirSync(langDir);
                         // 5. 将 译文json 写入文件
                         fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
-                        NoticeOperationResult('提取', true, '导航至插件安装目录\n手动翻译您的译文\n或使用编辑模式');
+                        NoticeOperationResult(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_NOTICE_HEAD'), true, t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_NOTICE_CONTENT_A'));
                     } catch (error) {
-                        NoticeOperationResult('提取', false, `${error}`);
+                        NoticeOperationResult(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_NOTICE_HEAD'), false, `${error}`);
                     }
                     this.reloadShowData();
                 });
             }
+
             // ============================================================
             //                  网络译文翻译(下载、更新)
             // ============================================================
-            if (this.settings.I18N_MODE_NDT && this.i18n.directoryMark && cloudTranslationManifestJson != undefined && translationFormatMark) {
-                // 插件版本标记(网络上是否存在相同版本的译文)
-                // const pluginVersionMake = cloudTranslationManifestJson.translations.find(translation => translation.pluginVersion === plugin.version) !== undefined ? true : false;
-                // 版本标记(存在 则返回相同 不存在责返回最新的一个)
-                // const version = pluginVersionMake ? plugin.version : cloudTranslationManifestJson.translations.slice(-1)[0].pluginVersion;
-                // 译文对象
-                // const translationManifestJSON = cloudTranslationManifestJson.translations.find(translation => translation.pluginVersion === version);
-                // 本地译文标记(判断本地译文和网络中最新译文是否匹配)
-                // let translationVersionMake = false;
-                // if (isLangDoc && translationManifestJSON != undefined) { translationVersionMake = fs.readJsonSync(langDoc).manifest.version == translationManifestJSON.translationVersion ? false : true; }
-                try {
-                    // 1. 本地存在译文
-                    const NDTUpdateButton = new ButtonComponent(block.controlEl);
-                    // 本地存在译文
-                    // 网络和当前译文版本号不同
-                    if (!(isLangDoc && isTranslationVersionSameMark)) NDTUpdateButton.setClass('i18n_display-none');
-                    NDTUpdateButton.setButtonText('更新');
-                    NDTUpdateButton.setTooltip(t('NDT_UPDATE_TOOLTIP'));
-                    NDTUpdateButton.onClick(async () => {
-                        NDTUpdateButton.setDisabled(true);
-                        fs.writeJsonSync(langDoc, await this.i18n.api.translation(plugin.id, latestCloudVersion), { spaces: 4 });
-                        await this.reloadShowData();
-                    });
-                    // 1. 本地不存在译文
-                    const NDTDownloadButton = new ButtonComponent(block.controlEl);
-                    if (isLangDoc) NDTDownloadButton.setClass('i18n_display-none');
-                    NDTDownloadButton.setButtonText('下载');
-                    NDTDownloadButton.setTooltip(t('NDT_DOWNLOAD_TOOLTIP'));
-                    NDTDownloadButton.onClick(async () => {
-                        NDTDownloadButton.setDisabled(true);
+            // 开启云端模式 云端目录标记 译文格式正常 云端存在
+            if (this.settings.I18N_MODE_NDT && this.i18n.directoryMark && translationFormatMark && cloudTranslationJson != undefined) {
+                // 下载
+                const downloadTranslationButton = new ButtonComponent(itemEl.controlEl);
+                if (isLangDoc) downloadTranslationButton.setClass('i18n_display-none');
+                downloadTranslationButton.setClass('bt');
+                downloadTranslationButton.setButtonText(t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_TEXT'));
+                downloadTranslationButton.setTooltip(t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_TIP'));
+                downloadTranslationButton.onClick(async () => {
+                    downloadTranslationButton.setDisabled(true);
+                    try {
+                        // 1. 
                         fs.ensureDirSync(langDir);
+                        // 2. 获取译文并写入文件
                         fs.writeJsonSync(langDoc, await this.i18n.api.translation(plugin.id, latestCloudVersion), { spaces: 4 });
-                        await this.reloadShowData();
-                    });
-                } catch (error) {
-                    PNotice('错误', error);
-                }
+                        NoticeOperationResult(t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_NOTICE_HEAD'), true);
+                    } catch (error) {
+                        NoticeOperationResult(t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_NOTICE_HEAD'), false, error);
+                    }
+                    await this.reloadShowData();
+                });
+
+                // 更新
+                const updateTranslationButton = new ButtonComponent(itemEl.controlEl);
+                // @ts-ignore
+                if (!(isLangDoc && (isPluginsVersionSameMark == -1 || isTranslationVersionSameMark == -1))) updateTranslationButton.setClass('i18n_display-none');
+                updateTranslationButton.setButtonText(t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_TEXT'));
+                updateTranslationButton.setClass('bt');
+                updateTranslationButton.setTooltip(t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_TIP'));
+                updateTranslationButton.onClick(async () => {
+                    updateTranslationButton.setDisabled(true);
+                    try {
+                        // 1. 获取译文并写入文件
+                        fs.writeJsonSync(langDoc, await this.i18n.api.translation(plugin.id, latestCloudVersion), { spaces: 4 });
+                        NoticeOperationResult(t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_NOTICE_HEAD'), true);
+                    } catch (error) {
+                        NoticeOperationResult(t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_NOTICE_HEAD'), false, error);
+                    }
+                    await this.reloadShowData();
+                });
             }
 
             // ============================================================
             //                    网络接口翻译(生成)
             // ============================================================
             if (this.settings.I18N_MODE_NIT && !isLangDoc) {
-                const NITGenerateButton = new ButtonComponent(block.controlEl);
+                const machineTranslationButton = new ButtonComponent(itemEl.controlEl);
                 // @ts-ignore
-                NITGenerateButton.setButtonText(API_TYPES[this.settings.I18N_NIT_API]);
-                NITGenerateButton.setTooltip(t('NIT_GENERATE_TOOLTIP'));
-                NITGenerateButton.setCta();
-                NITGenerateButton.onClick(async () => {
-                    NITGenerateButton.setDisabled(true);
+                machineTranslationButton.setButtonText(API_TYPES[this.settings.I18N_NIT_API]);
+                machineTranslationButton.setTooltip(t('I18N_ITEM_MACHINE_TRANSLATION_BUTTON_TIP'));
+                machineTranslationButton.setClass('bt');
+                machineTranslationButton.onClick(async () => {
+                    machineTranslationButton.setDisabled(true);
                     try {
                         const mainStr = fs.readFileSync(mainDoc).toString();
                         // 2. 获取 manifest.json JSON文本
@@ -556,7 +519,7 @@ export class I18NModal extends Modal {
                             else { translationJson.description.translation = translationJson.description.original; }
                             await sleep(this.settings.I18N_NIT_API_INTERVAL);
                             for (const key in translationJson.dict) {
-                                NoticeInfo('生成', `${temp += 1}/${Object.keys(translationJson.dict).length}`, this.settings.I18N_NIT_API_INTERVAL);
+                                NoticeInfo(t('I18N_ITEM_MACHINE_TRANSLATION_BUTTON_NOTICE_HEAD'), `${temp += 1}/${Object.keys(translationJson.dict).length}`, this.settings.I18N_NIT_API_INTERVAL);
                                 const tempArray = key.match(regex);
                                 if (tempArray != null) {
                                     const response = await this.i18n.api.baidu(tempArray[2]);
@@ -578,7 +541,7 @@ export class I18NModal extends Modal {
                             await sleep(this.settings.I18N_NIT_API_INTERVAL);
                             // 5. 翻译 字典
                             for (const key in translationJson.dict) {
-                                NoticeInfo('生成', `${temp += 1}/${Object.keys(translationJson.dict).length}`, this.settings.I18N_NIT_API_INTERVAL);
+                                NoticeInfo(t('I18N_ITEM_MACHINE_TRANSLATION_BUTTON_NOTICE_HEAD'), `${temp += 1}/${Object.keys(translationJson.dict).length}`, this.settings.I18N_NIT_API_INTERVAL);
                                 const tempArray = key.match(regex);
                                 if (tempArray != null) {
                                     const response = await this.i18n.api.openAI(plugin.name, tempArray[2]);
@@ -594,7 +557,7 @@ export class I18NModal extends Modal {
                         fs.ensureDirSync(langDir);
                         fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
                     } catch (error) {
-                        NoticeOperationResult('云端译文', false, error);
+                        NoticeOperationResult(t('I18N_ITEM_MACHINE_TRANSLATION_BUTTON_NOTICE_HEAD'), false, error);
                     }
                     this.reloadShowData();
                 });
@@ -603,103 +566,112 @@ export class I18NModal extends Modal {
             // ============================================================
             //                 插件基础功能(翻译 还原)
             // ============================================================
-            if (isStateDoc && isLangDoc && translationFormatMark) {
-                try {
-                    // 翻译按钮
-                    const TrenslatorButton = new ButtonComponent(block.controlEl);
-                    TrenslatorButton.setButtonText('翻译');
-                    TrenslatorButton.setTooltip('翻译插件');
-                    if (!(stateObj.state() == false)) TrenslatorButton.setClass('i18n_display-none');
-                    TrenslatorButton.onClick(() => {
-                        TrenslatorButton.setDisabled(true);
+            if (isLangDoc && isStateDoc && translationFormatMark) {
+                // 翻译按钮
+                const trenslatorButton = new ButtonComponent(itemEl.controlEl);
+                trenslatorButton.setClass('bt');
+                trenslatorButton.setButtonText(t('I18N_ITEM_TRANSLATION_BUTTON_TEXT'));
+                trenslatorButton.setTooltip(t('I18N_ITEM_TRANSLATION_BUTTON_TIP'));
+                if (!(stateObj.state() == false)) trenslatorButton.setClass('i18n_display-none');
+                trenslatorButton.onClick(() => {
+                    trenslatorButton.setDisabled(true);
+                    try {
                         // 1. 复制备份文件
                         fs.copySync(mainDoc, duplicateDoc);
                         // 2. 读取译文
-                        const translationJson = fs.readJsonSync(langDoc);
+                        const translationJson: Translation = fs.readJsonSync(langDoc);
                         // 3. 读取 main.js
                         let mainString = fs.readFileSync(mainDoc).toString();
                         // 4. 翻译 main.js
                         for (const key in translationJson.dict) mainString = mainString.replaceAll(key, translationJson.dict[key]);
                         // 5. 写入 main.js
                         fs.writeFileSync(mainDoc, mainString);
-                        // 6. 判断是否存在description
-                        if (translationJson.hasOwnProperty("description")) {
-                            // 7. 读取 manifest.json
-                            const manifestJSON = fs.readJsonSync(manifestDoc);
-                            // 8. 翻译 manifest.json
-                            manifestJSON.description = translationJson.description.translation;
-                            // 9. 写入 manifest.json
-                            fs.writeJsonSync(manifestDoc, manifestJSON, { spaces: 4 });
-                        }
-                        // 10. 更新状态文件
+                        // 6. 读取 manifest.json
+                        const manifestJSON = fs.readJsonSync(manifestDoc);
+                        // 7. 翻译 manifest.json
+                        manifestJSON.description = translationJson.description.translation;
+                        // 8. 写入 manifest.json
+                        fs.writeJsonSync(manifestDoc, manifestJSON, { spaces: 4 });
+                        // 9. 更新状态文件
                         stateObj.update(true, plugin.version, translationJson.manifest.version);
-                        // 11. 插件失效提示
+                        // 10. 判断插件是否开启 开启则重载此插件
                         if (this.enabledPlugins.has(plugin.id)) {
                             this.reloadPlugin(plugin.id);
                         }
-                        NoticeOperationResult('翻译', true, '如遇翻译后插件失效\n说明译文可能出现问题\n点击还原即可恢复原状');
-                        // 12. 刷新
-                        this.reloadShowData();
-                    });
+                        NoticeOperationResult(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), true, t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_CONTENT_A'));
+                    } catch (error) {
+                        NoticeOperationResult(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), false, error);
+                    }
+                    // 11. 刷新
+                    this.reloadShowData();
+                });
 
-                    // 还原按钮
-                    const RestoreButton = new ButtonComponent(block.controlEl);
-                    RestoreButton.setButtonText('还原');
-                    RestoreButton.setTooltip('还原插件');
-                    if (!(stateObj.state() == true)) RestoreButton.setClass('i18n_display-none');
-                    RestoreButton.onClick(() => {
-                        RestoreButton.setDisabled(true);
+                // 还原按钮
+                const restoreButton = new ButtonComponent(itemEl.controlEl);
+                restoreButton.setClass('bt');
+                restoreButton.setButtonText(t('I18N_ITEM_RESTORE_BUTTON_TEXT'));
+                restoreButton.setTooltip(t('I18N_ITEM_RESTORE_BUTTON_TIP'));
+                if (!(stateObj.state() == true)) restoreButton.setClass('i18n_display-none');
+                restoreButton.onClick(() => {
+                    restoreButton.setDisabled(true);
+                    try {
                         // 1. 删除 main.js
                         fs.unlinkSync(mainDoc);
                         // 2. 替换 main.js
                         fs.renameSync(duplicateDoc, mainDoc);
                         // 3. 读取译文
                         const translationJson = fs.readJsonSync(langDoc);
-                        // 4. 判断是否存在description
-                        if (translationJson.hasOwnProperty("description")) {
-                            // 5. 读取 manifest.json
-                            const manifestJSON = fs.readJsonSync(manifestDoc);
-                            // 6. 还原 manifest.json
-                            manifestJSON.description = translationJson.description.original;
-                            // 7. 写入 manifest.json
-                            fs.writeJsonSync(manifestDoc, manifestJSON, { spaces: 4 });
-                        }
-                        // 8. 更新状态文件
+                        // 4. 读取 manifest.json
+                        const manifestJSON = fs.readJsonSync(manifestDoc);
+                        // 5. 还原 manifest.json
+                        manifestJSON.description = translationJson.description.original;
+                        // 6. 写入 manifest.json
+                        fs.writeJsonSync(manifestDoc, manifestJSON, { spaces: 4 });
+                        // 7. 更新状态文件
                         stateObj.reset();
-                        // 9. 更新
-                        if (this.enabledPlugins.has(plugin.id)) {
-                            this.reloadPlugin(plugin.id);
-                        }
-                        NoticeOperationResult('还原', true);
-                        // 10. 刷新
-                        this.reloadShowData();
-                    });
-                } catch (error) {
-                    NoticeOperationResult('翻译', false, error);
-                }
+                        // 8. 判断插件是否开启 开启则重载此插件
+                        if (this.enabledPlugins.has(plugin.id)) this.reloadPlugin(plugin.id);
+                        NoticeOperationResult(t('I18N_ITEM_RESTORE_BUTTON_NOTICE_HEAD'), true);
+                    } catch (error) {
+                        NoticeOperationResult(t('I18N_ITEM_RESTORE_BUTTON_NOTICE_HEAD'), false, error);
+                    }
+                    // 9. 刷新
+                    this.reloadShowData();
+                });
             }
-
             if (this.developerMode) {
-                const test = new ButtonComponent(block.controlEl);
+                const test = new ButtonComponent(itemEl.controlEl);
                 test.setButtonText('测试');
                 test.onClick(async () => {
-                    console.log(this.i18n.manifest.id);
+                    if (navigator.userAgent.match(/Win/i)) {
+                        const command = `start ${mainDoc}`
+                        console.log(command)
+                        exec(command, (error) => {
+                            if (error) {
+                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
+                            } else {
+                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
+                            }
+                        });
+                    }
                 });
             }
         }
     }
 
+    // window.location.reload();
     // [重载数据显示]
     async reloadShowData() {
-        console.log('调用了[刷新]');
+        // console.log('调用了[刷新]');
         // 滚动条定位
         let scrollTop = 0;
         // @ts-ignore
         const modalElement: HTMLElement = this.contentEl;
-        console.log(modalElement);
         scrollTop = modalElement.scrollTop;
         // 使用 while 循环从最后一个子元素开始向前遍历并删除 从最后一个子元素开始向前遍历，以避免在遍历时影响索引  
-        while (this.contentEl.firstChild) { this.contentEl.removeChild(this.contentEl.firstChild) }
+        // while (this.contentEl.firstChild) { this.contentEl.removeChild(this.contentEl.firstChild) }
+        // 删除所有数据
+        modalElement.empty();
         // 刷新展示数据
         await this.showData();
         // 复原scroll位置
@@ -708,14 +680,14 @@ export class I18NModal extends Modal {
 
     // [开启]
     async onOpen() {
-        console.log('调用了[开启]');
+        // console.log('调用了[开启]');
         await this.showHead();
         await this.showData();
     }
 
     // [关闭]
     async onClose() {
-        console.log('调用了[关闭]');
+        // console.log('调用了[关闭]');
         this.contentEl.empty();
     }
 
@@ -725,6 +697,7 @@ export class I18NModal extends Modal {
             await this.app.plugins.disablePlugin(id);
             // @ts-ignore
             await this.app.plugins.enablePlugin(id);
+
         }
     }
 }

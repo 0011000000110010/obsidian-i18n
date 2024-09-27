@@ -1,21 +1,22 @@
 import { Setting } from "obsidian";
 import BaseSetting from "./base-setting";
-import { PNotice } from "src/utils";
+import { NoticeError, NoticePrimary, NoticeWarning } from "src/utils";
 import Url from "src/url";
+import { t } from "src/lang/inxdex";
 
 export default class I18nHelp extends BaseSetting {
 	main(): void {
-		const I18nHelp = new Setting(this.containerEl);
-		I18nHelp.setName('帮助');
-		I18nHelp.addButton(cb => cb
+		const helpEl = new Setting(this.containerEl);
+		helpEl.setName(t('SETTING_HELP_NAME'));
+		helpEl.addButton(cb => cb
 			.setButtonText('鸣谢')
 			.onClick(() => {
-				PNotice('文档', '\ndangehub');
-				PNotice('建议', '\ncuberwu');
-				PNotice('译文', '\nFENDI');
+				NoticePrimary('设计', '\nzero\n曲淡歌', 10000);
+				NoticeError('译文', '\nFENDI\n曲淡歌\n宇桐非\n里安', 10000);
+				NoticeWarning('建议', '\ncuberwu', 10000);
 			})
 		);
-		I18nHelp.addButton(cb => cb
+		helpEl.addButton(cb => cb
 			.setButtonText('文档')
 			.onClick(() => {
 				// exec(`start ${url}`);

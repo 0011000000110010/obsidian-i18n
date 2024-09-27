@@ -4,8 +4,7 @@ import { RequestUrlParam, RequestUrlResponsePromise, requestUrl } from 'obsidian
 
 import I18N from "../main"
 import { I18nSettings } from './settings/data'
-import axios from 'axios'
-import { NoticeError, NoticeOperationResult, PNotice } from 'src/utils'
+import { NoticeError, NoticeOperationResult, NoticePrimary } from 'src/utils'
 import { BAIDU_ERROR_CODE } from 'src/data/data'
 
 export class API {
@@ -15,6 +14,35 @@ export class API {
 	constructor(i18n: I18N) {
 		this.i18n = i18n;
 		this.settings = this.i18n.settings;
+	}
+
+	public async version(version: string) {
+		const RequestUrlParam: RequestUrlParam = {
+			url: "https://gitee.com/zero--two/obsidian-i18n-translation/raw/master/version.json",
+			method: 'GET'
+		};
+		try {
+			const response = await requestUrl(RequestUrlParam);
+			if (version !== response.json.version) {
+				NoticePrimary('I18N', `发现新版本(${response.json.version})\n${response.json.content}`);
+			}
+		} catch (error) {
+			NoticeError('I18N', `网络异常(无法获取最新版)\n${error}`);
+		}
+	}
+
+	public async submitUrl() {
+		const RequestUrlParam: RequestUrlParam = {
+			url: "https://gitee.com/zero--two/obsidian-i18n-translation/raw/master/version.json",
+			method: 'GET'
+		};
+		try {
+			const response = await requestUrl(RequestUrlParam);
+			return response.json.submit
+		} catch (error) {
+			NoticeError('I18N', `网络异常(如果没有自定义token则无法使用提交功能)\n${error}`);
+			return undefined
+		}
 	}
 
 	public async directory() {
@@ -42,7 +70,7 @@ export class API {
 			await requestUrl(RequestUrlParam);
 		} catch (error) {
 			res = false;
-			console.log(error); 
+			console.log(error);
 		}
 		return res
 	}
@@ -61,6 +89,7 @@ export class API {
 		}
 		return resData;
 	}
+
 	public async ignoreTest() {
 		let res = true;
 		const RequestUrlParam: RequestUrlParam = {
@@ -75,7 +104,6 @@ export class API {
 		return res;
 	}
 
-	
 	public async translation(id: string, version: string) {
 		let res;
 		const RequestUrlParam: RequestUrlParam = {
@@ -134,27 +162,55 @@ export class API {
 		});
 	}
 
+	// public async openAI1(plugin: string, q: string) {
+	// 	try {
+	// 		const response = await axios.post(`${this.settings.I18N_NIT_OPENAI_URL}/v1/chat/completions`, {
+	// 			model: this.settings.I18N_NIT_OPENAI_MODEL,
+	// 			messages: [
+	// 				{ role: 'user', content: this.settings.I18N_NIT_OPENAI_TIPS },
+	// 				{ role: 'user', content: q }
+	// 			],
+	// 			temperature: 0.7
+	// 		}, {
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 				'Authorization': `Bearer ${this.settings.I18N_NIT_OPENAI_KEY}`
+	// 			}
+	// 		});
+	// 		if (response.data && response.data.choices && response.data.choices.length > 0) {
+	// 			return response.data.choices[0].message;
+	// 		}
+	// 		return null;
+	// 	} catch (error) {
+	// 		NoticeError('错误', error);
+	// 		return null;
+	// 	}
+	// }
 	public async openAI(plugin: string, q: string) {
 		try {
-			const response = await axios.post(`${this.settings.I18N_NIT_OPENAI_URL}/v1/chat/completions`, {
-				model: this.settings.I18N_NIT_OPENAI_MODEL,
-				messages: [
-					{ role: 'user', content: this.settings.I18N_NIT_OPENAI_TIPS },
-					{ role: 'user', content: q }
-				],
-				temperature: 0.7
-			}, {
+			const RequestUrlParam: RequestUrlParam = {
+				url: `${this.settings.I18N_NIT_OPENAI_URL}/v1/chat/completions`,
+				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 					'Authorization': `Bearer ${this.settings.I18N_NIT_OPENAI_KEY}`
-				}
-			});
-			if (response.data && response.data.choices && response.data.choices.length > 0) {
-				return response.data.choices[0].message;
+				},
+				body: JSON.stringify({
+					model: this.settings.I18N_NIT_OPENAI_MODEL,
+					messages: [
+						{ role: 'user', content: this.settings.I18N_NIT_OPENAI_TIPS },
+						{ role: 'user', content: q }
+					],
+					temperature: 0.7
+				}),
+			};
+			const response = await requestUrl(RequestUrlParam);
+			if (response.json && response.json.choices && response.json.choices.length > 0) {
+				return response.json.choices[0].message;
 			}
 			return null;
 		} catch (error) {
-			PNotice('错误', error);
+			NoticeError('错误', error);
 			return null;
 		}
 	}
@@ -183,49 +239,52 @@ export class API {
 		});
 	}
 
-	public async giteeIssue(title: string, body: string) {
+	public async submite(title: string, body = '无内容') {
 		try {
-			// title长度191 body长度65535个字符
-			const response = await axios.post(`https://gitee.com/api/v5/repos/zero--two/issues`, {
-				access_token: 'daf37a8fd060fed874af3314ee52959b',
-				repo: 'obsidian-i18n-translation',
-				title: title,
-				body: body,
-			}, {
+			let token;
+			if (this.settings.I18N_SUBMIT_URL != "") {
+				token = this.settings.I18N_SUBMIT_URL;
+			} else {
+				if (this.i18n.tempSubmitUrl != undefined) {
+					token = this.i18n.tempSubmitUrl;
+				} else {
+					NoticeOperationResult('提交', false, `令牌有误`);
+				}
+			}
+
+			const RequestUrlParam: RequestUrlParam = {
+				url: `https://gitee.com/api/v5/repos/zero--two/issues`,
+				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					'Charset': 'UTF-8',
-				}
-			});
-			NoticeOperationResult('译文提交', true);
-			if (response.data.number) return response.data.number;
-			return null;
-		} catch (error) {
-			NoticeOperationResult('译文提交', false, `${error}`);
-			return null;
-		}
-	}
-
-	public async giteegetIssue() {
-		let res = [];
-		const owner = 'zero--two';
-		const repo = 'obsidian-i18n-translation';
-		const RequestUrlParam: RequestUrlParam = {
-			url: `https://gitee.com/api/v5/repos/${owner}/${repo}/issues`,
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				'Charset': 'UTF-8',
-			},
-		};
-		try {
+					'Charset': 'UTF-8'
+				},
+				body: JSON.stringify({
+					access_token: token,
+					repo: 'obsidian-i18n-translation',
+					title: title,
+					body: body,
+				}),
+			};
 			const response = await requestUrl(RequestUrlParam);
-			res = response.json;
+			// title长度191 body长度65535个字符 
+			// const response = await axios.post(`https://gitee.com/api/v5/repos/zero--two/issues`, {
+			// 	access_token: token,
+			// 	repo: 'obsidian-i18n-translation',
+			// 	title: title,
+			// 	body: body,
+			// }, {
+			// 	headers: {
+			// 		'Content-Type': 'application/json',
+			// 		'Charset': 'UTF-8',
+			// 	}
+			// });
+
+			if (response.json.number) return response.json.number;
+			return null;
 		} catch (error) {
-			NoticeError('网络', error);
+			NoticeOperationResult('提交操作', false, `${error}`);
+			return null;
 		}
-		return res
 	}
-
-
 }

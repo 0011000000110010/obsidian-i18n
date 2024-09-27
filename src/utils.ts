@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra'
 import { Notice, PluginManifest } from 'obsidian';
-import { State as state, Translation } from './data/types';
-
+import { State as state, Translation, ValidationOptions } from './data/types';
+import { t } from './lang/inxdex';
 
 // ==============================
 //            状态管理类
@@ -102,17 +102,17 @@ export class State {
 export function generateTranslation(id: string, author: string, version: string, pluginVersion: string, manifestJSON: PluginManifest, mainStr: string, reLength: number, regexps: string[], flags: string): Translation {
 	const description = manifestJSON.description;
 	const translationJson: Translation = {
-		"manifest": {
-			"id": id,
-			"author": author == "" ? "无名氏" : author,
-			"version": version,
-			"pluginVersion": pluginVersion
+		'manifest': {
+			'id': id,
+			'author': author == '' ? '' : author,
+			'version': version,
+			'pluginVersion': pluginVersion
 		},
-		"description": {
-			"original": description,
-			"translation": description
+		'description': {
+			'original': description,
+			'translation': description
 		},
-		"dict": {}
+		'dict': {}
 	}
 	for (let i = 0; i < regexps.length; i++) {
 		const temp_array = mainStr.match(new RegExp(regexps[i], flags));
@@ -124,35 +124,86 @@ export function generateTranslation(id: string, author: string, version: string,
 	return translationJson
 }
 
-export function PNotice(prefix: string, text: any) {
-	new Notice(`[${prefix}] ${text}`);
+export function compareVersions(version1: string, version2: string): number {
+	const v1 = version1.split('.').map(Number);
+	const v2 = version2.split('.').map(Number);
+	const len = Math.max(v1.length, v2.length);
+	for (let i = 0; i < len; i++) {
+		const num1 = v1[i] || 0;
+		const num2 = v2[i] || 0;
+		if (num1 > num2) { return 1; }
+		else if (num1 < num2) { return -1; }
+	}
+	return 0;
 }
 
-export function NoticeSuccess(prefix: string, text: any, duration = 4000) {
-	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`);
+export function validateTranslation(json: any, options: ValidationOptions = { checkFormat: true, checkAuthor: true, checkVersion: true, checkTranslations: true }): boolean {
+	// 自定义检查：检查整体格式  
+	if (options.checkFormat && (!('manifest' in json) || !('description' in json) || !('dict' in json))) {
+		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_A'));
+		return false
+	}
+	// 自定义检查：检查作者  
+	if (options.checkAuthor && (typeof json.manifest !== 'object' || json.manifest === null || typeof json.manifest.author !== 'string' || json.manifest.author === '')) {
+		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_B'));
+		return false
+	}
+	// 自定义检查：检查版本号
+	if (options.checkVersion && (typeof json.manifest !== 'object' || json.manifest === null || !/^\d+(\.\d+){2}$/.test(json.manifest.version))) {
+		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_E'));
+		return false
+	}
+
+	// 自定义检查：检查翻译  
+	let count = 0;
+	if (options.checkTranslations && json.dict) {
+		Object.keys(json.dict).forEach(key => {
+			if (key !== json.dict[key]) {
+				count++;
+			}
+		});
+	}
+
+	if ((count * 2) >= Object.keys(json.dict).length) {
+		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), true, t('SUBMITE_INSPECT_NOTICE_C'))
+		return true
+	} else {
+		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_D'))
+		return false
+	}
+	return true;
 }
-export function NoticeInfo(prefix: string, text: any, duration = 4000) {
+
+export function NoticePrimary(prefix: string, text: unknown, duration = 4000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_info`);
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_primary`);
 }
-export function NoticeWarning(prefix: string, text: any, duration = 4000) {
+export function NoticeSuccess(prefix: string, text: unknown, duration = 4000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_warning`);
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_success`);
 }
-export function NoticeError(prefix: string, text: any, duration = 10000) {
+export function NoticeInfo(prefix: string, text: unknown, duration = 4000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_info`);
 }
-export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: any = "") {
+export function NoticeWarning(prefix: string, text: unknown, duration = 4000) {
+	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_warning`);
+}
+export function NoticeError(prefix: string, text: unknown, duration = 10000) {
+	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+}
+export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: unknown = "") {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
 	if (isSuccess) {
-		if (text != "") { new Notice(`[${prefix}] 成功\n${text}`, 4000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
-		else { new Notice(`[${prefix}] 成功`, 4000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
+		if (text != "") { new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, 4000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
+		else { new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, 4000).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
 	} else {
-		new Notice(`[${prefix}] 失败\n${text}`, 10000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+		new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
 	}
 }
+
 
 // import { exec, execSync } from 'child_process';
 // 选择目录

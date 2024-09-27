@@ -19,9 +19,8 @@ export interface I18nSettings {
 	// 打开设置
 	I18N_OPEN_SETTINGS: boolean;
 	// 译文提交
-	I18N_SUBMIT_TRANSLATION_MODE: boolean;
-	// 译文求译
-	I18N_REQUEST_TRANSLATION_MODE: boolean;
+	I18N_SUBMIT_MODE: boolean;
+	I18N_SUBMIT_URL: string,
 	// 忽略插件
 	I18N_IGNORE: boolean;
 
@@ -71,9 +70,9 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	// 打开设置
 	I18N_OPEN_SETTINGS: false,
 	// 译文提交
-	I18N_SUBMIT_TRANSLATION_MODE: true,
-	// 译文求译
-	I18N_REQUEST_TRANSLATION_MODE: false,
+	I18N_SUBMIT_MODE: true,
+	// 译文提交
+	I18N_SUBMIT_URL: '',
 	// 忽略插件
 	I18N_IGNORE: true,
 
@@ -86,7 +85,22 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_RE_DATAS_DISPLAY: false,
 	I18N_RE_MODES: ['默认'],
 	I18N_RE_DATAS: {
-		'默认': ["Notice\\(\\s*(.+?)\\s*\\)/gs",
+		'默认': [
+			"Notice\\(\\s*(.+?)\\s*\\)",
+			".log\\(\\s*(.+?)\\s*\\)",
+			".error\\(\\s*(.+?)\\s*\\)",
+			"t\\s*=\\s*:\\s*(['\"`])(.+?)\\1",
+			".textContent\\s*=\\s*:\\s*(['\"`])(.+?)\\1",
+			"name\\s*:\\s*(['\"`])(.+?)\\1",
+			"description\\s*:\\s*(['\"`])(.+?)\\1",
+			"selection\\s*:\\s*(['\"`])(.+?)\\1",
+			"annotation\\s*:\\s*(['\"`])(.+?)\\1",
+			"link\\s*:\\s*(['\"`])(.+?)\\1",
+			"text\\s*:\\s*(['\"`])(.+?)\\1",
+			"search\\s*:\\s*(['\"`])(.+?)\\1",
+			"speech\\s*:\\s*(['\"`])(.+?)\\1",
+			"page\\s*:\\s*(['\"`])(.+?)\\1",
+			"settings\\s*:\\s*(['\"`])(.+?)\\1",
 			".setText\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
 			".setButtonText\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
 			".setName\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
@@ -94,7 +108,10 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 			".setPlaceholder\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
 			".setTooltip\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
 			".appendText\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
-			".createEl\\((['\"`])([\\w:-]+)\\1,\\s*\\{\\s*text:\\s*(['\"`])(.+?)\\3\\s*\\}\\s*\\)",
+			".setTitle\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
+			".addHeading\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
+			".renderMarkdown\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
+			// ".createEl\\((['\"`])([\\w:-]+)\\1,\\s*\\{\\s*text:\\s*(['\"`])(.+?)\\3\\s*\\}\\s*\\)",
 			".innerText\\s*=\\s*(['\"`]).*?\\1"
 		]
 	},

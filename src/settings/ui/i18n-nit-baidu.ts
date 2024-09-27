@@ -40,7 +40,7 @@ delete to_lang.auto
 export default class I18nNitBaiDu extends BaseSetting {
     main(): void {
         const i18nNitBaiDu = new Setting(this.containerEl);
-        i18nNitBaiDu.setName(t('SETTING_NIT_BAIDU'));
+        i18nNitBaiDu.setName(t('SETTING_NIT_BAIDU_NAME'));
         i18nNitBaiDu.setDesc(t('SETTING_NIT_BAIDU_DESC'));
         if (!(this.settings.I18N_MODE_NIT)) i18nNitBaiDu.setClass('i18n_display-none');
         if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNitBaiDu.setClass('i18n_display-none');

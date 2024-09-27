@@ -1,34 +1,36 @@
 import { Notice, Setting } from "obsidian"
 import BaseSetting from "./base-setting"
+import { t } from "src/lang/inxdex";
+import { NoticeError, NoticeOperationResult } from "src/utils";
 
 export default class I18nRE extends BaseSetting {
     main(): void {
         // RE 模式
         const i18nREMode = new Setting(this.containerEl);
-        i18nREMode.setName('模式');
-        i18nREMode.setDesc('当前正在使用的匹配模式');
+        i18nREMode.setName(t('SETTING_RE_MODE_NAME'));
+        i18nREMode.setDesc(t('SETTING_RE_MODE_DESC'));
         i18nREMode.addText(cb => cb
             .setValue(this.settings.I18N_RE_MODE)
             .setDisabled(true)
         );
         i18nREMode.addButton(cb => cb
-            .setButtonText(this.settings.I18N_RE_MODE_EDIT ? '隐藏' : '编辑')
+            .setButtonText(this.settings.I18N_RE_MODE_EDIT ? t('SETTING_PUBLIC_HIDE') : t('SETTING_PUBLIC_SHOW'))
             .onClick(() => {
                 this.settings.I18N_RE_MODE_EDIT = !this.settings.I18N_RE_MODE_EDIT;
                 this.i18n.saveSettings();
                 this.settingTab.display();
             })
         );
-        
+
         // 编辑模式
         if (this.settings.I18N_RE_MODE_EDIT) {
             // RE 标志
             const i18nREFlags = new Setting(this.containerEl);
-            i18nREFlags.setName('标志');
-            i18nREFlags.setDesc('正则表达式的flags');
+            i18nREFlags.setName(t('SETTING_RE_FLAGS_NAME'));
+            i18nREFlags.setDesc(t('SETTING_RE_FLAGS_DESC'));
             i18nREFlags.addText(cb => cb
                 .setValue(this.settings.I18N_RE_FLAGS)
-                .setPlaceholder('flags')
+                .setPlaceholder(t('SETTING_RE_FLAGS_PLACEHOLDER'))
                 .onChange((value) => {
                     this.settings.I18N_RE_FLAGS = value;
                     this.i18n.saveSettings();
@@ -36,11 +38,11 @@ export default class I18nRE extends BaseSetting {
             );
             // RE 长度
             const i18nRELength = new Setting(this.containerEl);
-            i18nRELength.setName('长度');
-            i18nRELength.setDesc('re可以匹配到的最大长度');
+            i18nRELength.setName(t('SETTING_RE_LENGTH_NAME'));
+            i18nRELength.setDesc(t('SETTING_RE_LENGTH_DESC'));
             i18nRELength.addSlider(cb => cb
                 .setDynamicTooltip()
-                .setLimits(0, 1000, 25)
+                .setLimits(0, 3000, 100)
                 .setValue(this.settings.I18N_RE_LENGTH)
                 .onChange((value) => {
                     this.settings.I18N_RE_LENGTH = value
@@ -50,16 +52,16 @@ export default class I18nRE extends BaseSetting {
             // 模式编辑
             let modeString = '';
             const i18nREModes = new Setting(this.containerEl);
-            i18nREModes.setName('模式编辑');
-            i18nREModes.setDesc('新增和删除正则表达式匹配模式');
+            i18nREModes.setName(t('SETTING_RE_EDIT_MODE_NAME'));
+            i18nREModes.setDesc(t('SETTING_RE_EDIT_MODE_DESC'));
             i18nREModes.addText(cb => cb
-                .setPlaceholder('模式')
+                .setPlaceholder(t('SETTING_RE_EDIT_MODE_PLACEHOLDER'))
                 .onChange((value) => {
                     modeString = value
                 })
             );
             i18nREModes.addButton(cb => cb
-                .setButtonText('添加')
+                .setButtonText(t('SETTING_RE_EDIT_INSERT_BUTTON_TEXT'))
                 .onClick(() => {
                     if (modeString != '' && !this.settings.I18N_RE_MODES.includes(modeString)) {
                         this.settings.I18N_RE_MODES.push(modeString);
@@ -69,12 +71,12 @@ export default class I18nRE extends BaseSetting {
                         this.i18n.saveSettings();
                         this.settingTab.display();
                     } else {
-                        new Notice(`RE模式名称重复 无法添加`);
+                        NoticeError(t('SETTING_PUBLIC_RE'), t('SETTING_RE_EDIT_INSERT_BUTTON_CONTENT_A'));
                     }
                 })
             );
             i18nREModes.addButton(cb => cb
-                .setButtonText(this.settings.I18N_RE_MODE_DISPLAY ? '隐藏' : '查看')
+                .setButtonText(this.settings.I18N_RE_MODE_DISPLAY ? t('SETTING_PUBLIC_HIDE') : t('SETTING_PUBLIC_SHOW'))
                 .onClick(() => {
                     this.settings.I18N_RE_MODE_DISPLAY = !this.settings.I18N_RE_MODE_DISPLAY;
                     this.i18n.saveSettings();
@@ -107,9 +109,9 @@ export default class I18nRE extends BaseSetting {
                                     this.settings.I18N_RE_MODE = this.settings.I18N_RE_MODES[0]
                                 }
                                 this.settings.I18N_RE_MODES.splice(i, 1);
-                                new Notice(`删除成功`);
+                                NoticeOperationResult(t('SETTING_PUBLIC_RE'), true);
                             } else {
-                                new Notice(`只剩下一个了 无法删除`);
+                                NoticeOperationResult(t('SETTING_PUBLIC_RE'), false, t('SETTING_RE_EDIT_DELETE_BUTTON_CONTENT_A'));
                             }
                             this.i18n.saveSettings();
                             this.settingTab.display();
@@ -122,16 +124,16 @@ export default class I18nRE extends BaseSetting {
             // 数据编辑
             let regexpString = '';
             const i18nREDatas = new Setting(this.containerEl);
-            i18nREDatas.setName('数据编辑');
-            i18nREDatas.setDesc('新增和删除正则表达式模式数据');
+            i18nREDatas.setName(t('SETTING_RE_EDIT_ITEM_NAME'));
+            i18nREDatas.setDesc(t('SETTING_RE_EDIT_ITEM_DESC'));
             i18nREDatas.addText(cb => cb
-                .setPlaceholder('RegExp')
+                .setPlaceholder(t('SETTING_RE_EDIT_ITEM_PLACEHOLDER'))
                 .onChange((value) => {
                     regexpString = value
                 })
             );
             i18nREDatas.addButton(cb => cb
-                .setButtonText('添加')
+                .setButtonText(t('SETTING_RE_EDIT_ITEM_INSERT_BUTTON_TEXT'))
                 .onClick(() => {
                     if (regexpString != '') {
                         this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE].push(regexpString);
@@ -141,7 +143,7 @@ export default class I18nRE extends BaseSetting {
                 })
             );
             i18nREDatas.addButton(cb => cb
-                .setButtonText(this.settings.I18N_RE_DATAS_DISPLAY ? '隐藏' : '查看')
+                .setButtonText(this.settings.I18N_RE_DATAS_DISPLAY ? t('SETTING_PUBLIC_HIDE') : t('SETTING_PUBLIC_SHOW'))
                 .onClick(() => {
                     this.settings.I18N_RE_DATAS_DISPLAY = !this.settings.I18N_RE_DATAS_DISPLAY;
                     this.i18n.saveSettings();
