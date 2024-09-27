@@ -790,6 +790,16 @@
         ]
     },
     {
+        "id": "obsidian-to-flomo",
+        "translations": [
+            {
+                "author": "zero",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.1.9"
+            }
+        ]
+    },
+    {
         "id": "obsidian-zoom",
         "translations": [
             {
