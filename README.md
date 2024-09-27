@@ -10,10 +10,17 @@
 下面为插件的介绍，更多内容见[Github](https://github.com/0011000000110010/obsidian-i18n)
 ---
 
-<h1 align="center"> <div style="width: 1%;">
-  <img src="images/logo.png" style="width: 8%;" alt="Click to see the source">
-</div> Obsidian i18n </h1>
+---
 
+<h1 align="center"> 
+
+<div style="width: 1%;">
+  <img src="images/logo.png" style="width: 8%;" alt="Click to see the source">
+</div>
+
+ Obsidian i18n 
+
+</h1>
 
 
 ---
