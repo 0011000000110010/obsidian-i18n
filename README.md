@@ -21,6 +21,12 @@ obsidian-i18n通过正则匹配其他插件源代码中可能需要被翻译的�
 综上，obsidian-i18n是一个obsidian插件国际化的一站式解决方案。
 
 ---
+
+<h1 align="center">⚠️警告⚠️</h1>
+
+<b align="center">您需要知道：插件翻译的工作原理是修改被翻译插件的源文件，i18n会备份修改前的文件，但不排除可能的风险。因此建议您在首次使用前备份您的插件目录（库文件夹/.obsidian/plugins）</b>
+
+
 # 目录 Table of Contents
 
 - [什么是i18n](#什么是i18n)
