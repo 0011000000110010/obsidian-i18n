@@ -194,7 +194,7 @@ export default {
     SETTING_Author_DESC: '生成译文时自动添加作者签名',
     SETTING_Author_PLACEHOLDER: '签名',
 
-    SETTING_OPEN_SETTING_NAME: '打开设置',
+    SETTING_OPEN_SETTING_NAME: '设置跳转',
     SETTING_OPEN_SETTING_DESC: '启用后插件页面中会显示设置跳转按钮',
 
     SETTING_EDITOR_NAME: '译文编辑',

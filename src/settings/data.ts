@@ -1,6 +1,7 @@
 import { BAIDU } from '../data/types';
 
 export interface I18nSettings {
+	I18N_AGREEMENT: boolean;
 	I18N_UUID: string;
 	I18N_WIZARD: boolean;
 	// 翻译语言
@@ -54,6 +55,7 @@ export interface I18nSettings {
 }
 
 export const DEFAULT_SETTINGS: I18nSettings = {
+	I18N_AGREEMENT: false,
 	I18N_UUID: '',
 	I18N_WIZARD: true,
 	I18N_LANGUAGE: 'zh-cn',

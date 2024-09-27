@@ -15,7 +15,7 @@ import { API } from './api';
 import { Manifest } from './data/types';
 import Icons from './icon';
 import { EDIT_VIEW_TYPE, EditView } from './views/view';
-
+import { AgreementModal } from './modal/i18n-agreement-modal';
 
 // ==============================
 //          [入口] I18n
@@ -34,42 +34,45 @@ export default class I18N extends Plugin {
 
     // 当Obsidian启动时默认调用
     async onload() {
-        console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
-
         // [加载] 图标
         Icons();
         // [加载] 配置
         await this.loadSettings();
-        // [加载] API
-        this.api = new API(this);
-        // [函数] 首次运行
-        this.firstRun();
-        // [函数] 检测更新
-        this.checkUpdates();
 
-        // [函数] 读取提交地址
-        const temp = await this.api.submitUrl();
-        if (temp != undefined) this.tempSubmitUrl = atob(temp);
+        if (this.settings.I18N_AGREEMENT) {
+            console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
+            // [加载] API
+            this.api = new API(this);
+            // [函数] 首次运行
+            this.firstRun();
+            // [函数] 检测更新
+            this.checkUpdates();
+            // [函数] 读取提交地址
+            const temp = await this.api.submitUrl();
+            if (temp != undefined) this.tempSubmitUrl = atob(temp);
 
-        // [函数] 云端标记插件
-        await this.ignoreCache();
-        // [函数] 云端目录缓存
-        await this.directoryCache();
+            // [函数] 云端标记插件
+            await this.ignoreCache();
+            // [函数] 云端目录缓存
+            await this.directoryCache();
 
-        // [函数] 自动更新
-        if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
+            // [函数] 自动更新
+            if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
+            // [功能] 翻译
+            const translateIcon = this.addRibbonIcon('i18n_translate', t('I18N_NAME'), (evt: MouseEvent) => { new I18NModal(this.app, this).open() });
+            const sideDock = translateIcon.parentNode;
+            sideDock?.appendChild(translateIcon); // appendChild prepend
 
-        // [功能] 翻译
-        const translateIcon = this.addRibbonIcon('i18n_translate', t('I18N_NAME'), (evt: MouseEvent) => { new I18NModal(this.app, this).open() });
-        const sideDock = translateIcon.parentNode;
-        sideDock?.appendChild(translateIcon); // appendChild prepend
+            // [视图] 编辑器
+            this.registerView(EDIT_VIEW_TYPE, (leaf) => new EditView(leaf, this));
+            // 状态栏
+            // this.addStatusBarItem().setText(`[模式] ${mode[this.settings.I18N_MODE]}`);
 
-        // [视图] 编辑器
-        this.registerView(EDIT_VIEW_TYPE, (leaf) => new EditView(leaf, this));
-        // 状态栏
-        // this.addStatusBarItem().setText(`[模式] ${mode[this.settings.I18N_MODE]}`);
-        // [设置]
-        this.addSettingTab(new I18nSettingTab(this.app, this));
+            // [设置]
+            this.addSettingTab(new I18nSettingTab(this.app, this));
+        } else {
+            new AgreementModal(this.app, this).open();
+        }
     }
 
     // 命周期函数在插件被禁用时触发。

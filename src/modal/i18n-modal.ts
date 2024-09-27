@@ -11,6 +11,7 @@ import { API_TYPES, I18N_SORT, I18N_TYPE } from 'src/data/data';
 import { NoticeError, State, generateTranslation, NoticeInfo, NoticeOperationResult, compareVersions, NoticePrimary } from '../utils';
 import { I18NSubmiteModal } from './i18n-submite-modal';
 import { WizardModal } from './i18n-wizard-modal';
+
 import { t } from '../lang/inxdex';
 import Url from 'src/url';
 
@@ -47,7 +48,7 @@ export class I18NModal extends Modal {
         this.settingPlugins = this.app.setting;
         this.regexps = this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE];
     }
-    footEl: HTMLDivElement;
+    footEl: HTMLDivElement; 
     // ============================================================
     //                        展示操作
     // ============================================================
