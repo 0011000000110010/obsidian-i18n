@@ -4,8 +4,9 @@
  "obsidian-excalidraw-plugin",
  "obsidian-linter",
  "obsidian-markmind",
- "obsidian-text-format",
  "obsidian-memos",
+ "obsidian-quiet-outline",
+ "obsidian-text-format",
  "pkmer",
  "remotely-save"
 ]
