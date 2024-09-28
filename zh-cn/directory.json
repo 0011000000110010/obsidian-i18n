@@ -280,6 +280,16 @@
         ]
     },
     {
+        "id": "longform",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "2.0.7",
+                "pluginVersion": "2.0.7"
+            }
+        ]
+    },
+    {
         "id": "loom",
         "translations": [
             {
