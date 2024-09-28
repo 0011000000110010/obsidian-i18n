@@ -630,6 +630,16 @@
         ]
     },
     {
+        "id": "obsidian-footnotes",
+        "translations": [
+            {
+                "author": "简言",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.1.3"
+            }
+        ]
+    },
+    {
         "id": "obsidian-full-calendar",
         "translations": [
             {
@@ -816,6 +826,16 @@
                 "author": "Fendi",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.1.15"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-sidebar-expand-on-hover",
+        "translations": [
+            {
+                "author": "osen",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.1"
             }
         ]
     },
