@@ -210,6 +210,16 @@
         ]
     },
     {
+        "id": "file-order",
+        "translations": [
+            {
+                "author": "缤",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.0.11"
+            }
+        ]
+    },
+    {
         "id": "file-tree-alternative",
         "translations": [
             {
