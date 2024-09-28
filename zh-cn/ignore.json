@@ -1,8 +1,9 @@
 [
- "cm-chs-patch",
- "obsidian-linter",
- "obsidian-text-format",
- "pkmer",
  "Enhanced-editing",
- "obsidian-excalidraw-plugin"
+ "cm-chs-patch",
+ "obsidian-excalidraw-plugin",
+ "obsidian-linter",
+ "obsidian-markmind",
+ "obsidian-text-format",
+ "pkmer"
 ]
