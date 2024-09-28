@@ -5,5 +5,7 @@
  "obsidian-linter",
  "obsidian-markmind",
  "obsidian-text-format",
- "pkmer"
+ "obsidian-memos",
+ "pkmer",
+ "remotely-save"
 ]
