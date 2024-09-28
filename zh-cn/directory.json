@@ -250,6 +250,16 @@
         ]
     },
     {
+        "id": "folder-notes",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "1.7.30",
+                "pluginVersion": "1.7.30"
+            }
+        ]
+    },
+    {
         "id": "global-proxy",
         "translations": [
             {
