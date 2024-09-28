@@ -630,6 +630,16 @@
         ]
     },
     {
+        "id": "obsidian-footnotes",
+        "translations": [
+            {
+                "author": "简言",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.1.3"
+            }
+        ]
+    },
+    {
         "id": "obsidian-full-calendar",
         "translations": [
             {
