@@ -2,6 +2,7 @@
  "Enhanced-editing",
  "cm-chs-patch",
  "cmdr",
+ "obsidian-booknote-plugin",
  "obsidian-excalidraw-plugin",
  "obsidian-language-learner",
  "obsidian-linter",
@@ -10,6 +11,5 @@
  "obsidian-quiet-outline",
  "obsidian-text-format",
  "pkmer",
- "remotely-save",
- "obsidian-language-learner"
+ "remotely-save"
 ]
