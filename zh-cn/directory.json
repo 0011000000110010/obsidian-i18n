@@ -820,6 +820,16 @@
         ]
     },
     {
+        "id": "obsidian-sidebar-expand-on-hover",
+        "translations": [
+            {
+                "author": "osen",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-style-settings",
         "translations": [
             {
