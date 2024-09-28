@@ -1,5 +1,5 @@
 {
-    "version": "1.3.2",
-    "content":"更新 更为详细的教程(曲淡歌制作)\n新增 插件使用协议",  
+    "version": "1.3.3",
+    "content":"修复 翻译时提早出现翻译完成提示的问题\n新增 编辑器打开译文\n提示 请一定要等待翻译完成后再进行操作",  
     "submit":"MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }

@@ -1,0 +1,42 @@
+{
+  "manifest": {
+    "id": "file-order",
+    "author": "缤",
+    "version": "1.0.0",
+    "pluginVersion": "0.0.11"
+  },
+  "description": {
+    "original": "Use number-prefixes in your file names to define a custom order, and drag-and-drop the files to update that order",
+    "translation": "在文件名中使用数字前缀来定义自定义顺序，然后拖放文件以更新该顺序"
+  },
+  "dict": {
+    "Notice(\"Prefix min length must be a number above or equal zero.\")": "Notice(\"前缀最小长度必须是大于或等于零的数字。\")",
+    "Notice(\"Starting index must be a number above or equal zero.\")": "Notice(\"起始索引必须是大于或等于零的数字。\")",
+    "Notice(`Fixed name to: \"${o}\"`)": "Notice(`已将名称固定为：\"${o}\"`)",
+    ".error(\"forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported\")": ".error(\"forceFrameRate取0到125之间的正整数，不支持强制帧速率高于125 fps\")",
+    ".error(r.value)": ".error(r.value)",
+    ".error(e)": ".error(e)",
+    ".error(l)": ".error(l)",
+    ".error(A)": ".error(A)",
+    ".error(t)": ".error(t)",
+    ".error(r)": ".error(r)",
+    "name:\"className\"": "name:\"班级名称\"",
+    "name:\"attributeName\"": "name:\"属性名称\"",
+    "name:\"react-beautiful-dnd\"": "name:\"反应美丽dnd\"",
+    "name:\"Reorder items in top folder\"": "name:\"重新排序顶部文件夹中的项目\"",
+    "text:\"File Order default config\"": "text:\"文件顺序默认配置\"",
+    "text:'To reorder files, right click on any file in the file explorer, and click on \"Reorder items\".'": "text:'要重新排序文件，请在文件资源管理器中右键单击任何文件，然后单击“重新排序项目”。'",
+    ".setName(\"Prefix number minimum length\")": ".setName(\"前缀号最小长度\")",
+    ".setName(\"Delimiter\")": ".setName(\"分隔符\")",
+    ".setName(\"Starting Index\")": ".setName(\"起始索引\")",
+    ".setName(\"Ignore Pattern\")": ".setName(\"忽略模式\")",
+    ".setName(\"Ignore folder file\")": ".setName(\"忽略文件夹文件\")",
+    ".setDesc(\"Prefix numbers will be padded to that length if they are shorted, i.e. 001 instead of 1\")": ".setDesc(\"如果前缀数字被缩短，则将填充到该长度，即001而不是1\")",
+    ".setDesc(\"Delimiter between prefix number and title. May be multiple characters.\")": ".setDesc(\"前缀编号和标题之间的分隔符。可以是多个字符。\")",
+    ".setDesc(\"Starting index for prefix numbers.\")": ".setDesc(\"前缀数字的起始索引。\")",
+    ".setDesc(\"RegEx of files and folder to ignore. Eg: ^index\\\\.md$ to ignore index.md files\")": ".setDesc(\"要忽略的文件和文件夹的RegEx。例如：^index\\\\.md$忽略index.md文件\")",
+    ".setDesc(\"In a folder named MyFolderName, ignore MyFolderName.md\")": ".setDesc(\"在名为MyFolderName的文件夹中，忽略MyFolderName.md\")",
+    ".setTitle(\"Reorder items\")": ".setTitle(\"重新订购商品\")",
+    ".setTitle(\"Fix name to ordering convention\")": ".setTitle(\"将名称固定为订购惯例\")"
+  }
+}
