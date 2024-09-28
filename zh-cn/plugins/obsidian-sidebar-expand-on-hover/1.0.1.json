@@ -6,7 +6,7 @@
     "pluginVersion": "1.0.1"
   },
   "description": {
-    "original": "这个OB插件基于鼠标悬停在功能区上来展开或折叠侧边栏。",
+    "original": "This Obsidian plugin expands or collapses the sidebars based on mouse hovering on the ribbons.",
     "translation": "这个OB插件基于鼠标悬停在功能区上来展开或折叠侧边栏。"
   },
   "dict": {
