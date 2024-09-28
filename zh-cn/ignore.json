@@ -3,8 +3,10 @@
  "cm-chs-patch",
  "cmdr",
  "contribution-graph",
+ "dust-calendar",
  "easy-typing-obsidian",
  "obsidian-booknote-plugin",
+ "obsidian-enhancing-mindmap",
  "obsidian-excalidraw-plugin",
  "obsidian-language-learner",
  "obsidian-linter",
@@ -12,6 +14,7 @@
  "obsidian-memos",
  "obsidian-quiet-outline",
  "obsidian-text-format",
+ "obsidian-weread-plugin",
  "pkmer",
  "remotely-save",
  "surfing"

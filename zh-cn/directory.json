@@ -230,6 +230,16 @@
         ]
     },
     {
+        "id": "find-unlinked-files",
+        "translations": [
+            {
+                "author": "简言",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.10.1"
+            }
+        ]
+    },
+    {
         "id": "floating-toc",
         "translations": [
             {
@@ -316,6 +326,16 @@
                 "author": "zero",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.20.3"
+            }
+        ]
+    },
+    {
+        "id": "lyrics",
+        "translations": [
+            {
+                "author": "tbs",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.1.0"
             }
         ]
     },
@@ -526,6 +546,16 @@
                 "author": "Fendi",
                 "translationVersion": "2024-09-15",
                 "pluginVersion": "1.0.4"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-custom-attachment-location",
+        "translations": [
+            {
+                "author": "简言",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "4.22.1"
             }
         ]
     },
