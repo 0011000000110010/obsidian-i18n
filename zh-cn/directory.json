@@ -300,6 +300,16 @@
         ]
     },
     {
+        "id": "lazy-plugins",
+        "translations": [
+            {
+                "author": "简言&曲淡歌",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.18"
+            }
+        ]
+    },
+    {
         "id": "links",
         "translations": [
             {
