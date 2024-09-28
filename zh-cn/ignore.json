@@ -1,8 +1,9 @@
 [
+ "Enhanced-editing",
  "cm-chs-patch",
+ "obsidian-excalidraw-plugin",
  "obsidian-linter",
  "obsidian-text-format",
  "pkmer",
- "Enhanced-editing",
- "obsidian-excalidraw-plugin"
+ "remotely-save"
 ]
