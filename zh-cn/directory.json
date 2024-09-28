@@ -530,6 +530,16 @@
         ]
     },
     {
+        "id": "obsidian-day-and-night",
+        "translations": [
+            {
+                "author": "Cheng",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.2.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-day-planner",
         "translations": [
             {
@@ -1048,8 +1058,8 @@
         "id": "various-complements",
         "translations": [
             {
-                "author": "无名氏",
-                "translationVersion": "1.0.0",
+                "author": "四方天际",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "9.1.0"
             }
         ]
