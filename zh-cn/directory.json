@@ -430,6 +430,16 @@
         ]
     },
     {
+        "id": "obsidian-auto-hide",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "0.4.8",
+                "pluginVersion": "0.4.8"
+            }
+        ]
+    },
+    {
         "id": "obsidian-auto-link-title",
         "translations": [
             {
