@@ -12,7 +12,7 @@
   "dict": {
     "Notice(\"Obsidian cannot open files that begin with a dot. Consider a different name.\")": "Notice(\"Obsidian 无法打开以点开头的文件。请考虑使用其他名称。\")",
     "Notice(\"Compile complete.\")": "Notice(\"编译完成。\")",
-    "Notice(`${type === \"undo\" ? \"Undid\" : \"Redid\"} scene reordering`)": "Notice(`${type === \"undo\" ? \"撤销\" : \"重做\"} 场景重新排序`)",
+    "Notice(`${type === \"undo\" ? \"Undid\" : \"Redid\"} scene reordering`)": "Notice(`$${type === \"undo\" ? \"Undid\" : \"Redid\"} 场景重新排序`)",
     "Notice(\"Writing goal met!\")": "Notice(\"写作目标达成！\")",
     "log('done saving!')": "log('保存完成！')",
     "log('clicked ' + this.label)": "log('点击了 ' + this.label)",
