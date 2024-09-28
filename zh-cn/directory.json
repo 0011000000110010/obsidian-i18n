@@ -915,6 +915,16 @@
         ]
     },
     {
+        "id": "quick-links",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "0.2.5",
+                "pluginVersion": "0.2.5"
+            }
+        ]
+    },
+    {
         "id": "quickadd",
         "translations": [
             {
