@@ -530,6 +530,16 @@
         ]
     },
     {
+        "id": "obsidian-custom-attachment-location",
+        "translations": [
+            {
+                "author": "简言",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "4.22.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-custom-frames",
         "translations": [
             {
