@@ -630,6 +630,16 @@
         ]
     },
     {
+        "id": "obsidian-folder-focus-mode",
+        "translations": [
+            {
+                "author": "大圣",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.9.13"
+            }
+        ]
+    },
+    {
         "id": "obsidian-folder-index",
         "translations": [
             {
