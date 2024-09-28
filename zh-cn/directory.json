@@ -10,6 +10,16 @@
         ]
     },
     {
+        "id": "aprils-automatic-timelines",
+        "translations": [
+            {
+                "author": "四方天际",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.13.6"
+            }
+        ]
+    },
+    {
         "id": "attachment-flow-plugin",
         "translations": [
             {
