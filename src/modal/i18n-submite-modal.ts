@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import { App, ButtonComponent, Modal, PluginManifest, Setting } from 'obsidian';
 import { API } from 'src/api';
-import { Manifest, Translation } from 'src/data/types';
+import { Manifest, SubmitMark, Translation } from 'src/data/types';
 import { t } from 'src/lang/inxdex';
 import I18N from 'src/main';
 import { NoticeOperationResult, validateTranslation } from 'src/utils';
@@ -19,6 +19,7 @@ export class I18NSubmiteModal extends Modal {
         this.plugin = plugin;
         this.api = i18n.api;
         this.langDoc = langDoc;
+        this.i18n = i18n;
     }
 
     public async Main() {
@@ -112,70 +113,104 @@ export class I18NSubmiteModal extends Modal {
             }
             const temp = directory.find(plugin => plugin.id === this.plugin.id);
             if ((temp === undefined) || (temp !== undefined && temp.translations.find(translation => translation.pluginVersion === this.plugin.version) === undefined)) {
+                // 请求翻译
                 const requestTranslationButton = new ButtonComponent(operate.controlEl);
                 requestTranslationButton.setButtonText(t('SUBMITE_OPERATE_REQUEST_BUTTON_TEXT'));
                 requestTranslationButton.setCta();
                 requestTranslationButton.onClick(async () => {
                     try {
-                        const url = await this.api.submite(`[${t('SUBMITE_OPERATE_REQUEST_BUTTON_NOTICE_HEAD')}] ${this.plugin.id}`, JSON.stringify(titleJson));
-                        if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
-                        NoticeOperationResult(t('SUBMITE_OPERATE_REQUEST_BUTTON_NOTICE_HEAD'), true)
-                        this.close();
+
+                        if (this.containsObject(this.i18n.settings.I18N_SUBMIT_LIST, { 'id': this.plugin.id, 'type': 1 })) {
+                            const url = await this.api.submite(`[${t('SUBMITE_OPERATE_REQUEST_BUTTON_NOTICE_HEAD')}] ${this.plugin.id}`, JSON.stringify(titleJson));
+                            if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
+                            NoticeOperationResult(t('SUBMITE_OPERATE_REQUEST_BUTTON_NOTICE_HEAD'), true);
+                            this.i18n.settings.I18N_SUBMIT_LIST.push({ 'id': this.plugin.id, 'type': 1 });
+                            this.i18n.saveSettings();
+                            this.close();
+                        } else {
+                            NoticeOperationResult(t('SUBMITE_OPERATE_REQUEST_BUTTON_NOTICE_HEAD'), false, '您已经提交过了,请耐心等待审核');
+                        }
                     } catch (error) {
-                        NoticeOperationResult(t('SUBMITE_OPERATE_REQUEST_BUTTON_NOTICE_HEAD'), false, error)
+                        NoticeOperationResult(t('SUBMITE_OPERATE_REQUEST_BUTTON_NOTICE_HEAD'), false, error);
                     }
 
                 });
             }
+            // 标记汉化
             const markTranslationButton = new ButtonComponent(operate.controlEl);
             markTranslationButton.setButtonText(t('SUBMITE_OPERATE_MARK_BUTTON_TEXT'));
             markTranslationButton.setCta();
             markTranslationButton.onClick(async () => {
                 try {
-                    const url = await this.api.submite(`[${t('SUBMITE_OPERATE_MARK_BUTTON_NOTICE_HEAD')}] ${this.plugin.id}`, JSON.stringify(titleJson));
-                    if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
-                    this.close();
-                    NoticeOperationResult(t('SUBMITE_OPERATE_MARK_BUTTON_NOTICE_HEAD'), true)
+                    if (this.containsObject(this.i18n.settings.I18N_SUBMIT_LIST, { 'id': this.plugin.id, 'type': 2 })) {
+                        const url = await this.api.submite(`[${t('SUBMITE_OPERATE_MARK_BUTTON_NOTICE_HEAD')}] ${this.plugin.id}`, JSON.stringify(titleJson));
+                        if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
+                        this.i18n.settings.I18N_SUBMIT_LIST.push({ 'id': this.plugin.id, 'type': 2 });
+                        this.i18n.saveSettings();
+                        this.close();
+                        NoticeOperationResult(t('SUBMITE_OPERATE_MARK_BUTTON_NOTICE_HEAD'), true);
+                    } else {
+                        NoticeOperationResult(t('SUBMITE_OPERATE_MARK_BUTTON_NOTICE_HEAD'), false, '您已经提交过了,请耐心等待审核');
+                    }
                 } catch (error) {
-                    NoticeOperationResult(t('SUBMITE_OPERATE_MARK_BUTTON_NOTICE_HEAD'), false, error)
+                    NoticeOperationResult(t('SUBMITE_OPERATE_MARK_BUTTON_NOTICE_HEAD'), false, error);
+                    console.log(error)
                 }
 
             });
         }
         if (isLangDoc && pluginVersionMark !== undefined && (translationAuthorMark === undefined || translationVersionMark === undefined)) {
+            // 更新译文
             const updateTranslationButton = new ButtonComponent(operate.controlEl);
             updateTranslationButton.setButtonText(t('SUBMITE_OPERATE_UPDATE_BUTTON_TEXT'));
             updateTranslationButton.setCta();
             updateTranslationButton.onClick(async () => {
                 try {
-                    if (validateTranslation(localTranslationJson)) {
-                        const url = await this.api.submite(`[${t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD')}] ${JSON.stringify(localTranslationJson.manifest)}`, JSON.stringify(localTranslationJson));
-                        if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
-                        this.close();
-                        NoticeOperationResult(t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD'), true)
+                    if (this.containsObject(this.i18n.settings.I18N_SUBMIT_LIST, { 'id': this.plugin.id, 'type': 3 })) {
+                        if (validateTranslation(localTranslationJson)) {
+                            const url = await this.api.submite(`[${t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD')}] ${JSON.stringify(localTranslationJson.manifest)}`, JSON.stringify(localTranslationJson));
+                            if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
+                            this.i18n.settings.I18N_SUBMIT_LIST.push({ 'id': this.plugin.id, 'type': 3 });
+                            this.i18n.saveSettings();
+                            this.close();
+                            NoticeOperationResult(t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD'), true);
+                        }
+                    } else {
+                        NoticeOperationResult(t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD'), false, '您已经提交过了,请耐心等待审核');
                     }
                 } catch (error) {
-                    NoticeOperationResult(t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD'), false, error)
+                    NoticeOperationResult(t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD'), false, error);
                 }
             });
         }
         if (isLangDoc && (pluginMark === undefined || pluginVersionMark === undefined)) {
+            // 提交译文
             const submitTranslationButton = new ButtonComponent(operate.controlEl);
             submitTranslationButton.setButtonText(t('SUBMITE_OPERATE_SUBMITE_BUTTON_TEXT'));
             submitTranslationButton.setCta();
             submitTranslationButton.onClick(async () => {
                 try {
-                    if (validateTranslation(localTranslationJson)) {
-                        const url = await this.api.submite(`[${t('SUBMITE_OPERATE_SUBMITE_BUTTON_NOTICE_HEAD')}] ${JSON.stringify(localTranslationJson.manifest)}`, JSON.stringify(localTranslationJson));
-                        if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
-                        this.close();
-                        NoticeOperationResult(t('SUBMITE_OPERATE_SUBMITE_BUTTON_NOTICE_HEAD'), true)
+                    if (this.containsObject(this.i18n.settings.I18N_SUBMIT_LIST, { 'id': this.plugin.id, 'type': 4 })) {
+                        if (validateTranslation(localTranslationJson)) {
+                            const url = await this.api.submite(`[${t('SUBMITE_OPERATE_SUBMITE_BUTTON_NOTICE_HEAD')}] ${JSON.stringify(localTranslationJson.manifest)}`, JSON.stringify(localTranslationJson));
+                            if (url != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${url}`);
+                            this.i18n.settings.I18N_SUBMIT_LIST.push({ 'id': this.plugin.id, 'type': 4 });
+                            this.i18n.saveSettings();
+                            this.close();
+                            NoticeOperationResult(t('SUBMITE_OPERATE_SUBMITE_BUTTON_NOTICE_HEAD'), true);
+                        }
+                    } else {
+                        NoticeOperationResult(t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD'), false, '您已经提交过了,请耐心等待审核');
                     }
                 } catch (error) {
                     NoticeOperationResult(t('SUBMITE_OPERATE_SUBMITE_BUTTON_NOTICE_HEAD'), false, error)
                 }
             });
         }
+    }
+    containsObject(arr: SubmitMark[], obj: SubmitMark): boolean {
+        for (const item of arr) if (item.id === obj.id && item.type === obj.type) return false;
+        return true;
     }
 
     async onOpen() {

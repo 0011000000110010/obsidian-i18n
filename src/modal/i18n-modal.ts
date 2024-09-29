@@ -8,7 +8,7 @@ import { I18nSettings } from '../settings/data';
 
 import { Manifest, Translation } from 'src/data/types';
 import { API_TYPES, I18N_SORT, I18N_TYPE } from 'src/data/data';
-import { NoticeError, State, generateTranslation, NoticeInfo, NoticeOperationResult, compareVersions, NoticePrimary } from '../utils';
+import { NoticeError, State, generateTranslation, NoticeInfo, NoticeOperationResult, compareVersions, NoticePrimary, NoticeWarning } from '../utils';
 import { I18NSubmiteModal } from './i18n-submite-modal';
 import { WizardModal } from './i18n-wizard-modal';
 
@@ -48,11 +48,11 @@ export class I18NModal extends Modal {
         this.settingPlugins = this.app.setting;
         this.regexps = this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE];
     }
-    footEl: HTMLDivElement; 
+    footEl: HTMLDivElement;
     // ============================================================
     //                        展示操作
     // ============================================================
-    public async showHead() { 
+    public async showHead() {
         //@ts-ignore
         const modalEl: HTMLElement = this.contentEl.parentElement;
         modalEl.addClass('i18n_modal');
@@ -239,7 +239,31 @@ export class I18NModal extends Modal {
             // 译文格式是否正常标记
             let translationFormatMark: boolean = true;
             // 当本地译文存在时 提取本地译文 并 判断译文格式
-            if (isLangDoc) { try { localTranslationJson = fs.readJsonSync(langDoc); translationFormatMark = true; } catch (e) { translationFormatMark = false } }
+            if (isLangDoc) {
+                try {
+                    localTranslationJson = fs.readJsonSync(langDoc);
+                    // 运行时检查以确保localTranslationJson包含所有必要的字段  
+                    if (
+                        localTranslationJson !== undefined &&
+                        'manifest' in localTranslationJson &&
+                        'id' in localTranslationJson.manifest &&
+                        'author' in localTranslationJson.manifest &&
+                        'version' in localTranslationJson.manifest &&
+                        'pluginVersion' in localTranslationJson.manifest &&
+                        'description' in localTranslationJson &&
+                        'original' in localTranslationJson.description &&
+                        'translation' in localTranslationJson.description &&
+                        'dict' in localTranslationJson
+                    ) {
+                        translationFormatMark = true; // 格式正确
+
+                    } else {
+                        translationFormatMark = false;
+                    }
+                } catch (e) {
+                    translationFormatMark = false;
+                }
+            }
             // 当云端译文存在时 获取云端译文
             if (this.i18n.directoryMark) { cloudTranslationJson = this.i18n.directory.find((manifest: Manifest) => manifest.id === plugin.id) }
             // 判断本地译文和云端译文 及 本地插件和云端插件
@@ -251,7 +275,7 @@ export class I18NModal extends Modal {
                 // 最新云端版本号对象
                 const temp = cloudTranslationJson.translations.find(translation => translation.pluginVersion === latestCloudVersion);
                 // 判断 本地译文和云端译文 版本是否相同标记
-                if (localTranslationJson !== undefined && temp != undefined) {
+                if (localTranslationJson !== undefined && temp != undefined && translationFormatMark) {
                     isPluginsVersionSameMark = compareVersions(localTranslationJson.manifest.pluginVersion, temp.pluginVersion);
                     isTranslationVersionSameMark = compareVersions(localTranslationJson.manifest.version, temp.translationVersion);
                 }
@@ -357,6 +381,16 @@ export class I18NModal extends Modal {
                             }
                         });
                     }
+                    if (navigator.userAgent.match(/Mac/i)) {
+                        const command = `open ${mainDoc}`
+                        exec(command, (error) => {
+                            if (error) {
+                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
+                            } else {
+                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
+                            }
+                        });
+                    }
                     openPluginDirButton.setDisabled(false);
                 });
             }
@@ -412,7 +446,7 @@ export class I18NModal extends Modal {
             // ====================
             // 译文提交模式
             // ====================
-            if (this.settings.I18N_SUBMIT_MODE && (this.i18n.tempSubmitUrl != undefined || this.i18n.settings.I18N_SUBMIT_URL != "")) {
+            if (this.settings.I18N_SUBMIT_MODE && translationFormatMark && (this.i18n.tempSubmitUrl != undefined || this.i18n.settings.I18N_SUBMIT_URL != "")) {
                 const submitTranslationButton = new ExtraButtonComponent(itemEl.controlEl);
                 submitTranslationButton.setIcon('cloud-upload');
                 submitTranslationButton.setTooltip(t('I18N_ITEM_SUBMIT_TRANSLATION_BUTTON_TIP'));
@@ -575,8 +609,9 @@ export class I18NModal extends Modal {
                 trenslatorButton.setTooltip(t('I18N_ITEM_TRANSLATION_BUTTON_TIP'));
                 if (!(stateObj.state() == false)) trenslatorButton.setClass('i18n_display-none');
                 trenslatorButton.onClick(() => {
-                    trenslatorButton.setDisabled(true);
                     try {
+                        trenslatorButton.setDisabled(true);
+                        // NoticeWarning(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), '请等待成功提示后继续操作');
                         // 1. 复制备份文件
                         fs.copySync(mainDoc, duplicateDoc);
                         // 2. 读取译文
@@ -584,7 +619,8 @@ export class I18NModal extends Modal {
                         // 3. 读取 main.js
                         let mainString = fs.readFileSync(mainDoc).toString();
                         // 4. 翻译 main.js
-                        for (const key in translationJson.dict) mainString = mainString.replaceAll(key, translationJson.dict[key]);
+                        // for (const key in translationJson.dict) { mainString = mainString.replaceAll(key, translationJson.dict[key]); console.log(mainString) }
+                        mainString = this.translationMain(translationJson, mainString);
                         // 5. 写入 main.js
                         fs.writeFileSync(mainDoc, mainString);
                         // 6. 读取 manifest.json
@@ -596,10 +632,8 @@ export class I18NModal extends Modal {
                         // 9. 更新状态文件
                         stateObj.update(true, plugin.version, translationJson.manifest.version);
                         // 10. 判断插件是否开启 开启则重载此插件
-                        if (this.enabledPlugins.has(plugin.id)) {
-                            this.reloadPlugin(plugin.id);
-                        }
-                        NoticeOperationResult(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), true, t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_CONTENT_A'));
+                        if (this.enabledPlugins.has(plugin.id)) { this.reloadPlugin(plugin.id); }
+                        // NoticeOperationResult(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), true, t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_CONTENT_A'));
                     } catch (error) {
                         NoticeOperationResult(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), false, error);
                     }
@@ -610,6 +644,7 @@ export class I18NModal extends Modal {
                 // 还原按钮
                 const restoreButton = new ButtonComponent(itemEl.controlEl);
                 restoreButton.setClass('bt');
+                restoreButton.setDisabled(false);
                 restoreButton.setButtonText(t('I18N_ITEM_RESTORE_BUTTON_TEXT'));
                 restoreButton.setTooltip(t('I18N_ITEM_RESTORE_BUTTON_TIP'));
                 if (!(stateObj.state() == true)) restoreButton.setClass('i18n_display-none');
@@ -644,17 +679,11 @@ export class I18NModal extends Modal {
                 const test = new ButtonComponent(itemEl.controlEl);
                 test.setButtonText('测试');
                 test.onClick(async () => {
-                    if (navigator.userAgent.match(/Win/i)) {
-                        const command = `start ${mainDoc}`
-                        console.log(command)
-                        exec(command, (error) => {
-                            if (error) {
-                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
-                            } else {
-                                NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
-                            }
-                        });
-                    }
+                    console.log(new Date().getDate());
+
+                    // console.log(this.app.setting.settingTabs[6].containerEl)
+                    // this.i18n.unload();
+
                 });
             }
         }
@@ -663,7 +692,7 @@ export class I18NModal extends Modal {
     // window.location.reload();
     // [重载数据显示]
     async reloadShowData() {
-        // console.log('调用了[刷新]');
+        console.log('调用了[刷新]');
         // 滚动条定位
         let scrollTop = 0;
         // @ts-ignore
@@ -680,6 +709,7 @@ export class I18NModal extends Modal {
     }
 
     // [开启]
+
     async onOpen() {
         // console.log('调用了[开启]');
         await this.showHead();
@@ -700,5 +730,11 @@ export class I18NModal extends Modal {
             await this.app.plugins.enablePlugin(id);
 
         }
+    }
+
+    translationMain(translationJson: Translation, mainString: string) { 
+        for (const key in translationJson.dict) { mainString = mainString.replaceAll(key, translationJson.dict[key]) }
+        NoticeOperationResult(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), true, t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_CONTENT_A'));
+        return mainString;
     }
 }

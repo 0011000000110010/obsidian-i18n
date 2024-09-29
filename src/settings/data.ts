@@ -1,4 +1,4 @@
-import { BAIDU } from '../data/types';
+import { BAIDU, SubmitMark } from '../data/types';
 
 export interface I18nSettings {
 	I18N_AGREEMENT: boolean;
@@ -21,7 +21,12 @@ export interface I18nSettings {
 	I18N_OPEN_SETTINGS: boolean;
 	// 译文提交
 	I18N_SUBMIT_MODE: boolean;
+	// 提交地址
 	I18N_SUBMIT_URL: string,
+	// 提交时间标记
+	I18N_SUBMIT_TIME: number,
+	// 提交字典标记
+	I18N_SUBMIT_LIST: SubmitMark[],
 	// 忽略插件
 	I18N_IGNORE: boolean;
 
@@ -75,6 +80,11 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_SUBMIT_MODE: true,
 	// 译文提交
 	I18N_SUBMIT_URL: '',
+	// 提交时间标记
+	I18N_SUBMIT_TIME: 0,
+	// 提交字典标记
+	I18N_SUBMIT_LIST: [],
+
 	// 忽略插件
 	I18N_IGNORE: true,
 

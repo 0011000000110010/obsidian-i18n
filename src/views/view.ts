@@ -239,6 +239,44 @@ export class EditView extends ItemView {
                         }
                     });
                 }
+                if (navigator.userAgent.match(/Mac/i)) {
+                    const command = `open ${path.join(this.i18n.selectTranslation.split('\\').slice(0, -2).join('\\'), 'main.js')}`
+                    exec(command, (error) => {
+                        if (error) {
+                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                        } else {
+                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                        }
+                    });
+                }
+
+            });
+
+            const langButton = new ButtonComponent(operateEl);
+            langButton.setButtonText('译文');
+            langButton.setClass('i18n_edit_operate_button');
+            langButton.onClick(async () => {
+                if (navigator.userAgent.match(/Win/i)) {
+                    const command = `start ${this.i18n.selectTranslation}`
+                    exec(command, (error) => {
+                        if (error) {
+                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                        } else {
+                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                        }
+                    });
+                }
+                if (navigator.userAgent.match(/Mac/i)) {
+                    const command = `open ${this.i18n.selectTranslation}`
+                    exec(command, (error) => {
+                        if (error) {
+                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                        } else {
+                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                        }
+                    });
+                }
+
             });
 
             const helpButton = new ButtonComponent(operateEl);

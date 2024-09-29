@@ -28,8 +28,10 @@ export class AgreementModal extends Modal {
         // 内容
         const contentEl: HTMLElement = this.contentEl;
         contentEl.innerHTML = `
-        <p class='i18n_areement_text'>请务必了解：插件翻译过程涉及直接修改原插件的源代码。尽管i18n工具会事先备份原始文件，但操作仍存在一定风险。</p>
-        <p class='i18n_areement_text'>因此，我们强烈建议您在首次尝试翻译插件之前，先备份您的插件目录（通常位于.obsidian/plugins文件夹内），以确保数据安全。</p>
+        <p class='i18n_areement_text'>1. 插件翻译过程涉及直接修改原插件的源代码。尽管i18n工具会事先备份原始文件，但操作仍存在一定风险。</p>
+        <p class='i18n_areement_text'>2. 强烈建议在首次尝试翻译插件之前，先备份您的插件目录。通常，插件目录位于 .obsidian/plugins 文件夹内。备份可以确保您的数据安全。</p>
+        <p class='i18n_areement_text'>3. 在进行翻译时，请耐心等待。直到翻译成功或明确得知失败结果后，再继续您的后续操作。</p>
+        <p class='i18n_areement_text'>4. 若在使用本插件进行翻译后，发现原插件的某些功能受到影响而失效，请先执行还原操作，随后再次检验功能是否恢复正常。若问题依旧存在，再去原插件作者项目地址提交issues，避免因本插件导致原插件失效，去打扰原作者。(重要！重要！重要！)</p>
         `
         const areement_1 = new Setting(contentEl);
         areement_1.setClass('i18n_areement_item');
@@ -76,10 +78,16 @@ export class AgreementModal extends Modal {
         });
         const consentButton = new ButtonComponent(agreement.controlEl);
         consentButton.setButtonText('不同意');
-        consentButton.onClick(() => { this.close(); });
+        consentButton.onClick(async () => {
+            // @ts-ignore
+            await this.app.plugins.disablePlugin('i18n');
+            // this.i18n.onload();
+            // await this.app.plugins.display();
+            // await this.app.plugins.refresh();
+            this.close();
+        });
 
     }
-
     async onOpen() { await this.Main() }
     async onClose() { this.contentEl.empty() }
 }

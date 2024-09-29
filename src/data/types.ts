@@ -68,3 +68,8 @@ export interface ValidationOptions {
 	checkTranslations?: boolean;
 }
 
+
+export interface SubmitMark {
+	id: string;
+	type: number;
+}  

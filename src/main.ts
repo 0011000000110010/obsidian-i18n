@@ -47,6 +47,12 @@ export default class I18N extends Plugin {
             this.firstRun();
             // [函数] 检测更新
             this.checkUpdates();
+            // [函数] 重置提交时间
+            if (this.settings.I18N_SUBMIT_TIME !== new Date().getDate()) {
+                this.settings.I18N_SUBMIT_TIME = new Date().getDate();
+                this.settings.I18N_SUBMIT_LIST = [];
+                await this.saveSettings();
+            }
             // [函数] 读取提交地址
             const temp = await this.api.submitUrl();
             if (temp != undefined) this.tempSubmitUrl = atob(temp);
