@@ -860,6 +860,16 @@
         ]
     },
     {
+        "id": "obsidian-paste-image-rename",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "1.6.1",
+                "pluginVersion": "1.6.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-plugin-groups",
         "translations": [
             {
