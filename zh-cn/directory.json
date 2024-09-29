@@ -30,6 +30,16 @@
         ]
     },
     {
+        "id": "attachment-management",
+        "translations": [
+            {
+                "author": "yulingkq",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.9.15"
+            }
+        ]
+    },
+    {
         "id": "better-fn",
         "translations": [
             {
