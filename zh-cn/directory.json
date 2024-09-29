@@ -290,6 +290,16 @@
         ]
     },
     {
+        "id": "hash-pasted-image",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "1.1.1",
+                "pluginVersion": "1.1.1"
+            }
+        ]
+    },
+    {
         "id": "highlightr-plugin",
         "translations": [
             {
