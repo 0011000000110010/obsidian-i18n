@@ -15,6 +15,7 @@ import { WizardModal } from './i18n-wizard-modal';
 import { t } from '../lang/inxdex';
 import Url from 'src/url';
 
+
 // prompt
 // ==============================
 //          侧边栏 对话框 翻译
@@ -482,6 +483,33 @@ export class I18NModal extends Modal {
                     this.reloadShowData();
                 });
             }
+            // ============================================================
+            //                     本地译文翻译(增量提取) 
+            // ============================================================
+            if (this.settings.I18N_MODE_LDT && this.settings.I18N_INCREMENTAL_EXTRACTION && isLangDoc && translationFormatMark) {
+                const IncrementExtractTranslationButton = new ButtonComponent(itemEl.controlEl);
+                IncrementExtractTranslationButton.setClass('bt');
+                IncrementExtractTranslationButton.setButtonText(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'));
+                IncrementExtractTranslationButton.onClick(async () => {
+                    if (localTranslationJson != null) {
+                        const translationJson = localTranslationJson;
+                        let mainStr;
+                        if (stateObj.state() == true) { mainStr = fs.readJsonSync(duplicateDoc).toString() }
+                        else { mainStr = fs.readFileSync(mainDoc).toString(); }
+                        // 2. 获取 manifest.json JSON文本
+                        const manifestJSON = fs.readJsonSync(manifestDoc);
+                        // 3. 生成译文
+                        const newTranslationJson = generateTranslation(plugin.id, this.settings.I18N_AUTHOR, "1.0.0", plugin.version, manifestJSON, mainStr, this.settings.I18N_RE_LENGTH, this.regexps, this.settings.I18N_RE_FLAGS);
+                        const mergedObj = { ...newTranslationJson.dict, ...translationJson.dict };
+                        translationJson.dict = mergedObj;
+                        // 4. 确保语言目录存在
+                        fs.ensureDirSync(langDir);
+                        // 5. 将 译文json 写入文件
+                        fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
+                    }
+                });
+            }
+
 
             // ============================================================
             //                  网络译文翻译(下载、更新)
@@ -675,15 +703,30 @@ export class I18NModal extends Modal {
                     this.reloadShowData();
                 });
             }
+
             if (this.developerMode) {
                 const test = new ButtonComponent(itemEl.controlEl);
                 test.setButtonText('测试');
                 test.onClick(async () => {
-                    console.log(new Date().getDate());
-
-                    // console.log(this.app.setting.settingTabs[6].containerEl)
-                    // this.i18n.unload();
-
+                    if (localTranslationJson != null) {
+                        const translationJson = localTranslationJson;
+                        let mainStr;
+                        if (stateObj.state() == true) {
+                            mainStr = fs.readJsonSync(duplicateDoc).toString()
+                        } else {
+                            mainStr = fs.readFileSync(mainDoc).toString();
+                        }
+                        // 2. 获取 manifest.json JSON文本
+                        const manifestJSON = fs.readJsonSync(manifestDoc);
+                        // 3. 生成译文
+                        const newTranslationJson = generateTranslation(plugin.id, this.settings.I18N_AUTHOR, "1.0.0", plugin.version, manifestJSON, mainStr, this.settings.I18N_RE_LENGTH, this.regexps, this.settings.I18N_RE_FLAGS);
+                        const mergedObj = { ...newTranslationJson.dict, ...translationJson.dict };
+                        translationJson.dict = mergedObj;
+                        // 4. 确保语言目录存在
+                        fs.ensureDirSync(langDir);
+                        // 5. 将 译文json 写入文件
+                        fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
+                    }
                 });
             }
         }
@@ -732,7 +775,7 @@ export class I18NModal extends Modal {
         }
     }
 
-    translationMain(translationJson: Translation, mainString: string) { 
+    translationMain(translationJson: Translation, mainString: string) {
         for (const key in translationJson.dict) { mainString = mainString.replaceAll(key, translationJson.dict[key]) }
         NoticeOperationResult(t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_HEAD'), true, t('I18N_ITEM_TRANSLATION_BUTTON_NOTICE_CONTENT_A'));
         return mainString;

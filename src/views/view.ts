@@ -7,6 +7,9 @@ import { t } from 'src/lang/inxdex';
 import { exec } from 'child_process';
 import * as path from 'path';
 
+// @ts-ignore
+import { diffWords } from 'diff';
+
 export const EDIT_VIEW_TYPE = 'i18n-edit-view'
 
 export class EditView extends ItemView {
@@ -72,6 +75,7 @@ export class EditView extends ItemView {
         const footInputEl = footEl.createEl('textarea');
         footInputEl.addClass('i18n_edit_foot_input');
         let selectRowEl: HTMLTableRowElement | null = null;
+        let selectItem = '';
 
         let translationJson: Translation | undefined;
         if (this.i18n.selectTranslation != '') translationJson = fs.readJsonSync(this.i18n.selectTranslation);
@@ -92,10 +96,11 @@ export class EditView extends ItemView {
             saveTranslationButton.setButtonText(t('EDITOR_SAVE_TRANSLATION_BUTTON_TEXT'));
             saveTranslationButton.setCta();
             saveTranslationButton.setClass('i18n_edit_head_save');
-            saveTranslationButton.onClick(() => {
+            saveTranslationButton.onClick(async () => {
                 try {
                     fs.writeJsonSync(this.i18n.selectTranslation, translationJson, { spaces: 4 });
-                    this.i18n.detachEditView();
+                    // 关闭窗口
+                    // this.i18n.detachEditView();
                     NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
                 } catch (error) {
                     NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
@@ -115,56 +120,41 @@ export class EditView extends ItemView {
                     rowEl.onclick = (e) => {
                         if (selectRowEl != undefined) selectRowEl.removeClass('selected');
                         selectRowEl = rowEl;
+                        selectItem = key;
                         selectRowEl.addClass('selected');
-                        footInputEl.value = translationJson.dict[selectRowEl.children[0].textContent as string];
+                        // console.log(selectRowEl.children[0].textContent);
+                        // console.log(selectItem)
+                        footInputEl.value = translationJson.dict[selectItem];
                     };
                     // 创建一个<td>（表格单元格）用于键  
                     const keyCellEl = rowEl.createEl('td');
                     keyCellEl.addClass('i18n_edit_data_table_key');
-                    keyCellEl.textContent = key;
+                    // keyCellEl.textContent = key;
 
                     // 创建一个<td>（表格单元格）用于值  
                     const valueCellEl = rowEl.createEl('td');
                     valueCellEl.addClass('i18n_edit_data_table_value');
-                    valueCellEl.textContent = translationJson.dict[key];
+                    // valueCellEl.textContent = translationJson.dict[key];
+
+                    const differences = diffWords(key, translationJson.dict[key]);
+                    let keyHighlightedHTML = "";
+                    let valueHighlightedHTML = "";
+                    differences.forEach((part: { added: any; removed: any; value: any; }) => {
+                        if (part.added) { valueHighlightedHTML += `<span class='i18n_color_green'>${part.value}</span>` }
+                        else if (part.removed) { keyHighlightedHTML += `<span class='i18n_color_red'>${part.value}</span>` }
+                        else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; }
+                    });
+                    keyCellEl.innerHTML = keyHighlightedHTML;
+                    valueCellEl.innerHTML = valueHighlightedHTML;
                 }
             }
 
             // ==============================
             // operateEl
             // ==============================
-            const cancelItemButton = new ButtonComponent(operateEl);
-            cancelItemButton.setButtonText(t('EDITOR_CANCEL_ITEM_BUTTON_TEXT'));
-            cancelItemButton.setClass('i18n_edit_operate_button');
-            cancelItemButton.onClick(() => {
-                if (selectRowEl != undefined) selectRowEl.removeClass('selected');
-                selectRowEl = null;
-                footInputEl.value = '';
-                NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_CANCEL_ITEM_BUTTON_NOTICE_CONTENT_A'));
-            });
-
-            const deleteItemButton = new ButtonComponent(operateEl);
-            deleteItemButton.setButtonText(t('EDITOR_DELETE_ITEM_BUTTON_TEXT'));
-            deleteItemButton.setClass('i18n_edit_operate_button');
-            deleteItemButton.onClick(() => {
-                if (selectRowEl != null) {
-                    // 清除 输入框 
-                    footInputEl.value = '';
-                    // 清除 显示数据
-                    selectRowEl.remove();
-                    // 清除 列表数据
-                    delete (translationJson.dict[selectRowEl.children[0].textContent as string]);
-                    // 清除 选中对象
-                    selectRowEl = null;
-                    NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'));
-                } else {
-                    NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_B'));
-                }
-            });
-
             const insertItemButton = new ButtonComponent(operateEl);
             insertItemButton.setButtonText(t('EDITOR_INSERT_ITEM_BUTTON_TEXT'));
-            insertItemButton.setClass('i18n_edit_operate_button');
+            insertItemButton.setClass('i18n_edit_operate_button_left');
             insertItemButton.onClick(() => {
                 if (selectRowEl == null) {
                     const tempKey = footInputEl.value;
@@ -177,9 +167,13 @@ export class EditView extends ItemView {
                         rowEl.addClass('i18n_edit_data_table_row')
                         rowEl.onclick = (e) => {
                             if (selectRowEl != undefined) selectRowEl.removeClass('selected');
+                            // 变更 选中对象
                             selectRowEl = rowEl;
+                            // 变更 选中对象
+                            selectItem = tempKey;
                             selectRowEl.addClass('selected');
-                            footInputEl.value = translationJson.dict[selectRowEl.children[0].textContent as string];
+                            // 变更 输入框数据
+                            footInputEl.value = translationJson.dict[selectItem];
                         };
                         // 创建一个<td>（表格单元格）用于键  
                         const keyCellEl = rowEl.createEl('td');
@@ -201,9 +195,59 @@ export class EditView extends ItemView {
                 }
             });
 
+            const deleteItemButton = new ButtonComponent(operateEl);
+            deleteItemButton.setButtonText(t('EDITOR_DELETE_ITEM_BUTTON_TEXT'));
+            deleteItemButton.setClass('i18n_edit_operate_button_left');
+            deleteItemButton.onClick(() => {
+                if (selectRowEl != null && selectItem != '') {
+                    // 清除 输入框 
+                    footInputEl.value = '';
+                    // 清除 显示数据
+                    selectRowEl.remove();
+                    // 清除 列表数据
+                    delete (translationJson.dict[selectItem]);
+                    // 清除 选中对象
+                    selectRowEl = null;
+                    // 清除 选中内容
+                    selectItem = '';
+                    NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'));
+                } else {
+                    NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_B'));
+                }
+            });
+
+            const restoreItemButton = new ButtonComponent(operateEl);
+            restoreItemButton.setButtonText(t('EDITOR_RESTORE_ITEM_BUTTON_TEXT'));
+            restoreItemButton.setClass('i18n_edit_operate_button_left');
+            restoreItemButton.onClick(() => {
+                if (selectRowEl != undefined && selectItem != '') {
+                    // 还原 显示数据
+                    selectRowEl.children[0].textContent = selectItem;
+                    selectRowEl.children[1].textContent = selectItem;
+                    // 还原 字典数据
+                    translationJson.dict[selectItem] = selectItem;
+                    // 还原 输入框数据
+                    footInputEl.value = selectItem;
+                    NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'));
+                } else {
+                    NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_B'));
+                }
+            });
+
+            const cancelItemButton = new ButtonComponent(operateEl);
+            cancelItemButton.setButtonText(t('EDITOR_CANCEL_ITEM_BUTTON_TEXT'));
+            cancelItemButton.setClass('i18n_edit_operate_button_left');
+            cancelItemButton.onClick(() => {
+                if (selectRowEl != undefined && selectItem != '') selectRowEl.removeClass('selected');
+                selectRowEl = null;
+                selectItem = '';
+                footInputEl.value = '';
+                NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_CANCEL_ITEM_BUTTON_NOTICE_CONTENT_A'));
+            });
+
             const baiduButton = new ButtonComponent(operateEl);
             baiduButton.setButtonText('百度');
-            baiduButton.setClass('i18n_edit_operate_button');
+            baiduButton.setClass('i18n_edit_operate_button_left');
             if (!(this.i18n.settings.I18N_MODE_NIT && this.i18n.settings.I18N_NIT_API == 'BAIDU')) baiduButton.setClass('i18n_display-none');
             baiduButton.onClick(async () => {
                 try {
@@ -215,10 +259,10 @@ export class EditView extends ItemView {
                         const response = await this.i18n.api.baidu(tString[2]);
                         if ('trans_result' in response.json) temp = itemValue.replace(tString[2], response.json['trans_result'][0]['dst']);
                     }
-                    if (selectRowEl != null) {
+                    if (selectRowEl != null && selectItem != '') {
                         footInputEl.value = temp;
                         selectRowEl.children[1].textContent = temp;
-                        translationJson.dict[selectRowEl.children[0].textContent as string] = temp;
+                        translationJson.dict[selectItem] = temp;
                     }
                 } catch (error) {
                     console.log();
@@ -226,8 +270,9 @@ export class EditView extends ItemView {
             });
 
             const mainButton = new ButtonComponent(operateEl);
-            mainButton.setButtonText('Main.JS');
-            mainButton.setClass('i18n_edit_operate_button');
+            mainButton.setButtonText('插件');
+            mainButton.setTooltip('打开main.js文件');
+            mainButton.setClass('i18n_edit_operate_button_right');
             mainButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
                     const command = `start ${path.join(this.i18n.selectTranslation.split('\\').slice(0, -2).join('\\'), 'main.js')}`
@@ -254,7 +299,8 @@ export class EditView extends ItemView {
 
             const langButton = new ButtonComponent(operateEl);
             langButton.setButtonText('译文');
-            langButton.setClass('i18n_edit_operate_button');
+            langButton.setTooltip('打开译文文件');
+            langButton.setClass('i18n_edit_operate_button_right');
             langButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
                     const command = `start ${this.i18n.selectTranslation}`
@@ -282,7 +328,7 @@ export class EditView extends ItemView {
             const helpButton = new ButtonComponent(operateEl);
             helpButton.setButtonText(t('EDITOR_HELP_BUTTON_TEXT'));
             helpButton.setWarning();
-            helpButton.setClass('i18n_edit_operate_button');
+            helpButton.setClass('i18n_edit_operate_button_left');
             helpButton.onClick(() => {
                 NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_HELP_BUTTON_NOTICE_CONTENT_A'));
             });
@@ -292,8 +338,23 @@ export class EditView extends ItemView {
             // ==============================
             footInputEl.addEventListener('input', function () {
                 if (selectRowEl != undefined) {
+                    // const highlighted = highlightedHTML(selectRowEl.children[0].textContent as string, footInputEl.value);
+                    const differences = diffWords(selectRowEl.children[0].textContent as string, footInputEl.value);
+                    let keyHighlightedHTML = "";
+                    let valueHighlightedHTML = "";
+                    differences.forEach((part: { added: any; removed: any; value: any; }) => {
+                        if (part.added) {
+                            valueHighlightedHTML += `<span class='i18n_color_green'>${part.value}</span>`;
+                        } else if (part.removed) {
+                            keyHighlightedHTML += `<span class='i18n_color_red'>${part.value}</span>`;
+                        } else {
+                            keyHighlightedHTML += part.value;
+                            valueHighlightedHTML += part.value;
+                        }
+                    });
                     // 变更显示数据
-                    selectRowEl.children[1].textContent = footInputEl.value;
+                    selectRowEl.children[0].innerHTML = keyHighlightedHTML;
+                    selectRowEl.children[1].innerHTML = valueHighlightedHTML;
                     // 变更字典数据
                     translationJson.dict[selectRowEl.children[0].textContent as string] = footInputEl.value;
                 }

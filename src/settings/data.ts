@@ -10,11 +10,12 @@ export interface I18nSettings {
 	I18N_MODE_LDT: boolean,
 	I18N_MODE_NDT: boolean,
 	I18N_MODE_NIT: boolean,
-
-	// 签名
-	I18N_AUTHOR: string;
 	// 自动更新
 	I18N_AUTOMATIC_UPDATE: boolean;
+	// 增量提取
+	I18N_INCREMENTAL_EXTRACTION: boolean;
+	// 签名
+	I18N_AUTHOR: string;
 	// 译文编辑
 	I18N_EDIT_MODE: boolean;
 	// 打开设置
@@ -72,6 +73,8 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_AUTHOR: '',
 	// 自动更新
 	I18N_AUTOMATIC_UPDATE: false,
+	// 增量提取
+	I18N_INCREMENTAL_EXTRACTION: false,
 	// 译文编辑
 	I18N_EDIT_MODE: true,
 	// 打开设置

@@ -87,6 +87,10 @@ export default class I18N extends Plugin {
         this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE);
     }
 
+    onUserEnable(): void {
+        
+    }
+
     async loadSettings() { this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData()); }
 
     async saveSettings() { await this.saveData(this.settings); }

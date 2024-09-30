@@ -29,5 +29,19 @@ export default class I18nModLDT extends BaseSetting {
                 this.settingTab.display();
             })
         );
+
+        const i18nIncrementalExtraction = new Setting(this.containerEl);
+        if (!(this.settings.I18N_MODE_LDT)) i18nIncrementalExtraction.setClass('i18n_display-none');
+        i18nIncrementalExtraction.setName('增量提取');
+        i18nIncrementalExtraction.setDesc('增量提取功能允许您在本地已有译文的基础上，继续提取并自动合并新译文，实现译文的持续更新与累积。');
+        i18nIncrementalExtraction.addToggle(cb => cb
+            .setValue(this.settings.I18N_INCREMENTAL_EXTRACTION)
+            .onChange(() => {
+                this.settings.I18N_INCREMENTAL_EXTRACTION = !this.settings.I18N_INCREMENTAL_EXTRACTION;
+                this.i18n.saveSettings();
+                this.settingTab.display();
+            })
+        );
+
     }
 }
