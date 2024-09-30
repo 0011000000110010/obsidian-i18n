@@ -210,6 +210,16 @@
         ]
     },
     {
+        "id": "editor-width-slider",
+        "translations": [
+            {
+                "author": "tbs",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.5"
+            }
+        ]
+    },
+    {
         "id": "file-explorer-note-count",
         "translations": [
             {
