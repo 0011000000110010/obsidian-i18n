@@ -1,5 +1,5 @@
 {
-    "version": "1.3.6",
-    "content":"新增 编辑器词典不同高亮显示",  
+    "version": "1.3.7",
+    "content":"修复 编辑器有时会读取为空的问题",  
     "submit":"MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
