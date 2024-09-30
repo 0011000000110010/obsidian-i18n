@@ -2,12 +2,12 @@
   "manifest": {
     "id": "lyrics",
     "author": "tbs",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "pluginVersion": "1.1.0"
   },
   "description": {
     "original": "Enhance the audio player with interacive lyrics",
-    "translation": "Enhance the audio player with interacive lyrics"
+    "translation": "使用交互式歌词增强音频播放器。"
   },
   "dict": {
     "text: \"\",\n  timestr: \"": "text: \"\",\n  timestr: \"",
@@ -18,7 +18,7 @@
     ".appendText(\n              `Error: Invalid source ${this.audioPath}.\n\t\t\t\t\t\t\t`\n            )": ".appendText(\n              `Error: Invalid source ${this.audioPath}.\n\t\t\t\t\t\t\t`\n            )",
     ".setTitle(\"Play\")": ".setTitle(\"播放\")",
     ".setTitle(\"Pause\")": ".setTitle(\"暂停\")",
-    ".setTitle(\"Seek\")": ".setTitle(\"Seek\")",
+    ".setTitle(\"Seek\")": ".setTitle(\"重放\")",
     ".setTitle(\"Edit\")": ".setTitle(\"编辑\")",
     ".setTitle(\"Copy current timestamp\")": ".setTitle(\"复制当前时间戳\")",
     ".setTitle(\"Auto-scroll\")": ".setTitle(\"自动滚动\")",
