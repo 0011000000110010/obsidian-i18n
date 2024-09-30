@@ -750,6 +750,16 @@
         ]
     },
     {
+        "id": "obsidian-image-layouts",
+        "translations": [
+            {
+                "author": "Nathan Ding",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.15.5"
+            }
+        ]
+    },
+    {
         "id": "obsidian-importer",
         "translations": [
             {
