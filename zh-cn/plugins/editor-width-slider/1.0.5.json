@@ -23,8 +23,6 @@
     ".setDesc(\"How wide do you want your slider to be?\")": ".setDesc(\"你希望你的滑块有多宽？\")",
     ".setDesc(\"What do you want the default percentage of the slider to be?\")": ".setDesc(\"您希望滑块的默认百分比是多少？\")",
     ".setDesc(`The field should be named \"editor-width\" in the YAML frontmatter of the note in order to customize the editor width of that repective note. It won't work globally for all notes unless you specify it in each note's frontmatter.`)": ".setDesc(``)",
-    ".setPlaceholder(\"Slider width in px\")": ".setPlaceholder(\"滑块宽度 （px）\")",
-    ".innerText = `\n\t\t\tbody {\n\t\t\t  \t--file-line-width: calc(700px + 10 * ${this.settings.sliderPercentage}px) !important;\n\t\t\t}\n\t\t`": ".innerText = `\n\t\t\tbody {\n\t\t\t  \t--file-line-width: calc(700px + 10 * ${this.settings.sliderPercentage}px) !important;\n\t\t\t}\n\t\t`",
-    ".innerText = `\n\t\t\tbody {\n\t\t\t  \t--file-line-width: calc(100px + ${editorWidth}vw) !important;\n\t\t\t}\n\t\t`": ".innerText = `\n\t\t\tbody {\n\t\t\t  \t--file-line-width: calc(100px + ${editorWidth}vw) !important;\n\t\t\t}\n\t\t`"
+    ".setPlaceholder(\"Slider width in px\")": ".setPlaceholder(\"滑块宽度 （px）\")"
   }
 }
