@@ -1,0 +1,13 @@
+{
+  "manifest": {
+    "id": "obsidian-relative-line-numbers",
+    "author": "tbs",
+    "version": "1.0.0",
+    "pluginVersion": "3.0.0"
+  },
+  "description": {
+    "original": "Enables relative line numbers in editor mode",
+    "translation": "在编辑器模式下启用相对行号"
+  },
+  "dict": {}
+}
