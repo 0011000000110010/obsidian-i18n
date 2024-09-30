@@ -280,6 +280,16 @@
         ]
     },
     {
+        "id": "frontmatter-alias-display",
+        "translations": [
+            {
+                "author": "tbs",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.1"
+            }
+        ]
+    },
+    {
         "id": "global-proxy",
         "translations": [
             {
