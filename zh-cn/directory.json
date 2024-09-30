@@ -420,6 +420,16 @@
         ]
     },
     {
+        "id": "meld-encrypt",
+        "translations": [
+            {
+                "author": "tbs",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.3.7"
+            }
+        ]
+    },
+    {
         "id": "memos-sync",
         "translations": [
             {
