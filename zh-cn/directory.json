@@ -910,6 +910,16 @@
         ]
     },
     {
+        "id": "obsidian-relative-line-numbers",
+        "translations": [
+            {
+                "author": "tbs",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "3.0.0"
+            }
+        ]
+    },
+    {
         "id": "obsidian-reminder-plugin",
         "translations": [
             {
