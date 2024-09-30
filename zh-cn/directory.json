@@ -1115,6 +1115,16 @@
         ]
     },
     {
+        "id": "pomodoro-widget",
+        "translations": [
+            {
+                "author": "tbs",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.1"
+            }
+        ]
+    },
+    {
         "id": "quick-links",
         "translations": [
             {
