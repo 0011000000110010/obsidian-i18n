@@ -1370,6 +1370,16 @@
         ]
     },
     {
+        "id": "wucai-highlights-official",
+        "translations": [
+            {
+                "author": "小七姐",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "24.9.2"
+            }
+        ]
+    },
+    {
         "id": "zen",
         "translations": [
             {
