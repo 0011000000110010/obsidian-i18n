@@ -40,6 +40,16 @@
         ]
     },
     {
+        "id": "auto-card-link",
+        "translations": [
+            {
+                "author": "小七姐&曲淡歌",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.2.3"
+            }
+        ]
+    },
+    {
         "id": "better-fn",
         "translations": [
             {
