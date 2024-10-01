@@ -110,6 +110,16 @@
         ]
     },
     {
+        "id": "callout-suggestions",
+        "translations": [
+            {
+                "author": "小七姐",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.0.2"
+            }
+        ]
+    },
+    {
         "id": "cmdr",
         "translations": [
             {
