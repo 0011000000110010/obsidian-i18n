@@ -1215,6 +1215,16 @@
         ]
     },
     {
+        "id": "share-note",
+        "translations": [
+            {
+                "author": "白起",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.8.16"
+            }
+        ]
+    },
+    {
         "id": "simpread",
         "translations": [
             {
