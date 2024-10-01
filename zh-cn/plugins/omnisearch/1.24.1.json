@@ -1,13 +1,13 @@
 {
   "manifest": {
     "id": "omnisearch",
-    "author": "NathanDing",
-    "version": "1.0.0",
+    "author": "NathanDing&曲淡歌",
+    "version": "1.0.1",
     "pluginVersion": "1.24.1"
   },
   "description": {
     "original": "A search engine that just works",
-    "translation": "A search engine that just works"
+    "translation": "一个不错的搜索引擎。"
   },
   "dict": {
     "Notice(\"Omnisearch - Disabled. Please restart Obsidian.\")": "Notice(\"Omnisearch - 已禁用。请重启 Obsidian。\")",
@@ -36,17 +36,7 @@
     ".log(`Omnisearch - Cache is ${Nn()": ".log(`Omnisearch - 缓存是 ${Nn()",
     ".log(\"Omnisearch - Total number of files to add/update: \"+n.toAdd.length)": ".log(\"Omnisearch - 要添加/更新的文件总数：\"+n.toAdd.length)",
     ".log(\"Omnisearch - Total number of files to remove: \"+n.toRemove.length)": ".log(\"Omnisearch - 要删除的文件总数：\"+n.toRemove.length)",
-    ".error(n)": ".error(n)",
-    ".error(tt)": ".error(tt)",
-    ".error(u)": ".error(u)",
-    ".error(h)": ".error(h)",
-    ".error(a)": ".error(a)",
-    ".error(i)": ".error(i)",
-    "nerror(v[C])": "nerror(v[C])",
-    "nerror(v)": "nerror(v)",
-    ".error(v)": ".error(v)",
     ".error(\"Omnisearch - Error while loading Minisearch cache\")": ".error(\"Omnisearch - 加载 Minisearch 缓存时出错\")",
-    ".error(t)": ".error(t)",
     ".error(\"Error tokenizing text, skipping document\",r)": ".error(\"文本分词时出错，跳过文档\",r)",
     ".error(`Missing .path field in IndexedDocument \"${r.basename}\", skipping`)": ".error(`IndexedDocument 中缺少 .path 字段 \"${r.basename}\", 跳过`)",
     ".error(\"Omnisearch: Error while parsing Dataloom file\",t)": ".error(\"Omnisearch: 解析 Dataloom 文件时出错\",t)",
@@ -83,9 +73,9 @@
     ".setName(`Images OCR indexing ${n?\"\":\"\\u26A0\\uFE0F Disabled\"}`)": ".setName(`图像 OCR 索引 ${n?\"\":\"\\u26A0\\uFE0F 禁用\"}`)",
     ".setName(`Documents content indexing ${n?\"\":\"\\u26A0\\uFE0F Disabled\"}`)": ".setName(`文档内容索引 ${n?\"\":\"\\u26A0\\uFE0F 禁用\"}`)",
     ".setName(`Images AI indexing ${s?\"\":\"\\u26A0\\uFE0F Disabled\"}`)": ".setName(`图像 AI 索引 ${s?\"\":\"\\u26A0\\uFE0F 禁用\"}`)",
-    ".setName(\"Index paths of unsupported files\")": ".setName(\"索引不支持文件的路径\")",
-    ".setName(\"Set frontmatter property key as title\")": ".setName(\"将前置属性键设置为标题\")",
-    ".setName(\"Additional TEXT files to index\")": ".setName(\"要索引的其他文本文件\")",
+    ".setName(\"Index paths of unsupported files\")": ".setName(\"索引不支持格式文件的路径\")",
+    ".setName(\"Set frontmatter property key as title\")": ".setName(\"将frontmatter设置为标题\")",
+    ".setName(\"Additional TEXT files to index\")": ".setName(\"索引其他文本文件\")",
     ".setName(\"Behavior\")": ".setName(\"行为\")",
     ".setName(\"Save index to cache\")": ".setName(\"将索引保存到缓存\")",
     ".setName(\"Show previous query results\")": ".setName(\"显示上一个查询结果\")",
@@ -149,6 +139,28 @@
     ".setDesc(\"Navigate down the results withCtrl/\\u2318 + J/N , or navigate up with Ctrl/\\u2318 + K/P \")": ".setDesc(\"使用 Ctrl/\\u2318 + J/N 向下浏览结果, 或使用 Ctrl/\\u2318 + K/P 向上浏览\")",
     ".setDesc(\"Navigate down the results with Ctrl/\\u2318 + J/N , or navigate up with Ctrl/\\u2318 + K/P\")": ".setDesc(\"使用 Ctrl/\\u2318 + J/N 向下浏览结果，或使用 Ctrl/⌘ + K/P 向上浏览。Navigate down the results with , or navigate up with Ctrl/\\u2318 + K/P\")",
     ".setDesc(\"Navigate down the results with Ctrl/\\u2318 + J/N , or navigate up with Ctrl/\\u2318 + K/P \")": ".setDesc(\"使用 Ctrl/\\u2318 + J/N 向下浏览结果，或使用 Ctrl/\\u2318 + K/P 向上浏览。\")",
-    ".setDesc(\"Navigate down the results withCtrl/\\u2318 + J/N, or navigate up with Ctrl/\\u2318 + K/P \")": ".setDesc(\"使用 Ctrl/\\u2318 + J/N 向下浏览结果，或使用 Ctrl/\\u2318 + K/P 向上浏览。\")"
+    ".setDesc(\"Navigate down the results withCtrl/\\u2318 + J/N, or navigate up with Ctrl/\\u2318 + K/P \")": ".setDesc(\"使用 Ctrl/\\u2318 + J/N 向下浏览结果，或使用 Ctrl/\\u2318 + K/P 向上浏览。\")",
+    "Changing indexing settings will clear the cache, and requires a restart of Obsidian.": "改变索引会清空缓存，需要重启obsidian。",
+    "Omnisearch will use Text Extractor to index the content of your PDFs.": "Omnisearch 会使用 Text Extractor 来索引你的PDF内容。",
+    "Omnisearch will use Text Extractor to OCR your images and index their content.": "Omnisearch 会使用 Text Extractor 对你的图片进行OCR识别并索引它们的内容。",
+    "Omnisearch will use Text Extractor to index the content of your office documents": "Omnisearch 会使用 Text Extractor 来索引你的office文档",
+    "Omnisearch will use AI Image Analyzer to index the content of your images with ai.": "Omnisearch 会使用 AI Image Analyzer来索引你的图片内容",
+    "If you have a custom property in your notes that you want to use as the title in search results.": "如果你在笔记中有一个自定义属性（frontmatter），希望在搜索结果中作为标题使用。",
+    "Leave empty to disable": "留空以禁用此功能",
+    "Omnisearch can index file<strong>names</strong> of \"unsupported\" files, such as e.g. <pre style=\"display:inline\">.mp4</pre>\n      or non-extracted PDFs & images.<br/>\n      \"Obsidian setting\" will respect the value of \"Files & Links > Detect all file extensions\".`)).addDropdown(d=>{d.addOptions({yes:\"Yes\",no:\"No\",default:\"Obsidian setting\"})": "Omnisearch 能索引不支持格式文件的<strong>名称</strong>, 例如 <pre style=\"display:inline\">.mp4</pre>\n      或未提取的PDF&图片.<br/>\n      \"obsidian设置\" 会遵循设置 \"文件与链接 > 检测所有类型文件\"中的设置.`)).addDropdown(d=>{d.addOptions({yes:\"是\",no:\"否\",default:\"obsidian设置\"})",
+    "In addition to standard <code>md</code> files, Omnisearch can also index other <strong style=\"color: var(--text-accent)\">PLAINTEXT</strong> files.<br/>\n      Add extensions separated by a space, without the dot. Example: \"<code>txt org csv</code>\".<br />\n      \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">Using extensions of non-plaintext files (like .pptx) WILL cause crashes,\n      because Omnisearch will try to index their content.": "除了标准 <code>md</code> 文件， Omnisearch 还可以索引其他<strong style=\"color: var(--text-accent)\">PLAINTEXT</strong> 文件。<br/>\n      添加由空格分隔的扩展名，不带点。 例如： \"<code>txt org csv</code>\".<br />\n      \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">使用非纯文本文件的扩展名 (如 .pptx) 会导致崩溃，\n      因为 Omnisearch 会尝试为其内容建立索引。",
+    "Omnisearch requires <a href=\"https://github.com/scambier/obsidian-text-extractor\">Text Extractor</a> to index PDFs and images.": "Omnisearch需要<a href=\"https://github.com/scambier/obsidian-text-extractor\">Text Extractor</a>插件来索引PDF和图片。",
+    "Omnisearch requires <a href=\"https://github.com/Swaggeroo/obsidian-ai-image-analyzer\">AI Image Analyzer</a> to index images with ai.": "Omnisearch需要<a href=\"https://github.com/Swaggeroo/obsidian-ai-image-analyzer\">AI Image Analyzer</a>插件来借助AI索引图片。",
+    "Enable this if you want to be able to search for CamelCaseWords as separate words.<br/>        \n        \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">Changing this setting will clear the cache.": "如果你希望将驼峰命名法的单词拆分为独立单词进行搜索，请启用此选项。<br/>        \n        \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">更改此设置将清除缓存。",
+    "Shows a button next to the search input, to create a note.\n        Acts the same as the <code>shift \\u21B5</code> shortcut, can be useful for mobile device users.": "在搜索输入框旁边显示一个按钮，用于创建笔记。\n        与 <code>shift \\u21B5</code> 同效, 对移动端用户很有用。",
+    "API Access Through HTTP": "通过HTTP使用API",
+    "Omnisearch can be used through a simple HTTP server (<a href=\"https://publish.obsidian.md/omnisearch/Public+API+%26+URL+Scheme#HTTP+Server\">more information</a>).": "可以通过一个简单的HTTP服务器来使用omnisearch (<a href=\"https://publish.obsidian.md/omnisearch/Public+API+%26+URL+Scheme#HTTP+Server\">more information</a>).",
+    "Normalize diacritics in search terms. Words like \"br\\xFBl\\xE9e\" or \"\\u017Elu\\u0165ou\\u010Dk\\xFD\" will be indexed as \"brulee\" and \"zlutoucky\".<br/>\n        \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">You probably should <strong>NOT</strong> disable this.</span><br>\n        \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">Changing this setting will clear the cache.": "规范搜索词中的变音符号。 诸如\"br\\xFBl\\xE9e\" or \"\\u017Elu\\u0165ou\\u010Dk\\xFD\"的词语会索引为\"brulee\" 和 \"zlutoucky\"。<br/>\n        \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">你大概率 <strong>不</strong> 应该关闭此选项。</span><br>\n        \\u26A0\\uFE0F <span style=\"color: var(--text-accent)\">改变此设置会清空缓存。",
+    "Disable Omnisearch on this device only.": "在此设备上禁用omnisearch。",
+    "Omnisearch has a security feature that automatically disables cache writing if it cannot fully perform the operation.<br>\n        Use this option to force the cache to be saved, even if it causes a crash.": "Omnisearch 有一个安全功能，如果无法完全执行操作，会自动禁用缓存写入。<br>\n        使用此选项强制保存缓存，即使这可能导致崩溃。.",
+    "Erase all Omnisearch cache data.\n          Use this if Omnisearch results are inconsistent, missing, or appear outdated.": "清除 Omnisearch 所有的缓存数据。\n          如果Omnisearch的搜索结果不一致、缺失或显得过时，请使用此方法。",
+    "Needs a restart to fully take effect.": "需要重启才能完全生效。",
+    "Enabling this setting could lead to crash loops": "启用此功能可能导致循环崩溃。",
+    ".addOptions({0:\"Exact match\",1:\"Not too fuzzy\",2:\"Fuzzy enough\"})": ".addOptions({0:\"精准匹配\",1:\"不太模糊\",2:\"非常模糊\"})"
   }
 }
