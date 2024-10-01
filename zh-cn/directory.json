@@ -40,6 +40,16 @@
         ]
     },
     {
+        "id": "auto-card-link",
+        "translations": [
+            {
+                "author": "小七姐&曲淡歌",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.2.3"
+            }
+        ]
+    },
+    {
         "id": "better-fn",
         "translations": [
             {
@@ -86,6 +96,26 @@
                 "author": "宇桐非",
                 "translationVersion": "2.0.0",
                 "pluginVersion": "2.0.0"
+            }
+        ]
+    },
+    {
+        "id": "callout-manager",
+        "translations": [
+            {
+                "author": "小七姐",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.1.0"
+            }
+        ]
+    },
+    {
+        "id": "callout-suggestions",
+        "translations": [
+            {
+                "author": "小七姐",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.0.2"
             }
         ]
     },
@@ -803,8 +833,8 @@
         "id": "obsidian-kanban",
         "translations": [
             {
-                "author": "曲淡歌",
-                "translationVersion": "1.0.0",
+                "author": "碎蜗牛壳",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "2.0.51"
             }
         ]
@@ -1068,7 +1098,7 @@
         "id": "omnisearch",
         "translations": [
             {
-                "author": "曲淡歌",
+                "author": "NathanDing",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.24.1"
             }
@@ -1205,6 +1235,26 @@
         ]
     },
     {
+        "id": "settings-search",
+        "translations": [
+            {
+                "author": "cuberwu",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.3.10"
+            }
+        ]
+    },
+    {
+        "id": "share-note",
+        "translations": [
+            {
+                "author": "白起",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.8.16"
+            }
+        ]
+    },
+    {
         "id": "simpread",
         "translations": [
             {
@@ -1316,6 +1366,16 @@
                 "author": "Fendi",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "0.4.16"
+            }
+        ]
+    },
+    {
+        "id": "wucai-highlights-official",
+        "translations": [
+            {
+                "author": "小七姐",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "24.9.2"
             }
         ]
     },
