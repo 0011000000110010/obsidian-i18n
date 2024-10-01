@@ -52,7 +52,7 @@
     ".setName(\"Configure resync frequency\")": ".setName(\"配置重新同步频率\")",
     ".setName(\"Sync automatically when Obsidian opens\")": ".setName(\"打开 Obsidian 时自动同步\")",
     ".setName(\"Logout\")": ".setName(\"注销\")",
-    ".setName(\"Connect Obsidian to WuCai\")": ".setName(\"将t Obsidian 连接到 WuCai\")",
+    ".setName(\"Connect Obsidian to WuCai\")": ".setName(\"将Obsidian 连接到 WuCai\")",
     ".setName(\"Client ID\")": ".setName(\"用户 ID\")",
     ".setDesc(\"On first sync, the WuCai plugin will create a new folder containing all your highlights\")": ".setDesc(\"首次同步时，WuCai 插件会创建一个新文件夹，其中包含您的所有高亮内容\")",
     ".setDesc(\"You can customize which items export to Obsidian and how they appear from the WuCai website\")": ".setDesc(\"您可以自定义从 Wucai 网站导出到 Obsidian 的项目及其显示方式。\")",
