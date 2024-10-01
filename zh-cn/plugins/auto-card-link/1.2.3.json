@@ -1,7 +1,7 @@
 {
   "manifest": {
     "id": "auto-card-link",
-    "author": "小七姐",
+    "author": "小七姐&曲淡歌",
     "version": "1.0.1",
     "pluginVersion": "1.2.3"
   },
@@ -12,13 +12,10 @@
   "dict": {
     "Notice(\"Couldn't fetch link metadata\")": "Notice(\"无法获取链接元数据\")",
     "Notice(\"URL copied to your clipboard\")": "Notice(\"URL 已复制到剪贴板\")",
-    ".log(`Unable to find text \"${fetchingText}\" in current editor, bailing out; link ${url}`)": ".log(`在当前编辑器中无法找到文本",
-    ".log(e)": ".log(e)",
-    ".log(`bad response. response status code was ${res == null ? void 0 : res.status}`)": ".log(`不良反应. 响应状态代码为 ${res == null ? void 0 : res.status}`)",
+    ".log(`Unable to find text \"${fetchingText}\" in current editor, bailing out; link ${url}`)": ".log(`无法在当前编辑器中找到文本 \"${fetchingText}\" ，放弃处理；链接 ${url}`)",
+    ".log(`bad response. response status code was ${res == null ? void 0 : res.status}`)": ".log(`错误响应. 响应状态代码为 ${res == null ? void 0 : res.status}`)",
     ".log(error)": ".log(error)",
-    ".log(\"Code Block: cardlink unknown error\", error)": ".log(\"代码块：卡链接未知错误\", 错误)",
-    ".log(clipboardText)": ".log(剪贴板文本)",
-    ".log(CheckIf.isUrl(clipboardText)": ".log(CheckIf.isUrl(剪贴板文本)",
+    ".log(\"Code Block: cardlink unknown error\", error)": ".log(\"代码块：card link未知错误\", 错误)",
     ".log(\"unloading auto-card-link\")": ".log(\"卸载 auto-card-link\")",
     "name: \"Paste URL and enhance to card link\"": "name: \"粘贴 URL 并增强至 card link\"",
     "name: \"Enhance selected URL to card link\"": "name: \"将选定的 URL 增强为 card link\"",
