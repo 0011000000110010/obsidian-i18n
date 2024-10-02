@@ -170,6 +170,16 @@
         ]
     },
     {
+        "id": "copy-image",
+        "translations": [
+            {
+                "author": "Shiyu",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.8"
+            }
+        ]
+    },
+    {
         "id": "creases",
         "translations": [
             {
