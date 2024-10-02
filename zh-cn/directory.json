@@ -930,6 +930,16 @@
         ]
     },
     {
+        "id": "obsidian-mkdocs-publisher",
+        "translations": [
+            {
+                "author": "曲淡歌",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "7.3.2"
+            }
+        ]
+    },
+    {
         "id": "obsidian-outliner",
         "translations": [
             {
