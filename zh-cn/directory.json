@@ -50,6 +50,16 @@
         ]
     },
     {
+        "id": "better-export-pdf",
+        "translations": [
+            {
+                "author": "cuberwu",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.9.2"
+            }
+        ]
+    },
+    {
         "id": "better-fn",
         "translations": [
             {
