@@ -1,5 +1,5 @@
 {
-    "version": "1.3.9",
-    "content":"修复 若干BUG",  
+    "version": "1.4.0",
+    "content":"- 修复 路径中存在空格报错的问题\n修复 编辑界面文本过长文字换行的问题\n新增 增量提取前的还原提示\n新增 增量提取数量显示\n新增 共享云端历史提交界面",  
     "submit":"MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
