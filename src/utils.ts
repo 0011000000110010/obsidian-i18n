@@ -176,31 +176,54 @@ export function validateTranslation(json: any, options: ValidationOptions = { ch
 
 export function NoticePrimary(prefix: string, text: unknown, duration = 4000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_primary`);
+	const notice = new Notice(`[${prefix}] ${text}`, duration);
+	notice.noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_primary`);
+	return notice;
 }
 export function NoticeSuccess(prefix: string, text: unknown, duration = 4000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_success`);
+	const notice = new Notice(`[${prefix}] ${text}`, duration);
+	notice.noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_success`);
+	return notice;
 }
 export function NoticeInfo(prefix: string, text: unknown, duration = 4000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_info`);
+	const notice = new Notice(`[${prefix}] ${text}`, duration);
+	notice.noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_info`);
+	return notice;
 }
 export function NoticeWarning(prefix: string, text: unknown, duration = 4000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_warning`);
+	const notice = new Notice(`[${prefix}] ${text}`, duration);
+	notice.noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_warning`);
+	return notice;
 }
 export function NoticeError(prefix: string, text: unknown, duration = 10000) {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	new Notice(`[${prefix}] ${text}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+	const notice = new Notice(`[${prefix}] ${text}`, duration);
+	notice.noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+	return notice;
 }
-export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: unknown = "") {
+export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: unknown = "", duration = 4000): Notice {
 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
 	if (isSuccess) {
-		if (text != "") { new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, 4000).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
-		else { new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, 4000).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_success`); }
+		if (text != "") {
+			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration)
+			notice.noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`)
+			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration).noticeEl.addClass(`i18n_notice_${hasClass ? 'dark' : 'light'}_success`)
+			return notice;
+		}
+		else {
+			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration)
+			notice.noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_success`);
+			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_success`); 
+			return notice
+		}
 	} else {
-		new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+		const notice = new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000)
+		notice.noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+		// new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000).noticeEl.addClass('i18n_notice', `i18n_notice_${hasClass ? 'dark' : 'light'}_error`);
+		return notice
 	}
 }
 

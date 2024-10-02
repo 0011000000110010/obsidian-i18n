@@ -1,5 +1,5 @@
 import * as fs from 'fs-extra';
-import { ButtonComponent, ItemView, WorkspaceLeaf } from "obsidian";
+import { ButtonComponent, ItemView, Notice, WorkspaceLeaf } from "obsidian";
 import I18N from "src/main";
 import { Translation } from 'src/data/types';
 import { NoticeError, NoticeOperationResult, NoticeSuccess } from 'src/utils';
@@ -13,8 +13,8 @@ import { diffWords } from 'diff';
 export const EDIT_VIEW_TYPE = 'i18n-edit-view'
 
 export class EditView extends ItemView {
-    private frame: HTMLIFrameElement;
     private i18n: I18N;
+    private notices: Notice[] = [];
 
     constructor(leaf: WorkspaceLeaf, i18n: I18N) {
         super(leaf);
@@ -75,7 +75,7 @@ export class EditView extends ItemView {
         const footInputEl = footEl.createEl('textarea');
         footInputEl.addClass('i18n_edit_foot_input');
         let selectRowEl: HTMLTableRowElement | null = null;
-        let selectItem = '';
+        let selectItem: string | undefined;
 
         let translationJson: Translation | undefined;
         if (this.i18n.selectTranslation != '') translationJson = fs.readJsonSync(this.i18n.selectTranslation);
@@ -101,9 +101,9 @@ export class EditView extends ItemView {
                     fs.writeJsonSync(this.i18n.selectTranslation, translationJson, { spaces: 4 });
                     // 关闭窗口
                     // this.i18n.detachEditView();
-                    NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                    this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
                 } catch (error) {
-                    NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                    this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
                 }
             });
 
@@ -186,12 +186,12 @@ export class EditView extends ItemView {
                         valueCellEl.textContent = translationJson.dict[tempKey];
                         // 清除数据
                         footInputEl.value = '';
-                        NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_A'));
+                        this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                     } else {
-                        NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B'));
+                        this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B')));
                     }
                 } else {
-                    NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_C'));
+                    this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_C')));
                 }
             });
 
@@ -199,7 +199,7 @@ export class EditView extends ItemView {
             deleteItemButton.setButtonText(t('EDITOR_DELETE_ITEM_BUTTON_TEXT'));
             deleteItemButton.setClass('i18n_edit_operate_button_left');
             deleteItemButton.onClick(() => {
-                if (selectRowEl != null && selectItem != '') {
+                if (selectRowEl != null && selectItem != undefined) {
                     // 清除 输入框 
                     footInputEl.value = '';
                     // 清除 显示数据
@@ -209,10 +209,10 @@ export class EditView extends ItemView {
                     // 清除 选中对象
                     selectRowEl = null;
                     // 清除 选中内容
-                    selectItem = '';
-                    NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'));
+                    selectItem = undefined;
+                    this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                 } else {
-                    NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_B'));
+                    this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_B')));
                 }
             });
 
@@ -220,7 +220,7 @@ export class EditView extends ItemView {
             restoreItemButton.setButtonText(t('EDITOR_RESTORE_ITEM_BUTTON_TEXT'));
             restoreItemButton.setClass('i18n_edit_operate_button_left');
             restoreItemButton.onClick(() => {
-                if (selectRowEl != undefined && selectItem != '') {
+                if (selectRowEl != undefined && selectItem != undefined) {
                     // 还原 显示数据
                     selectRowEl.children[0].textContent = selectItem;
                     selectRowEl.children[1].textContent = selectItem;
@@ -228,9 +228,9 @@ export class EditView extends ItemView {
                     translationJson.dict[selectItem] = selectItem;
                     // 还原 输入框数据
                     footInputEl.value = selectItem;
-                    NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'));
+                    this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                 } else {
-                    NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_B'));
+                    this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_B')));
                 }
             });
 
@@ -238,11 +238,11 @@ export class EditView extends ItemView {
             cancelItemButton.setButtonText(t('EDITOR_CANCEL_ITEM_BUTTON_TEXT'));
             cancelItemButton.setClass('i18n_edit_operate_button_left');
             cancelItemButton.onClick(() => {
-                if (selectRowEl != undefined && selectItem != '') selectRowEl.removeClass('selected');
+                if (selectRowEl != undefined && selectItem != undefined) selectRowEl.removeClass('selected');
                 selectRowEl = null;
-                selectItem = '';
+                selectItem = undefined;
                 footInputEl.value = '';
-                NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_CANCEL_ITEM_BUTTON_NOTICE_CONTENT_A'));
+                this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_CANCEL_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
             });
 
             const baiduButton = new ButtonComponent(operateEl);
@@ -259,9 +259,19 @@ export class EditView extends ItemView {
                         const response = await this.i18n.api.baidu(tString[2]);
                         if ('trans_result' in response.json) temp = itemValue.replace(tString[2], response.json['trans_result'][0]['dst']);
                     }
-                    if (selectRowEl != null && selectItem != '') {
+                    if (selectRowEl != null && selectItem != undefined) {
+                        const differences = diffWords(selectItem, temp);
+                        let keyHighlightedHTML = "";
+                        let valueHighlightedHTML = "";
+                        differences.forEach((part: { added: any; removed: any; value: any; }) => {
+                            if (part.added) { valueHighlightedHTML += `<span class='i18n_color_green'>${part.value}</span>` }
+                            else if (part.removed) { keyHighlightedHTML += `<span class='i18n_color_red'>${part.value}</span>` }
+                            else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; }
+                        });
+
                         footInputEl.value = temp;
-                        selectRowEl.children[1].textContent = temp;
+                        selectRowEl.children[0].innerHTML = keyHighlightedHTML;
+                        selectRowEl.children[1].innerHTML = valueHighlightedHTML;
                         translationJson.dict[selectItem] = temp;
                     }
                 } catch (error) {
@@ -275,12 +285,12 @@ export class EditView extends ItemView {
             mainButton.setClass('i18n_edit_operate_button_right');
             mainButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
-                    const command = `start ${path.join(this.i18n.selectTranslation.split('\\').slice(0, -2).join('\\'), 'main.js')}`
+                    const command = `start "" "${path.join(this.i18n.selectTranslation.split('\\').slice(0, -2).join('\\'), 'main.js')}"`
                     exec(command, (error) => {
                         if (error) {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
                         } else {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
                         }
                     });
                 }
@@ -288,9 +298,9 @@ export class EditView extends ItemView {
                     const command = `open ${path.join(this.i18n.selectTranslation.split('\\').slice(0, -2).join('\\'), 'main.js')}`
                     exec(command, (error) => {
                         if (error) {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
                         } else {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
                         }
                     });
                 }
@@ -303,12 +313,12 @@ export class EditView extends ItemView {
             langButton.setClass('i18n_edit_operate_button_right');
             langButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
-                    const command = `start ${this.i18n.selectTranslation}`
+                    const command = `start "" "${this.i18n.selectTranslation}"`
                     exec(command, (error) => {
                         if (error) {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
                         } else {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
                         }
                     });
                 }
@@ -316,9 +326,9 @@ export class EditView extends ItemView {
                     const command = `open ${this.i18n.selectTranslation}`
                     exec(command, (error) => {
                         if (error) {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
                         } else {
-                            NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true);
+                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
                         }
                     });
                 }
@@ -330,16 +340,16 @@ export class EditView extends ItemView {
             helpButton.setWarning();
             helpButton.setClass('i18n_edit_operate_button_left');
             helpButton.onClick(() => {
-                NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_HELP_BUTTON_NOTICE_CONTENT_A'));
+                this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_HELP_BUTTON_NOTICE_CONTENT_A')));
             });
 
             // ==============================
             // footEl
             // ==============================
             footInputEl.addEventListener('input', function () {
-                if (selectRowEl != undefined) {
+                if (selectRowEl != undefined && selectItem != undefined) {
                     // const highlighted = highlightedHTML(selectRowEl.children[0].textContent as string, footInputEl.value);
-                    const differences = diffWords(selectRowEl.children[0].textContent as string, footInputEl.value);
+                    const differences = diffWords(selectItem, footInputEl.value);
                     let keyHighlightedHTML = "";
                     let valueHighlightedHTML = "";
                     differences.forEach((part: { added: any; removed: any; value: any; }) => {
@@ -356,7 +366,7 @@ export class EditView extends ItemView {
                     selectRowEl.children[0].innerHTML = keyHighlightedHTML;
                     selectRowEl.children[1].innerHTML = valueHighlightedHTML;
                     // 变更字典数据
-                    translationJson.dict[selectRowEl.children[0].textContent as string] = footInputEl.value;
+                    translationJson.dict[selectItem] = footInputEl.value;
                 }
             });
         }
@@ -368,10 +378,24 @@ export class EditView extends ItemView {
 
         // const preEl = 测试El.createEl('pre');
         // const codeEl = preEl.createEl('code');
+
+    }
+
+    async onunload() {
+        for (const notice of this.notices) { notice.noticeEl.remove(); }
+    }
+
+
+    async onOpen() {
+    }
+
+    async onClose() {
+
     }
 
     focus(): void {
-        this.frame.focus();
+        this.focus();
+        this.onClose();
     }
 
     // 用于返回当前视图的唯一标识。

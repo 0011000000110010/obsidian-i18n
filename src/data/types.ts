@@ -71,5 +71,7 @@ export interface ValidationOptions {
 
 export interface SubmitMark {
 	id: string;
+	name: string;
 	type: number;
+	number: string;
 }  

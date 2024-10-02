@@ -162,30 +162,6 @@ export class API {
 		});
 	}
 
-	// public async openAI1(plugin: string, q: string) {
-	// 	try {
-	// 		const response = await axios.post(`${this.settings.I18N_NIT_OPENAI_URL}/v1/chat/completions`, {
-	// 			model: this.settings.I18N_NIT_OPENAI_MODEL,
-	// 			messages: [
-	// 				{ role: 'user', content: this.settings.I18N_NIT_OPENAI_TIPS },
-	// 				{ role: 'user', content: q }
-	// 			],
-	// 			temperature: 0.7
-	// 		}, {
-	// 			headers: {
-	// 				'Content-Type': 'application/json',
-	// 				'Authorization': `Bearer ${this.settings.I18N_NIT_OPENAI_KEY}`
-	// 			}
-	// 		});
-	// 		if (response.data && response.data.choices && response.data.choices.length > 0) {
-	// 			return response.data.choices[0].message;
-	// 		}
-	// 		return null;
-	// 	} catch (error) {
-	// 		NoticeError('错误', error);
-	// 		return null;
-	// 	}
-	// }
 	public async openAI(plugin: string, q: string) {
 		try {
 			const RequestUrlParam: RequestUrlParam = {
@@ -239,7 +215,7 @@ export class API {
 		});
 	}
 
-	public async submite(title: string, body = '无内容') {
+	public async submite(title: string, body: string, label: string) {
 		try {
 			let token;
 			if (this.settings.I18N_SUBMIT_URL != "") {
@@ -251,7 +227,6 @@ export class API {
 					NoticeOperationResult('提交', false, `令牌有误`);
 				}
 			}
-
 			const RequestUrlParam: RequestUrlParam = {
 				url: `https://gitee.com/api/v5/repos/zero--two/issues`,
 				method: 'POST',
@@ -264,10 +239,11 @@ export class API {
 					repo: 'obsidian-i18n-translation',
 					title: title,
 					body: body,
+					labels: label
 				}),
 			};
-			const response = await requestUrl(RequestUrlParam);
 			// title长度191 body长度65535个字符 
+			const response = await requestUrl(RequestUrlParam);
 			// const response = await axios.post(`https://gitee.com/api/v5/repos/zero--two/issues`, {
 			// 	access_token: token,
 			// 	repo: 'obsidian-i18n-translation',
@@ -287,4 +263,22 @@ export class API {
 			return null;
 		}
 	}
+	public async giteeGetIssue(owner: string, repo: string, number: string) {
+		const RequestUrlParam: RequestUrlParam = {
+			url: `https://gitee.com/api/v5/repos/${owner}/${repo}/issues/${number}`,
+			method: 'GET'
+		};
+		const response = await requestUrl(RequestUrlParam);
+		return response.json;
+	}
+	
+	public async giteeGetAllIssue(owner: string, repo: string) {
+		const RequestUrlParam: RequestUrlParam = {
+			url: `https://gitee.com/api/v5/repos/${owner}/${repo}/issues`,
+			method: 'GET'
+		};
+		const response = await requestUrl(RequestUrlParam);
+		return response.json;
+	}
+
 }

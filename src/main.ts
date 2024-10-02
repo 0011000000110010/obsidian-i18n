@@ -50,7 +50,7 @@ export default class I18N extends Plugin {
             // [函数] 重置提交时间
             if (this.settings.I18N_SUBMIT_TIME !== new Date().getDate()) {
                 this.settings.I18N_SUBMIT_TIME = new Date().getDate();
-                this.settings.I18N_SUBMIT_LIST = [];
+                this.settings.I18N_SUBMIT_HISTORY = [];
                 await this.saveSettings();
             }
             // [函数] 读取提交地址
@@ -84,11 +84,11 @@ export default class I18N extends Plugin {
     // 命周期函数在插件被禁用时触发。
     async onunload() {
         // 卸载编辑视图
-        this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE);
+        this.detachEditView();
     }
 
     onUserEnable(): void {
-        
+
     }
 
     async loadSettings() { this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData()); }
@@ -194,6 +194,8 @@ export default class I18N extends Plugin {
         if (leaf != null) workspace.revealLeaf(leaf); // “显示”叶子，以防它在折叠的侧边栏中
     }
 
-    async detachEditView() { this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE) }
+    async detachEditView() {
+        this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE);
+    }
 }
 

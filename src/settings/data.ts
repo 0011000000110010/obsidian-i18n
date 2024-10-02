@@ -26,8 +26,8 @@ export interface I18nSettings {
 	I18N_SUBMIT_URL: string,
 	// 提交时间标记
 	I18N_SUBMIT_TIME: number,
-	// 提交字典标记
-	I18N_SUBMIT_LIST: SubmitMark[],
+	// 提交历史
+	I18N_SUBMIT_HISTORY: SubmitMark[],
 	// 忽略插件
 	I18N_IGNORE: boolean;
 
@@ -85,8 +85,8 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_SUBMIT_URL: '',
 	// 提交时间标记
 	I18N_SUBMIT_TIME: 0,
-	// 提交字典标记
-	I18N_SUBMIT_LIST: [],
+	// 提交历史
+	I18N_SUBMIT_HISTORY: [],
 
 	// 忽略插件
 	I18N_IGNORE: true,

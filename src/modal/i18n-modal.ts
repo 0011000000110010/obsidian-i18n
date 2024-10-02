@@ -14,6 +14,7 @@ import { WizardModal } from './i18n-wizard-modal';
 
 import { t } from '../lang/inxdex';
 import Url from 'src/url';
+import { SubmiteHistoryModal } from './i18n-submite-history-modal';
 
 
 // prompt
@@ -74,6 +75,13 @@ export class I18NModal extends Modal {
         helpQQButton.setTooltip(t('I18N_HELP_TITLE_QQ_BUTTON_TIP'));
         helpQQButton.onClick(() => { window.open(Url.QQ_GROUP) });
 
+        if (this.settings.I18N_SUBMIT_MODE) {
+            const submiteHistoryButton = new ButtonComponent(helpTitle.controlEl);
+            submiteHistoryButton.setIcon('history');
+            submiteHistoryButton.setTooltip('云端提交记录');
+            submiteHistoryButton.onClick(() => { new SubmiteHistoryModal(this.app, this.i18n).open() });
+        }
+
         const helpSettingButton = new ButtonComponent(helpTitle.controlEl);
         helpSettingButton.setIcon('settings');
         helpSettingButton.setTooltip(t('I18N_HELP_TITLE_SETTING_BUTTON_TIP'));
@@ -127,7 +135,6 @@ export class I18NModal extends Modal {
                 this.reloadShowData();
             })
         );
-
     }
     // ============================================================
     //                        展示数据
@@ -373,7 +380,7 @@ export class I18NModal extends Modal {
                     openPluginDirButton.setDisabled(true);
                     if (navigator.userAgent.match(/Win/i)) {
                         // const command = `powershell.exe -Command "Invoke-Item \\"${pluginDir}\\""`;
-                        const command = `start ${pluginDir}`
+                        const command = `start "" "${pluginDir}"`
                         exec(command, (error) => {
                             if (error) {
                                 NoticeOperationResult(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
@@ -395,6 +402,7 @@ export class I18NModal extends Modal {
                     openPluginDirButton.setDisabled(false);
                 });
             }
+
             // ====================
             // 清空翻译文件(删除)
             // ====================
@@ -491,25 +499,29 @@ export class I18NModal extends Modal {
                 IncrementExtractTranslationButton.setClass('bt');
                 IncrementExtractTranslationButton.setButtonText(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'));
                 IncrementExtractTranslationButton.onClick(async () => {
-                    if (localTranslationJson != null) {
-                        const translationJson = localTranslationJson;
-                        let mainStr;
-                        if (stateObj.state() == true) { mainStr = fs.readJsonSync(duplicateDoc).toString() }
-                        else { mainStr = fs.readFileSync(mainDoc).toString(); }
-                        // 2. 获取 manifest.json JSON文本
-                        const manifestJSON = fs.readJsonSync(manifestDoc);
-                        // 3. 生成译文
-                        const newTranslationJson = generateTranslation(plugin.id, this.settings.I18N_AUTHOR, "1.0.0", plugin.version, manifestJSON, mainStr, this.settings.I18N_RE_LENGTH, this.regexps, this.settings.I18N_RE_FLAGS);
-                        const mergedObj = { ...newTranslationJson.dict, ...translationJson.dict };
-                        translationJson.dict = mergedObj;
-                        // 4. 确保语言目录存在
-                        fs.ensureDirSync(langDir);
-                        // 5. 将 译文json 写入文件
-                        fs.writeJsonSync(langDoc, translationJson, { spaces: 4 });
+                    IncrementExtractTranslationButton.setDisabled(true);
+                    if (isStateDoc && !stateObj.state()) {
+                        try {
+                            // 1. 原始的译文
+                            const originalTranslationJson = fs.readJsonSync(langDoc);
+                            // 2. 获取 main.js 字符串
+                            const modifiedTranslationJson = generateTranslation(plugin.id, this.settings.I18N_AUTHOR, "1.0.0", plugin.version, fs.readJsonSync(manifestDoc), fs.readFileSync(mainDoc).toString(), this.settings.I18N_RE_LENGTH, this.regexps, this.settings.I18N_RE_FLAGS);
+                            // 3. 将旧译文的dict 合并到新译文的dict 中
+                            modifiedTranslationJson.dict = { ...modifiedTranslationJson.dict, ...originalTranslationJson.dict };
+                            // 4. 确保语言目录存在
+                            fs.ensureDirSync(langDir);
+                            // 5. 将 译文json 写入文件
+                            fs.writeJsonSync(langDoc, modifiedTranslationJson, { spaces: 4 });
+                            NoticeOperationResult(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_NOTICE_HEAD'), true, `提取译文${Object.keys(modifiedTranslationJson.dict).length - Object.keys(originalTranslationJson.dict).length}条`);
+                        } catch (error) {
+                            NoticeOperationResult(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_NOTICE_HEAD'), false, `${error}`);
+                        }
+                    } else {
+                        NoticeOperationResult(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_NOTICE_HEAD'), false, '请还原插件后再进行提取');
                     }
+                    IncrementExtractTranslationButton.setDisabled(false);
                 });
             }
-
 
             // ============================================================
             //                  网络译文翻译(下载、更新)
@@ -735,7 +747,7 @@ export class I18NModal extends Modal {
     // window.location.reload();
     // [重载数据显示]
     async reloadShowData() {
-        console.log('调用了[刷新]');
+        // console.log('调用了[刷新]');
         // 滚动条定位
         let scrollTop = 0;
         // @ts-ignore
