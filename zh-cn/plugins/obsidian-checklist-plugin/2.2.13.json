@@ -1,8 +1,8 @@
 {
   "manifest": {
     "id": "obsidian-checklist-plugin",
-    "author": "彼岸花",
-    "version": "1.0.0",
+    "author": "曲淡歌&彼岸花",
+    "version": "1.0.1",
     "pluginVersion": "2.2.13"
   },
   "description": {
