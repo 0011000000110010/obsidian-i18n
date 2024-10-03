@@ -420,6 +420,16 @@
         ]
     },
     {
+        "id": "link-favicon",
+        "translations": [
+            {
+                "author": "彼岸花",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.8.4"
+            }
+        ]
+    },
+    {
         "id": "links",
         "translations": [
             {
