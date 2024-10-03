@@ -1125,6 +1125,16 @@
         ]
     },
     {
+        "id": "obsidian42-text-transporter",
+        "translations": [
+            {
+                "author": "彼岸花",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.11"
+            }
+        ]
+    },
+    {
         "id": "omnisearch",
         "translations": [
             {
