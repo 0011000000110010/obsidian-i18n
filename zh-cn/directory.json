@@ -560,6 +560,16 @@
         ]
     },
     {
+        "id": "novel-word-count",
+        "translations": [
+            {
+                "author": "彼岸花",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "3.11.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-admonition",
         "translations": [
             {
@@ -826,6 +836,16 @@
                 "author": "zero",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.5.1"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-hotkeys-for-specific-files",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.4.1"
             }
         ]
     },
