@@ -1221,6 +1221,11 @@
                 "author": "宇桐非",
                 "translationVersion": "0.40.9",
                 "pluginVersion": "0.40.9"
+            },
+            {
+                "author": "zero",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.40.11"
             }
         ]
     },
