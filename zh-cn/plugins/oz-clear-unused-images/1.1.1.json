@@ -1,31 +1,31 @@
 {
   "manifest": {
     "id": "oz-clear-unused-images",
-    "author": "䲜",
-    "version": "1.1.1",
+    "author": "䲜&Penn&曲淡歌",
+    "version": "1.1.2",
     "pluginVersion": "1.1.1"
   },
   "description": {
     "original": "Clear the images that you are not using anymore in your markdown notes to save space.",
-    "translation": "清除保险库中未被笔记引用的图片。"
+    "translation": "清除库中未被笔记引用的图片。"
   },
   "dict": {
-    ".setName(\"Ribbon Icon\")": ".setName(\"功能区图标\")",
-    ".setName(\"Delete Logs\")": ".setName(\"清除日志\")",
-    ".setName(\"Deleted Image Destination\")": ".setName(\"已清除图片处理\")",
-    ".setName(\"Excluded Folder Full Paths\")": ".setName(\"排除文件夹完整路径\")",
+    ".setName(\"Ribbon Icon\")": ".setName(\"左侧功能区图标\")",
+    ".setName(\"Delete Logs\")": ".setName(\"关闭提示\")",
+    ".setName(\"Deleted Image Destination\")": ".setName(\"如何处理被删除图片\")",
+    ".setName(\"Excluded Folder Full Paths\")": ".setName(\"排除文件夹的完整路径\")",
     ".setName(\"Exclude Subfolders\")": ".setName(\"排除子文件夹\")",
-    ".setDesc(\"Turn on if you want Ribbon Icon for clearing the images.\")": ".setDesc(\"激活左侧功能区（Ribbon）图标，单击以运行清除操作。\")",
-    ".setDesc(\"Turn off if you dont want to view the delete logs Modal to pop up after deletion is completed. It wont appear if no image is deleted\")": ".setDesc(\"若不希望在清除操作完成后显示日志弹窗，请关闭此选项。若没有图片被清除，则不会出现弹窗。\")",
-    ".setDesc(\"Select where you want images to be moved once they are deleted\")": ".setDesc(\"选择已清除图片的存放位置。\")",
+    ".setDesc(\"Turn on if you want Ribbon Icon for clearing the images.\")": ".setDesc(\"激活显示左侧功能区（Ribbon）图标，单击以运行清除操作。\")",
+    ".setDesc(\"Turn off if you dont want to view the delete logs Modal to pop up after deletion is completed. It wont appear if no image is deleted\")": ".setDesc(\"若不希望在清除操作完成后显示日志弹窗，请关闭此选项。（要是没有图片被清除，则不会出现弹窗。）\")",
+    ".setDesc(\"Select where you want images to be moved once they are deleted\")": ".setDesc(\"选择图片删除后要移动的位置。\")",
     ".setDesc(\"Provide the FULL path of the folder names (Case Sensitive) divided by comma (,) to be excluded from clearing. \\n\\t\\t\\t\\t\\ti.e. For images under Personal/Files/Zodiac -> Personal/Files/Zodiac should be used for exclusion\")": ".setDesc(\"请提供需要在清除操作中被排除的文件夹的完整路径（区分大小写），以逗号（,）作为分割。例如，对于 Personal/Files/Zodiac 路径下的图片，应使用 Personal/Files/Zodiac 进行排除。\")",
     ".setDesc(\"Turn on this option if you want to also exclude all subfolders of the folder paths provided above.\")": ".setDesc(\"若希望排除上述文件夹路径下的所有子文件夹，请启用此选项。\")",
     ".addCommand({id:\"clear-images-obsidian\",name:\"Clear Unused Images\",": ".addCommand({id:\"clear-images-obsidian\",name:\"清除失效图片\",",
     ".addCommand({id:\"clear-unused-attachments\",name:\"Clear Unused Attachments\",": ".addCommand({id:\"clear-unused-attachments\",name:\"清除失效附件\",",
     ".addOption(\"permanent\",\"Delete Permanently\")": ".addOption(\"permanent\",\"永久删除\")",
-    ".addOption(\".trash\",\"Move to Obsidian Trash\")": ".addOption(\".trash\",\"移至软件回收站\")",
+    ".addOption(\".trash\",\"Move to Obsidian Trash\")": ".addOption(\".trash\",\"移至obsidian回收站\")",
     ".addOption(\"system-trash\",\"Move to System Trash\")": ".addOption(\"system-trash\",\"移至系统回收站\")",
-    ".createEl(\"h2\",{text:\"Clear Images Settings\"})": ".createEl(\"h2\",{text:\"清除图片设置\"})",
+    ".createEl(\"h2\",{text:\"Clear Images Settings\"})": ".createEl(\"h2\",{text:\"清除未使用图片 - 插件设置\"})",
     ".createEl(\"h1\",{text:\"Clear Unused Images - Logs\"})": ".createEl(\"h1\",{text:\"Clear Unused Images - 日志\"})",
     ".createEl(\"button\",{text:\"Close\"})": ".createEl(\"button\",{text:\"关闭\"})"
   }
