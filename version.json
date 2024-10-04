@@ -1,5 +1,5 @@
 {
-    "version": "1.4.1",
-    "content":"支持命令模板",  
+    "version": "1.4.2",
+    "content":"修复 增量提取描述重新生成的问题\n修复 开启云端模式时失焦的问题\n优化 设置界面UI\n优化 CSS写作格式\n新增 译文编辑器支持百度翻译描述\n新增 译文编辑器新增自动滚动到目标位置\n新增 译文编辑器计数功能\n",  
     "submit":"MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
