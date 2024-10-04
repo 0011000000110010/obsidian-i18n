@@ -940,6 +940,16 @@
         ]
     },
     {
+        "id": "obsidian-livesync",
+        "translations": [
+            {
+                "author": "沉默的风",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.23.23"
+            }
+        ]
+    },
+    {
         "id": "obsidian-local-images-plus",
         "translations": [
             {
