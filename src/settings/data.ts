@@ -6,6 +6,8 @@ export interface I18nSettings {
 	I18N_WIZARD: boolean;
 	// 翻译语言
 	I18N_LANGUAGE: string;
+	// 主题色
+	I18N_COLOR: string;
 
 	I18N_MODE_LDT: boolean,
 	I18N_MODE_NDT: boolean,
@@ -65,6 +67,8 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	I18N_UUID: '',
 	I18N_WIZARD: true,
 	I18N_LANGUAGE: 'zh-cn',
+	// 主题色 默认#409EFF
+	I18N_COLOR: '#409EFF',
 
 	I18N_MODE_LDT: true,
 	I18N_MODE_NDT: false,

@@ -20,7 +20,7 @@ export class AgreementModal extends Modal {
         // @ts-ignore
         // 外框
         const modalEl: HTMLElement = this.contentEl.parentElement;
-        modalEl.addClass('i18n_areement_modal');
+        modalEl.addClass('i18n-areement__container');
         // 头部
         const titleEl: HTMLElement = this.titleEl;
         titleEl.innerHTML = '使用协议(请仔细阅读)'
@@ -28,16 +28,16 @@ export class AgreementModal extends Modal {
         // 内容
         const contentEl: HTMLElement = this.contentEl;
         contentEl.innerHTML = `
-        <p class='i18n_areement_text'>1. 插件翻译过程涉及直接修改原插件的源代码。尽管i18n工具会事先备份原始文件，但操作仍存在一定风险。</p>
-        <p class='i18n_areement_text'>2. 强烈建议在首次尝试翻译插件之前，先备份您的插件目录。通常，插件目录位于 .obsidian/plugins 文件夹内。备份可以确保您的数据安全。</p>
-        <p class='i18n_areement_text'>3. 在进行翻译时，请耐心等待。直到翻译成功或明确得知失败结果后，再继续您的后续操作。</p>
-        <p class='i18n_areement_text'>4. 若在使用本插件进行翻译后，发现原插件的某些功能受到影响而失效，请卸载重新安装原插件，随后再次检验功能是否恢复正常。若问题依旧存在，再去原插件作者项目地址提交issues，避免因本插件导致原插件失效，去打扰原作者。(重要！重要！重要！)</p>
+        <p class='i18n-agreement__text'>1. 插件翻译过程涉及直接修改原插件的源代码。尽管i18n工具会事先备份原始文件，但操作仍存在一定风险。</p>
+        <p class='i18n-agreement__text'>2. 强烈建议在首次尝试翻译插件之前，先备份您的插件目录。通常，插件目录位于 .obsidian/plugins 文件夹内。备份可以确保您的数据安全。</p>
+        <p class='i18n-agreement__text'>3. 在进行翻译时，请耐心等待。直到翻译成功或明确得知失败结果后，再继续您的后续操作。</p>
+        <p class='i18n-agreement__text'>4. 若在使用本插件进行翻译后，发现原插件的某些功能受到影响而失效，请卸载重新安装原插件，随后再次检验功能是否恢复正常。若问题依旧存在，再去原插件作者项目地址提交issues，避免因本插件导致原插件失效，去打扰原作者。(重要！重要！重要！)</p>
         `
         const areement_1 = new Setting(contentEl);
-        areement_1.setClass('i18n_areement_item');
+        areement_1.setClass('i18n-agreement__item');
         areement_1.setName('我已知晓风险');
         areement_1.addButton(cb => cb
-            .setClass('i18n_areement_check')
+            .setClass('i18n-agreement__check-button')
             .setIcon(this.areement_1 ? 'square-check-big' : 'square')
             .onClick(() => {
                 this.areement_1 = !this.areement_1;
@@ -45,10 +45,10 @@ export class AgreementModal extends Modal {
             })
         );
         const areement_2 = new Setting(contentEl);
-        areement_2.setClass('i18n_areement_item');
+        areement_2.setClass('i18n-agreement__item');
         areement_2.setName('如果遇到翻译后插件失效，点击还原即可恢复正常');
         areement_2.addButton(cb => cb
-            .setClass('i18n_areement_check')
+            .setClass('i18n-agreement__check-button')
             .setIcon(this.areement_2 ? 'square-check-big' : 'square')
             .onClick(() => {
                 this.areement_2 = !this.areement_2;
@@ -57,7 +57,7 @@ export class AgreementModal extends Modal {
         );
 
         const agreement = new Setting(contentEl);
-        agreement.setClass('i18n_areement_operate');
+        agreement.setClass('i18n-agreement__operate');
         const agreeButton = new ButtonComponent(agreement.controlEl);
         agreeButton.setButtonText('同意');
         agreeButton.setCta();

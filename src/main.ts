@@ -38,6 +38,7 @@ export default class I18N extends Plugin {
         Icons();
         // [加载] 配置
         await this.loadSettings();
+        document.documentElement.style.setProperty('--i18n-color-primary', this.settings.I18N_COLOR);
 
         if (this.settings.I18N_AGREEMENT) {
             console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
@@ -76,6 +77,17 @@ export default class I18N extends Plugin {
 
             // [设置]
             this.addSettingTab(new I18nSettingTab(this.app, this));
+
+            this.addCommand({
+                id: "i18n-translate",
+                name: "打开翻译面板",
+                callback: () => { new I18NModal(this.app, this).open() }
+            });
+            this.addCommand({
+                id: "i18n-help",
+                name: "打开帮助面板",
+                callback: () => { new WizardModal(this.app, this).open() }
+            });
         } else {
             new AgreementModal(this.app, this).open();
         }
@@ -110,7 +122,7 @@ export default class I18N extends Plugin {
         if (!this.settings.I18N_MODE_NDT || !this.settings.I18N_IGNORE) { this.ignoreMark = false; return; }
         if (!(this.settings.I18N_LANGUAGE in this.settings.I18N_NDT_APIS)) { NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, t('SETTING_NDT_IGNORE_NOTICE_A')); this.ignoreMark = false; return; }
         if (!await this.api.ignoreTest()) { this.ignoreMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, t('SETTING_NDT_IGNORE_NOTICE_B')); return; }
-        try { this.ignorePlugins = await this.api.ignore(); NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), true); }
+        try { this.ignorePlugins = await this.api.ignore(); this.ignoreMark = true; NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), true); }
         catch (error) { this.ignoreMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, error); }
     }
 
@@ -118,7 +130,7 @@ export default class I18N extends Plugin {
         if (!this.settings.I18N_MODE_NDT) { this.directoryMark = false; return; }
         if (!(this.settings.I18N_LANGUAGE in this.settings.I18N_NDT_APIS)) { this.directoryMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, t('SETTING_NDT_MODE_NOTICE_A')); return; }
         if (!await this.api.directoryTest()) { this.directoryMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, t('SETTING_NDT_MODE_NOTICE_B')); return; }
-        try { this.directory = await this.api.directory(); NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), true); }
+        try { this.directory = await this.api.directory(); this.directoryMark = true; NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), true); }
         catch (error) { this.directoryMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, error); }
     }
 

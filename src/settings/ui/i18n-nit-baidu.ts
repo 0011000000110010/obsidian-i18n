@@ -39,13 +39,11 @@ delete to_lang.auto
 
 export default class I18nNitBaiDu extends BaseSetting {
     main(): void {
-        const i18nNitBaiDu = new Setting(this.containerEl);
-        i18nNitBaiDu.setName(t('SETTING_NIT_BAIDU_NAME'));
-        i18nNitBaiDu.setDesc(t('SETTING_NIT_BAIDU_DESC'));
-        if (!(this.settings.I18N_MODE_NIT)) i18nNitBaiDu.setClass('i18n_display-none');
-        if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNitBaiDu.setClass('i18n_display-none');
-        // FROM
-        i18nNitBaiDu.addDropdown(cb => cb
+        const i18nNitBaiDuFrom = new Setting(this.containerEl);
+        if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNitBaiDuFrom.setClass('i18n--hidden');
+        i18nNitBaiDuFrom.setName('源语言');
+        i18nNitBaiDuFrom.setDesc('待译文本语言（默认:自动检测）');
+        i18nNitBaiDuFrom.addDropdown(cb => cb
             .addOptions(from_lang)
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.FROM)
             .onChange((value) => {
@@ -53,8 +51,12 @@ export default class I18nNitBaiDu extends BaseSetting {
                 this.i18n.saveSettings();
             })
         );
-        // TO
-        i18nNitBaiDu.addDropdown(cb => cb
+
+        const i18nNitBaiDuTo = new Setting(this.containerEl);
+        if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNitBaiDuTo.setClass('i18n--hidden');
+        i18nNitBaiDuTo.setName('目标语言');
+        i18nNitBaiDuTo.setDesc('目标文本语言（默认：中文）');
+        i18nNitBaiDuTo.addDropdown(cb => cb
             .addOptions(to_lang)
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.TO)
             .onChange((value) => {
@@ -62,8 +64,12 @@ export default class I18nNitBaiDu extends BaseSetting {
                 this.i18n.saveSettings();
             })
         );
-        // APPID
-        i18nNitBaiDu.addText(cb => cb
+
+        const i18nNitBaiDuAppID = new Setting(this.containerEl);
+        if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNitBaiDuAppID.setClass('i18n--hidden');
+        i18nNitBaiDuAppID.setName('APPID');
+        i18nNitBaiDuAppID.setDesc('APPID是访问百度翻译API的身份验证密钥。');
+        i18nNitBaiDuAppID.addText(cb => cb
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.APP_ID)
             .setPlaceholder('APPID')
             .onChange((value) => {
@@ -71,8 +77,12 @@ export default class I18nNitBaiDu extends BaseSetting {
                 this.i18n.saveSettings();
             })
         );
-        // KEY
-        i18nNitBaiDu.addText(cb => cb
+
+        const i18nNitBaiDuAppIDKey = new Setting(this.containerEl);
+        if (!(this.settings.I18N_NIT_API == 'BAIDU')) i18nNitBaiDuAppIDKey.setClass('i18n--hidden');
+        i18nNitBaiDuAppIDKey.setName('密钥');
+        i18nNitBaiDuAppIDKey.setDesc('Key是访问百度翻译API的身份验证密钥。');
+        i18nNitBaiDuAppIDKey.addText(cb => cb
             .setValue(this.settings.I18N_NIT_APIS.BAIDU.KEY)
             .setPlaceholder('KEY')
             .onChange((value) => {

@@ -22,22 +22,21 @@ export class WizardModal extends Modal {
         const { contentEl } = this;
         // @ts-ignore
         const modalEl: HTMLElement = this.contentEl.parentElement;
-        modalEl.addClass('i18n_wizard_modal');
-
-        this.contentEl.addClass("i18n_wizard_modal_box");
+        modalEl.addClass('i18n-wizard__container');
+        this.contentEl.addClass("i18n-wizard__box");
 
         this.img = this.contentEl.doc.createElement("img");
-        this.img.addClass('i18n_wizard_modal_img');
+        this.img.addClass('i18n-wizard__img');
         this.img.src = Url.I18N_ICON;
         this.contentEl.appendChild(this.img);
 
         this.title = this.contentEl.doc.createElement("p");
-        this.title.addClass('i18n_wizard_modal_title');
+        this.title.addClass('i18n-wizard__title');
         this.title.innerHTML = 'Obsidian-I18N';
         this.contentEl.appendChild(this.title);
 
         this.version = this.contentEl.doc.createElement("p");
-        this.version.addClass('i18n_wizard_modal_version');
+        this.version.addClass('i18n-wizard__version');
         this.version.innerHTML = `版本 ${this.i18n.manifest.version}`;
         this.contentEl.appendChild(this.version);
 

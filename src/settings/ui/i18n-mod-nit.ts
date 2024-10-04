@@ -11,19 +11,21 @@ export default class I18nModeNIT extends BaseSetting {
         const api = new API(this.i18n);
 
         const i18nModeNIT = new Setting(this.containerEl);
-        i18nModeNIT.setClass('i18n_bold');
-        i18nModeNIT.setName(`🤖 ${t('SETTING_NIT_NAME')}`);
-        i18nModeNIT.addToggle(cb => cb
-            .setValue(this.settings.I18N_MODE_NIT)
-            .onChange(async () => {
+        // i18nModeNIT.setHeading();
+        i18nModeNIT.setName(t('SETTING_NIT_NAME'));
+        i18nModeNIT.setDesc('是否开启机器翻译模式');
+        i18nModeNIT.addButton(cb => {
+            cb.setButtonText(this.settings.I18N_MODE_NIT ? '关闭' : '开启');
+            cb.onClick(async () => {
                 this.settings.I18N_MODE_NIT = !this.settings.I18N_MODE_NIT;
                 this.i18n.saveSettings();
-                this.settingTab.display();
-            })
-        );
+                this.settingTab.nitDisplay();
+            });
+            cb.setClass('i18n-button');
+            this.settings.I18N_MODE_NIT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
+        });
 
         const i18nNITAPI = new Setting(this.containerEl);
-        if (!(this.settings.I18N_MODE_NIT)) i18nNITAPI.setClass('i18n_display-none');
         i18nNITAPI.setName(t('SETTING_NIT_APIS_NAME'));
         i18nNITAPI.setDesc(t('SETTING_NIT_APIS_DESC'));
         i18nNITAPI.addDropdown(cb => cb
@@ -32,7 +34,7 @@ export default class I18nModeNIT extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_API = value;
                 this.i18n.saveSettings();
-                this.settingTab.display();
+                this.settingTab.nitDisplay();
             })
         );
         i18nNITAPI.addButton(cb => cb
@@ -49,12 +51,13 @@ export default class I18nModeNIT extends BaseSetting {
                         break
                 }
             })
+            .setClass('i18n-button')
+            .setClass('i18n-button--primary')
         );
 
         const i18nModeNITInterval = new Setting(this.containerEl);
         i18nModeNITInterval.setName(t('SETTING_NIT_INTERVAL_NAME'));
         i18nModeNITInterval.setDesc(t('SETTING_NIT_INTERVAL_DESC'));
-        if (!(this.settings.I18N_MODE_NIT)) i18nModeNITInterval.setClass('i18n_display-none');
         i18nModeNITInterval.addSlider(cb => cb
             .setDynamicTooltip()
             .setLimits(0, 1000, 50)

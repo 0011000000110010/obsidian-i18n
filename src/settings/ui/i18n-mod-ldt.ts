@@ -6,19 +6,19 @@ import { t } from "src/lang/inxdex";
 export default class I18nModLDT extends BaseSetting {
     main(): void {
         const i18nModLDT = new Setting(this.containerEl);
-        i18nModLDT.setClass('i18n_bold');
-        i18nModLDT.setName(`✍🏻 ${t('SETTING_LDT_NAME')}`);
-        i18nModLDT.setDesc("");
-        i18nModLDT.addToggle(cb => cb
-            .setValue(this.settings.I18N_MODE_LDT)
-            .onChange(() => {
+        i18nModLDT.setName(t('SETTING_LDT_NAME'));
+        i18nModLDT.setDesc('是否开启本地文件模式。');
+        i18nModLDT.addButton(cb => {
+            cb.setButtonText(this.settings.I18N_MODE_LDT ? '关闭' : '开启');
+            cb.onClick(() => {
                 this.settings.I18N_MODE_LDT = !this.settings.I18N_MODE_LDT;
                 this.i18n.saveSettings();
-                this.settingTab.display();
+                this.settingTab.ldtDisplay();
             })
-        );
+            cb.setClass('i18n-button');
+            this.settings.I18N_MODE_LDT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
+        });
         const i18nAutomaticUpdate = new Setting(this.containerEl);
-        if (!(this.settings.I18N_MODE_LDT)) i18nAutomaticUpdate.setClass('i18n_display-none');
         i18nAutomaticUpdate.setName(t('SETTING_LDT_AUTOMATIC_UPDATE_NAME'));
         i18nAutomaticUpdate.setDesc(t('SETTING_LDT_AUTOMATIC_UPDATE_DESC'));
         i18nAutomaticUpdate.addToggle(cb => cb
@@ -26,12 +26,12 @@ export default class I18nModLDT extends BaseSetting {
             .onChange(() => {
                 this.settings.I18N_AUTOMATIC_UPDATE = !this.settings.I18N_AUTOMATIC_UPDATE;
                 this.i18n.saveSettings();
-                this.settingTab.display();
+                this.settingTab.ldtDisplay();
             })
+            .toggleEl.addClass('i18n-checkbox')
         );
 
         const i18nIncrementalExtraction = new Setting(this.containerEl);
-        if (!(this.settings.I18N_MODE_LDT)) i18nIncrementalExtraction.setClass('i18n_display-none');
         i18nIncrementalExtraction.setName('增量提取');
         i18nIncrementalExtraction.setDesc('增量提取功能允许您在本地已有译文的基础上，继续提取并自动合并新译文，实现译文的持续更新与累积。');
         i18nIncrementalExtraction.addToggle(cb => cb
@@ -39,9 +39,9 @@ export default class I18nModLDT extends BaseSetting {
             .onChange(() => {
                 this.settings.I18N_INCREMENTAL_EXTRACTION = !this.settings.I18N_INCREMENTAL_EXTRACTION;
                 this.i18n.saveSettings();
-                this.settingTab.display();
+                this.settingTab.ldtDisplay();
             })
+            .toggleEl.addClass('i18n-checkbox')
         );
-
     }
 }

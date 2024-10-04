@@ -2,11 +2,10 @@ import { Setting } from "obsidian";
 import BaseSetting from "./base-setting";
 import { t } from "src/lang/inxdex";
 
-// 自动更新
+// 编辑器模式
 export default class I18nEditMode extends BaseSetting {
     main(): void {
         const i18nEditMode = new Setting(this.containerEl);
-        i18nEditMode.setClass('i18n_bold');
         i18nEditMode.setName(t('SETTING_EDITOR_NAME'));
         i18nEditMode.setDesc(t('SETTING_EDITOR_DESC'));
         i18nEditMode.addToggle(cb => cb
@@ -14,12 +13,12 @@ export default class I18nEditMode extends BaseSetting {
             .onChange(() => {
                 this.settings.I18N_EDIT_MODE = !this.settings.I18N_EDIT_MODE;
                 this.i18n.saveSettings();
-                this.settingTab.display();
+                this.settingTab.basisDisplay();
             })
+            .toggleEl.addClass('i18n-checkbox')
         );
-
         // const i18nTranslationEdit = new Setting(this.containerEl);
-        // if (!(this.settings.I18N_EDIT_MODE)) i18nTranslationEdit.setClass('i18n_display-none');
+        // if (!(this.settings.I18N_EDIT_MODE)) i18nTranslationEdit.setClass('i18n--hidden');
         // i18nTranslationEdit.addText(cb => cb
         //     .setPlaceholder('编辑器地址')
         //     .onChange((value) => {
@@ -47,7 +46,7 @@ export default class I18nEditMode extends BaseSetting {
         // );
 
         // const i18nMainEdit = new Setting(this.containerEl);
-        // if (!(this.settings.I18N_EDIT_MODE)) i18nMainEdit.setClass('i18n_display-none');
+        // if (!(this.settings.I18N_EDIT_MODE)) i18nMainEdit.setClass('i18n--hidden');
         // i18nMainEdit.addText(cb => cb
         //     .setValue(this.settings.I18N_EDIT_MAIN_PATH)
         //     .setPlaceholder('编辑器地址')

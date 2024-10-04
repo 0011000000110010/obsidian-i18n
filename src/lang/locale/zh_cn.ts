@@ -152,19 +152,19 @@ export default {
     SETTING_LANGUAGE_NAME: '语言',
     SETTING_LANGUAGE_DESC: '选择需要翻译的语言',
 
-    SETTING_LDT_NAME: '本地文件模式',
+    SETTING_LDT_NAME: '本地模式',
     SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD: '词典重载',
     SETTING_LDT_AUTOMATIC_UPDATE_NAME: '词典重载',
     SETTING_LDT_AUTOMATIC_UPDATE_DESC: '检测到插件版本变动后，自动应用本地已有译文(因为插件更新，本地译文可能不适配，请注意是否报错)',
     SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_A: '开始检查更新',
     SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_B: '没有需要更新的插件',
 
-    SETTING_NDT_NAME: '云端文件模式',
+    SETTING_NDT_NAME: '云端模式',
     SETTING_NDT_PUBLIC_MODE_HEAD: '云端模式',
     SETTING_NDT_MODE_NOTICE_A: '当前语言 API 不存在',
     SETTING_NDT_MODE_NOTICE_B: '网络异常',
     SETTING_NDT_PUBLIC_IGNORE_HEAD: '标记汉化',
-    SETTING_NDT_APIS_NAME: '接口',
+    SETTING_NDT_APIS_NAME: '云端接口',
     SETTING_NDT_APIS_DESC: '请输入您要翻译语言对应的API(重新添加将会覆盖)',
     SETTING_NDT_APIS_INSERT_BUTTON: '添加',
     SETTING_NDT_IGNORE_NAME: '标记汉化',
@@ -173,12 +173,12 @@ export default {
     SETTING_NDT_IGNORE_NOTICE_B: '网络异常',
 
 
-    SETTING_NIT_NAME: '机器翻译模式',
+    SETTING_NIT_NAME: '机器翻译',
 
-    SETTING_NIT_APIS_NAME: '接口',
+    SETTING_NIT_APIS_NAME: '选择接口',
     SETTING_NIT_APIS_DESC: '选择您要使用的接口',
     SETTING_NIT_TEST_BUTTON_TEXT: '测试',
-    SETTING_NIT_INTERVAL_NAME: '间隔',
+    SETTING_NIT_INTERVAL_NAME: '请求间隔',
     SETTING_NIT_INTERVAL_DESC: '用于限制每次请求间隔(单位: 毫秒)',
 
     SETTING_NIT_BAIDU_NAME: '百度',

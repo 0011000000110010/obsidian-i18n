@@ -9,12 +9,12 @@ import { I18nSettings } from '../settings/data';
 import { Manifest, Translation } from 'src/data/types';
 import { API_TYPES, I18N_SORT, I18N_TYPE } from 'src/data/data';
 import { NoticeError, State, generateTranslation, NoticeInfo, NoticeOperationResult, compareVersions, NoticePrimary, NoticeWarning } from '../utils';
-import { I18NSubmiteModal } from './i18n-submite-modal';
+import { ShareModal } from './i18n-share-modal';
 import { WizardModal } from './i18n-wizard-modal';
 
 import { t } from '../lang/inxdex';
 import Url from 'src/url';
-import { SubmiteHistoryModal } from './i18n-submite-history-modal';
+import { ShareHistoryModal } from './i18n-share-history-modal';
 
 
 // prompt
@@ -50,24 +50,24 @@ export class I18NModal extends Modal {
         this.settingPlugins = this.app.setting;
         this.regexps = this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE];
     }
-    footEl: HTMLDivElement;
+    detailsEl: HTMLDivElement;
     // ============================================================
     //                        展示操作
     // ============================================================
     public async showHead() {
         //@ts-ignore
         const modalEl: HTMLElement = this.contentEl.parentElement;
-        modalEl.addClass('i18n_modal');
+        modalEl.addClass('i18n__container');
         modalEl.removeChild(modalEl.getElementsByClassName('modal-close-button')[0]);
-        this.titleEl.addClass('i18n_modal_title');
-        this.contentEl.addClass('i18n_modal_item_box');
+        this.titleEl.addClass('i18n__title');
+        this.contentEl.addClass('i18n__item-box');
 
-        this.footEl = document.createElement("div");
-        this.footEl.addClass('i18n_modal_foot');
-        modalEl.appendChild(this.footEl);
+        this.detailsEl = document.createElement("div");
+        this.detailsEl.addClass('i18n__item-details');
+        modalEl.appendChild(this.detailsEl);
 
         const helpTitle = new Setting(this.titleEl);
-        helpTitle.setClass('i18n_modal_title_help');
+        helpTitle.setClass('i18n__help');
         helpTitle.setName(t('I18N_HELP_TITLE_NAME'));
 
         const helpQQButton = new ButtonComponent(helpTitle.controlEl);
@@ -79,7 +79,7 @@ export class I18NModal extends Modal {
             const submiteHistoryButton = new ButtonComponent(helpTitle.controlEl);
             submiteHistoryButton.setIcon('history');
             submiteHistoryButton.setTooltip('云端提交记录');
-            submiteHistoryButton.onClick(() => { new SubmiteHistoryModal(this.app, this.i18n).open() });
+            submiteHistoryButton.onClick(() => { new ShareHistoryModal(this.app, this.i18n).open() });
         }
 
         const helpSettingButton = new ButtonComponent(helpTitle.controlEl);
@@ -107,7 +107,7 @@ export class I18NModal extends Modal {
         }
 
         const searchTitle = new Setting(this.titleEl);
-        searchTitle.setClass('i18n_modal_title_search');
+        searchTitle.setClass('i18n__search');
         searchTitle.setName(t('I18N_SEARCH_TITLE_NAME'));
         searchTitle.addDropdown(cb => cb
             .addOptions(I18N_SORT)
@@ -308,8 +308,8 @@ export class I18NModal extends Modal {
             // 插件介绍头部
             // ====================
             const itemEl = new Setting(this.contentEl);
-            itemEl.setClass('i18n_modal_item');
-            itemEl.nameEl.addClass('i18n_modal_item_title');
+            itemEl.setClass('i18n__item');
+            itemEl.nameEl.addClass('i18n__item-title');
             // @ts-ignore
             let desc: { mark: number, label: { color: string; text: string; }, text: string }
                 = { mark: 1, label: { color: '', text: '' }, text: '' };
@@ -346,12 +346,12 @@ export class I18NModal extends Modal {
             }
 
             itemEl.nameEl.innerHTML = `
-            <span class="i18n_modal_item_state i18n_modal_item_state_${desc.label.color}">${desc.label.text}</span>
-            <span class="i18n_modal_item_title">${plugin.name}</span> 
-            <span class="i18n_modal_item_version" style="color:--simple-blue-2;">(${plugin.version})</span> 
+            <span class="i18n__item-state i18n__item-state--${desc.label.color}">${desc.label.text}</span>
+            <span class="i18n__item-title">${plugin.name}</span> 
+            <span class="i18n__item-version" style="color:--simple-blue-2;">(${plugin.version})</span> 
             `;
-            itemEl.settingEl.onmouseover = (e) => { this.footEl.innerHTML = desc.text };
-            itemEl.settingEl.onmouseout = (e) => { this.footEl.innerHTML = t('I18N_ITEM_LABEL_G_DESC') };
+            itemEl.settingEl.onmouseover = (e) => { this.detailsEl.innerHTML = desc.text };
+            itemEl.settingEl.onmouseout = (e) => { this.detailsEl.innerHTML = t('I18N_ITEM_LABEL_G_DESC') };
 
             // ====================
             // 打开插件设置
@@ -459,7 +459,7 @@ export class I18NModal extends Modal {
                 const submitTranslationButton = new ExtraButtonComponent(itemEl.controlEl);
                 submitTranslationButton.setIcon('cloud-upload');
                 submitTranslationButton.setTooltip(t('I18N_ITEM_SUBMIT_TRANSLATION_BUTTON_TIP'));
-                submitTranslationButton.onClick(() => { new I18NSubmiteModal(this.app, this.i18n, plugin, langDoc).open() });
+                submitTranslationButton.onClick(() => { new ShareModal(this.app, this.i18n, plugin, langDoc).open() });
             }
             // #endregion
 
@@ -468,7 +468,8 @@ export class I18NModal extends Modal {
             // ============================================================
             if (this.settings.I18N_MODE_LDT && !isLangDoc) {
                 const ExtractTranslationButton = new ButtonComponent(itemEl.controlEl);
-                ExtractTranslationButton.setClass('bt');
+                ExtractTranslationButton.setClass('i18n-button');
+                ExtractTranslationButton.setClass('i18n-button--primary');
                 ExtractTranslationButton.setButtonText(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'));
                 ExtractTranslationButton.setTooltip(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TIP'));
                 ExtractTranslationButton.onClick(() => {
@@ -496,7 +497,8 @@ export class I18NModal extends Modal {
             // ============================================================
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_INCREMENTAL_EXTRACTION && isLangDoc && translationFormatMark) {
                 const IncrementExtractTranslationButton = new ButtonComponent(itemEl.controlEl);
-                IncrementExtractTranslationButton.setClass('bt');
+                IncrementExtractTranslationButton.setClass('i18n-button');
+                IncrementExtractTranslationButton.setClass('i18n-button--primary');
                 IncrementExtractTranslationButton.setButtonText(t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'));
                 IncrementExtractTranslationButton.onClick(async () => {
                     IncrementExtractTranslationButton.setDisabled(true);
@@ -506,7 +508,9 @@ export class I18NModal extends Modal {
                             const originalTranslationJson = fs.readJsonSync(langDoc);
                             // 2. 获取 main.js 字符串
                             const modifiedTranslationJson = generateTranslation(plugin.id, this.settings.I18N_AUTHOR, "1.0.0", plugin.version, fs.readJsonSync(manifestDoc), fs.readFileSync(mainDoc).toString(), this.settings.I18N_RE_LENGTH, this.regexps, this.settings.I18N_RE_FLAGS);
-                            // 3. 将旧译文的dict 合并到新译文的dict 中
+                            // 3. 将旧译文合并到新译文中
+                            modifiedTranslationJson.manifest = originalTranslationJson.manifest;
+                            modifiedTranslationJson.description = originalTranslationJson.description;
                             modifiedTranslationJson.dict = { ...modifiedTranslationJson.dict, ...originalTranslationJson.dict };
                             // 4. 确保语言目录存在
                             fs.ensureDirSync(langDir);
@@ -530,8 +534,9 @@ export class I18NModal extends Modal {
             if (this.settings.I18N_MODE_NDT && this.i18n.directoryMark && translationFormatMark && cloudTranslationJson != undefined) {
                 // 下载
                 const downloadTranslationButton = new ButtonComponent(itemEl.controlEl);
-                if (isLangDoc) downloadTranslationButton.setClass('i18n_display-none');
-                downloadTranslationButton.setClass('bt');
+                if (isLangDoc) downloadTranslationButton.setClass('i18n--hidden');
+                downloadTranslationButton.setClass('i18n-button');
+                downloadTranslationButton.setClass('i18n-button--primary');
                 downloadTranslationButton.setButtonText(t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_TEXT'));
                 downloadTranslationButton.setTooltip(t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_TIP'));
                 downloadTranslationButton.onClick(async () => {
@@ -551,9 +556,10 @@ export class I18NModal extends Modal {
                 // 更新
                 const updateTranslationButton = new ButtonComponent(itemEl.controlEl);
                 // @ts-ignore
-                if (!(isLangDoc && (isPluginsVersionSameMark == -1 || isTranslationVersionSameMark == -1))) updateTranslationButton.setClass('i18n_display-none');
+                if (!(isLangDoc && (isPluginsVersionSameMark == -1 || isTranslationVersionSameMark == -1))) updateTranslationButton.setClass('i18n--hidden');
                 updateTranslationButton.setButtonText(t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_TEXT'));
-                updateTranslationButton.setClass('bt');
+                updateTranslationButton.setClass('i18n-button');
+                updateTranslationButton.setClass('i18n-button--primary');
                 updateTranslationButton.setTooltip(t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_TIP'));
                 updateTranslationButton.onClick(async () => {
                     updateTranslationButton.setDisabled(true);
@@ -576,7 +582,8 @@ export class I18NModal extends Modal {
                 // @ts-ignore
                 machineTranslationButton.setButtonText(API_TYPES[this.settings.I18N_NIT_API]);
                 machineTranslationButton.setTooltip(t('I18N_ITEM_MACHINE_TRANSLATION_BUTTON_TIP'));
-                machineTranslationButton.setClass('bt');
+                machineTranslationButton.setClass('i18n-button');
+                machineTranslationButton.setClass('i18n-button--primary');
                 machineTranslationButton.onClick(async () => {
                     machineTranslationButton.setDisabled(true);
                     try {
@@ -644,10 +651,11 @@ export class I18NModal extends Modal {
             if (isLangDoc && isStateDoc && translationFormatMark) {
                 // 翻译按钮
                 const trenslatorButton = new ButtonComponent(itemEl.controlEl);
-                trenslatorButton.setClass('bt');
+                trenslatorButton.setClass('i18n-button');
+                trenslatorButton.setClass('i18n-button--primary');
                 trenslatorButton.setButtonText(t('I18N_ITEM_TRANSLATION_BUTTON_TEXT'));
                 trenslatorButton.setTooltip(t('I18N_ITEM_TRANSLATION_BUTTON_TIP'));
-                if (!(stateObj.state() == false)) trenslatorButton.setClass('i18n_display-none');
+                if (!(stateObj.state() == false)) trenslatorButton.setClass('i18n--hidden');
                 trenslatorButton.onClick(() => {
                     try {
                         trenslatorButton.setDisabled(true);
@@ -683,11 +691,12 @@ export class I18NModal extends Modal {
 
                 // 还原按钮
                 const restoreButton = new ButtonComponent(itemEl.controlEl);
-                restoreButton.setClass('bt');
+                restoreButton.setClass('i18n-button');
+                restoreButton.setClass('i18n-button--primary');
                 restoreButton.setDisabled(false);
                 restoreButton.setButtonText(t('I18N_ITEM_RESTORE_BUTTON_TEXT'));
                 restoreButton.setTooltip(t('I18N_ITEM_RESTORE_BUTTON_TIP'));
-                if (!(stateObj.state() == true)) restoreButton.setClass('i18n_display-none');
+                if (!(stateObj.state() == true)) restoreButton.setClass('i18n--hidden');
                 restoreButton.onClick(() => {
                     restoreButton.setDisabled(true);
                     try {
@@ -764,7 +773,6 @@ export class I18NModal extends Modal {
     }
 
     // [开启]
-
     async onOpen() {
         // console.log('调用了[开启]');
         await this.showHead();
