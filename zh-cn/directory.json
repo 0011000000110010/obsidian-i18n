@@ -890,6 +890,16 @@
         ]
     },
     {
+        "id": "obsidian-imgur-plugin",
+        "translations": [
+            {
+                "author": "krc",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.6.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-importer",
         "translations": [
             {
