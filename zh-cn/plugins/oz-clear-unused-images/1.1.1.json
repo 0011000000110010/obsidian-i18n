@@ -1,18 +1,18 @@
 {
   "manifest": {
     "id": "oz-clear-unused-images",
-    "author": "Penn",
-    "version": "1.1.1",
+    "author": "䲜&Penn&曲淡歌",
+    "version": "1.1.2",
     "pluginVersion": "1.1.1"
   },
   "description": {
     "original": "Clear the images that you are not using anymore in your markdown notes to save space.",
-    "translation": "清除保险库中未被笔记引用的图片。"
+    "translation": "清除库中未被笔记引用的图片。"
   },
   "dict": {
-    ".setName(\"Ribbon Icon\")": ".setName(\"左侧边栏图标\")",
-    ".setName(\"Delete Logs\")": ".setName(\"删除日志提示\")",
-    ".setName(\"Deleted Image Destination\")": ".setName(\"图片删除后的目标位置\")",
+    ".setName(\"Ribbon Icon\")": ".setName(\"左侧功能区图标\")",
+    ".setName(\"Delete Logs\")": ".setName(\"关闭提示\")",
+    ".setName(\"Deleted Image Destination\")": ".setName(\"如何处理被删除图片\")",
     ".setName(\"Excluded Folder Full Paths\")": ".setName(\"排除文件夹的完整路径\")",
     ".setName(\"Exclude Subfolders\")": ".setName(\"排除子文件夹\")",
     ".setDesc(\"Turn on if you want Ribbon Icon for clearing the images.\")": ".setDesc(\"激活显示左侧功能区（Ribbon）图标，单击以运行清除操作。\")",
@@ -23,7 +23,7 @@
     ".addCommand({id:\"clear-images-obsidian\",name:\"Clear Unused Images\",": ".addCommand({id:\"clear-images-obsidian\",name:\"清除失效图片\",",
     ".addCommand({id:\"clear-unused-attachments\",name:\"Clear Unused Attachments\",": ".addCommand({id:\"clear-unused-attachments\",name:\"清除失效附件\",",
     ".addOption(\"permanent\",\"Delete Permanently\")": ".addOption(\"permanent\",\"永久删除\")",
-    ".addOption(\".trash\",\"Move to Obsidian Trash\")": ".addOption(\".trash\",\"移至软件回收站\")",
+    ".addOption(\".trash\",\"Move to Obsidian Trash\")": ".addOption(\".trash\",\"移至obsidian回收站\")",
     ".addOption(\"system-trash\",\"Move to System Trash\")": ".addOption(\"system-trash\",\"移至系统回收站\")",
     ".createEl(\"h2\",{text:\"Clear Images Settings\"})": ".createEl(\"h2\",{text:\"清除未使用图片 - 插件设置\"})",
     ".createEl(\"h1\",{text:\"Clear Unused Images - Logs\"})": ".createEl(\"h1\",{text:\"Clear Unused Images - 日志\"})",
