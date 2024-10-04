@@ -2,35 +2,17 @@
   "manifest": {
     "id": "better-export-pdf",
     "author": "cuberwu",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "pluginVersion": "1.9.2"
   },
   "description": {
     "original": "Export your notes to PDF, support export preview, add bookmarks outline and header/footer.",
-    "translation": "Export your notes to PDF, support export preview, add bookmarks outline and header/footer."
+    "translation": "将笔记导出为 PDF，支持导出预览，添加书签大纲和页眉/页脚。"
   },
   "dict": {
     "Notice(\"data is empty!\")": "Notice(\"数据为空！\")",
-    ".log(\"FLATE:\", code)": ".log(\"FLATE:\", code)",
-    ".log(nextCode + earlyChange)": ".log(nextCode + earlyChange)",
-    "alog(catalog)": "alog(catalog)",
-    "alog(object)": "alog(object)",
-    ".log(\"output pdf:\", outputFile)": ".log(\"output pdf:\", outputFile)",
-    "alog({\n    title: \"Export to PDF\",\n    defaultPath: filename + (isTimestamp ? \"-\" + Date.now()": "alog({\n    title: \"Export to PDF\",\n    defaultPath: filename + (isTimestamp ? \"-\" + Date.now()",
-    "alog({\n    title: \"Export to PDF\",\n    defaultPath: filename,\n    properties: [\"openDirectory\"]\n  })": "alog({\n    title: \"Export to PDF\",\n    defaultPath: filename,\n    properties: [\"openDirectory\"]\n  })",
-    ".log(`md render time:${(/* @__PURE__ */ new Date()": ".log(`md render time:${(/* @__PURE__ */ new Date()",
-    ".log(\"output:\", outputPath)": ".log(\"output:\", outputPath)",
-    " error(\"Invalid rotation: \" + JSON.stringify(rotation)": " error(\"Invalid rotation: \" + JSON.stringify(rotation)",
-    " error(\"Invalid color: \" + JSON.stringify(color)": " error(\"Invalid color: \" + JSON.stringify(color)",
-    ".error(err)": ".error(err)",
-    ".error(error2)": ".error(error2)",
-    "name: \"' + name + '\"": "name: \"' + name + '\"",
-    "name: \"All Files\"": "name: \"All Files\"",
-    "name: \"PDF\"": "name: \"PDF\"",
-    "text: `${i + 1}-${doc.title}`": "text: `${i + 1}-${doc.title}`",
     "text: \"Support the continued development of this plugin.\"": "text: \"支持此插件的持续开发\"",
-    "text: \"xxxxx\"": "text: \"xxxxx\"",
-    ".setText(\"Export to PDF\")": ".setText(\"Export to PDF\")",
+    ".setText(\"Export to PDF\")": ".setText(\"导出为PDF\")",
     ".setButtonText(\"Export\")": ".setButtonText(\"导出\")",
     ".setButtonText(\"Refresh\")": ".setButtonText(\"刷新预览\")",
     ".setButtonText(\"Debug\")": ".setButtonText(\"调试\")",
@@ -42,7 +24,7 @@
     ".setName(\"Debug\")": ".setName(\"Debug\")",
     ".setDesc(\"The unit is millimeters.\")": ".setDesc(\"单位是毫米\")",
     ".setDesc(\"Whether to print background graphics\")": ".setDesc(\"是否打印背景图形\")",
-    ".setDesc(\n      \"Whether or not to generate a tagged (accessible) PDF. Defaults to false. As this property is experimental, the generated PDF may not adhere fully to PDF/UA and WCAG standards.\"\n    )": ".setDesc(\n      \"是否生成标记的（易于访问的）PDF。默认关闭。由于此属性是实验性的，因此生成的PDF可能不完全符合PDF/UA和WCAG标准。\"\n    )",
+    ".setDesc(\n      \"Whether or not to generate a tagged (accessible) PDF. Defaults to false. As this property is experimental, the generated PDF may not adhere fully to PDF/UA and WCAG standards.\"\n    )": ".setDesc(\n      \"是否生成有标记的（具有辅助工具的）PDF。默认关闭。由于此属性是实验性的，因此生成的PDF可能不完全符合PDF/UA和WCAG标准。\"\n    )",
     ".setDesc(\"Add frontMatter(title, author, keywords, subject creator, etc) to pdf metadata\")": ".setDesc(\"将 frontMatter（标题、作者、关键字、主题创建者等）添加到pdf元数据中\")",
     ".setDesc(\"HTML template for the print footer. Should use the same format as the headerTemplate.\")": ".setDesc(\"页脚的HTML模板。应使用与页眉模版相同的格式。\")",
     ".setDesc(\"Add timestamp to output file name\")": ".setDesc(\"在输出文件名中添加时间戳\")",
@@ -54,11 +36,9 @@
     ".setPlaceholder(\"margin bottom\")": ".setPlaceholder(\"页边距下\")",
     ".setPlaceholder(\"margin left\")": ".setPlaceholder(\"页边距左\")",
     ".setPlaceholder(\"margin right\")": ".setPlaceholder(\"页边距右\")",
-    ".setTooltip(\"Include file name as title\")": ".setTooltip(\"Include file name as title\")",
-    ".setTooltip(\"landscape\")": ".setTooltip(\"landscape\")",
-    ".setTooltip(\"Display header\")": ".setTooltip(\"Display header\")",
-    ".setTooltip(\"Display footer\")": ".setTooltip(\"Display footer\")",
-    ".setTooltip(\"Open the exported file after exporting.\")": ".setTooltip(\"Open the exported file after exporting.\")",
-    ".setDesc(\n      'HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them: date (formatted print date), title (document title), url (document location), pageNumber (current page number) and totalPages (total pages in the document). For example, <span class=\"title\"></span> would generate span containing the title.'\n    )": ".setDesc(\n      '页眉的 HTML 模板。应为有效的 HTML 标记，并使用以下类将打印值注入其中：date（格式化的打印日期）、title（文档标题）、url（文档位置）、pageNumber（当前页码）和 totalPages（文档的总页数）。例如，<span class=\"title\"></span> 会生成一个包含标题的 span 元素。'\n    )"
+    ".setDesc(\n      'HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them: date (formatted print date), title (document title), url (document location), pageNumber (current page number) and totalPages (total pages in the document). For example, <span class=\"title\"></span> would generate span containing the title.'\n    )": ".setDesc(\n      '页眉的 HTML 模板。应为有效的 HTML 标记，并使用以下类将打印值注入其中：date（格式化的打印日期）、title（文档标题）、url（文档位置）、pageNumber（当前页码）和 totalPages（文档的总页数）。例如，<span class=\"title\"></span> 会生成一个包含标题的 span 元素。'\n    )",
+    "\"Export folder to PDF\"": "\"将文件夹导出为PDF\"",
+    "\"Export each file to PDF\"": "\"将每个文件单独导出为PDF\"",
+    "\"Better Export PDF\"": "\"Better Export PDF(更好地导出 PDF)\""
   }
 }
