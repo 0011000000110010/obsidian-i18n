@@ -410,6 +410,26 @@
         ]
     },
     {
+        "id": "legacy-vault-switcher",
+        "translations": [
+            {
+                "author": "彼岸花",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.0"
+            }
+        ]
+    },
+    {
+        "id": "link-favicon",
+        "translations": [
+            {
+                "author": "彼岸花",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.8.4"
+            }
+        ]
+    },
+    {
         "id": "links",
         "translations": [
             {
@@ -536,6 +556,16 @@
                 "author": "Fendi",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.8.2"
+            }
+        ]
+    },
+    {
+        "id": "novel-word-count",
+        "translations": [
+            {
+                "author": "彼岸花",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "3.11.1"
             }
         ]
     },
@@ -806,6 +836,16 @@
                 "author": "zero",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.5.1"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-hotkeys-for-specific-files",
+        "translations": [
+            {
+                "author": "无名氏",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.4.1"
             }
         ]
     },
@@ -1125,6 +1165,16 @@
         ]
     },
     {
+        "id": "obsidian42-text-transporter",
+        "translations": [
+            {
+                "author": "彼岸花",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.11"
+            }
+        ]
+    },
+    {
         "id": "omnisearch",
         "translations": [
             {
@@ -1191,6 +1241,11 @@
                 "author": "宇桐非",
                 "translationVersion": "0.40.9",
                 "pluginVersion": "0.40.9"
+            },
+            {
+                "author": "zero",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.40.11"
             }
         ]
     },
