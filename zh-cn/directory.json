@@ -270,6 +270,16 @@
         ]
     },
     {
+        "id": "execute-code",
+        "translations": [
+            {
+                "author": "碎蜗牛壳",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.12.0"
+            }
+        ]
+    },
+    {
         "id": "file-explorer-note-count",
         "translations": [
             {
