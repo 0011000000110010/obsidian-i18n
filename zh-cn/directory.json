@@ -920,6 +920,16 @@
         ]
     },
     {
+        "id": "obsidian-languagetool-plugin",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.3.7"
+            }
+        ]
+    },
+    {
         "id": "obsidian-latex-suite",
         "translations": [
             {
