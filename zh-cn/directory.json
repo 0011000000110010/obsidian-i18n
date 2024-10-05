@@ -1450,6 +1450,16 @@
         ]
     },
     {
+        "id": "tasks-calendar-wrapper",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.3.1"
+            }
+        ]
+    },
+    {
         "id": "templater-obsidian",
         "translations": [
             {
