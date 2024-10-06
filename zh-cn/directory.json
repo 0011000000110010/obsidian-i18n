@@ -270,6 +270,16 @@
         ]
     },
     {
+        "id": "emoji-shortcodes",
+        "translations": [
+            {
+                "author": "SimonVinci",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.2.0"
+            }
+        ]
+    },
+    {
         "id": "execute-code",
         "translations": [
             {
