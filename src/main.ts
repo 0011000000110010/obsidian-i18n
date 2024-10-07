@@ -14,8 +14,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { API } from './api';
 import { Manifest } from './data/types';
 import Icons from './icon';
-import { EDIT_VIEW_TYPE, EditView } from './views/view';
+import { EditView, EDIT_VIEW_TYPE } from './views/view';
+import { ContrastView, EONTRASTV_VIEW_TYPE } from './views/contrast-view';
 import { AgreementModal } from './modal/i18n-agreement-modal';
+
 
 // ==============================
 //          [入口] I18n
@@ -31,6 +33,11 @@ export default class I18N extends Plugin {
     tempSubmitUrl: string | undefined;
     // 选中译文地址
     selectTranslation: string = '';
+
+    // 选中译文地址
+    selectLocalContrastTranslation: string = '';
+    selectCloudContrastTranslation: { id: string, version: string };
+
 
     // 当Obsidian启动时默认调用
     async onload() {
@@ -72,9 +79,10 @@ export default class I18N extends Plugin {
 
             // [视图] 编辑器
             this.registerView(EDIT_VIEW_TYPE, (leaf) => new EditView(leaf, this));
+            // [视图] 对比器
+            this.registerView(EONTRASTV_VIEW_TYPE, (leaf) => new ContrastView(leaf, this));
             // 状态栏
             // this.addStatusBarItem().setText(`[模式] ${mode[this.settings.I18N_MODE]}`);
-
             // [设置]
             this.addSettingTab(new I18nSettingTab(this.app, this));
 
@@ -97,6 +105,7 @@ export default class I18N extends Plugin {
     async onunload() {
         // 卸载编辑视图
         this.detachEditView();
+        this.detachContrastView();
     }
 
     onUserEnable(): void {
@@ -208,6 +217,26 @@ export default class I18N extends Plugin {
 
     async detachEditView() {
         this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE);
+    }
+
+    async activateContrastView() {
+        const { workspace } = this.app;
+        // 清空
+        await this.detachEditView();
+        let leaf: WorkspaceLeaf | null = null;
+        const leaves = workspace.getLeavesOfType(EONTRASTV_VIEW_TYPE);
+
+        if (leaves.length > 0) {
+            leaf = leaves[0];
+        } else {
+            leaf = workspace.getLeaf('window'); // 'window' true
+            if (leaf != null) await leaf.setViewState({ type: EONTRASTV_VIEW_TYPE, active: true });
+        }
+        if (leaf != null) workspace.revealLeaf(leaf);
+    }
+
+    async detachContrastView() {
+        this.app.workspace.detachLeavesOfType(EONTRASTV_VIEW_TYPE);
     }
 }
 

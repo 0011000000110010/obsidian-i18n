@@ -1,5 +1,5 @@
 import * as fs from 'fs-extra';
-import { ButtonComponent, ItemView, Notice, WorkspaceLeaf } from "obsidian";
+import { ButtonComponent, ItemView, Notice, SearchComponent, WorkspaceLeaf } from "obsidian";
 import I18N from "src/main";
 import { Translation } from 'src/data/types';
 import { NoticeError, NoticeOperationResult, NoticeSuccess } from 'src/utils';
@@ -18,59 +18,63 @@ export class EditView extends ItemView {
 
     constructor(leaf: WorkspaceLeaf, i18n: I18N) {
         super(leaf);
-        this.i18n = i18n
+        this.i18n = i18n;
+        this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
     }
 
     onload(): void {
-
-        const editEl = this.contentEl;
         let selectRowEl: HTMLTableRowElement | null = null;
         let selectItem: string | undefined;
         let translationJson: Translation | undefined;
         let count = 0;
-
+        let translationDict: { key: string, value: string, el: HTMLTableRowElement }[] = [];
+        // 获取内容
         if (this.i18n.selectTranslation != '') translationJson = fs.readJsonSync(this.i18n.selectTranslation);
-        if (translationJson != undefined) count = Object.keys(translationJson.dict).length;
 
+        // 编辑器DOM
+        const editEl = this.contentEl;
         editEl.addClass('i18n-edit__container');
-
+        // manifestDOM
         const manifestEl = editEl.createEl('div');
         manifestEl.addClass('i18n-edit__manifest');
-
+        // 译文作者标签
         const authorLabelEl = manifestEl.createEl('span');
         authorLabelEl.textContent = t('EDITOR_TITLE_AUTHOR');
         authorLabelEl.addClass('i18n-edit__label-wrap');
-
+        // 译文作者DOM
         const authorEl = manifestEl.createEl('input');
         authorEl.addClass('i18n-edit__author-input');
-
+        // 译文版本标签
         const translationVersionLabelEl = manifestEl.createEl('span');
         translationVersionLabelEl.textContent = t('EDITOR_TITLE_TRANSLATION_VERSION');
         translationVersionLabelEl.addClass('i18n-edit__label-wrap');
-
+        // 译文版本DOM
         const translationVersionEl = manifestEl.createEl('input');
         translationVersionEl.addClass('i18n-edit__translation-version-input');
-
+        // 插件版本标签
         const pluginVersionLabelEl = manifestEl.createEl('span');
         pluginVersionLabelEl.textContent = t('EDITOR_TITLE_PLUGIN_VERSION');
         pluginVersionLabelEl.addClass('i18n-edit__label-wrap');
-
+        // 插件版本DOM
         const pluginVersionEl = manifestEl.createEl('input');
         pluginVersionEl.addClass('i18n-edit__plugin-version-input');
-
+        // descriptionDOM
         const descriptionEl = editEl.createEl('div');
         descriptionEl.addClass('i18n-edit__description');
-
+        // 描述标签
         const descriptionLabelEl = descriptionEl.createEl('span');
         descriptionLabelEl.textContent = t('EDITOR_TITLE_DESCRIPTION');
         descriptionLabelEl.addClass('i18n-edit__label-wrap');
-
+        // 描述DOM
         const descriptionInputEl = descriptionEl.createEl('input');
         descriptionInputEl.addClass('i18n-edit__description-input');
+        // 描述翻译DOM
         if (this.i18n.settings.I18N_MODE_NIT && this.i18n.settings.I18N_NIT_API == 'BAIDU' && translationJson != undefined) {
             const translationDescriptionButton = new ButtonComponent(descriptionEl);
-            translationDescriptionButton.setButtonText('百度');
+            translationDescriptionButton.setClass('i18n-button');
+            translationDescriptionButton.setClass('i18n-button--primary');
             translationDescriptionButton.setClass('i18n-edit__save-button');
+            translationDescriptionButton.setButtonText('百度');
             translationDescriptionButton.onClick(async () => {
                 try {
                     const response = await this.i18n.api.baidu(descriptionInputEl.value);
@@ -81,20 +85,24 @@ export class EditView extends ItemView {
                 }
             });
         }
+        // 字典DOM
         const dictEl = editEl.createEl('div');
         dictEl.addClass('i18n-edit__dict');
-
+        // 搜索DOM
+        const searchEl = editEl.createEl('div');
+        searchEl.addClass('i18n-edit__search');
+        // 操作DOM
         const operateEl = editEl.createEl('div');
         operateEl.addClass('i18n-edit__operate');
-
-        const footEl = editEl.createEl('div');
-        footEl.addClass('i18n-edit__modify');
-        const footInputEl = footEl.createEl('textarea');
+        // 修改DOM
+        const modifyEl = editEl.createEl('div');
+        modifyEl.addClass('i18n-edit__modify');
+        const footInputEl = modifyEl.createEl('textarea');
         footInputEl.addClass('i18n-edit__modify-input');
 
-
-
         if (translationJson != undefined) {
+            // 初始化字典条目数量
+            count = Object.keys(translationJson.dict).length;
             // ==============================
             // headeEl
             // ==============================
@@ -106,10 +114,11 @@ export class EditView extends ItemView {
             pluginVersionEl.addEventListener('input', () => { translationJson.manifest.pluginVersion = pluginVersionEl.value });
             descriptionInputEl.value = translationJson.description.translation;
             descriptionInputEl.addEventListener('input', () => { translationJson.description.translation = descriptionInputEl.value });
+            // 保存DOM
             const saveTranslationButton = new ButtonComponent(manifestEl);
             saveTranslationButton.setButtonText(t('EDITOR_SAVE_TRANSLATION_BUTTON_TEXT'));
-            // saveTranslationButton.setClass('i18n-button');
-            // saveTranslationButton.setClass('i18n-button--primary');
+            saveTranslationButton.setClass('i18n-button');
+            saveTranslationButton.setClass('i18n-button--success');
             saveTranslationButton.setClass('i18n-edit__save-button');
             saveTranslationButton.onClick(async () => {
                 try {
@@ -129,30 +138,41 @@ export class EditView extends ItemView {
             tableEl.addClass('i18n-edit__table');
             for (const key in translationJson.dict) {
                 if (translationJson.dict.hasOwnProperty(key)) {
-                    // 为每个键值对创建一个新的<tr>（表格行）  
+                    // row DOM
                     const rowEl = tableEl.createEl('tr');
                     rowEl.addClass('i18n-edit__table-row')
                     rowEl.onclick = (e) => {
-                        if (selectRowEl != undefined) selectRowEl.removeClass('i18n-edit__selected');
-                        selectRowEl = rowEl;
-                        selectItem = key;
-                        selectRowEl.addClass('i18n-edit__selected');
-                        footInputEl.value = translationJson.dict[selectItem];
+                        if (selectRowEl != undefined && selectRowEl != rowEl) {
+                            selectRowEl.removeClass('i18n-edit__selected');
+                            selectRowEl = rowEl;
+                            selectItem = key;
+                            selectRowEl.addClass('i18n-edit__selected');
+                            footInputEl.value = translationJson.dict[selectItem];
+                        } else if (selectRowEl != undefined && selectRowEl == rowEl) {
+                            selectRowEl.removeClass('i18n-edit__selected');
+                            selectRowEl = null;
+                            selectItem = undefined;
+                            footInputEl.value = '';
+                        } else {
+                            selectRowEl = rowEl;
+                            selectItem = key;
+                            selectRowEl.addClass('i18n-edit__selected');
+                            footInputEl.value = translationJson.dict[selectItem];
+                        }
                     };
-                    // 创建一个<td>（表格单元格）用于键  
+                    // key DOM
                     const keyCellEl = rowEl.createEl('td');
                     keyCellEl.addClass('i18n-edit__table-key');
-
-                    // 创建一个<td>（表格单元格）用于值  
+                    // value DOM
                     const valueCellEl = rowEl.createEl('td');
                     valueCellEl.addClass('i18n-edit__table-value');
-
+                    translationDict.push({ key: key, value: translationJson.dict[key], el: rowEl });
                     const differences = diffWords(key, translationJson.dict[key]);
                     let keyHighlightedHTML = "";
                     let valueHighlightedHTML = "";
                     differences.forEach((part: { added: any; removed: any; value: any; }) => {
-                        if (part.added) { valueHighlightedHTML += `<span class='i18n_color_green'>${part.value}</span>` }
-                        else if (part.removed) { keyHighlightedHTML += `<span class='i18n_color_red'>${part.value}</span>` }
+                        if (part.added) { valueHighlightedHTML += `<span class='color__text--green'>${part.value}</span>` }
+                        else if (part.removed) { keyHighlightedHTML += `<span class='color__text--red'>${part.value}</span>` }
                         else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; }
                     });
                     keyCellEl.innerHTML = keyHighlightedHTML;
@@ -161,47 +181,157 @@ export class EditView extends ItemView {
             }
 
             // ==============================
+            // searchEl
+            // ==============================
+            let matchingItems: { key: string; value: string; el: HTMLTableRowElement; }[];
+            let searchValue = '';
+            let selectSearchCount = 0;
+            let isSearch = false;
+            // 搜索栏
+            const searchInput = new SearchComponent(searchEl);
+            searchInput.setValue(searchValue);
+            searchInput.onChange((value) => {
+                searchValue = value;
+                // 获取 匹配项
+                matchingItems = translationDict.filter(item => item.key.includes(searchValue) || item.value.includes(searchValue));
+                if (matchingItems.length > 0 && value !== '') {
+                    // 变更 搜索选中
+                    selectSearchCount = 0;
+                    // 清除 选中对象
+                    if (selectRowEl != undefined) selectRowEl.removeClass('i18n-edit__selected');
+                    // 变更 选中对象
+                    selectRowEl = matchingItems[selectSearchCount].el;
+                    // 变更 选中对象
+                    selectItem = matchingItems[selectSearchCount].key;
+                    // 变更 选中对象
+                    selectRowEl.addClass('i18n-edit__selected');
+                    // 跳转 选中对象
+                    matchingItems[0].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // 变更 输入框数据
+                    footInputEl.value = translationJson.dict[selectItem];
+                    // 变更 显示数量
+                    cs3.setButtonText(`${selectSearchCount + 1}/${matchingItems.length}`);
+                    isSearch = true;
+                } else {
+                    isSearch = false;
+                    cs3.setButtonText(`0/0`);
+                }
+            });
+            // @ts-ignore
+            searchInput.setClass('i18n-edit__search-box');
+            searchInput.inputEl.addClass('i18n-edit__search-input')
+
+            // 显示数量
+            const cs3 = new ButtonComponent(searchEl);
+            cs3.setClass('i18n-button');
+            cs3.setClass('i18n-button--primary');
+            cs3.setClass('i18n-edit__search-button');
+            cs3.setButtonText('0/0');
+
+            // 搜索 向上
+            const searchUpButton = new ButtonComponent(searchEl);
+            searchUpButton.setClass('i18n-button');
+            searchUpButton.setClass('i18n-button--primary');
+            searchUpButton.setClass('i18n-edit__search-button');
+            searchUpButton.setIcon('arrow-up');
+            searchUpButton.onClick(() => {
+                if (isSearch) {
+                    // 1. 变更 搜索选中
+                    if (selectSearchCount > 0) { selectSearchCount -= 1 } else if (selectSearchCount == 0) { selectSearchCount = matchingItems.length - 1; };
+                    // 2. 变更 显示数量
+                    cs3.setButtonText(`${selectSearchCount + 1}/${matchingItems.length}`);
+                    // 3. 清除 选中对象
+                    if (selectRowEl != undefined) selectRowEl.removeClass('i18n-edit__selected');
+                    // 4. 变更 选中对象
+                    selectRowEl = matchingItems[selectSearchCount].el;
+                    // 5. 变更 选中对象
+                    selectItem = matchingItems[selectSearchCount].key;
+                    // 6. 变更 选中对象
+                    selectRowEl.addClass('i18n-edit__selected');
+                    // 7. 跳转 选中对象
+                    // matchingItems[selectSearchCount].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    selectRowEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // 8. 变更 输入框数据
+                    footInputEl.value = translationJson.dict[selectItem];
+                    console.log(selectSearchCount);
+                }
+            });
+
+            // 搜索 向下
+            const searchDownButton = new ButtonComponent(searchEl);
+            searchDownButton.setClass('i18n-button');
+            searchDownButton.setClass('i18n-button--primary');
+            searchDownButton.setClass('i18n-edit__search-button');
+            searchDownButton.setIcon('arrow-down');
+            searchDownButton.onClick(() => {
+                if (isSearch) {
+                    // 1. 变更 搜索选中
+                    if (selectSearchCount < matchingItems.length - 1) { selectSearchCount += 1 } else if (selectSearchCount == matchingItems.length - 1) { selectSearchCount = 0; };
+                    // 2. 变更 显示数量
+                    cs3.setButtonText(`${selectSearchCount + 1}/${matchingItems.length}`);
+                    // 3. 清除 选中对象
+                    if (selectRowEl != undefined) selectRowEl.removeClass('i18n-edit__selected');
+                    // 4. 变更 选中对象
+                    selectRowEl = matchingItems[selectSearchCount].el;
+                    // 5. 变更 选中对象
+                    selectItem = matchingItems[selectSearchCount].key;
+                    // 6. 变更 选中对象
+                    selectRowEl.addClass('i18n-edit__selected');
+                    // 7. 跳转 选中对象
+                    // matchingItems[selectSearchCount].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    selectRowEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // 8. 变更 输入框数据
+                    footInputEl.value = translationJson.dict[selectItem];
+                    console.log(selectSearchCount);
+                }
+            });
+
+            // ==============================
             // operateEl
             // ==============================
             const insertItemButton = new ButtonComponent(operateEl);
+            insertItemButton.setClass('i18n-button');
+            insertItemButton.setClass('i18n-button--primary');
             insertItemButton.setButtonText(t('EDITOR_INSERT_ITEM_BUTTON_TEXT'));
             insertItemButton.setClass('i18n-edit__operate-button-left');
             insertItemButton.onClick(() => {
                 if (selectRowEl == null) {
-                    const tempKey = footInputEl.value;
+                    const key = footInputEl.value;
                     // 变更显示数据
-                    if (!translationJson.dict.hasOwnProperty(tempKey)) {
-                        // 变更字典数据
-                        translationJson.dict[tempKey] = tempKey;
-                        // 为每个键值对创建一个新的<tr>（表格行）  
+                    if (!translationJson.dict.hasOwnProperty(key)) {
+                        // 变更 译文数据
+                        translationJson.dict[key] = key;
+                        // row DOME
                         const rowEl = tableEl.createEl('tr');
-                        rowEl.addClass('i18n-edit__table-row')
+                        rowEl.addClass('i18n-edit__table-row');
                         rowEl.onclick = (e) => {
                             if (selectRowEl != undefined) selectRowEl.removeClass('i18n-edit__selected');
                             // 变更 选中对象
                             selectRowEl = rowEl;
                             // 变更 选中对象
-                            selectItem = tempKey;
+                            selectItem = key;
+                            // 变更 选中状态
                             selectRowEl.addClass('i18n-edit__selected');
                             // 变更 输入框数据
                             footInputEl.value = translationJson.dict[selectItem];
                         };
-                        // 创建一个<td>（表格单元格）用于键  
+                        // key DOM
                         const keyCellEl = rowEl.createEl('td');
                         keyCellEl.addClass('i18n-edit__table-key');
-                        keyCellEl.textContent = tempKey;
-
-                        // 创建一个<td>（表格单元格）用于值  
+                        keyCellEl.textContent = key
+                        // value DOM
                         const valueCellEl = rowEl.createEl('td');
                         valueCellEl.addClass('i18n-edit__table-value');
-                        valueCellEl.textContent = translationJson.dict[tempKey];
-                        // 清除数据
+                        valueCellEl.textContent = translationJson.dict[key];
+                        // 变更 字典数据
+                        translationDict.push({ key: key, value: translationJson.dict[key], el: rowEl });
+                        // 滚动 到选中行
+                        rowEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        // 变更 清除数据
                         footInputEl.value = '';
+                        // 变更 计数数据
+                        countButton.setButtonText(`共${Object.keys(translationJson.dict).length.toString()}条数据`);
                         this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
-                        // 滚动到选中行
-                        rowEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        count = Object.keys(translationJson.dict).length;
-                        countButton.setButtonText(count.toString());
                     } else {
                         this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B')));
                     }
@@ -211,22 +341,26 @@ export class EditView extends ItemView {
             });
 
             const deleteItemButton = new ButtonComponent(operateEl);
-            deleteItemButton.setButtonText(t('EDITOR_DELETE_ITEM_BUTTON_TEXT'));
+            deleteItemButton.setClass('i18n-button');
+            deleteItemButton.setClass('i18n-button--primary');
             deleteItemButton.setClass('i18n-edit__operate-button-left');
+            deleteItemButton.setButtonText(t('EDITOR_DELETE_ITEM_BUTTON_TEXT'));
             deleteItemButton.onClick(() => {
                 if (selectRowEl != null && selectItem != undefined) {
                     // 清除 输入框 
                     footInputEl.value = '';
                     // 清除 显示数据
                     selectRowEl.remove();
-                    // 清除 列表数据
+                    // 清除 译文数据
                     delete (translationJson.dict[selectItem]);
+                    // 清除 字典数据
+                    translationDict = translationDict.filter(item => item.key !== selectItem);
                     // 清除 选中对象
                     selectRowEl = null;
                     // 清除 选中内容
                     selectItem = undefined;
-                    count = Object.keys(translationJson.dict).length;
-                    countButton.setButtonText(count.toString());
+                    // 变更 计数数据
+                    countButton.setButtonText(`共${Object.keys(translationJson.dict).length.toString()}条数据`);
                     this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                 } else {
                     this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_B')));
@@ -234,15 +368,20 @@ export class EditView extends ItemView {
             });
 
             const restoreItemButton = new ButtonComponent(operateEl);
-            restoreItemButton.setButtonText(t('EDITOR_RESTORE_ITEM_BUTTON_TEXT'));
+            restoreItemButton.setClass('i18n-button');
+            restoreItemButton.setClass('i18n-button--primary');
             restoreItemButton.setClass('i18n-edit__operate-button-left');
+            restoreItemButton.setButtonText(t('EDITOR_RESTORE_ITEM_BUTTON_TEXT'));
             restoreItemButton.onClick(() => {
                 if (selectRowEl != undefined && selectItem != undefined) {
                     // 还原 显示数据
                     selectRowEl.children[0].textContent = selectItem;
                     selectRowEl.children[1].textContent = selectItem;
-                    // 还原 字典数据
+                    // 还原 译文数据
                     translationJson.dict[selectItem] = selectItem;
+                    // 还原 字典数据
+                    const itemToUpdate = translationDict.find(item => item.key === selectItem);
+                    if (itemToUpdate) itemToUpdate.value = selectItem;
                     // 还原 输入框数据
                     footInputEl.value = selectItem;
                     this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
@@ -252,8 +391,10 @@ export class EditView extends ItemView {
             });
 
             const cancelItemButton = new ButtonComponent(operateEl);
-            cancelItemButton.setButtonText(t('EDITOR_CANCEL_ITEM_BUTTON_TEXT'));
+            cancelItemButton.setClass('i18n-button');
+            cancelItemButton.setClass('i18n-button--primary');
             cancelItemButton.setClass('i18n-edit__operate-button-left');
+            cancelItemButton.setButtonText(t('EDITOR_CANCEL_ITEM_BUTTON_TEXT'));
             cancelItemButton.onClick(() => {
                 if (selectRowEl != undefined && selectItem != undefined) selectRowEl.removeClass('i18n-edit__selected');
                 selectRowEl = null;
@@ -263,8 +404,10 @@ export class EditView extends ItemView {
             });
 
             const baiduButton = new ButtonComponent(operateEl);
-            baiduButton.setButtonText('百度');
+            baiduButton.setClass('i18n-button');
+            baiduButton.setClass('i18n-button--primary');
             baiduButton.setClass('i18n-edit__operate-button-left');
+            baiduButton.setButtonText('百度');
             if (!(this.i18n.settings.I18N_MODE_NIT && this.i18n.settings.I18N_NIT_API == 'BAIDU')) baiduButton.setClass('i18n--hidden');
             baiduButton.onClick(async () => {
                 try {
@@ -281,8 +424,8 @@ export class EditView extends ItemView {
                         let keyHighlightedHTML = "";
                         let valueHighlightedHTML = "";
                         differences.forEach((part: { added: any; removed: any; value: any; }) => {
-                            if (part.added) { valueHighlightedHTML += `<span class='i18n_color_green'>${part.value}</span>` }
-                            else if (part.removed) { keyHighlightedHTML += `<span class='i18n_color_red'>${part.value}</span>` }
+                            if (part.added) { valueHighlightedHTML += `<span class='color__text--green'>${part.value}</span>` }
+                            else if (part.removed) { keyHighlightedHTML += `<span class='color__text--red'>${part.value}</span>` }
                             else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; }
                         });
                         footInputEl.value = temp;
@@ -296,9 +439,11 @@ export class EditView extends ItemView {
             });
 
             const mainButton = new ButtonComponent(operateEl);
+            mainButton.setClass('i18n-button');
+            mainButton.setClass('i18n-button--primary');
+            mainButton.setClass('i18n-edit__operate-button-right');
             mainButton.setButtonText('插件');
             mainButton.setTooltip('打开main.js文件');
-            mainButton.setClass('i18n-edit__operate-button-right');
             mainButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
                     const command = `start "" "${path.join(this.i18n.selectTranslation.split('\\').slice(0, -2).join('\\'), 'main.js')}"`
@@ -324,9 +469,11 @@ export class EditView extends ItemView {
             });
 
             const langButton = new ButtonComponent(operateEl);
+            langButton.setClass('i18n-button');
+            langButton.setClass('i18n-button--primary');
+            langButton.setClass('i18n-edit__operate-button-right');
             langButton.setButtonText('译文');
             langButton.setTooltip('打开译文文件');
-            langButton.setClass('i18n-edit__operate-button-right');
             langButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
                     const command = `start "" "${this.i18n.selectTranslation}"`
@@ -352,59 +499,44 @@ export class EditView extends ItemView {
             });
 
             const countButton = new ButtonComponent(operateEl);
-            countButton.setButtonText(count.toString());
-            countButton.setTooltip('当前译文数量');
+            countButton.setClass('i18n-button');
+            countButton.setClass('i18n-button--primary');
             countButton.setClass('i18n-edit__operate-button-right');
-
-            // const cs = new ButtonComponent(operateEl);
-            // cs.setButtonText('测试');
-            // cs.setClass('i18n-edit__operate-button-right');
-            // cs.onClick(() => {
-            //     const keysWithText = Object.keys(translationJson.dict).filter(key => key.includes("set"));
-            //     const valuesWithText = Object.values(translationJson.dict).filter(value => value.includes("set"));
-            //     console.log(keysWithText);
-            //     console.log(valuesWithText);
-            // });
-
-            const helpButton = new ButtonComponent(operateEl);
-            helpButton.setButtonText(t('EDITOR_HELP_BUTTON_TEXT'));
-            helpButton.setWarning();
-            helpButton.setClass('i18n-edit__operate-button-left');
-            helpButton.onClick(() => {
-                this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_HELP_BUTTON_NOTICE_CONTENT_A')));
-            });
+            countButton.setDisabled(true);
+            countButton.setButtonText(`共${count.toString()}条数据`);
+            countButton.setTooltip('当前译文数量');
 
             // ==============================
-            // footEl
+            // modifyEl
             // ==============================
             footInputEl.addEventListener('input', function () {
                 if (selectRowEl != undefined && selectItem != undefined) {
-                    // const highlighted = highlightedHTML(selectRowEl.children[0].textContent as string, footInputEl.value);
                     const differences = diffWords(selectItem, footInputEl.value);
                     let keyHighlightedHTML = "";
                     let valueHighlightedHTML = "";
                     differences.forEach((part: { added: any; removed: any; value: any; }) => {
                         if (part.added) {
-                            valueHighlightedHTML += `<span class='i18n_color_green'>${part.value}</span>`;
+                            valueHighlightedHTML += `<span class='color__text--green'>${part.value}</span>`;
                         } else if (part.removed) {
-                            keyHighlightedHTML += `<span class='i18n_color_red'>${part.value}</span>`;
-                        } else {
-                            keyHighlightedHTML += part.value;
-                            valueHighlightedHTML += part.value;
-                        }
+                            keyHighlightedHTML += `<span class='color__text--red'>${part.value}</span>`;
+                        } else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; }
                     });
                     // 变更显示数据
                     selectRowEl.children[0].innerHTML = keyHighlightedHTML;
                     selectRowEl.children[1].innerHTML = valueHighlightedHTML;
-                    // 变更字典数据
+                    // 变更 译文数据
                     translationJson.dict[selectItem] = footInputEl.value;
+                    // 变更 字典数据
+                    translationDict.filter(item => item.key === selectItem)[0].value = footInputEl.value;
                 }
             });
         }
     }
 
     async onunload() {
+
         for (const notice of this.notices) { notice.noticeEl.remove(); }
+        this.i18n.selectTranslation = ''
     }
 
 

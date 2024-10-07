@@ -204,7 +204,7 @@ export default {
     SETTING_EDITOR_DESC: '启用/禁用内置译文编辑器功能',
 
     SETTING_CLOUD_COLLABORATION_NAME: '共建云端',
-    SETTING_CLOUD_COLLABORATION_DESC: '启动此功能后，您可以提交自己的译文、请求对某个插件进行翻译、标记插件是否自带汉化。欢迎为社区贡献力量！',
+    SETTING_CLOUD_COLLABORATION_DESC: '启动此功能后，您可以提交自己的译文、请求对某个插件进行翻译、标记插件是否自带汉化。欢迎为社区贡献力量！(注意：如出现页面无内容，请检查网络连接)',
 
     SETTING_CLOUD_COLLABORATION_TOKEN_NAME: 'Gitee Token',
     SETTING_CLOUD_COLLABORATION_TOKEN_DESC: '请提供您的Token以支持批量提交(临时使用无需填写)',

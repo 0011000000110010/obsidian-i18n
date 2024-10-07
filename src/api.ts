@@ -271,7 +271,6 @@ export class API {
 		const response = await requestUrl(RequestUrlParam);
 		return response.json;
 	}
-	
 	public async giteeGetAllIssue(owner: string, repo: string) {
 		const RequestUrlParam: RequestUrlParam = {
 			url: `https://gitee.com/api/v5/repos/${owner}/${repo}/issues`,

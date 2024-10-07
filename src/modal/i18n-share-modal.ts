@@ -37,11 +37,11 @@ export class ShareModal extends Modal {
         // 网络目录是否存在这个插件
         let pluginMark;
         // 是否存在相同插件的译文版本
-        let pluginVersionMark;
+        let pluginVersionMark: { author: string; translationVersion: string; pluginVersion: string; } | undefined;
         // 是否存在相同译文的作者
-        let translationAuthorMark;
+        let translationAuthorMark: { author: string; translationVersion: string; pluginVersion: string; } | undefined;
         // 是否存在相同译文的译文版本
-        let translationVersionMark;
+        let translationVersionMark: { author: string; translationVersion: string; pluginVersion: string; } | undefined;
         if (isLangDoc) {
             localTranslationJson = await fs.readJsonSync(this.langDoc);
             pluginMark = directory.find(plugin => plugin.id === localTranslationJson.manifest.id);
@@ -72,29 +72,31 @@ export class ShareModal extends Modal {
             // @ts-ignore
             localAuthor.setButtonText(`${t('SUBMITE_PUBLIC_AUTHOR')}[${localTranslationJson.manifest.author}]`);
             localAuthor.onClick(() => { });
-            const localpluginVersion = new ButtonComponent(localTranslation.controlEl);
-            // @ts-ignore
-            localpluginVersion.setButtonText(`${t('SUBMITE_PUBLIC_PLUGIN_VERSION')}[${localTranslationJson.manifest.pluginVersion}]`);
-            localpluginVersion.onClick(() => { });
             const localTranslationVersion = new ButtonComponent(localTranslation.controlEl);
             // @ts-ignore
             localTranslationVersion.setButtonText(`${t('SUBMITE_PUBLIC_TRANSLATION_VERSION')}[${localTranslationJson.manifest.version}]`);
             localTranslationVersion.onClick(() => { });
+            const localpluginVersion = new ButtonComponent(localTranslation.controlEl);
+            // @ts-ignore
+            localpluginVersion.setButtonText(`${t('SUBMITE_PUBLIC_PLUGIN_VERSION')}[${localTranslationJson.manifest.pluginVersion}]`);
+            localpluginVersion.onClick(() => { });
+
         }
         // 云端行
-        if (isLangDoc && pluginMark !== undefined && pluginVersionMark !== undefined) {
+        if (isLangDoc && pluginVersionMark !== undefined) {
             const cloudTranslation = new Setting(this.contentEl);
             cloudTranslation.setClass('i18n-share__item');
             cloudTranslation.setName(t('SUBMITE_CLOUD_TRANSLATION_NAME'));
             const cloudAuthor = new ButtonComponent(cloudTranslation.controlEl);
             cloudAuthor.setButtonText(`${t('SUBMITE_PUBLIC_AUTHOR')}[${pluginVersionMark.author}]`);
             cloudAuthor.onClick(() => { });
-            const cloudpluginVersion = new ButtonComponent(cloudTranslation.controlEl);
-            cloudpluginVersion.setButtonText(`${t('SUBMITE_PUBLIC_PLUGIN_VERSION')}[${pluginVersionMark.pluginVersion}]`);
-            cloudpluginVersion.onClick(() => { });
             const cloudTranslationVersion = new ButtonComponent(cloudTranslation.controlEl);
             cloudTranslationVersion.setButtonText(`${t('SUBMITE_PUBLIC_TRANSLATION_VERSION')}[${pluginVersionMark.translationVersion}]`);
             cloudTranslationVersion.onClick(() => { });
+            const cloudpluginVersion = new ButtonComponent(cloudTranslation.controlEl);
+            cloudpluginVersion.setButtonText(`${t('SUBMITE_PUBLIC_PLUGIN_VERSION')}[${pluginVersionMark.pluginVersion}]`);
+            cloudpluginVersion.onClick(() => { });
+
         }
 
         // 操作行
@@ -102,6 +104,8 @@ export class ShareModal extends Modal {
         operate.setClass('i18n-share__item');
 
         const cancelButton = new ButtonComponent(operate.controlEl);
+        cancelButton.setClass('i18n-button');
+        cancelButton.setClass('i18n-button--primary');
         cancelButton.setButtonText(t('SUBMITE_OPERATE_CANCEL_BUTTON_TEXT'));
         cancelButton.onClick(() => { this.close() });
         if (!isLangDoc) {
@@ -116,8 +120,9 @@ export class ShareModal extends Modal {
             // 请求翻译
             if ((temp === undefined) || (temp !== undefined && temp.translations.find(translation => translation.pluginVersion === this.plugin.version) === undefined)) {
                 const requestTranslationButton = new ButtonComponent(operate.controlEl);
+                requestTranslationButton.setClass('i18n-button');
+                requestTranslationButton.setClass('i18n-button--primary');
                 requestTranslationButton.setButtonText(t('SUBMITE_OPERATE_REQUEST_BUTTON_TEXT'));
-                requestTranslationButton.setCta();
                 requestTranslationButton.onClick(async () => {
                     try {
                         if (this.existsHistory(this.i18n.settings.I18N_SUBMIT_HISTORY, this.plugin.id, 1)) {
@@ -137,8 +142,9 @@ export class ShareModal extends Modal {
             }
             // 标记汉化
             const markTranslationButton = new ButtonComponent(operate.controlEl);
+            markTranslationButton.setClass('i18n-button');
+            markTranslationButton.setClass('i18n-button--primary');
             markTranslationButton.setButtonText(t('SUBMITE_OPERATE_MARK_BUTTON_TEXT'));
-            markTranslationButton.setCta();
             markTranslationButton.onClick(async () => {
                 try {
                     if (this.existsHistory(this.i18n.settings.I18N_SUBMIT_HISTORY, this.plugin.id, 0)) {
@@ -161,10 +167,11 @@ export class ShareModal extends Modal {
             });
         }
         // 提交修改
-        if (isLangDoc && pluginVersionMark !== undefined && (translationAuthorMark === undefined || translationVersionMark === undefined)) {
+        if (isLangDoc && pluginVersionMark !== undefined) {
             const updateTranslationButton = new ButtonComponent(operate.controlEl);
+            updateTranslationButton.setClass('i18n-button');
+            updateTranslationButton.setClass('i18n-button--primary');
             updateTranslationButton.setButtonText(t('SUBMITE_OPERATE_UPDATE_BUTTON_TEXT'));
-            updateTranslationButton.setCta();
             updateTranslationButton.onClick(async () => {
                 try {
                     if (this.existsHistory(this.i18n.settings.I18N_SUBMIT_HISTORY, this.plugin.id, 3)) {
@@ -183,12 +190,25 @@ export class ShareModal extends Modal {
                     NoticeOperationResult(t('SUBMITE_OPERATE_UPDATE_BUTTON_NOTICE_HEAD'), false, error);
                 }
             });
+            const contrastTranslationButton = new ButtonComponent(operate.controlEl);
+            contrastTranslationButton.setClass('i18n-button');
+            contrastTranslationButton.setClass('i18n-button--primary');
+            contrastTranslationButton.setButtonText('译文对比');
+            contrastTranslationButton.onClick(async () => {
+                this.i18n.selectLocalContrastTranslation = this.langDoc;
+                this.i18n.selectCloudContrastTranslation = { 'id': this.plugin.id, 'version': this.plugin.version };
+                // console.log(translationAuthorMark);
+                // console.log(translationVersionMark);
+                // console.log(pluginVersionMark);
+                this.i18n.activateContrastView();
+            });
         }
         // 提交译文
         if (isLangDoc && (pluginMark === undefined || pluginVersionMark === undefined)) {
             const submitTranslationButton = new ButtonComponent(operate.controlEl);
+            submitTranslationButton.setClass('i18n-button');
+            submitTranslationButton.setClass('i18n-button--primary');
             submitTranslationButton.setButtonText(t('SUBMITE_OPERATE_SUBMITE_BUTTON_TEXT'));
-            submitTranslationButton.setCta();
             submitTranslationButton.onClick(async () => {
                 try {
                     if (this.existsHistory(this.i18n.settings.I18N_SUBMIT_HISTORY, this.plugin.id, 2)) {
@@ -214,10 +234,6 @@ export class ShareModal extends Modal {
         for (const item of arr) if (item.id === id && item.type === type) return false;
         return true;
     }
-
-    // existsHistory(arr: SubmitMark[], id: string, type: number) {
-    //     return arr.some(item => item.id === id && item.type === type);
-    // }
 
     async onOpen() {
         await this.Main();
