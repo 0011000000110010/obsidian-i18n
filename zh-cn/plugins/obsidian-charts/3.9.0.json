@@ -2,7 +2,7 @@
   "manifest": {
     "id": "obsidian-charts",
     "author": "mtr",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "pluginVersion": "3.9.0"
   },
   "description": {
@@ -52,6 +52,8 @@
     ".setTooltip(\"Remove\")": ".setTooltip(\"移除\")",
     ".setTooltip(\"Reset to default\")": ".setTooltip(\"重置为默认值\")",
     ".appendText(` Color #${o+1}`)": ".appendText(` 颜色 #${o+1}`)",
-    ".setTitle(\"Insert Chart\")": ".setTitle(\"插入图表\")"
+    ".setTitle(\"Insert Chart\")": ".setTitle(\"插入图表\")",
+    "append(\"Set the Colors for your Charts. This will set the border Color and the inner Color will be the same, but with less opacity. This ensures better compatibility with Dark and Light Mode. \"": "append(\"设置图表的颜色。这将设置边框颜色，内部颜色将相同，但透明度较低。这确保了与深色与浅色模式的更好兼容性。\"",
+    ",\"You can use any \"": ",\"您可以使用任何\""
   }
 }
