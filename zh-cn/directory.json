@@ -70,6 +70,16 @@
         ]
     },
     {
+        "id": "better-recall",
+        "translations": [
+            {
+                "author": "xzp",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.0.1"
+            }
+        ]
+    },
+    {
         "id": "better-word-count",
         "translations": [
             {
