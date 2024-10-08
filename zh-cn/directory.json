@@ -786,6 +786,11 @@
                 "author": "曲淡歌",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "0.22.1"
+            },
+            {
+                "author": "ginoon",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.24.0"
             }
         ]
     },
