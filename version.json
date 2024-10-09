@@ -1,5 +1,5 @@
 {
-    "version": "1.4.4",
-    "content":"修复 译文编辑器主题联动失效的问题\n修复 译文编辑器选中后取消时不会清空input的问题\n修复 共建云端作者重复时不显示修改译文的问题\n新增 共建云端比对功能",  
-    "submit":"MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
+    "version": "1.4.5",
+    "content": "修复 历史提交记录css丢失的问题\n新增 插件名称汉化(不支持搜索)",
+    "submit": "MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
