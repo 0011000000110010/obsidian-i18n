@@ -690,6 +690,16 @@
         ]
     },
     {
+        "id": "obsidian-better-command-palette",
+        "translations": [
+            {
+                "author": "ARgo晓伟",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.17.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-book-search-plugin",
         "translations": [
             {
