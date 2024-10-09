@@ -1535,6 +1535,16 @@
         ]
     },
     {
+        "id": "vault-explorer",
+        "translations": [
+            {
+                "author": "Fendi",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.44.6"
+            }
+        ]
+    },
+    {
         "id": "virtual-linker",
         "translations": [
             {
