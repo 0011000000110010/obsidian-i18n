@@ -2,7 +2,7 @@
   "manifest": {
     "id": "obsidian-icon-folder",
     "author": "cuberwu",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "pluginVersion": "2.14.3"
   },
   "description": {
@@ -44,14 +44,10 @@
     "Notice(`[${config.PLUGIN_NAME}] Refreshed icons from frontmatter. Please restart Obsidian to see the changes.`)": "Notice(`[${config.PLUGIN_NAME}]已刷新 frontmatter 的图标。请重新启动Obsidian以查看更改。`)",
     "Notice(`[${config.PLUGIN_NAME}] Obsidian has to be restarted for this change to take effect.`)": "Notice(`[${config.PLUGIN_NAME}]Obsidian必须重新启动才能使此更改生效。`)",
     "Notice('Color of icon changed.')": "Notice('图标颜色已更改。')",
-    "Notice(`[${config.PLUGIN_NAME}] Frontmatter property type \\`icon\\` has to be of type \\`text\\`.`)": "Notice(`[${config.PLUGIN_NAME}] Frontmatter property type \\`icon\\` has to be of type \\`text\\`.`)",
-    "Notice(`[${config.PLUGIN_NAME}] Frontmatter property type \\`iconColor\\` has to be of type \\`text\\`.`)": "Notice(`[${config.PLUGIN_NAME}] Frontmatter property type \\`iconColor\\` has to be of type \\`text\\`.`)",
-    ".log(...this.formatMessage('log', message, prefix, optionalParams)": ".log(...this.formatMessage('log', message, prefix, optionalParams)",
-    ".log('`leaf` in outline is undefined', LoggerPrefix.Outline)": ".log('`leaf` in outline is undefined', LoggerPrefix.Outline)",
-    ".log('`leaf` length in outline is 0', LoggerPrefix.Outline)": ".log('`leaf` length in outline is 0', LoggerPrefix.Outline)",
+    "Notice(`[${config.PLUGIN_NAME}] Frontmatter property type \\`icon\\` has to be of type \\`text\\`.`)": "Notice(`[${config.PLUGIN_NAME}]Frontmatter 属性类型“icon”必须为“text”类型。`)",
+    "Notice(`[${config.PLUGIN_NAME}] Frontmatter property type \\`iconColor\\` has to be of type \\`text\\`.`)": "Notice(`[${config.PLUGIN_NAME}]Frontmatter 属性类型“iconColor”必须为“text”类型。`)",
     ".log(`loading ${config.PLUGIN_NAME}`)": ".log(`正在加载${config.PLUGIN_NAME}`)",
-    ".log('unloading obsidian-icon-folder')": ".log('unloading obsidian-icon-folder')",
-    ".error(...this.formatMessage('error', message, prefix, optionalParams)": ".error(...this.formatMessage('error', message, prefix, optionalParams)",
+    ".log('unloading obsidian-icon-folder')": ".log('取消加载 Obsidian 图标文件夹')",
     ".error(`Icon file with name ${iconNameWithPrefix} could not be found`)": ".error(`找不到名为${iconNameWithPrefix}的图标文件`)",
     ".error(`Icon SVG with name ${iconNameWithPrefix} could not be found`)": ".error(`找不到名为${iconNameWithPrefix}的图标SVG`)",
     "name: 'font-awesome-brands'": "name: 'font-awesome-brands'",
@@ -101,7 +97,7 @@
     ".setName('Toggle icon in tabs')": ".setName('在标签中切换图标')",
     ".setName('Toggle icon in title')": ".setName('在标题中切换图标')",
     ".setName('Use icon in frontmatter')": ".setName('在 frontmatter 中使用图标')",
-    ".setName('Frontmatter icon field name')": ".setName('frontmatter 图标字段名称')",
+    ".setName('Frontmatter icon field name')": ".setName('Frontmatter 图标字段名称')",
     ".setName('Frontmatter icon color field name')": ".setName('Frontmatter 图标颜色字段名称')",
     ".setName('Refresh icons from frontmatter')": ".setName('从 frontmatter 刷新图标')",
     ".setName('Toggle icons while editing notes')": ".setName('在编辑笔记时切换图标')",
@@ -109,7 +105,7 @@
     ".setName('Icon identifier')": ".setName('图标标识符')",
     ".setName('Toggle Debug Mode')": ".setName('切换调试模式')",
     ".setDesc('Add a custom icon pack.')": ".setDesc('添加一个自定义图标包。')",
-    ".setDesc(`Total icons: ${iconPack.icons.length}${isLucideIconPack ? ` ${additionalLucideDescription}` : ''}`)": ".setDesc(`Total icons: ${iconPack.icons.length}${isLucideIconPack ? ` ${additionalLucideDescription}` : ''}`)",
+    ".setDesc(`Total icons: ${iconPack.icons.length}${isLucideIconPack ? ` ${additionalLucideDescription}` : ''}`)": ".setDesc(`图标总数: ${iconPack.icons.length}${isLucideIconPack ? ` ${additionalLucideDescription}` : ''}`)",
     ".setDesc(`Total icons: ${iconPack.icons.length} (added: ${file.name})`)": ".setDesc(`图标总数：${iconPack.icons.length}(已添加：${file.name})`)",
     ".setDesc('Will add the icon based on the defined rule (as a plain string or in regex format).')": ".setDesc('将根据定义的规则添加图标（作为纯文本字符串或正则表达式格式）。')",
     ".setDesc(`Icon: ${rule.icon}`)": ".setDesc(`图标：${rule.icon}`)",
@@ -123,7 +119,7 @@
     ".setDesc('Change the limit for the recently used icons displayed in the icon selection modal.')": ".setDesc('更改在图标选择框中显示的最近使用的图标的数量限制。')",
     ".setDesc('Toggles the visibility of an icon for a file in the tab bar.')": ".setDesc('切换标签栏中文件图标的状态。')",
     ".setDesc('Toggles the visibility of an icon above the title of a file.')": ".setDesc('切换文件标题上方图标的可见性。')",
-    ".setDesc('Toggles whether to set the icon based on the frontmatter property `icon`.')": ".setDesc('切换是否根据 frontmatter 属性 `icon` 设置图标。)",
+    ".setDesc('Toggles whether to set the icon based on the frontmatter property `icon`.')": ".setDesc('切换是否根据 frontmatter 属性 `icon` 设置图标。')",
     ".setDesc('Sets the name of the frontmatter field which contains the icon.')": ".setDesc('设置包含图标的 frontmatter 字段的名称。')",
     ".setDesc('Sets the name of the frontmatter field which contains the icon color.')": ".setDesc('设置包含图标颜色的 frontmatter 字段的名称。')",
     ".setDesc('Toggles whether you are able to add and see icons in your notes and editor (e.g., ability to have :LiSofa: as an icon in your notes).')": ".setDesc('切换是否能够在笔记和编辑器中添加和显示图标（例如，能够在笔记中使用 :LiSofa: 作为图标）。')",
@@ -150,6 +146,8 @@
     ".createEl('h3', { text: 'Visibility of icons' })": ".createEl('h3', { text: '图标的可见性' })",
     ".createEl('h1', { text: 'Icon packs' })": ".createEl('h1', { text: '图标包' })",
     "above: 'Above title'": "above: '在标题上'",
-    "inline: 'Next to title'": "inline: '在标题旁边'"
+    "inline: 'Next to title'": "inline: '在标题旁边'",
+    ".setDesc('Sets the icon and color for each note in the vault based on the frontmatter properties. WARNING: This will change any manually set icons to the one defined in the frontmatter. IF A NOTE HAS NO FRONTMATTER, THE CURRENT ICON WILL BE REMOVED. Please restart Obsidian after this completes to see the changes.')\n": ".setDesc('根据 frontmatter 属性设置库中每个注释的图标和颜色。警告：这将把任何手动设置的图标更改为 frontmatter 中定义的图标。如果笔记没有Frontmatter，则当前图标将被删除。完成此操作后，请重新启动Obsidian以查看更改。')\n",
+    "'(Native Pack has fewer icons but 100% Obsidian Sync support)'": "'(Native Pack 图标较少，但支持 100% Obsidian同步)'"
   }
 }
