@@ -430,6 +430,16 @@
         ]
     },
     {
+        "id": "journaling",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.0"
+            }
+        ]
+    },
+    {
         "id": "lazy-plugins",
         "translations": [
             {
