@@ -1,8 +1,8 @@
 {
   "manifest": {
     "id": "templater-obsidian",
-    "author": "ginoon",
-    "version": "1.0.0",
+    "author": "ginoon & a",
+    "version": "1.0.1",
     "pluginVersion": "2.7.3"
   },
   "description": {
@@ -238,9 +238,7 @@
     "description:\"A path within the response JSON to extract specific data.\"": "description:\"在响应 JSON 中提取特定数据的路径.\"",
     "description:\"\",example:\"": "description:\"\",example:\"",
     "text:\"reference\"": "text:\"参照\"",
-    "text:\"documentation\"": "text:\"文献资料\"",
     "text:\"tp.file.cursor\"": "text:\"tp.file.cursor\"",
-    "text:\"Warning: \"": "text:\"警告: \"",
     "text:\"empty \"": "text:\"empty \"",
     "text:\"/\"": "text:\"/\"",
     "text:\"empty\"": "text:\"empty\"",
@@ -293,6 +291,15 @@
     ".setTooltip(\"Add additional folder template\")": ".setTooltip(\"添加额外的文件夹模板\")",
     ".setTooltip(\"Add additional file regex\")": ".setTooltip(\"添加额外的文件 regex\")",
     ".setTooltip(\"Refresh\")": ".setTooltip(\"刷新\")",
-    ".setTitle(\"Create new note from template\")": ".setTitle(\"从模板创建新便笺\")"
+    ".setTitle(\"Create new note from template\")": ".setTitle(\"从模板创建新便笺\")",
+    ".append(\"Templater provides multiples predefined variables / functions that you can use.\",e.createEl(\"br\"),\"Check the \",e.createEl(\"a\",{href:\"https://silentvoid13.github.io/Templater/\",text:\"documentation\"}),\" to get a list of all the available internal variables / functions.\")": ".append(\"Templater 提供了多个预定义的变量/函数供你使用。\",e.createEl(\"br\"),\"请查看 \",e.createEl(\"a\",{href:\"https://silentvoid13.github.io/Templater/\",text:\"文档\"}),\" 获取所有可用的内部变量/函数列表。\")",
+    ".append(\"Adds syntax highlighting for Templater commands in edit mode.\")": ".append(\"在编辑模式下为 Templater 命令添加语法高亮。\")",
+    ".append(\"Adds syntax highlighting for Templater commands in edit mode on mobile. Use with caution: this may break live preview on mobile platforms.\")": ".append(\"在移动端编辑模式下为 Templater 命令添加语法高亮。请谨慎使用：这可能会导致移动端的实时预览功能出现问题。\")",
+    ".append(\"Automatically triggers \",e.createEl(\"code\",{text:\"tp.file.cursor\"}),\" after inserting a template.\",e.createEl(\"br\"),\"You can also set a hotkey to manually trigger \",e.createEl(\"code\",{text:\"tp.file.cursor\"}),\".\")": ".append(\"在插入模板后会自动触发 \",e.createEl(\"code\",{text:\"tp.file.cursor\"}),\"。\",e.createEl(\"br\"),\"你也可以设置一个快捷键来手动触发 \",e.createEl(\"code\",{text:\"tp.file.cursor\"}),\"。\")",
+    ".append(\"Template hotkeys allows you to bind a template to a hotkey.\")": ".append(\"模板快捷键允许你将某个模板绑定到一个快捷键上。\")",
+    ".append(\"Startup templates are templates that will get executed once when Templater starts.\",e.createEl(\"br\"),\"These templates won't output anything.\",e.createEl(\"br\"),\"This can be useful to set up templates adding hooks to Obsidian events for example.\")": ".append(\"启动模板是在 Templater 启动时执行一次的模板。\",e.createEl(\"br\"),\"这些模板不会输出任何东西。\",e.createEl(\"br\"),\"例如，这对于设置向 Obsidian 事件添加钩子函数（hooks）的模板很有用。\",e.createEl(\"br\"),\"（这段的意思是：在 Obsidian 的 Templater 插件中，“启动模板” 的功能可以用于在 Obsidian 启动时自动执行一些预定义的操作，而这些操作不会有任何直接输出结果。比如，你可以使用这些模板来为 Obsidian 的特定事件（如文件打开、保存等）设置钩子函数（hooks）。钩子函数是一种在特定事件发生时触发的代码。通过这种方式，你可以在 Obsidian 运行时自动完成一些自定义操作。简单来说，就是利用启动模板，在 Obsidian 启动时自动执行特定任务或设置，而无需手动操作。）\")",
+    ".append(\"All JavaScript files in this folder will be loaded as CommonJS modules, to import custom user functions.\",e.createEl(\"br\"),\"The folder needs to be accessible from the vault.\",e.createEl(\"br\"),\"Check the \",e.createEl(\"a\",{href:\"https://silentvoid13.github.io/Templater/\",text:\"documentation\"}),\" for more information.\")": ".append(\"此文件夹中的所有 JavaScript 文件将作为 CommonJS 模块加载，以导入自定义用户函数。\",e.createEl(\"br\"),\"这个文件夹需要能够从保管库中访问。\",e.createEl(\"br\"),\"请查看 \",e.createEl(\"a\",{href:\"https://silentvoid13.github.io/Templater/\",text:\"文档\"}),\" 以获取更多信息。\")",
+    ".append(\"Allows you to create user functions linked to system commands.\",e.createEl(\"br\"),e.createEl(\"b\",{text:\"Warning: \"}),\"It can be dangerous to execute arbitrary system commands from untrusted sources. Only run system commands that you understand, from trusted sources.\")": ".append(\"允许您创建链接到系统命令的用户函数。\",e.createEl(\"br\"),e.createEl(\"b\",{text:\"警告： \"}),\"从不可信的来源执行任意的系统命令可能是危险的。只能从可信来源运行您理解的系统命令。\")",
+    ".append(\"Templater will listen for the new file creation event, and, if it matches a rule you've set, replace every command it finds in the new file's content. \",\"This makes Templater compatible with other plugins like the Daily note core plugin, Calendar plugin, Review plugin, Note refactor plugin, etc. \",e.createEl(\"br\"),e.createEl(\"br\"),\"Make sure to set up rules under either Folder Templates or File Regex Template below.\",e.createEl(\"br\"),e.createEl(\"br\"),e.createEl(\"b\",{text:\"Warning: \"}),\"This can be dangerous if you create new files with unknown / unsafe content on creation. Make sure that every new file's content is safe on creation.\")": ".append(\"Templater 会监听新文件创建事件，如果新文件符合你设置的规则，就会替换其内容中的所有命令。\",\"这使得 Templater 能与其他插件兼容，例如 Daily Note 核心插件、Calendar 插件、Review 插件、Note Refactor 插件等。 \",e.createEl(\"br\"),e.createEl(\"br\"),\"确保在下面的文件夹模板或文件正则表达式模板下设置规则。\",e.createEl(\"br\"),e.createEl(\"br\"),e.createEl(\"b\",{text:\"警告：\"}),\"如果创建的新文件中包含未知或不安全的内容，这可能会带来风险。请确保每个新文件的内容在创建时是安全的。\")"
   }
 }
