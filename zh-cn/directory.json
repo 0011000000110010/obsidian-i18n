@@ -938,8 +938,8 @@
         "id": "obsidian-icon-folder",
         "translations": [
             {
-                "author": "曲淡歌",
-                "translationVersion": "1.0.0",
+                "author": "cuberwu",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "2.14.3"
             }
         ]
@@ -1533,8 +1533,8 @@
                 "pluginVersion": "2.7.1"
             },
             {
-                "author": "ginoon",
-                "translationVersion": "1.0.0",
+                "author": "ginoon & a",
+                "translationVersion": "1.0.1",
                 "pluginVersion": "2.7.3"
             }
         ]
