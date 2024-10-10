@@ -550,6 +550,16 @@
         ]
     },
     {
+        "id": "mesh-ai",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "1.2.6",
+                "pluginVersion": "1.2.6"
+            }
+        ]
+    },
+    {
         "id": "mousewheel-image-zoom",
         "translations": [
             {
