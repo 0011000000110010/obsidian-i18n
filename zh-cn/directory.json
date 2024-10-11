@@ -555,6 +555,16 @@
         ]
     },
     {
+        "id": "mathlinks",
+        "translations": [
+            {
+                "author": "阿弟要精致",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.5.3"
+            }
+        ]
+    },
+    {
         "id": "media-extended",
         "translations": [
             {
@@ -641,6 +651,16 @@
                 "author": "Fendi",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.8.2"
+            }
+        ]
+    },
+    {
+        "id": "notion-like-tables",
+        "translations": [
+            {
+                "author": "a",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "8.16.1"
             }
         ]
     },
@@ -974,7 +994,7 @@
         "translations": [
             {
                 "author": "cuberwu",
-                "translationVersion": "1.0.1",
+                "translationVersion": "1.0.2",
                 "pluginVersion": "2.14.3"
             }
         ]
@@ -1090,6 +1110,16 @@
         ]
     },
     {
+        "id": "obsidian-meta-bind-plugin",
+        "translations": [
+            {
+                "author": "宇桐非",
+                "translationVersion": "1.2.2",
+                "pluginVersion": "1.2.2"
+            }
+        ]
+    },
+    {
         "id": "obsidian-mind-map",
         "translations": [
             {
@@ -1166,6 +1196,16 @@
                 "author": "Fendi",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.17.4"
+            }
+        ]
+    },
+    {
+        "id": "obsidian-prozen",
+        "translations": [
+            {
+                "author": "dost",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.3"
             }
         ]
     },
@@ -1606,6 +1646,11 @@
                 "author": "里安",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.5.0"
+            },
+            {
+                "author": "Az",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.4.7"
             }
         ]
     },
