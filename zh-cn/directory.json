@@ -430,6 +430,16 @@
         ]
     },
     {
+        "id": "image2latex",
+        "translations": [
+            {
+                "author": "SimonVinci",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.1.2"
+            }
+        ]
+    },
+    {
         "id": "ink",
         "translations": [
             {
