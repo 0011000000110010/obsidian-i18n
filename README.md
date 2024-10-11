@@ -203,6 +203,16 @@ obsidian-i18n的工作原理简图：
 
 本项目采用MIT协议开源。
 
+## 鸣谢
+
+沉浸式翻译功能受到以下两个项目的启发：
+- [imfenghuang/obsidian-immersive-translate: Immersive Translate For Obsidian](https://github.com/imfenghuang/obsidian-immersive-translate)
+- [xhuajin/obsidian-immersive-translate: Translate plugin setting page.](https://github.com/xhuajin/obsidian-immersive-translate)
+
+从而并引入了[沉浸式翻译的JS SDK](https://immersivetranslate.com/zh-Hans/docs/js-sdk/)
+
+非常感谢imfenghuang、xhuajin 以及沉浸式翻译的开发团队。
+
 
 <!-- links -->
 [your-project-path]:0011000000110010/obsidian-i18n
