@@ -50,6 +50,16 @@
         ]
     },
     {
+        "id": "background-image",
+        "translations": [
+            {
+                "author": "Az",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.2.0"
+            }
+        ]
+    },
+    {
         "id": "better-export-pdf",
         "translations": [
             {
@@ -938,7 +948,7 @@
         "id": "obsidian-icon-folder",
         "translations": [
             {
-                "author": "曲淡歌&cuberwu",
+                "author": "cuberwu",
                 "translationVersion": "1.0.1",
                 "pluginVersion": "2.14.3"
             }
