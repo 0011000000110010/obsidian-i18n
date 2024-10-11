@@ -520,6 +520,16 @@
         ]
     },
     {
+        "id": "lovely-mindmap",
+        "translations": [
+            {
+                "author": "阿弟要精致",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.0.4"
+            }
+        ]
+    },
+    {
         "id": "lyrics",
         "translations": [
             {
