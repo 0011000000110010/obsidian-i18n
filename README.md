@@ -195,6 +195,13 @@ obsidian-i18n的工作原理简图：
 但此处的`.createEl`和`text`不应该被翻译。
 </details>
 
+<details>
+  <summary>Q4：为什么手机/ipad端用不了？</summary>
+
+因为这个插件只能在桌面端使用，它使用了一些移动版不支持的api。你可以在桌面端汉化插件后同步到移动端。
+</details>
+
+
 ## 进阶设置
 
 详见 [obsidian-i18n Wiki](https://github.com/0011000000110010/obsidian-i18n/wiki)
