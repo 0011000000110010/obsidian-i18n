@@ -1,8 +1,8 @@
 {
   "manifest": {
     "id": "lovely-mindmap",
-    "author": "阿弟要精致",
-    "version": "1.0.0",
+    "author": "阿弟要精致 & Fendi",
+    "version": "1.0.1",
     "pluginVersion": "1.0.4"
   },
   "description": {
@@ -24,7 +24,13 @@
     ".setDesc(\"auto focus node when create new node\")": ".setDesc(\"创建新节点时自动聚焦节点\")",
     ".setDesc(`Custom your hotkey to create a sibling node before the current node. Default is Shift+Enter. Same as 'Create Child Node'.`)": ".setDesc(`自定义热键以在当前节点前创建同级节点。默认是 Shift+Enter。与'创建子节点'相同。`)",
     ".setDesc(`Custom your hotkey to create a sibling node after the current node. Default is Enter. Same as 'Create Child Node'.`)": ".setDesc(`自定义热键以在当前节点后创建同级节点。默认是 Enter。与'创建子节点'相同。`)",
-    ".setDesc(`Custom your hotkey to create a child node, default is Tab. You can use any letter, number, or modifier combined with a letter or number, e.g., 'C' or 'cmd + C' to create a child node. Use '+' to separate modifiers and alphanumeric characters.`)": ".setDesc(`自定义用于创建子节点的热键，默认是 Tab。你可以使用任何字母、数字或修饰符与字母或数字组合，例如'C'或'cmd + C'来创建子节点。使用'+'分隔修饰符和字母数字字符。`)",
-    ".setPlaceholder(\"Enter hotkey\")": ".setPlaceholder(\"输入热键\")"
+    "Custom your hotkey to create a child node, default is Tab.": "自定义热键以创建子节点，默认为 Tab。",
+    ".setPlaceholder(\"Enter hotkey\")": ".setPlaceholder(\"输入热键\")",
+    "You can use any letter, number, or modifier combined with": "您可以使用任何字母、数字或修饰符与",
+    "a letter or number, e.g.": "字母或数字, 例如",
+    "to separate modifiers and alphanumeric characters.": "分隔修饰符和字母数字字符。",
+    "u300Dto create a child node.": "u300D创建子节点。",
+    "Use\\u300C": "使用\\u300C",
+    "\\u300Dor\\u300C": "\\u300D 或 \\u300C"
   }
 }
