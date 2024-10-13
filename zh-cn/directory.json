@@ -725,6 +725,16 @@
         ]
     },
     {
+        "id": "obsidian-attachment-name-formatting",
+        "translations": [
+            {
+                "author": "阿弟要精致",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "2.1.8"
+            }
+        ]
+    },
+    {
         "id": "obsidian-auto-hide",
         "translations": [
             {
