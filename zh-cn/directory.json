@@ -1641,6 +1641,11 @@
                 "author": "Fendi",
                 "translationVersion": "1.0.0",
                 "pluginVersion": "1.44.6"
+            },
+            {
+                "author": "Fendi&cuberwu",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.46.0"
             }
         ]
     },
