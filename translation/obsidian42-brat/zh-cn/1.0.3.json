@@ -10,7 +10,8 @@
         "translation": "Easily install a beta version of a plugin for testing."
     },
     "dict": {
-        ".innerText = \"Learn more about my work at:\"": ".innerText = \"Learn more about my work at:\"",
-        ".innerText = \"https://tfthacker.com\"": ".innerText = \"https://tfthacker.com\""
+        ".innerText = \"Learn more about my work at:\"": ".innerText = \"在这里了解更多我的工作:\"",
+        ".innerText = \"https://tfthacker.com\"": ".innerText = \"https://tfthacker.com\"",
+        "hi": "你好但是增加一点内容"
     }
 }
