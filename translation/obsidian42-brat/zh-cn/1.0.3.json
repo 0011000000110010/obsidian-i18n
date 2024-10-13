@@ -1,0 +1,16 @@
+{
+    "manifest": {
+        "id": "obsidian42-brat",
+        "author": "",
+        "version": "1.0.0",
+        "pluginVersion": "1.0.3"
+    },
+    "description": {
+        "original": "Easily install a beta version of a plugin for testing.",
+        "translation": "Easily install a beta version of a plugin for testing."
+    },
+    "dict": {
+        ".innerText = \"Learn more about my work at:\"": ".innerText = \"Learn more about my work at:\"",
+        ".innerText = \"https://tfthacker.com\"": ".innerText = \"https://tfthacker.com\""
+    }
+}
