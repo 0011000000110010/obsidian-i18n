@@ -1620,6 +1620,16 @@
         ]
     },
     {
+        "id": "translate",
+        "translations": [
+            {
+                "author": "cuberwu",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.4.9"
+            }
+        ]
+    },
+    {
         "id": "various-complements",
         "translations": [
             {
