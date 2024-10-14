@@ -150,6 +150,16 @@
         ]
     },
     {
+        "id": "card-board",
+        "translations": [
+            {
+                "author": "xzp",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "0.7.9"
+            }
+        ]
+    },
+    {
         "id": "cmdr",
         "translations": [
             {
