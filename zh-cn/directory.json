@@ -1370,6 +1370,16 @@
         ]
     },
     {
+        "id": "obsidian-trash-explorer",
+        "translations": [
+            {
+                "author": "cuberwu & Fendi",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.2.3"
+            }
+        ]
+    },
+    {
         "id": "obsidian-view-mode-by-frontmatter",
         "translations": [
             {
