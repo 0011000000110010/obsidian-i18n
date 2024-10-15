@@ -1180,6 +1180,16 @@
         ]
     },
     {
+        "id": "obsidian-omnivore",
+        "translations": [
+            {
+                "author": "张海山 & Fendi",
+                "translationVersion": "1.0.2",
+                "pluginVersion": "1.10.4"
+            }
+        ]
+    },
+    {
         "id": "obsidian-outliner",
         "translations": [
             {
