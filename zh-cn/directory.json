@@ -1710,6 +1710,16 @@
         ]
     },
     {
+        "id": "url-into-selection",
+        "translations": [
+            {
+                "author": "wanghong",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.7.0"
+            }
+        ]
+    },
+    {
         "id": "various-complements",
         "translations": [
             {
