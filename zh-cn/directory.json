@@ -455,6 +455,16 @@
         ]
     },
     {
+        "id": "image-converter",
+        "translations": [
+            {
+                "author": "wanghong",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "1.1.7"
+            }
+        ]
+    },
+    {
         "id": "image2latex",
         "translations": [
             {
