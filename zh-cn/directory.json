@@ -815,6 +815,16 @@
         ]
     },
     {
+        "id": "obsidian-camera",
+        "translations": [
+            {
+                "author": "张海山",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.8.0"
+            }
+        ]
+    },
+    {
         "id": "obsidian-charts",
         "translations": [
             {
