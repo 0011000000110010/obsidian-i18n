@@ -280,6 +280,16 @@
         ]
     },
     {
+        "id": "docxer",
+        "translations": [
+            {
+                "author": "张海山",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "2.0.1"
+            }
+        ]
+    },
+    {
         "id": "editing-toolbar",
         "translations": [
             {
