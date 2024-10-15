@@ -855,6 +855,16 @@
         ]
     },
     {
+        "id": "obsidian-clipper",
+        "translations": [
+            {
+                "author": "张海山",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "0.2.9"
+            }
+        ]
+    },
+    {
         "id": "obsidian-comments",
         "translations": [
             {
