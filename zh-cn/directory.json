@@ -1335,6 +1335,16 @@
         ]
     },
     {
+        "id": "obsidian-table-generator",
+        "translations": [
+            {
+                "author": "mute99",
+                "translationVersion": "1.4.1",
+                "pluginVersion": "1.4.1"
+            }
+        ]
+    },
+    {
         "id": "obsidian-tagfolder",
         "translations": [
             {
