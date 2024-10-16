@@ -200,6 +200,16 @@
         ]
     },
     {
+        "id": "consistent-attachments-and-links",
+        "translations": [
+            {
+                "author": "evi1_f4iry",
+                "translationVersion": "1.0.0",
+                "pluginVersion": "3.21.2"
+            }
+        ]
+    },
+    {
         "id": "copilot",
         "translations": [
             {
