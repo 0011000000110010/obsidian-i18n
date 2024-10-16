@@ -1785,6 +1785,16 @@
         ]
     },
     {
+        "id": "update-time-on-edit",
+        "translations": [
+            {
+                "author": "张海山",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "2.5.0"
+            }
+        ]
+    },
+    {
         "id": "url-into-selection",
         "translations": [
             {
