@@ -635,6 +635,16 @@
         ]
     },
     {
+        "id": "metadata-menu",
+        "translations": [
+            {
+                "author": "张海山 & Fendi",
+                "translationVersion": "1.0.2",
+                "pluginVersion": "0.8.7"
+            }
+        ]
+    },
+    {
         "id": "metafolders",
         "translations": [
             {
