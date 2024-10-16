@@ -1,13 +1,13 @@
 {
   "manifest": {
     "id": "obsidian-custom-frames",
-    "author": "宇桐非",
-    "version": "2.4.7",
+    "author": "宇桐非&张海山",
+    "version": "2.4.8",
     "pluginVersion": "2.4.7"
   },
   "description": {
     "original": "A plugin that turns web apps into panes using iframes with custom styling. Also comes with presets for Google Keep, Todoist and more.",
-    "translation": "A plugin that turns web apps into panes using iframes with custom styling. Also comes with presets for Google Keep, Todoist and more."
+    "translation": "集成更多网页应用到笔记中，让你在 Obsidian 中以 iframe 方式将 web 应用程序变成标签页。"
   },
   "dict": {
     ".setButtonText(\"Show Settings\")": ".setButtonText(\"显示设置\")",
