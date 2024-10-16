@@ -123,8 +123,8 @@
         "id": "calendar-beta",
         "translations": [
             {
-                "author": "宇桐非",
-                "translationVersion": "2.0.0",
+                "author": "宇桐非 & 张海山",
+                "translationVersion": "2.0.1",
                 "pluginVersion": "2.0.0"
             }
         ]
