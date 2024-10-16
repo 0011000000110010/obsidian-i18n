@@ -1,8 +1,8 @@
 {
   "manifest": {
     "id": "calendar-beta",
-    "author": "张海山",
-    "version": "1.0.1",
+    "author": "宇桐非 & 张海山",
+    "version": "2.0.1",
     "pluginVersion": "2.0.0"
   },
   "description": {
