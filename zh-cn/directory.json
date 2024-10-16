@@ -705,6 +705,16 @@
         ]
     },
     {
+        "id": "number-headings-obsidian",
+        "translations": [
+            {
+                "author": "张海山",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.16.0"
+            }
+        ]
+    },
+    {
         "id": "obsidian-admonition",
         "translations": [
             {
