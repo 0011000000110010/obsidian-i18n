@@ -240,6 +240,16 @@
         ]
     },
     {
+        "id": "custom-font-loader",
+        "translations": [
+            {
+                "author": "张海山",
+                "translationVersion": "1.0.1",
+                "pluginVersion": "1.5.5"
+            }
+        ]
+    },
+    {
         "id": "custom-sort",
         "translations": [
             {
