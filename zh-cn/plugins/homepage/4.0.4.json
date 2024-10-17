@@ -1,8 +1,8 @@
 {
   "manifest": {
     "id": "homepage",
-    "author": "墨染",
-    "version": "2.0.0",
+    "author": "曲淡歌&墨染&Fendi",
+    "version": "2.0.1",
     "pluginVersion": "4.0.4"
   },
   "description": {
@@ -40,6 +40,28 @@
     ".addHeading(\"Opened view\",\"paneHeading\")": ".addHeading(\"打开视图\",\"面板标题\")",
     ".addToggle(\"Open on startup\",\"When launching Obsidian, open the homepage.\",\"openOnStartup\",d=>this.display())": ".addToggle(\"启动时打开\",\"当obsidian启动时, 打开主页.\",\"openOnStartup\",d=>this.display())",
     ".addToggle(\"Open when empty\",\"When there are no tabs open, open the homepage.\",\"openWhenEmpty\")": ".addToggle(\"为空时打开\",\"当标签页为空时，打开主页.\",\"openWhenEmpty\")",
-    ".addToggle(\"Use when opening normally\",\"Use homepage settings when opening it normally, such as from a link or the file browser.\",\"alwaysApply\")": ".addToggle(\"打开时应用设置\",\"当主页正常打开时，应用主页设置，比如从链接或文件管理器打开\",\"alwaysApply\")"
+    ".addToggle(\"Use when opening normally\",\"Use homepage settings when opening it normally, such as from a link or the file browser.\",\"alwaysApply\")": ".addToggle(\"打开时应用设置\",\"当主页正常打开时，应用主页设置，比如从链接或文件管理器打开\",\"alwaysApply\")",
+    ".addDropdown(\"Opening method\",\"Determine how extant tabs and views are affected on startup.\"": ".addDropdown(\"开启方式\",\"确定启动时现有选项卡和视图如何受到影响。\"",
+    ".addDropdown(\"Manual opening method\",\"Determine how extant tabs and views are affected when opening with commands or the ribbon button.\"": ".addDropdown(\"确定启动时现有选项卡和视图如何受到影响。\",\"确定使用命令或功能区按钮打开时对现有选项卡和视图的影响。\"",
+    "addDropdown(\"Homepage view\",\"Choose what view to open the homepage in.\"": "addDropdown(\"主页视图\",\"主页视图\"",
+    ".addToggle(\"Pin\",\"Pin the homepage when opening.\"": ".addToggle(\"固定\",\"打开时固定主页。\"",
+    ".addToggle(\"Hide release notes\",\"Never display release notes when Obsidian updates.\"": ".addToggle(\"隐藏发行说明\",\"黑曜石更新时从不显示发行说明。\"",
+    ".addToggle(\"Auto-create\",\"When the homepage doesn't exist, create a note with its name.\"": ".addToggle(\"自动创建\",\"当主页不存在时，创建一个带有其名称的注释。\"",
+    ".addToggle(\"Revert view on close\",\"When navigating away from the homepage, restore the default view.\"": ".addToggle(\"关闭时恢复视图\",\"离开主页时，恢复默认视图。\"",
+    ".addToggle(\"Auto-scroll\",\"When opening the homepage, scroll to the bottom and focus on the last line.\"": ".addToggle(\"自动滚动\",\"打开主页时，滚动到底部并专注于最后一行。\"",
+    ".addToggle(\"Refresh Dataview\",\"Always attempt to reload Dataview views when opening the homepage.\"": ".addToggle(\"刷新数据视图\",\"打开主页时，始终尝试重新加载Dataview视图。\"",
+    "\"Enter a note or canvas to use.\"": "\"输入要使用的笔记或白板。\"",
+    "\"Enter an Obsidian workspace to use.\"": "\"输入要使用的黑曜石工作区。\"",
+    "\"Your graph view will be used.\"": "\"将使用您的图形视图。\"",
+    "\"Nothing will occur by default. Any commands added will still take effect.\"": "\"默认情况下不会发生任何事情。添加的任何命令仍将生效。\"",
+    "\"A random note or canvas from your Obsidian folder will be selected.\"": "\"将从您的黑曜石文件夹中随机选择一个笔记或白板。\"",
+    "\"Your Daily Note or Periodic Daily Note will be used.\"": "\"将使用您的日记或定期日记。\"",
+    "\"Your Periodic Weekly Note will be used.\"": "\"将使用您的定期周报。\"",
+    "\"Your Periodic Monthly Note will be used.\"": "\"将使用您的定期月报。\"",
+    "\"Your Periodic Yearly Note will be used.\"": "\"将使用您的定期年报。\"",
+    "i.Default=\"Default view\",i.Reading=\"Reading view\",i.Source=\"Editing view (Source)\",i.LivePreview=\"Editing view (Live Preview)\"": "i.Default=\"默认视图\",i.Reading=\"阅读视图\",i.Source=\"编辑视图（源码）\",i.LivePreview=\"编辑视图（实时预览）\"",
+    "\"Replace last note\"": "\"替换最后一个笔记\"",
+    "\"Keep open notes\"": "\"保持打开的笔记\"",
+    "\"Replace all open notes\"": "\"替换所有打开的笔记\""
   }
 }
