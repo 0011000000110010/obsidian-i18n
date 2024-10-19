@@ -1,5 +1,5 @@
 {
-    "version": "1.4.7",
-    "content": "修复 临时正则位置问题\n新增 内置沉浸式翻译",
+    "version": "1.4.8",
+    "content": "更改 共建云端提交译文UI\n更改 译文编辑器UI\n更改 译文格式\n注意 安装此版本前建议备份插件库",
     "submit": "MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
