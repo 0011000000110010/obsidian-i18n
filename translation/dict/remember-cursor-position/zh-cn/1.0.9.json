@@ -1,0 +1,19 @@
+{
+  "manifest": {
+    "translationVersion": -639075600000,
+    "pluginVersion": "1.0.9"
+  },
+  "description": {
+    "original": "Remember cursor and scroll position for each note",
+    "translation": "记住每个笔记的光标和滚动位置"
+  },
+  "dict": {
+    ".setName('Data file name')": ".setName('数据文件名称')",
+    ".setName('Delay after opening a new note')": ".setName('打开新笔记后的延迟')",
+    ".setName('Delay between saving the cursor position to file')": ".setName('保存光标位置到文件的延迟时间')",
+    ".setDesc('Save positions to this file')": ".setDesc('保存位置到此文件')",
+    ".setDesc(\"Useful for multi-device users. If you don't want to wait until closing Obsidian to the cursor position been saved.\")": ".setDesc(\"适用于多设备用户。如果你不想等到关闭Obsidian后才保存光标位置，可以使用此功能\")",
+    ".setPlaceholder('Example: cursor-positions.json')": ".setPlaceholder('示例：光标位置.json')",
+    ".createEl('h2', { text: 'Remember cursor position - Settings' })": ".createEl('h2', { text: '记住光标位置 - 设置' })"
+  }
+}

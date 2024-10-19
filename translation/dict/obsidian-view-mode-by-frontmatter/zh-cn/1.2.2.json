@@ -1,0 +1,34 @@
+{
+  "manifest": {
+    "translationVersion": -639075600000,
+    "pluginVersion": "1.2.2"
+  },
+  "description": {
+    "original": "This plugin allows to force the view mode and editing mode for a note by using front matter",
+    "translation": "This plugin allows to force the view mode and editing mode for a note by using front matter"
+  },
+  "dict": {
+    ".error(\"ForceViewMode: This folder already has a template associated with\", newFolder)": ".error(\"ForceViewMode: This folder already has a template associated with\", newFolder)",
+    ".error(\"ForceViewMode: Pattern already exists\", value)": ".error(\"ForceViewMode: Pattern already exists\", value)",
+    "text: \"obsidianUIMode\"": "text: \"obsidianUIMode\"",
+    "text: \"source\"": "text: \"source\"",
+    "text: \"preview\"": "text: \"preview\"",
+    "text: \"obsidianEditingMode\"": "text: \"obsidianEditingMode\"",
+    "text: \"live\"": "text: \"live\"",
+    ".setButtonText(\"+\")": ".setButtonText(\"+\")",
+    ".setName(\"Ignore opened files\")": ".setName(\"忽略打开的文件\")",
+    ".setName(\"Ignore force view when not in frontmatter\")": ".setName(\"Ignore force view when not in frontmatter\")",
+    ".setName(\"Debounce timeout in milliseconds\")": ".setName(\"防抖超时（以毫秒为单位）\")",
+    ".setDesc(\"Never change the view mode on a note which was already open.\")": ".setDesc(\"切勿更改已打开的笔记的查看模式。\")",
+    ".setDesc(\"Never change the view mode on a note that was opened from another one in a certain view mode\")": ".setDesc(\"切勿更改在特定视图模式下从另一个笔记打开的笔记的视图模式\")",
+    ".setDesc(`Debounce timeout is the time in milliseconds after which the view mode is set. Set \"0\" to disable debouncing (default value is \"300\"). If you experience issues with the plugin, try increasing this value.`)": ".setDesc(`防抖超时是设置视图模式的时间（以毫秒为单位）。设置 “0” 以禁用防抖动 （默认值为 “300”）。如果您在使用插件时遇到问题，请尝试增加此值。`)",
+    ".setDesc(\"Add new folder\")": ".setDesc(\"添加新文件夹\")",
+    ".setDesc(\"Add new file\")": ".setDesc(\"添加新文件\")",
+    ".setPlaceholder(\"Example: folder1/templates\")": ".setPlaceholder(\"例如： folder1/templates\")",
+    ".setPlaceholder(`Example: \" - All$\" or \"1900-01\")`)": ".setPlaceholder(`例如： \" - All$\" or \"1900-01\")`)",
+    ".setTooltip(\"Add another folder to the list\")": ".setTooltip(\"向列表添加其他文件夹\")",
+    ".setTooltip(\"Delete\")": ".setTooltip(\"删除\")",
+    ".setTooltip(\"Add another file to the list\")": ".setTooltip(\"将其他文件添加到列表中\")",
+    ".setName(\"Ignore force view when not in frontmatter \")": ".setName(\"不在 frontmatter 中时忽略 force 视图\")"
+  }
+}
