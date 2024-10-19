@@ -1,14 +1,1100 @@
 [
     {
+        "id": "advanced-canvas",
+        "translations": {
+            "3.1.0": -639075600000
+        }
+    },
+    {
+        "id": "aprils-automatic-timelines",
+        "translations": {
+            "0.13.6": -639075600000
+        }
+    },
+    {
+        "id": "attachment-flow-plugin",
+        "translations": {
+            "0.4.3": -639075600000
+        }
+    },
+    {
+        "id": "attachment-management",
+        "translations": {
+            "0.9.15": -639075600000
+        }
+    },
+    {
+        "id": "auto-card-link",
+        "translations": {
+            "1.2.3": -639075600000
+        }
+    },
+    {
+        "id": "background-image",
+        "translations": {
+            "1.2.0": -639075600000
+        }
+    },
+    {
+        "id": "better-export-pdf",
+        "translations": {
+            "1.9.2": -639075600000
+        }
+    },
+    {
+        "id": "better-fn",
+        "translations": {
+            "1.0.1": -639075600000
+        }
+    },
+    {
+        "id": "better-recall",
+        "translations": {
+            "0.0.1": -639075600000
+        }
+    },
+    {
+        "id": "better-word-count",
+        "translations": {
+            "0.10.1": -639075600000
+        }
+    },
+    {
+        "id": "buttons",
+        "translations": {
+            "0.5.1": -639075600000
+        }
+    },
+    {
+        "id": "calendar",
+        "translations": {
+            "1.5.10": -639075600000
+        }
+    },
+    {
+        "id": "calendar-beta",
+        "translations": {
+            "2.0.0": -639075600000
+        }
+    },
+    {
+        "id": "callout-manager",
+        "translations": {
+            "1.1.0": -639075600000
+        }
+    },
+    {
+        "id": "callout-suggestions",
+        "translations": {
+            "1.0.2": -639075600000
+        }
+    },
+    {
+        "id": "card-board",
+        "translations": {
+            "0.7.9": -639075600000
+        }
+    },
+    {
+        "id": "cmdr",
+        "translations": {
+            "0.5.1": -639075600000
+        }
+    },
+    {
+        "id": "cmenu-plugin",
+        "translations": {
+            "1.1.2": -639075600000
+        }
+    },
+    {
+        "id": "code-styler",
+        "translations": {
+            "1.1.7": -639075600000
+        }
+    },
+    {
+        "id": "colored-tags",
+        "translations": {
+            "5.0.1": -639075600000
+        }
+    },
+    {
+        "id": "consistent-attachments-and-links",
+        "translations": {
+            "3.21.2": -639075600000
+        }
+    },
+    {
+        "id": "copilot",
+        "translations": {
+            "2.6.6": -639075600000
+        }
+    },
+    {
+        "id": "copy-image",
+        "translations": {
+            "1.0.8": -639075600000
+        }
+    },
+    {
+        "id": "creases",
+        "translations": {
+            "0.7.0": -639075600000
+        }
+    },
+    {
+        "id": "custom-font-loader",
+        "translations": {
+            "1.5.5": -639075600000
+        }
+    },
+    {
+        "id": "custom-sort",
+        "translations": {
+            "2.1.14": -639075600000
+        }
+    },
+    {
+        "id": "customizable-menu",
+        "translations": {
+            "2.2.0": -639075600000
+        }
+    },
+    {
+        "id": "dataview",
+        "translations": {
+            "0.5.67": -639075600000
+        }
+    },
+    {
+        "id": "dbfolder",
+        "translations": {
+            "3.5.1": -639075600000
+        }
+    },
+    {
+        "id": "digitalgarden",
+        "translations": {
+            "2.57.2": -639075600000
+        }
+    },
+    {
+        "id": "docxer",
+        "translations": {
+            "2.0.1": -639075600000
+        }
+    },
+    {
+        "id": "editing-toolbar",
+        "translations": {
+            "2.4.16": -639075600000
+        }
+    },
+    {
+        "id": "editor-width-slider",
+        "translations": {
+            "1.0.5": -639075600000
+        }
+    },
+    {
         "id": "emoji-shortcodes",
         "translations": {
-            "2.2.0": 1728981988932
+            "2.2.0": -639075600000
+        }
+    },
+    {
+        "id": "execute-code",
+        "translations": {
+            "1.12.0": -639075600000
+        }
+    },
+    {
+        "id": "file-explorer-note-count",
+        "translations": {
+            "1.2.2": -639075600000
+        }
+    },
+    {
+        "id": "file-order",
+        "translations": {
+            "0.0.11": -639075600000
+        }
+    },
+    {
+        "id": "file-tree-alternative",
+        "translations": {
+            "2.6.0": -639075600000
+        }
+    },
+    {
+        "id": "find-unlinked-files",
+        "translations": {
+            "1.10.1": -639075600000
+        }
+    },
+    {
+        "id": "floating-toc",
+        "translations": {
+            "2.4.7": -639075600000
+        }
+    },
+    {
+        "id": "folder-notes",
+        "translations": {
+            "1.7.30": -639075600000
+        }
+    },
+    {
+        "id": "frontmatter-alias-display",
+        "translations": {
+            "1.0.1": -639075600000
+        }
+    },
+    {
+        "id": "global-proxy",
+        "translations": {
+            "1.0.4": -639075600000
+        }
+    },
+    {
+        "id": "global-search-and-replace",
+        "translations": {
+            "0.3.0": -639075600000
+        }
+    },
+    {
+        "id": "hash-pasted-image",
+        "translations": {
+            "1.1.1": -639075600000
+        }
+    },
+    {
+        "id": "highlightr-plugin",
+        "translations": {
+            "1.2.2": -639075600000
+        }
+    },
+    {
+        "id": "homepage",
+        "translations": {
+            "4.0.4": -639075600000
+        }
+    },
+    {
+        "id": "image-converter",
+        "translations": {
+            "1.1.7": -639075600000
+        }
+    },
+    {
+        "id": "image2latex",
+        "translations": {
+            "1.1.2": -639075600000
+        }
+    },
+    {
+        "id": "ink",
+        "translations": {
+            "0.2.6": -639075600000
+        }
+    },
+    {
+        "id": "journaling",
+        "translations": {
+            "1.0.0": -639075600000
+        }
+    },
+    {
+        "id": "lazy-plugins",
+        "translations": {
+            "1.0.18": -639075600000
+        }
+    },
+    {
+        "id": "legacy-vault-switcher",
+        "translations": {
+            "1.0.0": -639075600000
+        }
+    },
+    {
+        "id": "link-favicon",
+        "translations": {
+            "1.8.4": -639075600000
+        }
+    },
+    {
+        "id": "links",
+        "translations": {
+            "1.17.19": -639075600000
+        }
+    },
+    {
+        "id": "longform",
+        "translations": {
+            "2.0.7": -639075600000
+        }
+    },
+    {
+        "id": "loom",
+        "translations": {
+            "1.20.3": -639075600000
+        }
+    },
+    {
+        "id": "lovely-mindmap",
+        "translations": {
+            "1.0.4": -639075600000
+        }
+    },
+    {
+        "id": "lyrics",
+        "translations": {
+            "1.1.0": -639075600000
+        }
+    },
+    {
+        "id": "make-md",
+        "translations": {
+            "0.9.1007": -639075600000
+        }
+    },
+    {
+        "id": "mathlinks",
+        "translations": {
+            "0.5.3": -639075600000
+        }
+    },
+    {
+        "id": "media-extended",
+        "translations": {
+            "3.2.6": -639075600000
+        }
+    },
+    {
+        "id": "meld-encrypt",
+        "translations": {
+            "2.3.7": -639075600000
+        }
+    },
+    {
+        "id": "memos-sync",
+        "translations": {
+            "0.4.3": -639075600000
+        }
+    },
+    {
+        "id": "mesh-ai",
+        "translations": {
+            "1.2.6": -639075600000
+        }
+    },
+    {
+        "id": "metadata-menu",
+        "translations": {
+            "0.8.7": -639075600000
+        }
+    },
+    {
+        "id": "metafolders",
+        "translations": {
+            "1.1.4": -639075600000
+        }
+    },
+    {
+        "id": "mousewheel-image-zoom",
+        "translations": {
+            "1.0.22": -639075600000
+        }
+    },
+    {
+        "id": "mrj-jump-to-link",
+        "translations": {
+            "0.5.7": -639075600000
+        }
+    },
+    {
+        "id": "mysnippets-plugin",
+        "translations": {
+            "1.2.3": -639075600000
+        }
+    },
+    {
+        "id": "nldates-obsidian",
+        "translations": {
+            "0.6.2": -639075600000
+        }
+    },
+    {
+        "id": "note-refactor-obsidian",
+        "translations": {
+            "1.8.2": -639075600000
+        }
+    },
+    {
+        "id": "notion-like-tables",
+        "translations": {
+            "8.16.1": -639075600000
+        }
+    },
+    {
+        "id": "novel-word-count",
+        "translations": {
+            "3.11.1": -639075600000
+        }
+    },
+    {
+        "id": "number-headings-obsidian",
+        "translations": {
+            "1.16.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-admonition",
+        "translations": {
+            "10.3.2": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-advanced-slides",
+        "translations": {
+            "1.20.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-advanced-uri",
+        "translations": {
+            "1.44.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-annotator",
+        "translations": {
+            "0.2.11": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-another-quick-switcher",
+        "translations": {
+            "11.6.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-attachment-name-formatting",
+        "translations": {
+            "2.1.8": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-auto-hide",
+        "translations": {
+            "0.4.8": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-auto-link-title",
+        "translations": {
+            "1.5.4": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-banners",
+        "translations": {
+            "1.3.3": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-bartender",
+        "translations": {
+            "0.5.17-1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-better-command-palette",
+        "translations": {
+            "0.17.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-book-search-plugin",
+        "translations": {
+            "0.7.4": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-calibre-plugin",
+        "translations": {
+            "1.0.8": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-camera",
+        "translations": {
+            "1.8.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-charts",
+        "translations": {
+            "3.9.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-checklist-plugin",
+        "translations": {
+            "2.2.13": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-clipper",
+        "translations": {
+            "0.2.9": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-comments",
+        "translations": {
+            "0.2.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-copy-block-link",
+        "translations": {
+            "1.0.4": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-custom-attachment-location",
+        "translations": {
+            "4.22.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-custom-frames",
+        "translations": {
+            "2.4.7": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-daily-note-outline",
+        "translations": {
+            "1.5.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-day-and-night",
+        "translations": {
+            "1.2.1": -639075600000
         }
     },
     {
         "id": "obsidian-day-planner",
         "translations": {
-            "0.24.0": 639075600000
+            "0.22.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-emoji-toolbar",
+        "translations": {
+            "0.4.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-file-link",
+        "translations": {
+            "1.1.4": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-folder-focus-mode",
+        "translations": {
+            "0.9.13": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-folder-index",
+        "translations": {
+            "1.0.26": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-footnotes",
+        "translations": {
+            "0.1.3": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-full-calendar",
+        "translations": {
+            "0.10.7": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-git",
+        "translations": {
+            "2.26.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-hider",
+        "translations": {
+            "1.5.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-hotkeys-for-specific-files",
+        "translations": {
+            "1.4.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-hover-editor",
+        "translations": {
+            "0.11.20": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-icon-folder",
+        "translations": {
+            "2.14.3": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-image-layouts",
+        "translations": {
+            "0.15.5": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-imgur-plugin",
+        "translations": {
+            "2.6.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-importer",
+        "translations": {
+            "1.6.5": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-kanban",
+        "translations": {
+            "2.0.51": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-languagetool-plugin",
+        "translations": {
+            "0.3.7": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-latex-suite",
+        "translations": {
+            "1.9.5": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-list-callouts",
+        "translations": {
+            "1.2.8": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-livesync",
+        "translations": {
+            "0.23.23": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-local-images-plus",
+        "translations": {
+            "0.15.9": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-local-rest-api",
+        "translations": {
+            "2.5.4": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-map-view",
+        "translations": {
+            "5.0.3": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-meta-bind-plugin",
+        "translations": {
+            "1.2.2": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-mind-map",
+        "translations": {
+            "1.1.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-minimal-settings",
+        "translations": {
+            "8.1.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-mkdocs-publisher",
+        "translations": {
+            "7.3.2": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-omnivore",
+        "translations": {
+            "1.10.4": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-outliner",
+        "translations": {
+            "4.8.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-pandoc",
+        "translations": {
+            "0.4.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-paste-image-rename",
+        "translations": {
+            "1.6.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-plugin-groups",
+        "translations": {
+            "2.1.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-projects",
+        "translations": {
+            "1.17.4": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-prozen",
+        "translations": {
+            "0.3": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-regex-replace",
+        "translations": {
+            "1.2.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-relative-line-numbers",
+        "translations": {
+            "3.0.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-reminder-plugin",
+        "translations": {
+            "1.1.15": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-sidebar-expand-on-hover",
+        "translations": {
+            "1.0.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-style-settings",
+        "translations": {
+            "1.0.9": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-table-generator",
+        "translations": {
+            "1.4.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-tagfolder",
+        "translations": {
+            "0.18.7": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-task-progress-bar",
+        "translations": {
+            "2.0.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-tasks-plugin",
+        "translations": {
+            "7.10.0": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-textgenerator-plugin",
+        "translations": {
+            "0.7.37": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-to-flomo",
+        "translations": {
+            "0.1.9": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-trash-explorer",
+        "translations": {
+            "1.2.3": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-view-mode-by-frontmatter",
+        "translations": {
+            "1.2.2": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-zoom",
+        "translations": {
+            "1.1.2": -639075600000
+        }
+    },
+    {
+        "id": "obsidian42-brat",
+        "translations": {
+            "1.0.2": -639075600000
+        }
+    },
+    {
+        "id": "obsidian42-text-transporter",
+        "translations": {
+            "1.0.11": -639075600000
+        }
+    },
+    {
+        "id": "omnisearch",
+        "translations": {
+            "1.24.1": -639075600000
+        }
+    },
+    {
+        "id": "open-gate",
+        "translations": {
+            "1.11.6": -639075600000
+        }
+    },
+    {
+        "id": "open-with",
+        "translations": {
+            "0.3.2": -639075600000
+        }
+    },
+    {
+        "id": "outliner-md",
+        "translations": {
+            "0.1.9": -639075600000
+        }
+    },
+    {
+        "id": "oz-clear-unused-images",
+        "translations": {
+            "1.1.1": -639075600000
+        }
+    },
+    {
+        "id": "oz-image-plugin",
+        "translations": {
+            "2.2.6": -639075600000
+        }
+    },
+    {
+        "id": "pdf-plus",
+        "translations": {
+            "0.40.11": -639075600000
+        }
+    },
+    {
+        "id": "periodic-notes",
+        "translations": {
+            "0.0.17": -639075600000
+        }
+    },
+    {
+        "id": "pomodoro-widget",
+        "translations": {
+            "1.0.1": -639075600000
+        }
+    },
+    {
+        "id": "quick-links",
+        "translations": {
+            "0.2.5": -639075600000
+        }
+    },
+    {
+        "id": "quickadd",
+        "translations": {
+            "1.11.1": -639075600000
+        }
+    },
+    {
+        "id": "recent-files-obsidian",
+        "translations": {
+            "1.5.0": -639075600000
+        }
+    },
+    {
+        "id": "remember-cursor-position",
+        "translations": {
+            "1.0.9": -639075600000
+        }
+    },
+    {
+        "id": "reveal-active-file-button",
+        "translations": {
+            "2.0.3": -639075600000
+        }
+    },
+    {
+        "id": "settings-search",
+        "translations": {
+            "1.3.10": -639075600000
+        }
+    },
+    {
+        "id": "share-note",
+        "translations": {
+            "0.8.16": -639075600000
+        }
+    },
+    {
+        "id": "simpread",
+        "translations": {
+            "2.1.1": -639075600000
+        }
+    },
+    {
+        "id": "smart-connections",
+        "translations": {
+            "2.1.101": -639075600000
+        }
+    },
+    {
+        "id": "soundscapes",
+        "translations": {
+            "1.4.0": -639075600000
+        }
+    },
+    {
+        "id": "table-editor-obsidian",
+        "translations": {
+            "0.22.0": -639075600000
+        }
+    },
+    {
+        "id": "tag-page-preview",
+        "translations": {
+            "0.0.12": -639075600000
+        }
+    },
+    {
+        "id": "tag-summary-plugin",
+        "translations": {
+            "2.1.5": -639075600000
+        }
+    },
+    {
+        "id": "tag-wrangler",
+        "translations": {
+            "0.6.1": -639075600000
+        }
+    },
+    {
+        "id": "tasks-calendar-wrapper",
+        "translations": {
+            "0.3.1": -639075600000
+        }
+    },
+    {
+        "id": "templater-obsidian",
+        "translations": {
+            "2.7.3": -639075600000
+        }
+    },
+    {
+        "id": "text-extractor",
+        "translations": {
+            "0.5.2": -639075600000
+        }
+    },
+    {
+        "id": "translate",
+        "translations": {
+            "1.4.9": -639075600000
+        }
+    },
+    {
+        "id": "update-time-on-edit",
+        "translations": {
+            "2.5.0": -639075600000
+        }
+    },
+    {
+        "id": "url-into-selection",
+        "translations": {
+            "1.7.0": -639075600000
+        }
+    },
+    {
+        "id": "various-complements",
+        "translations": {
+            "9.1.0": -639075600000
+        }
+    },
+    {
+        "id": "vault-explorer",
+        "translations": {
+            "1.46.0": -639075600000
+        }
+    },
+    {
+        "id": "virtual-linker",
+        "translations": {
+            "1.5.0": -639075600000
+        }
+    },
+    {
+        "id": "workspaces-plus",
+        "translations": {
+            "0.4.16": -639075600000
+        }
+    },
+    {
+        "id": "wucai-highlights-official",
+        "translations": {
+            "24.9.2": -639075600000
+        }
+    },
+    {
+        "id": "zen",
+        "translations": {
+            "0.6.5": -639075600000
         }
     }
 ]
