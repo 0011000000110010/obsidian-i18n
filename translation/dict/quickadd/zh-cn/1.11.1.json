@@ -34,7 +34,7 @@
     ".setName(\"Focus new pane\")": ".setName(\"聚焦新面板\")",
     ".setName(\"Write to bottom of file\")": ".setName(\"写入文件底部\")",
     ".setName(\"Task\")": ".setName(\"任务\")",
-    ".setName(\"Insert after\")": ".setName(\"在后面插入\")",
+    ".setName(\"Insert after\")": ".setName(\"在后面\")",
     ".setName(\"Insert at end of section\")": ".setName(\"在节末插入\")",
     ".setName(\"Consider subsections\")": ".setName(\"考虑子小节\")",
     ".setName(\"Create line if not found\")": ".setName(\"如果未找到则创建行\")",
