@@ -1,0 +1,32 @@
+{
+    "manifest": {
+        "translationVersion": 1729374055861,
+        "pluginVersion": "1.5.1"
+    },
+    "description": {
+        "original": "Hides & Toggles configured folders (e.g. attachments folders).",
+        "translation": "隐藏和切换已配置的文件夹（例如附件文件夹）"
+    },
+    "dict": {
+        ".log(\"loading plugin hide-folders\")": ".log(\"加载插件隐藏文件夹\")",
+        "name: \"Toggle visibility of hidden folders\"": "name: \"切换隐藏文件夹的可见性\"",
+        ".setName(\"Folders to hide\")": ".setName(\"要隐藏的文件夹\")",
+        ".setName(\"Ignore Upper/lowercase\")": ".setName(\"忽略大小写\")",
+        ".setName(\"Hide folders\")": ".setName(\"隐藏文件夹\")",
+        ".setName(\"Add Hidden Folders to Obsidian Exclusion-List\")": ".setName(\"将隐藏文件夹添加到黑曜石排除列表\")",
+        ".setName('Hide bottom status-bar \"Folders are Hidden\" indicator')": ".setName('隐藏底部状态栏“文件夹已隐藏”指示器')",
+        ".setName(\"[EXPERIMENTAL] Compatibility: quick-explorer by pjeby\")": ".setName(\"[实验]兼容性：pjeby的快速浏览器\")",
+        ".setName(\"GitHub\")": ".setName(\"github\")",
+        ".setName(\"Donate\")": ".setName(\"捐赠\")",
+        ".setDesc(\"The names of the folders to hide, one per line. Either exact folder-names, startsWith::FOLDERPREFIX, or endsWith::FOLDERSUFFIX\")": ".setDesc(\"要隐藏的文件夹的名称，每行一个。确切的文件夹名称，以：FOLDERPREFIX开头，或以：FOLD SUFFIX结尾\")",
+        ".setDesc(\"If enabled, 'SOMEFOLDER', 'someFolder', or 'sOmeFoldEr' will all be treated the same and matched.\")": ".setDesc(\"如果启用，“SOMEFOLDER”、“SOMEFOLDER”或“SOMEFOLDER”将被同等对待并匹配。\")",
+        ".setDesc(\"If the configured folders should be hidden or not\")": ".setDesc(\"是否应隐藏配置的文件夹\")",
+        ".setDesc(\"Excluded files will be hidden in Search, Graph View, and Unlinked Mentions, less noticeable in Quick Switcher and link suggestions.\")": ".setDesc(\"排除的文件将隐藏在搜索、图形视图和未链接提及中，在快速切换器和链接建议中不太明显。\")",
+        ".setDesc(\"If enable there will be no bottom-bar indicator-text telling you if this plugin is active.\")": ".setDesc(\"如果启用，则不会有底部栏指示器文本告诉您此插件是否处于活动状态。\")",
+        ".setDesc(\"[WARNING: UNSTABLE] Also hide hidden folders in the https://github.com/pjeby/quick-explorer plugin. Not affiliated with quick-explorer's author.\")": ".setDesc(\"[警告：不稳定]同时隐藏https://github.com/pjeby/quick-explorer插件。与《快速探索者》的作者无关。\")",
+        ".setDesc(\"Report Issues or Ideas, see the Source Code and Contribute.\")": ".setDesc(\"报告问题或想法，请参阅源代码和贡献。\")",
+        ".setDesc(\"If you like this open-source plugin, consider a small tip to support my unpaid work.\")": ".setDesc(\"如果你喜欢这个开源插件，可以考虑一个小建议来支持我的无偿工作。\")",
+        ".setPlaceholder(\"attachments\\nendsWith::_attachments\")": ".setPlaceholder(\"附件包含：_附件\")",
+        ".innerText = \"Experimental & Unstable Settings\"": ".innerText = \"实验 & 不稳定的设置\""
+    }
+}
