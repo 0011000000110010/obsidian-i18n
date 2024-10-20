@@ -1,0 +1,17 @@
+{
+  "manifest": {
+    "translationVersion": 1729433596058,
+    "pluginVersion": "0.8.5"
+  },
+  "description": {
+    "original": "这是一个连接pkmer.cn的插件",
+    "translation": "这是一个连接pkmer.cn的插件"
+  },
+  "dict": {
+    ".setName(\"Tips\")": ".setName(\"提示\")",
+    ".setName(\"🥚打开PKMer Market\")": ".setName(\"🥚打开PKMer 插件市场\")",
+    ".setDesc(\"Default token for pkmer downloader\")": ".setDesc(\"pkmer下载器的默认令牌\")",
+    ".createEl(\"h1\",{text:\"Obsidian PKMer Market\"})": ".createEl(\"h1\",{text:\"Obsidian PKMer 插件市场\"})",
+    "\"Open Pkmer Market\"": "\"打开 Pkmer 插件市场\""
+  }
+}
