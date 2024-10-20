@@ -279,7 +279,7 @@
         "id": "homepage",
         "translations": {
             "4.0.4": -639075600000,
-            "4.0.6":1729375366234
+            "4.0.6": 1729375366234
         }
     },
     {
@@ -1105,9 +1105,15 @@
         }
     },
     {
-        "id":"hide-folders",
+        "id": "hide-folders",
         "translations": {
             "1.5.1": 1729374055861
+        }
+    },
+    {
+        "id": "obsidian-react-components",
+        "translations": {
+            "v1": 1729410221634
         }
     }
 ]
