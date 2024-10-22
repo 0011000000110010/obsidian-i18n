@@ -1122,5 +1122,11 @@
         "translations": {
             "0.1.5": 1729479263108
         }
+    },
+    {
+        "id": "cm-typewriter-scroll-obsidian",
+        "translations": {
+            "0.2.2": 1729440134559
+        }
     }
 ]
