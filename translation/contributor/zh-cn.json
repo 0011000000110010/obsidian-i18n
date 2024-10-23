@@ -1,9 +1,17 @@
 [
     {
-        "login":"",
-        "name":"",
-        "url":"",
-        "translation":0,
-        "modification":0
+        "login": "",
+        "name": "",
+        "url": "",
+        "translation": 0,
+        "modification": 0
+    },
+    {
+        "login": "ob-i18n",
+        "name": "ob-i18n",
+        "url": "https://gitee.com/ob-i18n",
+        "translation": 24,
+        "modification": 0,
+        "del": 0
     }
 ]
