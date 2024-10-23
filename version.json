@@ -1,5 +1,5 @@
 {
-    "version": "1.4.9",
-    "content": "修复 审核提交时不写入目录的问题",
+    "version": "1.5.0",
+    "content": "修复 默认不显示详情的问题\n修复 搜索栏下方 边距过大的问题\n新增 检查更新可自定义开关\n新增 译文编辑器 描述原文字段\n新增 审核编辑器 描述原文字段\n新增 共建云端 描述原文字段\n新增 贡献榜单\n提示 旧版本将不再提供免费的token\n提示 请升级至最新版本",
     "token": "MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
