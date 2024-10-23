@@ -1,8 +1,9 @@
 import { Setting } from "obsidian";
-import BaseSetting from "./base-setting";
+import BaseSetting from "../base-setting";
 import { t } from "src/lang/inxdex";
 import { API_TYPES } from "src/data/data";
 import { API } from '../../api';
+import { NoticeOperationResult } from "src/utils";
 
 
 // 自动更新
@@ -39,10 +40,10 @@ export default class I18nModeNIT extends BaseSetting {
         );
         i18nNITAPI.addButton(cb => cb
             .setButtonText(t('SETTING_NIT_TEST_BUTTON_TEXT'))
-            .onClick(() => {
+            .onClick(async () => {
                 switch (this.settings.I18N_NIT_API) {
                     case 'BAIDU':
-                        api.baiduTest();
+                        if ((await api.baiduAPI('i18n')).state) NoticeOperationResult('百度', true);
                         break
                     case 'OPENAI':
                         api.openAITest();

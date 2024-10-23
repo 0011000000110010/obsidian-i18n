@@ -1,11 +1,7 @@
 import { ApiTypes, BaiduErrorCode, Languages } from "./types"
 
 export const LANGUAGES: Languages = {
-    "zh-cn": "简体中文",
-    "zh-tw": "繁體中文",
-    "en": "English",
-    "ru": "Русский",
-    'custom ': "自定义"
+    "zh-cn": "简体中文"
 }
 
 export const API_TYPES: ApiTypes = {

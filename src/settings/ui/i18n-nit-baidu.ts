@@ -1,7 +1,6 @@
 import { Setting } from "obsidian";
-import BaseSetting from "./base-setting";
+import BaseSetting from "../base-setting";
 import { LangBAIDU } from "src/data/types";
-import { t } from "src/lang/inxdex";
 
 const from_lang: LangBAIDU = {
     'auto': '自动检测',

@@ -1,10 +1,21 @@
-import { Notice, Setting } from "obsidian"
-import BaseSetting from "./base-setting"
+import { Setting } from "obsidian"
+import BaseSetting from "../base-setting"
 import { t } from "src/lang/inxdex";
 import { NoticeError, NoticeOperationResult } from "src/utils";
 
 export default class I18nRE extends BaseSetting {
     main(): void {
+        const i18nIgnore = new Setting(this.containerEl);
+        i18nIgnore.setName('临时正则');
+        i18nIgnore.setDesc('是否开启临时正则表达式');
+        i18nIgnore.addToggle(cb => cb
+            .setValue(this.settings.I18N_RE_TEMP_MODE)
+            .onChange(async () => {
+                this.settings.I18N_RE_TEMP_MODE = !this.settings.I18N_RE_TEMP_MODE;
+                this.i18n.saveSettings();
+            })
+            .toggleEl.addClass('i18n-checkbox')
+        );
         // RE 模式
         const i18nREMode = new Setting(this.containerEl);
         i18nREMode.setName(t('SETTING_RE_MODE_NAME'));
@@ -13,14 +24,6 @@ export default class I18nRE extends BaseSetting {
             .setValue(this.settings.I18N_RE_MODE)
             .setDisabled(true)
         );
-        // i18nREMode.addButton(cb => cb
-        //     .setButtonText(this.settings.I18N_RE_MODE_EDIT ? t('SETTING_PUBLIC_HIDE') : t('SETTING_PUBLIC_SHOW'))
-        //     .onClick(() => {
-        //         this.settings.I18N_RE_MODE_EDIT = !this.settings.I18N_RE_MODE_EDIT;
-        //         this.i18n.saveSettings();
-        //         this.settingTab.reDisplay();
-        //     })
-        // );
 
         // RE 标志
         const i18nREFlags = new Setting(this.containerEl);

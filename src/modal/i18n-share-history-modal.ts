@@ -2,7 +2,7 @@ import { App, ButtonComponent, Modal, Setting } from 'obsidian';
 import I18N from 'main';
 
 // ==============================
-//          首次运行向导
+//          历史提交记录
 // ==============================
 export class ShareHistoryModal extends Modal {
     i18n: I18N;
@@ -17,7 +17,7 @@ export class ShareHistoryModal extends Modal {
         modalEl.addClass('i18n-share-history__container');
         // 删除关闭按钮
         modalEl.removeChild(modalEl.getElementsByClassName('modal-close-button')[0]);
-        this.titleEl.addClass('i18n-share-i18n-share-history__title-box');
+        this.titleEl.addClass('i18n-share-history__title-box');
 
         const titleSetting = new Setting(this.titleEl);
         titleSetting.setClass('i18n-share-history__title');
@@ -30,10 +30,10 @@ export class ShareHistoryModal extends Modal {
     }
 
     public async showMain() {
-        for (const { id, name, type, number } of this.i18n.settings.I18N_SUBMIT_HISTORY) {
+        for (const { name, type, number } of this.i18n.settings.I18N_SHARE_HISTORY) {
             const itemEl = new Setting(this.contentEl);
-            itemEl.setClass('i18n_modal_item');
-            itemEl.nameEl.addClass('i18n_modal_item_title');
+            itemEl.setClass('i18n__item');
+            itemEl.nameEl.addClass('i18n__item-title');
             let label: { color: string; text: string; } = { color: '', text: '' };
             switch (type) {
                 case 0:
@@ -53,9 +53,9 @@ export class ShareHistoryModal extends Modal {
                     break;
             }
             itemEl.nameEl.innerHTML = `
-            <span class="i18n_modal_item_state i18n_modal_item_state_${label.color}">${label.text}</span>
-            <span class="i18n_modal_item_title">${name}</span>`;
-            
+            <span class="i18n__item-state i18n__item-state--${label.color}">${label.text}</span>
+            <span class="i18n__item-title">${name}</span>`;
+
             const viewButton = new ButtonComponent(itemEl.controlEl);
             viewButton.setClass('i18n_modal_item_button');
             viewButton.setButtonText('查看');

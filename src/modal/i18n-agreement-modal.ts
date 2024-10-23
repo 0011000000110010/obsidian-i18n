@@ -1,7 +1,5 @@
 import { App, ButtonComponent, Modal, Setting } from 'obsidian';
 import I18N from 'main';
-import Url from 'src/url';
-import { t } from 'src/lang/inxdex';
 import { NoticeOperationResult } from 'src/utils';
 
 // ==============================

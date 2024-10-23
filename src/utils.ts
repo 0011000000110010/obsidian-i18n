@@ -1,111 +1,71 @@
 import * as fs from 'fs-extra'
-import { Notice, PluginManifest } from 'obsidian';
+import { Notice, PluginManifest, WorkspaceLeaf } from 'obsidian';
 import { State as state, Translation, ValidationOptions } from './data/types';
 import { t } from './lang/inxdex';
+import { deflateSync, inflateSync } from 'zlib';
 
 // ==============================
 //            状态管理类
 // ==============================
 export class State {
 	path: string;
-	stateJson: state = {
-		'state': false,
-		'pluginVersion': '',
-		'translationVersion': ''
-	}
+	stateJson: state = { 'type': '', 'state': false, 'pluginVersion': '', 'translationVersion': 0 }
+	isStateDoc: boolean;
+	stateObj: state;
 
 	constructor(path: string) {
 		this.path = path;
+		this.isStateDoc = fs.pathExistsSync(this.path);
+		this.stateObj = this.isStateDoc ? fs.readJsonSync(this.path) : undefined;
 	}
 
-	/**
-	 * 判断状态文件是否存在
-	 * @returns 返回状态文件是否存在
-	 */
-	public isState() {
-		try {
-			return fs.pathExistsSync(this.path);
-		} catch (error) {
-			new Notice(`⚠ ${error}`);
-			console.error(`⚠ ${error}`);
-		}
-	}
+	public getType(): string { return this.stateObj.type }
+	public getState(): boolean { return this.stateObj.state }
+	public getPluginVersion(): string { return this.stateObj.pluginVersion }
+	public getTranslationVersion(): number { return this.stateObj.translationVersion }
+
+	public setType(v: string) { this.stateObj.type = v; fs.outputJsonSync(this.path, this.stateObj); }
+	public setState(v: boolean) { this.stateObj.state = v; fs.outputJsonSync(this.path, this.stateObj); }
+	public setPluginVersion(v: string) { this.stateObj.pluginVersion = v; fs.outputJsonSync(this.path, this.stateObj); }
+	public setTranslationVersion(v: number) { this.stateObj.translationVersion = v; fs.outputJsonSync(this.path, this.stateObj); }
 
 	// 增
 	public insert() {
 		try {
+			this.stateObj = this.stateJson;
+			this.isStateDoc = true;
 			fs.outputJsonSync(this.path, this.stateJson);
-		} catch (error) {
-			new Notice(`⚠ ${error}`);
-			console.error(`⚠ ${error}`);
+		} catch (e) {
+			NoticeOperationResult('新增状态文件', false, e);
 		}
 	}
 
 	// 删
 	public delete() {
 		try {
+			this.isStateDoc = false;
 			fs.removeSync(this.path);
-		} catch (error) {
-			new Notice(`⚠ ${error}`);
-			console.error(`⚠ ${error}`);
+		} catch (e) {
+			NoticeOperationResult('删除状态文件', false, e);
 		}
 	}
 
 	// 改
-	public update(is_i18n: boolean, pluginVersion: string, translationVersion: string) {
-		const state: state = {
-			'state': is_i18n,
-			'pluginVersion': pluginVersion,
-			'translationVersion': translationVersion
-		}
-		try {
-			fs.outputJsonSync(this.path, state);
-		} catch (error) {
-			new Notice(`⚠ ${error}`);
-			console.error(`⚠ ${error}`);
-		}
-	}
-
-	// 查
-	public select() {
-		try {
-			return fs.readJsonSync(this.path);
-		} catch (error) {
-			new Notice(`⚠ ${error}`);
-			console.error(`⚠ ${error}`);
-		}
+	public update(t: string, s: boolean, p: string, v: number) {
+		const state: state = { 'type': t, 'state': s, 'pluginVersion': p, 'translationVersion': v };
+		this.stateObj = state;
+		try { fs.outputJsonSync(this.path, state); } catch (e) { NoticeOperationResult('修改状态文件', false, e); }
 	}
 
 	// [重置]
-	public reset() {
-		try {
-			fs.outputJsonSync(this.path, this.stateJson);
-		} catch (error) {
-			new Notice(`⚠ ${error}`);
-			console.error(`⚠ ${error}`);
-		}
-	}
-
-	public state(): boolean {
-		return this.select().state
-	}
-
-	public pluginVersion(): string {
-		return this.select().pluginVersion
-	}
-
-	public translationVersion(): string {
-		return this.select().translationVersion
-	}
+	public reset() { try { fs.outputJsonSync(this.path, this.stateJson); console.log(this.stateJson) } catch (e) { NoticeOperationResult('重置状态文件', false, e); } }
 }
 
-export function generateTranslation(id: string, author: string, version: string, pluginVersion: string, manifestJSON: PluginManifest, mainStr: string, reLength: number, regexps: string[], flags: string): Translation {
+export function generateTranslation(pluginVersion: string, manifestJSON: PluginManifest, mainStr: string, reLength: number, regexps: string[], flags: string): Translation {
 	const description = manifestJSON.description;
 	const translationJson: Translation = {
 		'manifest': {
-			'id': id,
-			'author': author == '' ? '' : author,
-			'version': version,
+			'translationVersion': Date.now(),
 			'pluginVersion': pluginVersion
 		},
 		'description': {
@@ -137,40 +97,34 @@ export function compareVersions(version1: string, version2: string): number {
 	return 0;
 }
 
-export function validateTranslation(json: any, options: ValidationOptions = { checkFormat: true, checkAuthor: true, checkVersion: true, checkTranslations: true }): boolean {
+export function validateTranslation(json: Translation, options: ValidationOptions = { checkFormat: true, checkVersion: true, checkTranslations: true }): boolean {
 	// 自定义检查：检查整体格式  
 	if (options.checkFormat && (!('manifest' in json) || !('description' in json) || !('dict' in json))) {
 		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_A'));
 		return false
 	}
 	// 自定义检查：检查作者  
-	if (options.checkAuthor && (typeof json.manifest !== 'object' || json.manifest === null || typeof json.manifest.author !== 'string' || json.manifest.author === '')) {
-		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_B'));
-		return false
-	}
+	// if (options.checkAuthor && (typeof json.manifest !== 'object' || json.manifest === null || typeof json.manifest.author !== 'string' || json.manifest.author === '')) {
+	// 	NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_B'));
+	// 	return false
+	// }
 	// 自定义检查：检查版本号
-	if (options.checkVersion && (typeof json.manifest !== 'object' || json.manifest === null || !/^\d+(\.\d+){2}$/.test(json.manifest.version))) {
-		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_E'));
-		return false
-	}
+	// if (options.checkVersion && (typeof json.manifest !== 'object' || json.manifest === null || !/^\d+(\.\d+){2}$/.test(json.manifest.version))) {
+	// 	NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_E'));
+	// 	return false
+	// }
 
 	// 自定义检查：检查翻译  
-	let count = 0;
-	if (options.checkTranslations && json.dict) {
-		Object.keys(json.dict).forEach(key => {
-			if (key !== json.dict[key]) {
-				count++;
-			}
-		});
-	}
+	// let count = 0;
+	// if (options.checkTranslations && json.dict) { Object.keys(json.dict).forEach(key => { if (key !== json.dict[key]) count++ }); }
 
-	if ((count * 2) >= Object.keys(json.dict).length) {
-		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), true, t('SUBMITE_INSPECT_NOTICE_C'))
-		return true
-	} else {
-		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_D'))
-		return false
-	}
+	// if ((count * 2) >= Object.keys(json.dict).length) {
+	// 	NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), true, t('SUBMITE_INSPECT_NOTICE_C'))
+	// 	return true
+	// } else {
+	// 	NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_D'))
+	// 	return false
+	// }
 	return true;
 }
 
@@ -226,6 +180,69 @@ export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: 
 		return notice
 	}
 }
+
+// 恢复翻译
+export const restoreTranslate = () => {
+	const event = new KeyboardEvent('keydown', { key: 'a', keyCode: 65, which: 65, code: 'KeyA', altKey: true, bubbles: true, });
+	document.dispatchEvent(event);
+};
+// 清除 Storage 存储的内容
+export const clearStorage = async () => {
+	// clear localStorage
+	const prefix = 'immersiveTranslate';
+	const keys = Object.keys(window.localStorage).filter((v) => v.startsWith(prefix));
+	keys.forEach((v) => { delete window.localStorage[v]; });
+	// clear indexed-db
+	const dbPrefix = 'immersive-translate';
+	await window.indexedDB.databases().then((dbList) => { dbList?.filter((v) => v.name?.startsWith(dbPrefix))?.forEach((v) => { v.name && window.indexedDB.deleteDatabase(v.name); }); }).catch(() => { });
+	// clear window
+	const windowKey = 'mmersiveTranslate';
+	const windowKeys = Object.keys(window).filter((v) => v.indexOf(windowKey) !== -1);
+	// @ts-ignore
+	windowKeys.forEach((v) => { typeof window[v] !== 'undefined' && delete window[v]; });
+};
+
+export const formatTimestamp = (timestamp: number) => {
+	// 创建一个新的 Date 对象  
+	const date = new Date(timestamp);
+
+	// 提取年、月、日、小时、分钟、秒  
+	// const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始，所以需要加1，并且用padStart保证是两位数  
+	const day = String(date.getDate()).padStart(2, '0'); // 用padStart保证是两位数  
+	const hours = String(date.getHours()).padStart(2, '0'); // 用padStart保证是两位数  
+	const minutes = String(date.getMinutes()).padStart(2, '0'); // 用padStart保证是两位数  
+	// const seconds = String(date.getSeconds()).padStart(2, '0'); // 用padStart保证是两位数  
+	// 组装成日期时间字符串  
+	const formattedDate = `${month}月${day}日 ${hours}:${minutes}`;
+	return formattedDate;
+}
+export const formatTimestamp_concise = (timestamp: number) => {
+	const date = new Date(timestamp);
+	const [year, month, day, hours, minutes] = [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0'), String(date.getHours()).padStart(2, '0'), String(date.getMinutes()).padStart(2, '0')];
+	return `${year}/${month}/${day} ${hours}:${minutes}`;
+}
+
+export const deflate = (str: string) => { return deflateSync(str).toString('base64'); }
+export const inflate = (str: string) => { return inflateSync(Buffer.from(str, 'base64')).toString(); }
+
+export const isValidTranslationFormat = (json: Translation | undefined) => {
+	return (json !== undefined && 'manifest' in json && 'translationVersion' in json.manifest && 'pluginVersion' in json.manifest && 'description' in json && 'original' in json.description && 'translation' in json.description && 'dict' in json);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // import { exec, execSync } from 'child_process';

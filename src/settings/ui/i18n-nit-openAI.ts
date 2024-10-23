@@ -1,5 +1,5 @@
 import { Setting } from "obsidian";
-import BaseSetting from "./base-setting";
+import BaseSetting from "../base-setting";
 import { t } from "src/lang/inxdex";
 
 export default class I18nNITOpenAI extends BaseSetting {
@@ -44,7 +44,6 @@ export default class I18nNITOpenAI extends BaseSetting {
         );
 
         const i18nAIOpenAITips = new Setting(this.containerEl);
-        // if (!(this.settings.I18N_MODE_NIT)) i18nAIOpenAITips.setClass('i18n--hidden');
         if (!(this.settings.I18N_NIT_API == 'OPENAI')) i18nAIOpenAITips.setClass('i18n--hidden');
         i18nAIOpenAITips.setName(t('SETTING_NIT_OPENAI_TIP_NAME'));
         i18nAIOpenAITips.setDesc('即prompt，用于指导AI如何翻译，本插件提供默认提示词，如有需要可自行调整。');
