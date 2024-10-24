@@ -1138,5 +1138,11 @@
         "translations": {
             "0.7.4": -639075600000
         }
+    },
+    {
+        "id": "table-extended",
+        "translations": {
+            "1.6.1": 1729781819869
+        }
     }
 ]
