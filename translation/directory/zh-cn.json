@@ -1129,5 +1129,11 @@
         "translations": {
             "0.2.2": 1729440134559
         }
+    },
+    {
+        "id": "privacy-glasses",
+        "translations": {
+            "0.7.4": -639075600000
+        }
     }
 ]
