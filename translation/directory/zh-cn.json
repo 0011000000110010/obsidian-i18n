@@ -1137,5 +1137,11 @@
         "translations": {
             "0.7.4": -639075600000
         }
+    },
+    {
+        "id": "obsidian-linter",
+        "translations": {
+            "1.25.0": 1729778423057
+        }
     }
 ]
