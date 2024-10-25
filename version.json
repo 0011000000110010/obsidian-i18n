@@ -1,5 +1,5 @@
 {
-    "version": "1.5.2",
-    "content": "重写 通知系统\n新增 自动更新功能\n提示 之前提交过译文,有gitee账号\n提示 可联系群主或管理\n提示 申领贡献榜账号",
+    "version": "1.5.3",
+    "content": "修复 协议页面同意按钮失效的问题\n提示 之前提交过译文,有gitee账号\n提示 可联系群主或管理\n提示 申领贡献榜账号",
     "token": "MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
