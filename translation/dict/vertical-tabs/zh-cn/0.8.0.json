@@ -56,6 +56,7 @@
         "tooltip: \"Zen mode\"": "tooltip: \"禅模式\"",
         "tooltip: globalCollapseState ? \"Expand all\" : \"Collapse all\"": "tooltip: globalCollapseState ? \"全部展开\" : \"全部折叠\"",
         "[\"left-sidebar\" /* LeftSidebar */]: \"Left sidebar\"": "[\"left-sidebar\" /* LeftSidebar */]: \"左侧边栏\"",
-        "[\"right-sidebar\" /* RightSidebar */]: \"Right sidebar\"": "[\"right-sidebar\" /* RightSidebar */]: \"右侧边栏\""
+        "[\"right-sidebar\" /* RightSidebar */]: \"Right sidebar\"": "[\"right-sidebar\" /* RightSidebar */]: \"右侧边栏\"",
+        "return \"Vertical tabs\"": "return \"垂直选项卡（Vertical tabs）\""
     }
 }
