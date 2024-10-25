@@ -1150,5 +1150,11 @@
         "translations": {
             "2.2.3": 1729789960651
         }
+    },
+    {
+        "id": "obsidian-stille",
+        "translations": {
+            "1.3.4": 1729787429878
+        }
     }
 ]
