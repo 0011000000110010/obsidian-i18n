@@ -20,6 +20,7 @@
         ".setDesc(\"This is the opacity level for text that is unfocused. This value should be a decimal value from 0.0 to 1.0.\")": ".setDesc(\"这是未聚焦文本的不透明度级别。这个值应该是一个从 0.0 到 1.0 的十进制数值。\")",
         ".setDesc(`Use this to toggle the visibility of the status bar label for ${nameOfApplication}.`)": ".setDesc(`使用这个来切换 ${nameOfApplication} 的状态栏标签的可见性。`)",
         ".setDesc(`Dim the title of the note when ${nameOfApplication} is on.`)": ".setDesc(`当 “${nameOfApplication}” 开启时，调暗笔记的标题。`)",
-        ".setPlaceholder(\"A value from 0.0 to 1.0\")": ".setPlaceholder(\"这是一个从 0.0 到 1.0 的值\")"
+        ".setPlaceholder(\"A value from 0.0 to 1.0\")": ".setPlaceholder(\"这是一个从 0.0 到 1.0 的值\")",
+        ".addRibbonIcon(\"moon\", \"Toggle Stille\"": ".addRibbonIcon(\"moon\", \"行专注开关\""
     }
 }
