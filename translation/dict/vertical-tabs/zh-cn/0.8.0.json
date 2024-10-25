@@ -42,6 +42,20 @@
         ".setTitle(\"Pinned at top\")": ".setTitle(\"固定在顶部\")",
         ".setTitle(\"Pinned at bottom\")": ".setTitle(\"固定在底部\")",
         ".setTitle(\"Recent on top\")": ".setTitle(\"最近的在顶部\")",
-        ".setTitle(\"Recent on bottom\")": ".setTitle(\"最近的在底部\")"
+        ".setTitle(\"Recent on bottom\")": ".setTitle(\"最近的在底部\")",
+        "DEFAULT_GROUP_TITLE = \"Grouped tabs\"": "DEFAULT_GROUP_TITLE = \"选项卡分组\"",
+        "title: \"New Group\"": "title: \"新建分组\"",
+        "tooltip: isEditing ? \"Save\" : \"Edit\"": "tooltip: isEditing ? \"保存\" : \"编辑\"",
+        "tooltip: isHidden ? \"Show\" : \"Hide\"": "tooltip: isHidden ? \"显示\" : \"隐藏\"",
+        "tooltip: \"Show active tabs\"": "tooltip: \"显示活动选项卡开关\"",
+        "tooltip: \"Unpin\"": "tooltip: \"取消固定\"",
+        "tooltip: \"Close tab\"": "tooltip: \"关闭选项卡\"",
+        "tooltip: \"New tab\"": "tooltip: \"新建选项卡\"",
+        "tooltip: \"Hide sidebars\"": "tooltip: \"侧边栏组开关\"",
+        "tooltip: \"Sort tabs\"": "tooltip: \"选项卡排序\"",
+        "tooltip: \"Zen mode\"": "tooltip: \"禅模式\"",
+        "tooltip: globalCollapseState ? \"Expand all\" : \"Collapse all\"": "tooltip: globalCollapseState ? \"全部展开\" : \"全部折叠\"",
+        "[\"left-sidebar\" /* LeftSidebar */]: \"Left sidebar\"": "[\"left-sidebar\" /* LeftSidebar */]: \"左侧边栏\"",
+        "[\"right-sidebar\" /* RightSidebar */]: \"Right sidebar\"": "[\"right-sidebar\" /* RightSidebar */]: \"右侧边栏\""
     }
 }
