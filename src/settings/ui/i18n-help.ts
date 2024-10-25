@@ -1,6 +1,5 @@
 import { Setting } from "obsidian";
 import BaseSetting from "../base-setting";
-import { NoticeError, NoticePrimary, NoticeWarning } from "src/utils";
 import Url from "src/url";
 import { t } from "src/lang/inxdex";
 
@@ -10,7 +9,7 @@ export default class I18nHelp extends BaseSetting {
 		helpEl.setName(t('SETTING_HELP_NAME'));
 		helpEl.addButton(cb => cb
 			.setButtonText('鸣谢')
-			.onClick(() => { NoticePrimary('设计', '\nzero\n曲淡歌', 10000); NoticeError('译文', '\nFENDI\n曲淡歌\n宇桐非\n里安', 10000); NoticeWarning('建议', '\ncuberwu', 10000); })
+			.onClick(() => { this.i18n.notice.primary('设计', '\nzero\n曲淡歌', 10000); this.i18n.notice.error('译文', '\nFENDI\n曲淡歌\n宇桐非\n里安', 10000); this.i18n.notice.warning('建议', '\ncuberwu', 10000); })
 		);
 		helpEl.addButton(cb => cb.setButtonText('文档').onClick(() => { window.open(Url.DOCUMENTATION_TUTORIAL); }));
 		// I18nHelp.addButton(cb => cb

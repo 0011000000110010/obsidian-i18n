@@ -25,7 +25,7 @@ export class WizardModal extends Modal {
         modalEl.addClass('i18n-wizard__container');
         this.contentEl.addClass("i18n-wizard__box");
 
-        this.img = this.contentEl.doc.createElement("img");
+        this.img = this.contentEl.doc.createElement("img"); 
         this.img.addClass('i18n-wizard__img');
         this.img.src = Url.I18N_ICON;
         this.contentEl.appendChild(this.img);

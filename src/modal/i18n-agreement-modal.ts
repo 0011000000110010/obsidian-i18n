@@ -1,6 +1,5 @@
 import { App, ButtonComponent, Modal, Setting } from 'obsidian';
 import I18N from 'main';
-import { NoticeOperationResult } from 'src/utils';
 
 // ==============================
 //          首次运行向导
@@ -61,7 +60,7 @@ export class AgreementModal extends Modal {
         agreeButton.setCta();
         agreeButton.onClick(async () => {
             if (this.areement_1 === true && this.areement_2 === true) {
-                NoticeOperationResult('I18N协议', true);
+                this.i18n.notice.result('I18N协议', true);
                 this.i18n.settings.I18N_AGREEMENT = true;
                 this.i18n.saveSettings();
                 // @ts-ignore
@@ -71,7 +70,7 @@ export class AgreementModal extends Modal {
                 // 关闭
                 this.close();
             } else {
-                NoticeOperationResult('I18N协议', false, '请勾选使用协议');
+                this.i18n.notice.result('I18N协议', false, '请勾选使用协议');
             }
         });
         const consentButton = new ButtonComponent(agreement.controlEl);

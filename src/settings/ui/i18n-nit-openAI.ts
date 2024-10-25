@@ -17,7 +17,7 @@ export default class I18nNITOpenAI extends BaseSetting {
             })
         );
 
-        const i18nNITOpenAIKey = new Setting(this.containerEl);
+        const i18nNITOpenAIKey = new Setting(this.containerEl); 
         i18nNITOpenAIKey.setName('KEY');
         i18nNITOpenAIKey.setDesc('即api key。\n请参考对应服务商的文档说明');
         if (!(this.settings.I18N_NIT_API == 'OPENAI')) i18nNITOpenAIKey.setClass('i18n--hidden');

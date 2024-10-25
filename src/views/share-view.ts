@@ -5,7 +5,7 @@ import I18N from "src/main";
 
 // @ts-ignore
 import { diffWords } from 'diff';
-import { deflate, formatTimestamp_concise, NoticeOperationResult } from 'src/utils';
+import { deflate, formatTimestamp_concise } from 'src/utils';
 
 export const SHARE_VIEW_TYPE = 'i18n-share-view'
 
@@ -26,6 +26,7 @@ export class ShareView extends ItemView {
     constructor(leaf: WorkspaceLeaf, i18n: I18N) {
         super(leaf);
         this.i18n = i18n;
+        this.i18n.notice.reload();
         this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
         this.PluginObj = this.i18n.sharePluginObj;
         this.translationDoc = this.i18n.shareTranslationDoc;
@@ -64,9 +65,9 @@ export class ShareView extends ItemView {
                         // I18N_SHARE_CACHE_LOGIN
                         const res = await this.i18n.api.giteePostIssue(`[提交译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson)), '提交译文');
                         if (res?.state) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${res.data.number}`);
-                        NoticeOperationResult('提交译文', true);
+                        this.i18n.notice.result('提交译文', true);
                     } else {
-                        NoticeOperationResult('提交译文', false, '请检查后重试');
+                        this.i18n.notice.result('提交译文', false, '请检查后重试');
                     }
                 });
             })
@@ -122,7 +123,7 @@ export class ShareView extends ItemView {
                     // } else {
                     //     NoticeOperationResult('更新译文', false, '请检查后重试');
                     // }
-                    NoticeOperationResult('更新译文', false, '暂未开放');
+                    this.i18n.notice.result('更新译文', false, '暂未开放');
                 });
             })
             // 对比器 El

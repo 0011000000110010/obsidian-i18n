@@ -2,7 +2,7 @@ import * as fs from 'fs-extra';
 import { ButtonComponent, ItemView, Notice, SearchComponent, WorkspaceLeaf } from "obsidian";
 import I18N from "src/main";
 import { Translation } from 'src/data/types';
-import { formatTimestamp_concise, NoticeError, NoticeOperationResult, NoticeSuccess } from 'src/utils';
+import { formatTimestamp_concise } from 'src/utils';
 import { t } from 'src/lang/inxdex';
 import { exec } from 'child_process';
 import * as path from 'path';
@@ -22,14 +22,13 @@ export class EditorView extends ItemView {
     constructor(leaf: WorkspaceLeaf, i18n: I18N) {
         super(leaf);
         this.i18n = i18n;
+        this.i18n.notice.reload();
         this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
         this.translationDoc = this.i18n.editorTranslationDoc
     }
 
     onload(): void {
-        // 获取内容
         if (this.translationDoc != '') this.translationJson = fs.readJsonSync(this.translationDoc);
-        // 编辑器DOM
         const editEl = this.contentEl;
         editEl.addClass('i18n-edit__container');
 
@@ -147,14 +146,16 @@ export class EditorView extends ItemView {
                             dictItem.value = dictItem.key;
                             keyCellEl.textContent = dictItem.key;
                             valueCellEl.textContent = dictItem.key;
-                            this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                            this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
+                            // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
                     operateEl.createEl('button', { text: '删除', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             rowEl.remove();
                             this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
-                            this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                            this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
+                            // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
                     const diff = this.diff(dictItem.key, dictItem.value)
@@ -282,15 +283,14 @@ export class EditorView extends ItemView {
                             dictItem.value = dictItem.key;
                             keyCellEl.textContent = dictItem.key;
                             valueCellEl.textContent = dictItem.key;
-                            this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                            this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
                         })
                     });
                     operateEl.createEl('button', { text: '删除', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             rowEl.remove();
                             this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
-                            // countButton.setButtonText(`共${Object.keys(this.translationJson.dict).length.toString()}条数据`);
-                            this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                            this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
                         })
                     });
                     const diff = this.diff(dictItem.key, dictItem.value)
@@ -298,9 +298,9 @@ export class EditorView extends ItemView {
                     valueCellEl.innerHTML = diff.s2;
                     rowEl.scrollIntoView({ behavior: 'auto', block: 'center' });
                     // countButton.setButtonText(`共${Object.keys(this.translationJson.dict).length.toString()}条数据`);
-                    this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                    this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
                 } else {
-                    this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B')));
+                    this.i18n.notice.error(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B'));
                 }
             });
             // 插件DOM
@@ -310,11 +310,12 @@ export class EditorView extends ItemView {
             mainButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
                     const command = `start "" "${path.join(this.translationDoc.split('\\').slice(0, -2).join('\\'), 'main.js')}"`
+                    console.log(command)
                     exec(command, (error) => {
                         if (error) {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), false, error);
                         } else {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), true, '', 1000);
                         }
                     });
                 }
@@ -322,9 +323,9 @@ export class EditorView extends ItemView {
                     const command = `open ${path.join(this.translationDoc.split('\\').slice(0, -2).join('\\'), 'main.js')}`
                     exec(command, (error) => {
                         if (error) {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), false, error);
                         } else {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), true, '', 1000);
                         }
                     });
                 }
@@ -339,9 +340,9 @@ export class EditorView extends ItemView {
                     const command = `start "" "${this.translationDoc}"`
                     exec(command, (error) => {
                         if (error) {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), false, error);
                         } else {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), true, '', 1000);
                         }
                     });
                 }
@@ -349,9 +350,9 @@ export class EditorView extends ItemView {
                     const command = `open ${this.translationDoc}`
                     exec(command, (error) => {
                         if (error) {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), false, error);
                         } else {
-                            this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
+                            this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), true, '', 1000);
                         }
                     });
                 }
@@ -369,16 +370,16 @@ export class EditorView extends ItemView {
                     this.translationDict.forEach(item => { dict[item.key] = item.value; })
                     this.translationJson.dict = dict;
                     fs.writeJsonSync(this.translationDoc, this.translationJson, { spaces: 4 });
-                    this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), true, '', 1000));
+                    this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), true, '', 1000);
                 } catch (error) {
-                    this.notices.push(NoticeOperationResult(t('EDITOR_PUBLIC_HEAD'), false, error));
+                    this.i18n.notice.result(t('EDITOR_PUBLIC_HEAD'), false, error);
                 }
             });
         }
     }
 
     async onunload() {
-        for (const notice of this.notices) { notice.noticeEl.remove(); }
+        this.i18n.notice.reload();
         this.translationDoc = ''
     }
 

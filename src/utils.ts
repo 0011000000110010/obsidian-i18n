@@ -1,19 +1,21 @@
 import * as fs from 'fs-extra'
-import { Notice, PluginManifest, WorkspaceLeaf } from 'obsidian';
+import { App, Notice, PluginManifest, WorkspaceLeaf } from 'obsidian';
 import { State as state, Translation, ValidationOptions } from './data/types';
 import { t } from './lang/inxdex';
 import { deflateSync, inflateSync } from 'zlib';
+import I18N from './main';
 
 // ==============================
 //            状态管理类
 // ==============================
 export class State {
+	i18n: I18N;
 	path: string;
 	stateJson: state = { 'type': '', 'state': false, 'pluginVersion': '', 'translationVersion': 0 }
 	isStateDoc: boolean;
 	stateObj: state;
 
-	constructor(path: string) {
+	constructor(i18n: I18N, path: string) {
 		this.path = path;
 		this.isStateDoc = fs.pathExistsSync(this.path);
 		this.stateObj = this.isStateDoc ? fs.readJsonSync(this.path) : undefined;
@@ -36,7 +38,7 @@ export class State {
 			this.isStateDoc = true;
 			fs.outputJsonSync(this.path, this.stateJson);
 		} catch (e) {
-			NoticeOperationResult('新增状态文件', false, e);
+			this.i18n.notice.result('新增状态文件', false, e);
 		}
 	}
 
@@ -46,7 +48,7 @@ export class State {
 			this.isStateDoc = false;
 			fs.removeSync(this.path);
 		} catch (e) {
-			NoticeOperationResult('删除状态文件', false, e);
+			this.i18n.notice.result('删除状态文件', false, e);
 		}
 	}
 
@@ -54,11 +56,84 @@ export class State {
 	public update(t: string, s: boolean, p: string, v: number) {
 		const state: state = { 'type': t, 'state': s, 'pluginVersion': p, 'translationVersion': v };
 		this.stateObj = state;
-		try { fs.outputJsonSync(this.path, state); } catch (e) { NoticeOperationResult('修改状态文件', false, e); }
+		try { fs.outputJsonSync(this.path, state); } catch (e) { this.i18n.notice.result('修改状态文件', false, e); }
 	}
 
 	// [重置]
-	public reset() { try { fs.outputJsonSync(this.path, this.stateJson); console.log(this.stateJson) } catch (e) { NoticeOperationResult('重置状态文件', false, e); } }
+	public reset() { try { fs.outputJsonSync(this.path, this.stateJson); console.log(this.stateJson) } catch (e) { this.i18n.notice.result('重置状态文件', false, e); } }
+}
+
+export class Notification {
+	app: App;
+	i18n: I18N;
+	notices: Notice[] = [];
+	constructor(app: App, i18n: I18N) {
+		this.app = app;
+		this.i18n = i18n;
+	}
+	primary(prefix: string, text: unknown, duration = 4000) {
+		const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+		const notice = new Notice(`[${prefix}] ${text}`, duration)
+		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--primary`);
+		this.addNotice(notice);
+	}
+	success(prefix: string, text: unknown, duration = 4000) {
+		const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+		const notice = new Notice(`[${prefix}] ${text}`, duration)
+		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
+		this.addNotice(notice);
+	}
+	info(prefix: string, text: unknown, duration = 4000) {
+		const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+		const notice = new Notice(`[${prefix}] ${text}`, duration)
+		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--info`);
+		this.addNotice(notice);
+	}
+	warning(prefix: string, text: unknown, duration = 4000) {
+		const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+		const notice = new Notice(`[${prefix}] ${text}`, duration);
+		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--warning`);
+		this.addNotice(notice);
+	}
+	error(prefix: string, text: unknown, duration = 10000) {
+		const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+		const notice = new Notice(`[${prefix}] ${text}`, duration);
+		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
+		this.addNotice(notice);
+	}
+	result(prefix: string, isSuccess: boolean, text: unknown = "", duration = 4000) {
+		const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+		if (isSuccess) {
+			if (text != "") {
+				const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration)
+				notice.noticeEl.addClass(`notice__${hasClass ? 'dark' : 'light'}--success`)
+				this.addNotice(notice);
+			}
+			else {
+				const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration)
+				notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
+				this.addNotice(notice);
+			}
+		} else {
+			const notice = new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000)
+			notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
+			this.addNotice(notice);
+		}
+	}
+	reload() {
+		// for (const notice of this.notices) { notice.noticeEl.remove(); }
+		this.notices.forEach(notice => notice.noticeEl.remove());
+		this.notices.length = 0;
+	}
+
+	private addNotice(notice: Notice) {
+		if (this.notices.length >= 100) {
+			this.notices[0].noticeEl.remove();
+			this.notices.shift();
+		}
+		this.notices.push(notice);
+		console.log(this.notices);
+	}
 }
 
 export function generateTranslation(pluginVersion: string, manifestJSON: PluginManifest, mainStr: string, reLength: number, regexps: string[], flags: string): Translation {
@@ -100,7 +175,7 @@ export function compareVersions(version1: string, version2: string): number {
 export function validateTranslation(json: Translation, options: ValidationOptions = { checkFormat: true, checkVersion: true, checkTranslations: true }): boolean {
 	// 自定义检查：检查整体格式  
 	if (options.checkFormat && (!('manifest' in json) || !('description' in json) || !('dict' in json))) {
-		NoticeOperationResult(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_A'));
+		this.i18n.notice.result(t('SUBMITE_INSPECT_HEAD'), false, t('SUBMITE_INSPECT_NOTICE_A'));
 		return false
 	}
 	// 自定义检查：检查作者  
@@ -128,74 +203,72 @@ export function validateTranslation(json: Translation, options: ValidationOption
 	return true;
 }
 
-export function NoticePrimary(prefix: string, text: unknown, duration = 4000) {
-	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	const notice = new Notice(`[${prefix}] ${text}`, duration);
-	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--primary`);
-	return notice;
-}
-export function NoticeSuccess(prefix: string, text: unknown, duration = 4000) {
-	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	const notice = new Notice(`[${prefix}] ${text}`, duration);
-	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
-	return notice;
-}
-export function NoticeInfo(prefix: string, text: unknown, duration = 4000) {
-	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	const notice = new Notice(`[${prefix}] ${text}`, duration);
-	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--info`);
-	return notice;
-}
-export function NoticeWarning(prefix: string, text: unknown, duration = 4000) {
-	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	const notice = new Notice(`[${prefix}] ${text}`, duration);
-	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--warning`);
-	return notice;
-}
-export function NoticeError(prefix: string, text: unknown, duration = 10000) {
-	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	const notice = new Notice(`[${prefix}] ${text}`, duration);
-	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
-	return notice;
-}
-export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: unknown = "", duration = 4000): Notice {
-	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-	if (isSuccess) {
-		if (text != "") {
-			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration)
-			notice.noticeEl.addClass(`notice__${hasClass ? 'dark' : 'light'}--success`)
-			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration).noticeEl.addClass(`notice__${hasClass ? 'dark' : 'light'}_success`)
-			return notice;
-		}
-		else {
-			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration)
-			notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
-			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration).noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}_success`); 
-			return notice
-		}
-	} else {
-		const notice = new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000)
-		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
-		// new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000).noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}_error`);
-		return notice
-	}
-}
+// export function NoticePrimary(prefix: string, text: unknown, duration = 4000) {
+// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
+// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--primary`);
+// 	return notice;
+// }
+// export function NoticeSuccess(prefix: string, text: unknown, duration = 4000) {
+// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
+// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
+// 	return notice;
+// }
+// export function NoticeInfo(prefix: string, text: unknown, duration = 4000) {
+// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
+// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--info`);
+// 	return notice;
+// }
+// export function NoticeWarning(prefix: string, text: unknown, duration = 4000) {
+// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
+// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--warning`);
+// 	return notice;
+// }
+// export function NoticeError(prefix: string, text: unknown, duration = 10000) {
+// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
+// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
+// 	return notice;
+// }
+// export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: unknown = "", duration = 4000): Notice {
+// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
+// 	if (isSuccess) {
+// 		if (text != "") {
+// 			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration)
+// 			notice.noticeEl.addClass(`notice__${hasClass ? 'dark' : 'light'}--success`)
+// 			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration).noticeEl.addClass(`notice__${hasClass ? 'dark' : 'light'}_success`)
+// 			return notice;
+// 		}
+// 		else {
+// 			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration)
+// 			notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
+// 			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration).noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}_success`); 
+// 			return notice
+// 		}
+// 	} else {
+// 		const notice = new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000)
+// 		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
+// 		// new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000).noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}_error`);
+// 		return notice
+// 	}
+// }
 
 // 恢复翻译
+
 export const restoreTranslate = () => {
 	const event = new KeyboardEvent('keydown', { key: 'a', keyCode: 65, which: 65, code: 'KeyA', altKey: true, bubbles: true, });
 	document.dispatchEvent(event);
 };
 // 清除 Storage 存储的内容
 export const clearStorage = async () => {
-	// clear localStorage
 	const prefix = 'immersiveTranslate';
 	const keys = Object.keys(window.localStorage).filter((v) => v.startsWith(prefix));
 	keys.forEach((v) => { delete window.localStorage[v]; });
-	// clear indexed-db
 	const dbPrefix = 'immersive-translate';
 	await window.indexedDB.databases().then((dbList) => { dbList?.filter((v) => v.name?.startsWith(dbPrefix))?.forEach((v) => { v.name && window.indexedDB.deleteDatabase(v.name); }); }).catch(() => { });
-	// clear window
 	const windowKey = 'mmersiveTranslate';
 	const windowKeys = Object.keys(window).filter((v) => v.indexOf(windowKey) !== -1);
 	// @ts-ignore
@@ -203,17 +276,13 @@ export const clearStorage = async () => {
 };
 
 export const formatTimestamp = (timestamp: number) => {
-	// 创建一个新的 Date 对象  
 	const date = new Date(timestamp);
-
-	// 提取年、月、日、小时、分钟、秒  
 	// const year = date.getFullYear();
-	const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始，所以需要加1，并且用padStart保证是两位数  
-	const day = String(date.getDate()).padStart(2, '0'); // 用padStart保证是两位数  
-	const hours = String(date.getHours()).padStart(2, '0'); // 用padStart保证是两位数  
-	const minutes = String(date.getMinutes()).padStart(2, '0'); // 用padStart保证是两位数  
-	// const seconds = String(date.getSeconds()).padStart(2, '0'); // 用padStart保证是两位数  
-	// 组装成日期时间字符串  
+	const month = String(date.getMonth() + 1).padStart(2, '0');
+	const day = String(date.getDate()).padStart(2, '0');
+	const hours = String(date.getHours()).padStart(2, '0');
+	const minutes = String(date.getMinutes()).padStart(2, '0');
+	// const seconds = String(date.getSeconds()).padStart(2, '0');
 	const formattedDate = `${month}月${day}日 ${hours}:${minutes}`;
 	return formattedDate;
 }
@@ -222,13 +291,14 @@ export const formatTimestamp_concise = (timestamp: number) => {
 	const [year, month, day, hours, minutes] = [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0'), String(date.getHours()).padStart(2, '0'), String(date.getMinutes()).padStart(2, '0')];
 	return `${year}/${month}/${day} ${hours}:${minutes}`;
 }
+export const isValidTranslationFormat = (json: Translation | undefined) => {
+	return (json !== undefined && 'manifest' in json && 'translationVersion' in json.manifest && 'pluginVersion' in json.manifest && 'description' in json && 'original' in json.description && 'translation' in json.description && 'dict' in json);
+}
 
 export const deflate = (str: string) => { return deflateSync(str).toString('base64'); }
 export const inflate = (str: string) => { return inflateSync(Buffer.from(str, 'base64')).toString(); }
 
-export const isValidTranslationFormat = (json: Translation | undefined) => {
-	return (json !== undefined && 'manifest' in json && 'translationVersion' in json.manifest && 'pluginVersion' in json.manifest && 'description' in json && 'original' in json.description && 'translation' in json.description && 'dict' in json);
-}
+
 
 
 

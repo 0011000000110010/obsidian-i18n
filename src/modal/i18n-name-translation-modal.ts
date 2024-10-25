@@ -8,7 +8,9 @@ export class NameTranslationModal extends Modal {
     constructor(app: App, i18n: I18N) {
         super(app);
         this.i18n = i18n;
-        this.i18n.originalPluginsManifests.forEach(manifest => { if (manifest.name && !(manifest.name in this.i18n.nameTranslationJSON) && manifest.id != 'i18n') { this.i18n.nameTranslationJSON[manifest.name] = ''; } });
+        this.i18n.originalPluginsManifests.forEach(manifest => {
+            if (manifest.name && !(manifest.name in this.i18n.nameTranslationJSON) && manifest.id != 'i18n') { this.i18n.nameTranslationJSON[manifest.name] = ''; }
+        });
         // @ts-ignore
         fs.writeJSONSync(path.join(path.normalize(this.app.vault.adapter.getBasePath()), path.join(this.i18n.manifest.dir, 'name.json')), this.i18n.nameTranslationJSON, { spaces: 4 });
     }

@@ -8,13 +8,14 @@ export default abstract class BaseSetting {
 	protected i18n: I18N;
 	protected settings: I18nSettings;
 	public containerEl: HTMLElement;
+	protected a: HTMLElement;
 	protected app: App;
 
 	constructor(obj: I18nSettingTab) {
 		this.settingTab = obj;
 		this.i18n = obj.i18n;
 		this.settings = obj.i18n.settings;
-		// this.containerEl = obj.containerEl;
+		this.a = obj.containerEl;
 		this.containerEl = obj.contentEl;
 		this.app = obj.app;
 	}

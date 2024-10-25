@@ -4,7 +4,6 @@ import { RequestUrlParam, requestUrl } from 'obsidian'
 
 import I18N from "../main"
 import { I18nSettings } from './settings/data'
-import { NoticeError, NoticeOperationResult, NoticePrimary } from 'src/utils'
 import { BAIDU_ERROR_CODE } from 'src/data/data'
 
 export class API {
@@ -16,18 +15,20 @@ export class API {
 		this.settings = this.i18n.settings;
 	}
 
-	public async version(version: string) {
+	public async version() {
 		const RequestUrlParam: RequestUrlParam = {
 			url: "https://gitee.com/zero--two/obsidian-i18n-translation/raw/master/version.json",
 			method: 'GET'
 		};
 		try {
 			const response = await requestUrl(RequestUrlParam);
-			if (version !== response.json.version) {
-				NoticePrimary('I18N', `发现新版本(${response.json.version})\n${response.json.content}`);
-			}
+			// if (version !== response.json.version) {
+			// 	this.i18n.notice.primary('I18N', `发现新版本(${response.json.version})\n${response.json.content}`);
+			// }
+			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			NoticeError('I18N', `网络异常(无法获取最新版)\n${error}`);
+			return { 'state': true, 'data': error };
+			// this.i18n.notice.error('I18N', `网络异常(无法获取最新版)\n${error}`);
 		}
 	}
 
@@ -61,7 +62,7 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			if (response.json.hasOwnProperty("error_code")) {
 				const error_code = response.json.error_code;
-				NoticeError('百度', `${error_code}\n${BAIDU_ERROR_CODE[error_code]}`);
+				this.i18n.notice.error('百度', `${error_code}\n${BAIDU_ERROR_CODE[error_code]}`);
 				return { 'state': false, 'data': '' };
 			}
 			return { 'state': true, 'data': response.json['trans_result'][0]['dst'] };
@@ -94,7 +95,7 @@ export class API {
 			}
 			return null;
 		} catch (error) {
-			NoticeError('错误', error);
+			this.i18n.notice.error('错误', error);
 			return null;
 		}
 	}
@@ -117,9 +118,9 @@ export class API {
 		};
 		const response = requestUrl(RequestUrlParam);
 		response.then(() => {
-			NoticeOperationResult('OpenAI', true);
+			this.i18n.notice.result('OpenAI', true);
 		}).catch((error) => {
-			NoticeOperationResult('OpenAI', false, error);
+			this.i18n.notice.result('OpenAI', false, error);
 		});
 	}
 
@@ -132,8 +133,8 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json.token };
 		} catch (error) {
-			NoticeError('I18N', `token获取失败(如果没有自定义token则无法使用提交功能)\n${error}`);
-			return { 'state': false, 'data': {} };
+			this.i18n.notice.error('I18N', `token获取失败(如果没有自定义token则无法使用提交功能)\n${error}`);
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -146,7 +147,7 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			return { 'state': false, 'data': {} };
+			return { 'state': false, 'data': error };
 		}
 
 	}
@@ -166,8 +167,7 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
-			return { 'state': false, 'data': '' };
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -180,8 +180,7 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
-			return { 'state': false, 'data': '' };
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -214,8 +213,8 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			NoticeOperationResult('提交操作', false, `${error}`);
-			return { 'state': false, 'data': '' };
+			this.i18n.notice.result('提交操作', false, `${error}`);
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -239,8 +238,7 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
-			return { 'state': false, 'data': '' };
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -249,13 +247,11 @@ export class API {
 			url: `https://gitee.com/api/v5/repos/${this.settings.I18N_GITEE_OWNER}/${this.settings.I18N_GITEE_REPO}/issues`,
 			method: 'GET'
 		};
-		console.log(RequestUrlParam);
 		try {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
-			return { 'state': false, 'data': '' };
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -274,12 +270,6 @@ export class API {
 	}
 
 	public async giteePostTranslation(path: string, content: string, message: string) {
-		let access_token;
-		if (this.settings.I18N_ADMIN_TOKEN != "") {
-			access_token = this.settings.I18N_ADMIN_TOKEN;
-		} else {
-			NoticeOperationResult('审核面板', false, '未找到Token');
-		}
 		const RequestUrlParam: RequestUrlParam = {
 			url: `https://gitee.com/api/v5/repos/${this.settings.I18N_GITEE_OWNER}/${this.settings.I18N_GITEE_REPO}/contents/${path}`,
 			method: 'POST',
@@ -288,18 +278,19 @@ export class API {
 				'charset': 'UTF-8'
 			},
 			body: JSON.stringify({
-				access_token: access_token,
+				access_token: this.settings.I18N_ADMIN_TOKEN,
+				owner: this.settings.I18N_GITEE_OWNER,
+				repo: this.settings.I18N_GITEE_REPO,
+				path: path,
 				content: content,
 				message: message,
 			}),
 		};
-		console.log(RequestUrlParam);
 		try {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
-			return { 'state': false, 'data': '' };
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -324,8 +315,7 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
-			return { 'state': false, 'data': '' };
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -338,8 +328,7 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
-			return { 'state': false, 'data': '' };
+			return { 'state': false, 'data': error };
 		}
 	}
 
@@ -364,9 +353,36 @@ export class API {
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
+			return { 'state': false, 'data': error };
+		}
+	}
+
+	public async giteeGetReleasesLatest() {
+		try {
+			const RequestUrlParam: RequestUrlParam = {
+				url: `https://gitee.com/api/v5/repos/${this.settings.I18N_GITEE_OWNER}/${this.settings.I18N_GITEE_REPO}/releases/latest`,
+				method: 'GET'
+			};
+			console.log(RequestUrlParam)
+			const response = await requestUrl(RequestUrlParam);
+			return { 'state': true, 'data': response.json };
+		} catch (error) {
 			console.log(error)
 			return { 'state': false, 'data': '' };
 		}
 	}
-
+	public async giteeDownload(url: string) {
+		try {
+			const RequestUrlParam: RequestUrlParam = {
+				url: url,
+				method: 'GET'
+			};
+			console.log(RequestUrlParam)
+			const response = await requestUrl(RequestUrlParam);
+			return { 'state': true, 'data': response.text };
+		} catch (error) {
+			console.log(error)
+			return { 'state': false, 'data': '' };
+		}
+	}
 }

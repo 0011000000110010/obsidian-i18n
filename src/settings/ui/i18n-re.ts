@@ -1,7 +1,6 @@
 import { Setting } from "obsidian"
 import BaseSetting from "../base-setting"
 import { t } from "src/lang/inxdex";
-import { NoticeError, NoticeOperationResult } from "src/utils";
 
 export default class I18nRE extends BaseSetting {
     main(): void {
@@ -72,7 +71,7 @@ export default class I18nRE extends BaseSetting {
                     this.i18n.saveSettings();
                     this.settingTab.reDisplay();
                 } else {
-                    NoticeError(t('SETTING_PUBLIC_RE'), t('SETTING_RE_EDIT_INSERT_BUTTON_CONTENT_A'));
+                    this.i18n.notice.error(t('SETTING_PUBLIC_RE'), t('SETTING_RE_EDIT_INSERT_BUTTON_CONTENT_A'));
                 }
             })
             .setClass('i18n-button')
@@ -114,9 +113,9 @@ export default class I18nRE extends BaseSetting {
                                 this.settings.I18N_RE_MODE = this.settings.I18N_RE_MODES[0]
                             }
                             this.settings.I18N_RE_MODES.splice(i, 1);
-                            NoticeOperationResult(t('SETTING_PUBLIC_RE'), true);
+                            this.i18n.notice.result(t('SETTING_PUBLIC_RE'), true);
                         } else {
-                            NoticeOperationResult(t('SETTING_PUBLIC_RE'), false, t('SETTING_RE_EDIT_DELETE_BUTTON_CONTENT_A'));
+                            this.i18n.notice.result(t('SETTING_PUBLIC_RE'), false, t('SETTING_RE_EDIT_DELETE_BUTTON_CONTENT_A'));
                         }
                         this.i18n.saveSettings();
                         this.settingTab.reDisplay();

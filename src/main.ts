@@ -1,12 +1,12 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
 
-import { App, Plugin, PluginManifest, WorkspaceLeaf } from 'obsidian';
+import { App, Notice, Plugin, PluginManifest, WorkspaceLeaf } from 'obsidian';
 import { DEFAULT_SETTINGS, I18nSettings } from './settings/data';
 import { I18nSettingTab } from './settings';
 import { t } from './lang/inxdex';
 
-import { clearStorage, NoticeError, NoticeOperationResult, NoticeSuccess, restoreTranslate, State } from './utils';
+import { clearStorage, restoreTranslate, State, Notification } from './utils';
 import { I18NModal } from './modal/i18n-modal';
 import { WizardModal } from './modal/i18n-wizard-modal';
 // @ts-ignore
@@ -37,16 +37,22 @@ export default class I18N extends Plugin {
     settings: I18nSettings;
     // [变量] API
     api: API;
+    // [变量] Notice
+    notice: Notification;
+    // [变量] 是否存在更新标记
+    updatesMark = false;
+    updatesVersion: string;
     // [变量] 插件目录标记
     translationDirectoryMark: boolean;
-    // [变量] 插件目录列表
+    // [变量] 插件目录缓存列表
     translationDirectory: TranslationDirectory;
     // [变量] 标记汉化标记
     ignoreMark = true;
-    // [变量] 标记汉化列表
+    // [变量] 标记汉化缓存列表
     ignorePlugins: string[];
-
+    // [变量] 插件贡献者缓存列表
     contributorCache: any[] | undefined;
+
 
 
     // [变量][编辑器] 选中译文地址
@@ -65,6 +71,8 @@ export default class I18N extends Plugin {
     i18nReviewEl: HTMLElement;
 
     async onload() {
+        // [加载] 通知类
+        this.notice = new Notification(this.app, this);
         // [加载] 图标
         Icons();
         // [加载] 配置
@@ -73,16 +81,16 @@ export default class I18N extends Plugin {
 
         if (this.settings.I18N_AGREEMENT) {
             console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
-            // [加载] API
+            // [加载] API类
             this.api = new API(this);
             // [函数] 首次运行
             this.firstRun();
             // [函数] 检测更新
             if (this.settings.I18N_CHECK_UPDATES) this.checkUpdates();
             // [函数] 云端标记插件
-            await this.ignoreCache();
+            this.ignoreCache();
             // [函数] 云端目录缓存
-            await this.directoryCache();
+            this.directoryCache();
             // [函数] 自动更新
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
             // [函数] 沉浸式翻译
@@ -140,35 +148,46 @@ export default class I18N extends Plugin {
         }
     }
 
-    async checkUpdates() { this.api.version(this.manifest.version) }
+    async checkUpdates() {
+        const res = await this.api.version();
+        if (res.state) {
+            if (this.manifest.version !== res.data.version) {
+                this.notice.primary('检查更新', `发现新版本(${res.data.version})\n${res.data.content}`, 10000);
+                this.updatesMark = true;
+                this.updatesVersion = res.data.version;
+            }
+        } else {
+            this.notice.result('检查更新', false, res.data);
+        }
+    }
 
     async ignoreCache() {
         if (!this.settings.I18N_MODE_NDT || !this.settings.I18N_IGNORE) { this.ignoreMark = false; return; }
         const res = await this.api.getMark();
-        if (!res.state) { this.ignoreMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, t('SETTING_NDT_IGNORE_NOTICE_B')); return; }
-        try { this.ignorePlugins = res.data; this.ignoreMark = true; NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), true); }
-        catch (error) { this.ignoreMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, error); }
+        if (!res.state) { this.ignoreMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, t('SETTING_NDT_IGNORE_NOTICE_B')); return; }
+        try { this.ignorePlugins = res.data; this.ignoreMark = true; this.notice.result(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), true); }
+        catch (error) { this.ignoreMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, error); }
     }
 
     async directoryCache() {
         if (!this.settings.I18N_MODE_NDT) { this.translationDirectoryMark = false; return; }
         const res = await this.api.giteeGetDirectory();
-        if (!res.state) { this.translationDirectoryMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, t('SETTING_NDT_MODE_NOTICE_B')); return; }
-        try { this.translationDirectory = res.data; this.translationDirectoryMark = true; NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), true); }
-        catch (error) { this.translationDirectoryMark = false; NoticeOperationResult(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, error); }
+        if (!res.state) { this.translationDirectoryMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, t('SETTING_NDT_MODE_NOTICE_B')); return; }
+        try { this.translationDirectory = res.data; this.translationDirectoryMark = true; this.notice.result(t('SETTING_NDT_PUBLIC_MODE_HEAD'), true); }
+        catch (error) { this.translationDirectoryMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, error); }
     }
 
     async i18nAutomaticUpdate(app: App) {
         if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) {
             let plugins: PluginManifest[] = [];
-            NoticeSuccess(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), t('SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_A'));
+            this.notice.success(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), t('SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_A'));
             // @ts-ignore
             plugins = Object.values(app.plugins.manifests).filter(item => item.id !== 'i18n');
             let updateitem = 0;
             for (const plugin of plugins) {
                 // @ts-ignore
                 const pluginDir = path.join(path.normalize(app.vault.adapter.getBasePath()), plugin.dir ?? '');
-                const stateObj = fs.pathExistsSync(path.join(pluginDir, 'lang', 'state.json')) ? new State(path.join(pluginDir, 'lang', 'state.json')) : undefined;
+                const stateObj = fs.pathExistsSync(path.join(pluginDir, 'lang', 'state.json')) ? new State(this, path.join(pluginDir, 'lang', 'state.json')) : undefined;
                 // 当运行到这里面的时候也就是意味着插件已经更新了
                 if (stateObj != undefined && stateObj.getState() && plugin.version != stateObj.getPluginVersion()) {
                     try {
@@ -206,17 +225,17 @@ export default class I18N extends Plugin {
                         // @ts-ignore
                         await this.app.plugins.enablePlugin(plugin.id);
                     } catch (error) {
-                        NoticeError(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), error);
+                        this.notice.error(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), error);
                     }
                 }
             }
-            updateitem == 0 ? NoticeSuccess(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), t('SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_B')) : NoticeSuccess(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), `更新${updateitem}个插件`)
+            updateitem == 0 ? this.notice.success(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), t('SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_B')) : this.notice.success(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), `更新${updateitem}个插件`)
         }
     }
 
     trenslatorPluginsName() {
         // @ts-ignore
-        const thisnDir = path.join(path.normalize(this.app.vault.adapter.getBasePath()), path.join(this.manifest.dir, 'name.json'));
+        const thisnDir = path.join(path.normalize(this.app.vault.adapter.getBasePath()), this.manifest.dir, 'name.json');
         this.nameTranslationJSON = fs.pathExistsSync(thisnDir) ? fs.readJsonSync(thisnDir) : {};
         // @ts-ignore
         const translationPluginsManifests: PluginManifest[] = Object.values(this.app.plugins.manifests);

@@ -1,25 +1,26 @@
-// import * as fs from 'fs-extra';
-import { ButtonComponent, ItemView, Notice, SearchComponent, WorkspaceLeaf } from "obsidian";
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import { ButtonComponent, ItemView, SearchComponent, WorkspaceLeaf } from "obsidian";
 import I18N from "src/main";
 import { Translation } from 'src/data/types';
-import { formatTimestamp_concise, inflate, NoticeError, NoticeOperationResult, NoticeSuccess } from 'src/utils';
+import { formatTimestamp_concise, inflate } from 'src/utils';
 import { t } from 'src/lang/inxdex';
 // @ts-ignore
 import { diffWords } from 'diff';
+import { exec } from 'child_process';
 
 export const ADMIN_VIEW_TYPE = 'i18n-admin-view'
 
 export class AdminView extends ItemView {
     private i18n: I18N;
-    private notices: Notice[] = [];
     private translationJson: Translation;
     private translationDict: { key: string, value: string, el: HTMLTableRowElement }[] = [];
-
     private cloudTranslationJson: Translation;
 
     constructor(leaf: WorkspaceLeaf, i18n: I18N) {
         super(leaf);
         this.i18n = i18n;
+        this.i18n.notice.reload();
         this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
     }
 
@@ -121,14 +122,14 @@ export class AdminView extends ItemView {
                                 dictItem.value = dictItem.key;
                                 keyCellEl.textContent = dictItem.key;
                                 valueCellEl.textContent = dictItem.key;
-                                this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                                this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
                             })
                         });
                         operateEl.createEl('button', { text: '删除', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
                             el.addEventListener('click', async () => {
                                 rowEl.remove();
                                 this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
-                                this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                                this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
                             })
                         });
                         const diff = this.diff(dictItem.key, dictItem.value)
@@ -239,28 +240,67 @@ export class AdminView extends ItemView {
                                 dictItem.value = dictItem.key;
                                 keyCellEl.textContent = dictItem.key;
                                 valueCellEl.textContent = dictItem.key;
-                                this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                                this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'));
                             })
                         });
                         operateEl.createEl('button', { text: '删除', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
                             el.addEventListener('click', async () => {
                                 rowEl.remove();
                                 this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
-                                this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                                this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'));
                             })
                         });
                         const diff = this.diff(dictItem.key, dictItem.value)
                         keyCellEl.innerHTML = diff.s1;
                         valueCellEl.innerHTML = diff.s2;
                         rowEl.scrollIntoView({ behavior: 'auto', block: 'center' });
-                        this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
+                        this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_A'));
                     } else {
-                        this.notices.push(NoticeError(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B')));
+                        this.i18n.notice.error(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B'));
                     }
+                });
+                // [按钮] 下载
+                new ButtonComponent(operateEl).setClass('i18n-button').setClass('i18n-button--success').setClass('i18n-edit__save-button').setClass('i18n-edit__operate-button').setButtonText('下载').onClick(async () => {
+                    // @ts-ignore
+                    const dir = path.join(this.app.vault.adapter.getBasePath(), this.i18n.manifest.dir, 'Admin');
+                    // @ts-ignore
+                    const doc = path.join(this.app.vault.adapter.getBasePath(), this.i18n.manifest.dir, 'Admin', `${this.i18n.issuesObj.title}.json`);
+                    this.translationJson.dict = Object.fromEntries(this.translationDict.map(item => [item.key, item.value]));
+                    fs.ensureDirSync(dir);
+                    fs.writeJSONSync(doc, this.translationJson, { spaces: 4 });
+                    if (navigator.userAgent.match(/Win/i)) {
+                        // const command = `powershell.exe -Command "Invoke-Item \\"${pluginDir}\\""`;
+                        const command = `start "" "${dir}"`
+                        exec(command, (error) => {
+                            if (error) {
+                                this.i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
+                            } else {
+                                this.i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
+                            }
+                        });
+                    }
+                    if (navigator.userAgent.match(/Mac/i)) {
+                        const command = `open ${dir}`
+                        exec(command, (error) => {
+                            if (error) {
+                                this.i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
+                            } else {
+                                this.i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
+                            }
+                        });
+                    }
+
                 });
                 // [按钮] 驳回
                 new ButtonComponent(operateEl).setClass('i18n-button').setClass('i18n-button--success').setClass('i18n-edit__save-button').setClass('i18n-edit__operate-button').setButtonText('驳回').onClick(async () => {
-                    (await this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed')).state ? this.notices.push(NoticeOperationResult('审核', true, '', 1000)) : this.notices.push(NoticeOperationResult('审核', false));
+                    const res = await this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed')
+                    if (res.state) {
+                        this.i18n.notice.result('驳回', true);
+                        this.i18n.issuesList.data = this.i18n.issuesList.data.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
+                        this.i18n.detachAdminView();
+                    } else {
+                        this.i18n.notice.result('驳回', false, res.data);
+                    }
                 });
                 // [按钮] 批准
                 new ButtonComponent(operateEl).setClass('i18n-button').setClass('i18n-button--success').setClass('i18n-edit__save-button').setClass('i18n-edit__operate-button').setButtonText('批准').onClick(async () => {
@@ -270,23 +310,25 @@ export class AdminView extends ItemView {
 
                         // 构建译文路径和内容 
                         const translationID = this.i18n.issuesObj.title.replace("[提交译文] ", "");
-                        const translationPath = `translation/dict/${translationID}/${this.i18n.settings.I18N_LANGUAGE}/${this.translationJson.manifest.pluginVersion}.json`;
+                        let translationPath = `translation/dict/${translationID}/${this.i18n.settings.I18N_LANGUAGE}/${this.translationJson.manifest.pluginVersion}.json`;
                         const translationContent = Buffer.from(JSON.stringify(this.translationJson, null, 4)).toString('base64');
 
                         // 构建目录路径和内容 
                         const directoryPath = `translation/directory/${this.i18n.settings.I18N_LANGUAGE}.json`;
                         const directorySha = await this.i18n.api.giteeGetSha(directoryPath);
+                        if (!directorySha.state) { this.i18n.notice.result('批准', false, `无法获取译文目录\n${directorySha.data}`); return; }
                         const directoryContent = JSON.parse(Buffer.from(directorySha.data.content, 'base64').toString('utf8'));
+
                         // 更新或创建目录项
                         const existingItem = directoryContent.find((obj: { id: any; }) => obj.id === translationID);
                         const translations = { ...(existingItem?.translations || {}), [this.translationJson.manifest.pluginVersion]: this.translationJson.manifest.translationVersion };
                         if (!existingItem) { directoryContent.push({ id: translationID, translations }); } else { existingItem.translations = translations; }
-                        // 构建并更新目录内容 
                         const updatedDirectoryContent = Buffer.from(JSON.stringify(directoryContent, null, 4)).toString('base64');
 
                         // 构建贡献名单路径和内容 
                         const contributorPath = `translation/contributor/${this.i18n.settings.I18N_LANGUAGE}.json`;
                         const contributorSha = await this.i18n.api.giteeGetSha(contributorPath);
+                        if (!contributorSha.state) { this.i18n.notice.result('批准', false, `无法获取贡献者目录\n${directorySha.data}`); return; }
                         const contributorContent = JSON.parse(Buffer.from(contributorSha.data.content, 'base64').toString('utf8'));
                         // 更新贡献名单
                         const contributorItem = contributorContent.find((obj: { login: any; }) => obj.login === this.i18n.issuesObj.user.login);
@@ -304,18 +346,24 @@ export class AdminView extends ItemView {
                             contributorContent.push(newContributor);
                         }
                         const updatedContributorContent = Buffer.from(JSON.stringify(contributorContent, null, 4)).toString('base64');
-                        
-                        // 执行写入操作  
-                        await Promise.all([
-                            this.i18n.api.giteePostTranslation(translationPath, translationContent, `提交译文 ${translationID}`),
-                            this.i18n.api.giteePutTranslation(directoryPath, updatedDirectoryContent, directorySha.data.sha, `写入目录 ${translationID}`),
-                            this.i18n.api.giteePutContributor(contributorPath, updatedContributorContent, contributorSha.data.sha, `写入贡献 ${this.i18n.issuesObj.user.name}`),
-                            this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed'),
-                        ]);
-                        this.notices.push(NoticeOperationResult('审核', true, '', 1000));
+
+                        // 执行写入操作 
+                        const giteePutTranslationRes = await this.i18n.api.giteePutTranslation(directoryPath, updatedDirectoryContent, directorySha.data.sha, `写入目录 ${translationID}`);
+                        if (!giteePutTranslationRes.state) { this.i18n.notice.result('批准', false, `无法写入目录\n${giteePutTranslationRes.data}`); return; } else { this.i18n.notice.result('批准', true, `1/4 写入目录 ${translationID}\n请耐心等待审核流程运行完毕`); }
+                        await sleep(1000);
+                        const giteePutContributorRes = await this.i18n.api.giteePutContributor(contributorPath, updatedContributorContent, contributorSha.data.sha, `写入贡献 ${this.i18n.issuesObj.user.name}`);
+                        if (!giteePutContributorRes.state) { this.i18n.notice.result('批准', false, `无法写入贡献\n请前往gitee删除写入目录内容\n${giteePutContributorRes.data}`); return; } else { this.i18n.notice.result('批准', true, `2/4 写入贡献 ${this.i18n.issuesObj.user.name}\n请耐心等待审核流程运行完毕`); }
+                        await sleep(1000);
+                        const giteePostTranslationRes = await this.i18n.api.giteePostTranslation(translationPath, translationContent, `提交译文 ${translationID}`);
+                        if (!giteePostTranslationRes.state) { this.i18n.notice.result('批准', false, `无法写入译文\n请前往gitee删除写入目录、写入贡献内容\n${giteePostTranslationRes.data}`); return; } else { this.i18n.notice.result('批准', true, `3/4 写入译文 ${translationID}\n请耐心等待审核流程运行完毕`); }
+                        await sleep(1000);
+                        const giteePatchIssueRes = await this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed');
+                        if (!giteePatchIssueRes.state) { this.i18n.notice.result('批准', false, `无法关闭 issue\n请前往gitee手动关闭此issue\n${giteePatchIssueRes.data}`); return; } else { this.i18n.notice.result('批准', true, `4/4 关闭 issue`); }
+                        this.i18n.notice.result('批准', true);
+                        this.i18n.issuesList.data = this.i18n.issuesList.data.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
+                        this.i18n.detachAdminView();
                     } catch (error) {
-                        console.log(error)
-                        this.notices.push(NoticeOperationResult('审核', false, error));
+                        this.i18n.notice.result('批准', false, error);
                     }
                 });
             }
@@ -325,7 +373,7 @@ export class AdminView extends ItemView {
         }
     }
 
-    async onunload() { for (const notice of this.notices) { notice.noticeEl.remove(); } }
+    async onunload() { this.i18n.notice.reload() }
 
     async showData() { }
 
