@@ -1168,5 +1168,11 @@
         "translations": {
             "0.8.0": 1729832194180
         }
+    },
+    {
+        "id": "markdown-table-editor",
+        "translations": {
+            "0.3.1": 1729838202916
+        }
     }
 ]
