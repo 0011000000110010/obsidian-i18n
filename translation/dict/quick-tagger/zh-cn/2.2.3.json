@@ -29,7 +29,7 @@
         ".addRibbonIcon(\"tag\", \"Add tag to current note\"": ".addRibbonIcon(\"tag\", \"在当前笔记中添加标签\"",
         ".addRibbonIcon(\"x-square\", \"Remove tag from current note\"": ".addRibbonIcon(\"x-square\", \"从当前笔记中删除标签\"",
         "name: `Toggle #${tag}`": "name: `切换 #${tag}`",
-        "name: `Toggle recently used tag (${tag})`": "name: `切换最近使用的标签 (${tag})`",
+        "name: `Toggle recently used tag (${tag})`": "name: `切换最近使用的标签 ( ${tag} )`",
         "name: \"Add tag\"": "name: \"添加标签\"",
         "name: \"Remove tag\"": "name: \"移除标签\"",
         "name: `Toggle recently used tag (none)`": "name: `切换最近使用的标签（无）`",
@@ -57,6 +57,7 @@
         ".Notice(\"Processing \"": ".Notice(\"处理\"",
         ".Notice(\"All tags removed from \"": ".Notice(\"已删除所有标签\"",
         ".Notice(\"No file tags to change!\"": ".Notice(\"没有要更改的文件标签！\"",
-        ".Notice(\"ERROR: No recent tag, please assign a tag with Quick Tagger before using this command\"": ".Notice(\"错误:  没有最近的标记，请在使用此命令之前使用 Quick Tagger 分配一个标签\""
+        ".Notice(\"ERROR: No recent tag, please assign a tag with Quick Tagger before using this command\"": ".Notice(\"错误:  没有最近的标记，请在使用此命令之前使用 Quick Tagger 分配一个标签\"",
+        "tofrom = mode == \"add\" ? \" added to \" : \" removed from \";": "tofrom = mode == \"add\" ? \" 被添加到 \" : \" 被移除从 \";"
     }
 }
