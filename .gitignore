@@ -8,8 +8,7 @@
 # npm
 node_modules
 
-# Don't include the compiled main.js file in the repo.
-# They should be uploaded to GitHub releases instead.
+# 不要将编译后的 `main.js` 文件放入代码库中。应该将其上传到 GitHub 发布版中。
 main.js
 
 # Exclude sourcemaps
@@ -18,12 +17,10 @@ main.js
 # obsidian
 data.json
 
-# Exclude macOS Finder (System Explorer) View States
+# 排除macOS Finder （System Explorer）视图状态
 .DS_Store
 
-
-# 
-main.js
+# 无
 笔记.md
 repealed.ts
 README.md
