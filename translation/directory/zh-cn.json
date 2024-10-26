@@ -1184,5 +1184,11 @@
         "translations": {
             "1.1.1": 1729785377821
         }
+    },
+    {
+        "id": "import-attachments-plus",
+        "translations": {
+            "1.5.11": 1729917926245
+        }
     }
 ]
