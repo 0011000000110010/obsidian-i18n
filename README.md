@@ -13,7 +13,7 @@
 
 <h1 align="center">
   <div style="width: 1%;">
-    <img src="images/logo.png" style="width: 160px;" alt="Click to see the source">
+    <img src="images/logo.png" style="width: 100%;" alt="Click to see the source">
   </div>
   Obsidian i18n
 </h1>
