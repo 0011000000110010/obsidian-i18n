@@ -1,0 +1,14 @@
+.display-none {
+    display: none;
+}
+
+.edit {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
