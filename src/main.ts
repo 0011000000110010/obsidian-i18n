@@ -71,8 +71,6 @@ export default class I18N extends Plugin {
     i18nReviewEl: HTMLElement;
 
     async onload() {
-        // [加载] 通知类
-        this.notice = new Notification(this.app, this);
         // [加载] 图标
         Icons();
         // [加载] 配置
@@ -83,6 +81,8 @@ export default class I18N extends Plugin {
             console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
             // [加载] API类
             this.api = new API(this);
+            // [加载] 通知类
+            this.notice = new Notification(this.app, this);
             // [函数] 首次运行
             this.firstRun();
             // [函数] 检测更新
