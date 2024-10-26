@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1729375366234,
+        "translationVersion": 1729905365937,
         "pluginVersion": "4.0.6"
     },
     "description": {
@@ -60,6 +60,7 @@
         "i.Default=\"Default view\",i.Reading=\"Reading view\",i.Source=\"Editing view (Source)\",i.LivePreview=\"Editing view (Live Preview)\"": "i.Default=\"默认视图\",i.Reading=\"阅读视图\",i.Source=\"编辑视图（源码）\",i.LivePreview=\"编辑视图（实时预览）\"",
         "\"Replace last note\"": "\"替换最后一个笔记\"",
         "\"Keep open notes\"": "\"保持打开的笔记\"",
-        "\"Replace all open notes\"": "\"替换所有打开的笔记\""
+        "\"Replace all open notes\"": "\"替换所有打开的笔记\"",
+        ".addRibbonIcon(\"homepage\",\"Open homepage\"": ".addRibbonIcon(\"homepage\",\"打开主页\""
     }
 }
