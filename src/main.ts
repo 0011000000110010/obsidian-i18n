@@ -53,8 +53,6 @@ export default class I18N extends Plugin {
     // [变量] 插件贡献者缓存列表
     contributorCache: any[] | undefined;
 
-
-
     // [变量][编辑器] 选中译文地址
     editorTranslationDoc = '';
     // [变量][共享云端] 选中译文对象
@@ -71,18 +69,17 @@ export default class I18N extends Plugin {
     i18nReviewEl: HTMLElement;
 
     async onload() {
-        // [加载] 图标
+        // [加载] 图标类
         Icons();
+        // [加载] 通知类
+        this.notice = new Notification(this.app, this);
+        // [加载] API类
+        this.api = new API(this);
         // [加载] 配置
         await this.loadSettings();
+        console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
         document.documentElement.style.setProperty('--i18n-color-primary', this.settings.I18N_COLOR);
-
         if (this.settings.I18N_AGREEMENT) {
-            console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
-            // [加载] API类
-            this.api = new API(this);
-            // [加载] 通知类
-            this.notice = new Notification(this.app, this);
             // [函数] 首次运行
             this.firstRun();
             // [函数] 检测更新
@@ -90,7 +87,7 @@ export default class I18N extends Plugin {
             // [函数] 云端标记插件
             this.ignoreCache();
             // [函数] 云端目录缓存
-            this.directoryCache();
+            this.directoryCache(); 
             // [函数] 自动更新
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
             // [函数] 沉浸式翻译
