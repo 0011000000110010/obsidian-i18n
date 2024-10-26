@@ -17,14 +17,6 @@
     },
     {
         "login": "",
-        "name": "宇桐非",
-        "url": "",
-        "translation": 4122,
-        "modification": 0,
-        "erasure": 0
-    },
-    {
-        "login": "",
         "name": "yulingkq",
         "url": "",
         "translation": 31,
@@ -52,14 +44,6 @@
         "name": "Az",
         "url": "",
         "translation": 70,
-        "modification": 0,
-        "erasure": 0
-    },
-    {
-        "login": "",
-        "name": "cuberwu",
-        "url": "",
-        "translation": 1474,
         "modification": 0,
         "erasure": 0
     },
@@ -204,14 +188,6 @@
         "name": "zero",
         "url": "https://gitee.com/zero--two",
         "translation": 1203,
-        "modification": 0,
-        "erasure": 0
-    },
-    {
-        "login": "",
-        "name": "阿弟要精致",
-        "url": "",
-        "translation": 166,
         "modification": 0,
         "erasure": 0
     },
@@ -363,7 +339,7 @@
         "login": "zhang-wenzhen",
         "name": "阿弟要精致",
         "url": "https://gitee.com/zhang-wenzhen",
-        "translation": 127,
+        "translation": 293,
         "modification": 0,
         "erasure": 0
     },
@@ -371,7 +347,7 @@
         "login": "hwpy",
         "name": "宇桐非",
         "url": "https://gitee.com/hwpy",
-        "translation": 112,
+        "translation": 4244,
         "modification": 0,
         "erasure": 0
     },
@@ -379,7 +355,7 @@
         "login": "cuberwu",
         "name": "wyc",
         "url": "https://gitee.com/cuberwu",
-        "translation": 145,
+        "translation": 1619,
         "modification": 0,
         "erasure": 0
     }
