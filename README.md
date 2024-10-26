@@ -2,7 +2,8 @@
 
 ## 介绍
 
-此仓库用于存储obsidian-i18n插件的译文词典，请勿在本仓库提交issue
+
+本项目为了便于国内用户访问，同时在Gitee与GitHub上传了项目，Gitee仓库用于存储obsidian-i18n插件的译文词典，请勿在Gitee仓库提交issue，如果您有任何问题与建议想反馈，请前往[Github](https://github.com/0011000000110010/obsidian-i18n)
 
 （issue被用于自动化审核，非机器人账号提交的issue会导致审核流程卡住）
 
@@ -10,15 +11,10 @@
 下面为插件的介绍，更多内容见[Github](https://github.com/0011000000110010/obsidian-i18n)
 ---
 
----
+<h1 align="center"> <div style="width: 1%;">
+  <img src="images/logo.png" style="width: 8%;" alt="Click to see the source">
+</div> Obsidian i18n </h1>
 
-<h1 align="center"> 
-
-<img src="images/logo.png" width="100">
-
- Obsidian i18n 
-
-</h1>
 
 
 ---
@@ -38,6 +34,30 @@ obsidian-i18n通过正则匹配其他插件源代码中可能需要被翻译的�
 综上，obsidian-i18n是一个obsidian插件国际化的一站式解决方案。
 
 ---
+
+<h1 align="center">⚠️警告⚠️</h1>
+
+<b align="center">您需要知道：插件翻译的工作原理是修改被翻译插件的源文件，i18n会备份修改前的文件，但不排除可能的风险。因此建议您在首次使用前备份您的插件目录（库文件夹/.obsidian/plugins）</b>
+
+
+# 目录 Table of Contents
+
+- [什么是i18n](#什么是i18n)
+- [obsidian的i18n](#obsidian的i18n)
+- [obsidian-i18n插件介绍](#obsidian-i18n插件介绍)
+	- [敏感权限声明](#敏感权限声明)
+  - [快速上手](#快速上手)
+    - [安装插件](#安装插件)
+      - [brat安装（需要网络能正常连接github）](https://github.com/0011000000110010/obsidian-i18n?tab=readme-ov-file#brat%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81%E7%BD%91%E7%BB%9C%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5github)
+      - [手动安装](#手动安装)
+    - [选择适合自己的翻译方式](#选择适合自己的翻译方式)
+      - [云端文件模式](https://github.com/0011000000110010/obsidian-i18n?tab=readme-ov-file#%E4%BA%91%E7%AB%AF%E6%96%87%E4%BB%B6%E6%A8%A1%E5%BC%8F%E6%9C%80%E7%9C%81%E5%BF%83%E4%BD%86%E9%80%82%E9%85%8D%E6%95%B0%E9%87%8F%E6%9C%89%E9%99%90)
+      - [本地文件模式](https://github.com/0011000000110010/obsidian-i18n?tab=readme-ov-file#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E6%A8%A1%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E7%A8%8B%E5%BA%A6%E6%9C%80%E9%AB%98)
+      - [机器翻译模式](https://github.com/0011000000110010/obsidian-i18n?tab=readme-ov-file#%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A8%A1%E5%BC%8F%E8%BE%85%E5%8A%A9%E7%BF%BB%E8%AF%91%E4%BD%86%E5%8F%AF%E8%83%BD%E5%87%BA%E9%94%99)
+  - [常见问题](#常见问题)
+  - [进阶设置](#进阶设置)
+  - [开源协议](#开源协议)
+
 
 # 什么是i18n
 
@@ -151,7 +171,7 @@ obsidian-i18n的工作原理简图：
 使用兼容OpenAI格式的大语言模型api进行翻译。
 
 选项解释：
-- 接口地址：默认为https://api.openai.com，即ChatGPT官方地址，使用官方key则无需修改。如果使用第三方服务，请参考对应服务商的文档说明。
+- 接口地址：默认为https://api.openai.com ，即ChatGPT官方地址，使用官方key则无需修改。如果使用第三方服务，请参考对应服务商的文档说明。
 - KEY：即api key，请参考对应服务商的文档说明。
 - 模型：即model，填写你需要使用的模型，注意此处模型名称为api对应的模型名（部分服务商的日常名称与api名称不一样），请查询对应服务商的文档。
 - 提示词：即prompt，用于指导AI如何翻译，本插件提供默认提示词，如有需要可自行调整。
@@ -162,19 +182,22 @@ obsidian-i18n的工作原理简图：
 <details>
   <summary>Q1：为什么i18n里没有插件/比实际插件数量少？</summary>
 
-你的字典格式错误，导致插件无法正确读取。请检查所有插件目录/lang/zh-cn.json，确认json格式是否正常，最简单的办法是删掉所有lang目录
+你的字典格式错误，导致插件无法正确读取。请检查所有插件目录/lang/zh-cn.json，确认json格式是否正常，最简单的办法是删掉所有lang目录。
+
+常见错误是缺少逗号。
+
 </details>
 
 
 <details>
   <summary>Q2：为什么点了`翻译`按钮，但是插件依然是原文？</summary>
 
-此处的`翻译`指`注入词典`，因此需要词典内存在翻译后的内容，如果提取完直接`翻译`，则不会有任何变化
+此处的`翻译`指`注入词典`，因此需要词典内存在翻译后的内容，如果提取完直接`翻译`，则不会有任何变化。
 </details>
 
 
 <details>
-  <summary>Q3：为什么机器翻译的词典无法使用?</summary>
+  <summary>Q3：为什么注入词典之后，插件无法启动，报错plugin fail to load</summary>
 
 用户在使用机器翻译前应当知晓：如果机器翻译后直接应用词典，可能会出现报错，此时应该手动检查词典内原文与译文的对应情况，**如果发现函数/控件/变量等不应该被翻译的内容被翻译了，请手动修正**。
 
@@ -185,6 +208,13 @@ obsidian-i18n的工作原理简图：
 但此处的`.createEl`和`text`不应该被翻译。
 </details>
 
+<details>
+  <summary>Q4：为什么手机/ipad端用不了？</summary>
+
+因为这个插件只能在桌面端使用，它使用了一些移动版不支持的api。你可以在桌面端汉化插件后同步到移动端。
+</details>
+
+
 ## 进阶设置
 
 详见 [obsidian-i18n Wiki](https://github.com/0011000000110010/obsidian-i18n/wiki)
@@ -192,6 +222,16 @@ obsidian-i18n的工作原理简图：
 ## 开源协议
 
 本项目采用MIT协议开源。
+
+## 鸣谢
+
+沉浸式翻译功能受到以下两个项目的启发：
+- [imfenghuang/obsidian-immersive-translate: Immersive Translate For Obsidian](https://github.com/imfenghuang/obsidian-immersive-translate)
+- [xhuajin/obsidian-immersive-translate: Translate plugin setting page.](https://github.com/xhuajin/obsidian-immersive-translate)
+
+从而并引入了[沉浸式翻译的JS SDK](https://immersivetranslate.com/zh-Hans/docs/js-sdk/)
+
+非常感谢imfenghuang、xhuajin 以及沉浸式翻译的开发团队。
 
 
 <!-- links -->
@@ -208,4 +248,3 @@ obsidian-i18n的工作原理简图：
 [license-url]: https://github.com/0011000000110010/obsidian-i18n/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/shaojintian
-
