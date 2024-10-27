@@ -1203,5 +1203,11 @@
         "translations": {
             "1.1.3": 1730011395849
         }
+    },
+    {
+        "id": "daily-notes-editor",
+        "translations": {
+            "0.1.8": 1730012127045
+        }
     }
 ]
