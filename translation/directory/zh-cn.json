@@ -1233,5 +1233,11 @@
         "translations": {
             "1.14.9": 1730054340351
         }
+    },
+    {
+        "id": "codeblock-customizer",
+        "translations": {
+            "1.2.8": 1729362934287
+        }
     }
 ]
