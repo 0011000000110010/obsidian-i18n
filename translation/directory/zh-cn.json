@@ -1221,5 +1221,11 @@
         "translations": {
             "0.3.24": 1730105964210
         }
+    },
+    {
+        "id": "birthday-tracker",
+        "translations": {
+            "1.1.8": 1730104325949
+        }
     }
 ]
