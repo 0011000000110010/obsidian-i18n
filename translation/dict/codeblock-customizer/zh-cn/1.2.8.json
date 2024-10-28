@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1729362934287,
+        "translationVersion": 1730113498010,
         "pluginVersion": "1.2.8"
     },
     "description": {
@@ -100,6 +100,7 @@
         "description: \"Unexpected code point `%x`. Do not use NULL characters in HTML\"": "description: \"意外的码点 `%x`。HTML 中不要使用 NULL 字符\"",
         "description: \"Unexpected `%c-1`. Expected it followed by `>` or in a quoted attribute value\"": "description: \"意外的 `%c-1`。预期其后跟 `>` 或在引用的属性值中\"",
         "description: \"Unexpected character reference. Expected known named character references\"": "description: \"意外的字符引用。预期已知的命名字符引用\"",
+        "text: \"Codeblock Customizer Settings\"": "text: \"代码块自定义设置\"",
         "text: \"Basic settings\"": "text: \"基本设置\"",
         "text: \"Codeblock settings\"": "text: \"代码块设置\"",
         "text: \"Extra buttons\"": "text: \"额外按钮\"",
@@ -114,7 +115,6 @@
         "text: \"Inline code settings\"": "text: \"内联代码设置\"",
         "text: \"Print to PDF settings \"": "text: \"打印为 PDF 设置 \"",
         "text: `${languageName} specific color settings`": "text: `${languageName} 特定颜色设置`",
-        "text: `${this.lineNumber}`": "text: `${this.lineNumber}`",
         ".setButtonText(\"Restore\")": ".setButtonText(\"恢复\")",
         ".setButtonText(\"Add\")": ".setButtonText(\"添加\")",
         ".setName(\"Theme\")": ".setName(\"主题\")",
@@ -220,6 +220,34 @@
         ".setTooltip(\"Delete color\")": ".setTooltip(\"删除颜色\")",
         ".setTooltip(`Add the selected property to customize it for code block language ${languageName} specifically`)": ".setTooltip(`添加选定的属性以专门针对代码块语言 ${languageName} 进行自定义`)",
         ".setTooltip(`Delete all language specific colors for code block language ${languageName}`)": ".setTooltip(`删除代码块语言 ${languageName} 的所有语言特定颜色`)",
-        ".appendText(\"If you like this plugin, and would like to help support continued development, use the button below!\")": ".appendText(\"如果您喜欢此插件，并希望支持持续开发，请使用下面的按钮！\")"
+        ".appendText(\"If you like this plugin, and would like to help support continued development, use the button below!\")": ".appendText(\"如果您喜欢此插件，并希望支持持续开发，请使用下面的按钮！\")",
+        "createTextNode(\"For more information, please read the \")": "createTextNode(\"如需更多信息，请阅读 \")",
+        "\"Editor active line color\"": "\"编辑器活动行颜色\"",
+        "'To set this color, enable the option \"Enable editor active line highlighting\" first.'": "'要设置此颜色，请先启用选项 \"启用编辑器活动行高亮\"。'",
+        "\"Codeblock active line color\"": "\"代码块活动行颜色\"",
+        "'To set this color, enable the option \"Enable codeblock active line highlight\" first.'": "'要设置此颜色，请先启用选项 \"启用代码块活动行高亮\"。'",
+        "\"Background color\"": "\"背景颜色\"",
+        "'Highlight color (used by the \"hl\" parameter)'": "'高亮颜色（由 \"hl\" 参数使用）'",
+        "\"Bracket highlight color for matching brackets\"": "\"匹配括号的括号高亮颜色\"",
+        "\"Background color for matching brackets\"": "\"匹配括号的背景颜色\"",
+        "\"Bracket highlight color for non matching brackets\"": "\"不匹配括号的括号高亮颜色\"",
+        "\"Background color for non matching brackets\"": "\"不匹配括号的背景颜色\"",
+        "\"Selection match highlight color\"": "\"选择匹配高亮颜色\"",
+        ".setDesc(\"If enabled, in editing mode the 'Copy Code' button will always be visible on collapsed code blocks in the header. In reading mode the 'Copy Code' button will always be visible on collapsed and uncollapsed code blocks as well. Otherwise, it will only appear when hovering over the header (in editing mode) or the code block (in reading mode).\")": ".setDesc(\"如果启用，在编辑模式下，'复制代码' 按钮将始终显示在标题中的折叠代码块上。在阅读模式下，'复制代码' 按钮也将始终显示在折叠和未折叠的代码块上。否则，只有将鼠标悬停在标题（在编辑模式下）或代码块（在阅读模式下）上时才会显示。\")",
+        ".addOptions({ \"disable\": \"Disable\", \"left\": \"Left\", \"right\": \"Right\" })": ".addOptions({ \"disable\": \"禁用\", \"left\": \"左边\", \"right\": \"右边\" })",
+        "\"Header color\"": "\"标题颜色\"",
+        "\"Header text color\"": "\"标题文本颜色\"",
+        "\"Header line color\"": "\"标题行颜色\"",
+        ".addOptions({ \"hide\": \"Hide\", \"middle\": \"Middle\", \"right\": \"Right\" })": ".addOptions({ \"hide\": \"隐藏\", \"middle\": \"中间\", \"right\": \"右边\" })",
+        "\"Codeblock language text color\"": "\"代码块语言文本颜色\"",
+        "'To set this color, enable the option \"Display codeblock language\" first.'": "'要设置此颜色，请先启用选项 \"显示代码块语言\"。'",
+        "\"Codeblock language background color\"": "\"代码块语言背景颜色\"",
+        "\"Gutter background color\"": "\"行号背景颜色\"",
+        "\"Active line number color\"": "\"活动行号颜色\"",
+        "'To set this color enable the option \"Highlight active line number\" first.'": "'要设置此颜色，请先启用选项 \"高亮活动行号\"。'",
+        "\"Inline code background color\"": "\"内联代码背景颜色\"",
+        "\"Inline code text color\"": "\"内联代码文本颜色\"",
+        "'To set this color enable the option \"Enable inline code styling\" first.'": "'要设置此颜色，请先启用选项 \"启用内联代码样式\"。'",
+        ".addOptions({ \"basic\": \"Basic\", \"codeblock\": \"Codeblock\", \"languageSpecific\": \"Language specific colors\", \"alternateHighlight\": \"Alternative highlight colors\", \"header\": \"Header\", \"headerLanguage\": \"Header language\", \"gutter\": \"Gutter\", \"inlineCode\": \"Inline code\", \"printToPDF\": \"Print to PDF\" })": ".addOptions({ \"basic\": \"基本设置\", \"codeblock\": \"代码块\", \"languageSpecific\": \"语言特定颜色\", \"alternateHighlight\": \"替代高亮颜色\", \"header\": \"标题\", \"headerLanguage\": \"标题语言\", \"gutter\": \"行号\", \"inlineCode\": \"内联代码\", \"printToPDF\": \"打印为 PDF\" })"
     }
 }
