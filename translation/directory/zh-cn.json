@@ -1281,5 +1281,11 @@
         "translations": {
             "1.4.0": 1730185363513
         }
+    },
+    {
+        "id": "obsidian-scroll-to-top-plugin",
+        "translations": {
+            "2.1.4": 1730185145138
+        }
     }
 ]
