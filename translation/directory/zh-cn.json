@@ -1251,5 +1251,11 @@
         "translations": {
             "0.1.0": 1730126149567
         }
+    },
+    {
+        "id": "dashboard-navigator",
+        "translations": {
+            "3.0.0": 1730124600147
+        }
     }
 ]
