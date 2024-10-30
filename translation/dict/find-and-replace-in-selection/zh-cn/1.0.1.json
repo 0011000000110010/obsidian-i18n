@@ -1,0 +1,24 @@
+{
+    "manifest": {
+        "translationVersion": -639075600000,
+        "pluginVersion": "1.0.1"
+    },
+    "description": {
+        "original": "Finds what you are looking for in the selected text and replaces it with the specified text",
+        "translation": "在所选文本中查找您要查找的内容，并将其替换为指定的文本"
+    },
+    "dict": {
+        "name: 'Find and replace in selection'": "name: '在选择中查找和替换'",
+        "text: 'Find and replace in selection - Settings'": "text: '在选择-设置中查找和替换'",
+        ".setName('Text to find')": ".setName('要查找的文本')",
+        ".setName('RegExp to find')": ".setName('正则表达式查找')",
+        ".setName('RegExp flags')": ".setName('正则表达式标志')",
+        ".setName('Replace by')": ".setName('替换为')",
+        ".setDesc('Leave empty to ignore')": ".setDesc('留空以忽略')",
+        ".setDesc('Type \"gmi\" for global, multiline, insensitive')": ".setDesc('键入\"gmi\" 表示全局、多行、不敏感')",
+        ".setDesc('Text to be inserted')": ".setDesc('待插入的文本')",
+        ".setPlaceholder('Example: (\\w+)\\s(\\w+)')": ".setPlaceholder('示例：(\\w+)\\s(\\w+)')",
+        ".setPlaceholder('Example: gmi')": ".setPlaceholder('示例：gmi')",
+        ".setPlaceholder('Example: $2, $1')": ".setPlaceholder('示例：$2, $1')"
+    }
+}
