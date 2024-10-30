@@ -3,8 +3,8 @@
         "login": "ob-i18n",
         "name": "佚名",
         "url": "https://gitee.com/ob-i18n",
-        "translation": 291,
-        "modification": 0,
+        "translation": 617,
+        "modification": 1,
         "erasure": 0
     },
     {
@@ -51,7 +51,7 @@
         "login": "fendi86",
         "name": "Fendi",
         "url": "https://gitee.com/fendi86",
-        "translation": 5403,
+        "translation": 5512,
         "modification": 0,
         "erasure": 0
     },
@@ -328,9 +328,9 @@
         "erasure": 0
     },
     {
-        "login": "",
+        "login": "null_107_2454",
         "name": "白起",
-        "url": "",
+        "url": "https://gitee.com/null_107_2454",
         "translation": 47,
         "modification": 0,
         "erasure": 0
@@ -339,7 +339,7 @@
         "login": "zhang-wenzhen",
         "name": "阿弟要精致",
         "url": "https://gitee.com/zhang-wenzhen",
-        "translation": 293,
+        "translation": 311,
         "modification": 0,
         "erasure": 0
     },
@@ -347,7 +347,7 @@
         "login": "hwpy",
         "name": "宇桐非",
         "url": "https://gitee.com/hwpy",
-        "translation": 4244,
+        "translation": 5522,
         "modification": 0,
         "erasure": 0
     },
@@ -356,6 +356,14 @@
         "name": "wyc",
         "url": "https://gitee.com/cuberwu",
         "translation": 1619,
+        "modification": 0,
+        "erasure": 0
+    },
+    {
+        "login": "ink-dyed-jiangnan-tobacco",
+        "name": "墨染江南烟",
+        "url": "https://gitee.com/ink-dyed-jiangnan-tobacco",
+        "translation": 20,
         "modification": 0,
         "erasure": 0
     }

@@ -1018,7 +1018,8 @@
     {
         "id": "table-editor-obsidian",
         "translations": {
-            "0.22.0": -639075600000
+            "0.22.0": -639075600000,
+            "0.22.1": 1729952596261
         }
     },
     {
@@ -1189,6 +1190,120 @@
         "id": "import-attachments-plus",
         "translations": {
             "1.5.11": 1729917926245
+        }
+    },
+    {
+        "id": "timer",
+        "translations": {
+            "1.1.7": 1730016784330
+        }
+    },
+    {
+        "id": "copy-as-html",
+        "translations": {
+            "1.1.3": 1730011395849
+        }
+    },
+    {
+        "id": "daily-notes-editor",
+        "translations": {
+            "0.1.8": 1730012127045
+        }
+    },
+    {
+        "id": "listen-up",
+        "translations": {
+            "1.0.7": 1730001655645
+        }
+    },
+    {
+        "id": "datepicker",
+        "translations": {
+            "0.3.24": 1730105964210
+        }
+    },
+    {
+        "id": "birthday-tracker",
+        "translations": {
+            "1.1.8": 1730104325949
+        }
+    },
+    {
+        "id": "note-toolbar",
+        "translations": {
+            "1.14.9": 1730054340351
+        }
+    },
+    {
+        "id": "codeblock-customizer",
+        "translations": {
+            "1.2.8": 1729362934287
+        }
+    },
+    {
+        "id": "pexels-banner",
+        "translations": {
+            "2.4.0": 1730107401067
+        }
+    },
+    {
+        "id": "style-text",
+        "translations": {
+            "0.1.0": 1730126149567
+        }
+    },
+    {
+        "id": "dashboard-navigator",
+        "translations": {
+            "3.0.0": 1730124600147
+        }
+    },
+    {
+        "id": "auto-embed",
+        "translations": {
+            "1.2.4": 1730193117109
+        }
+    },
+    {
+        "id": "reason",
+        "translations": {
+            "0.3.7": 1730193069612
+        }
+    },
+    {
+        "id": "historica",
+        "translations": {
+            "0.3.5": 1730146195098
+        }
+    },
+    {
+        "id": "rich-foot",
+        "translations": {
+            "1.4.0": 1730185363513
+        }
+    },
+    {
+        "id": "obsidian-scroll-to-top-plugin",
+        "translations": {
+            "2.1.4": 1730185145138
+        }
+    },
+    {
+        "id": "tickticksync",
+        "translations": {
+            "1.0.38": 1730260690552
+        }
+    },
+    {
+        "id": "image-captions",
+        "translations": {
+            "1.1.3": -639075600000
+        }
+    },
+    {
+        "id": "find-and-replace-in-selection",
+        "translations": {
+            "1.0.1": -639075600000
         }
     }
 ]

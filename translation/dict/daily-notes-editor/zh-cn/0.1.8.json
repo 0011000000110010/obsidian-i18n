@@ -1,0 +1,22 @@
+{
+    "manifest": {
+        "translationVersion": 1730012127045,
+        "pluginVersion": "0.1.8"
+    },
+    "description": {
+        "original": "Edit a bunch of daily notes in one page(inline), which works similar to Roam Research's default daily note view.",
+        "translation": "在一个页面内编辑所有的每日笔记，其工作原理类似于Roam Research的默认每日笔记视图"
+    },
+    "dict": {
+        "Notice(\"Failed to read the daily note template\")": "Notice(\"读取日记模板失败\")",
+        "Notice(\"Unable to create new file.\")": "Notice(\"无法创建新文件\")",
+        ".error(`Failed to read the daily note template '${i}'`,o)": ".error(`读取日记模板失败 '${i}'`,o)",
+        ".error(`Failed to create file: '${u}'`,c)": ".error(`创建文件失败: '${u}'`,c)",
+        ".error(`Failed to create file: '${l}'`,d)": ".error(`创建文件失败: '${l}'`,d)",
+        "name:\"Open Daily Note Editor\"": "name:\"打开每日笔记编辑器\"",
+        ".setName(\"Hide frontmatter\")": ".setName(\"隐藏frontmatter\")",
+        ".setName(\"Hide backlinks\")": ".setName(\"隐藏反向链接\")",
+        ".setDesc(\"Hide frontmatter in daily notes\")": ".setDesc(\"在日常笔记中隐藏正面内容\")",
+        ".setDesc(\"Hide backlinks in daily notes\")": ".setDesc(\"在日常笔记中隐藏反向链接\")"
+    }
+}
