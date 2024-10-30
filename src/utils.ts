@@ -1,9 +1,10 @@
 import * as fs from 'fs-extra'
-import { App, Notice, PluginManifest, WorkspaceLeaf } from 'obsidian';
+import { App, Notice, PluginManifest } from 'obsidian';
 import { State as state, Translation, ValidationOptions } from './data/types';
 import { t } from './lang/inxdex';
 import { deflateSync, inflateSync } from 'zlib';
 import I18N from './main';
+import { exec } from 'child_process';
 
 // ==============================
 //            状态管理类
@@ -298,8 +299,52 @@ export const isValidTranslationFormat = (json: Translation | undefined) => {
 export const deflate = (str: string) => { return deflateSync(str).toString('base64'); }
 export const inflate = (str: string) => { return inflateSync(Buffer.from(str, 'base64')).toString(); }
 
+// 对比云端和提交译文
+export const compareTranslation = (oldTranslation: Translation, newTranslation: Translation) => {
+	const unchanged: Record<string, string> = {};
+	const added: Record<string, string> = {};
+	const removed: Record<string, string> = {};
+	const modified: Record<string, { oldValue: string; newValue: string }> = {};
 
+	for (const [key, value] of Object.entries(newTranslation.dict)) {
+		if (!(key in oldTranslation.dict)) {
+			added[key] = value;
+		} else if (oldTranslation.dict[key] !== value) {
+			modified[key] = { oldValue: oldTranslation.dict[key], newValue: value };
+		} else {
+			unchanged[key] = value;
+		}
+	}
 
+	for (const [key, value] of Object.entries(oldTranslation.dict)) {
+		if (!(key in newTranslation.dict)) {
+			removed[key] = value; // Or you could use oldTranslation.dict[key] if you still have access to it.  
+		}
+	}
+
+	return { unchanged, added, modified, removed };
+}
+
+export const i18nOpen = (i18n: I18N, dir: string) => {
+	if (navigator.userAgent.match(/Win/i)) {
+		exec(`start "" "${dir}"`, (error) => {
+			if (error) {
+				i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
+			} else {
+				i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
+			}
+		});
+	}
+	if (navigator.userAgent.match(/Mac/i)) {
+		exec(`open ${dir}`, (error) => {
+			if (error) {
+				i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), false, error);
+			} else {
+				i18n.notice.result(t('I18N_ITEM_OPEN_DIR_BUTTON_NOTICE_HEAD'), true);
+			}
+		});
+	}
+}
 
 
 

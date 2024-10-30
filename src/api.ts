@@ -22,13 +22,9 @@ export class API {
 		};
 		try {
 			const response = await requestUrl(RequestUrlParam);
-			// if (version !== response.json.version) {
-			// 	this.i18n.notice.primary('I18N', `发现新版本(${response.json.version})\n${response.json.content}`);
-			// }
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
 			return { 'state': true, 'data': error };
-			// this.i18n.notice.error('I18N', `网络异常(无法获取最新版)\n${error}`);
 		}
 	}
 
@@ -164,6 +160,7 @@ export class API {
 					path: path
 				}),
 			};
+			console.log(RequestUrlParam);
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
@@ -261,10 +258,10 @@ export class API {
 				url: `https://gitee.com/${this.settings.I18N_GITEE_OWNER}/${this.settings.I18N_GITEE_REPO}/raw/master/translation/dict/${id}/${this.settings.I18N_LANGUAGE}/${version}.json`,
 				method: 'GET'
 			};
+			console.log(RequestUrlParam)
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {
-			console.log(error)
 			return { 'state': false, 'data': '' };
 		}
 	}
@@ -371,6 +368,7 @@ export class API {
 			return { 'state': false, 'data': '' };
 		}
 	}
+
 	public async giteeDownload(url: string) {
 		try {
 			const RequestUrlParam: RequestUrlParam = {

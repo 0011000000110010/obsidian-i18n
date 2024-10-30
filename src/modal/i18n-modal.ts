@@ -596,7 +596,12 @@ export class I18NModal extends Modal {
             if (this.developerMode) {
                 itemEl.controlEl.createEl('button', { text: '测试', cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
                     el.addEventListener("click", async () => {
-                        // console.log(this.app.setting);
+                        // @ts-ignore
+                        const dir = path.join(this.app.vault.adapter.getBasePath(), this.i18n.manifest.dir, 'Admin');
+                        // @ts-ignore
+                        const doc = path.join(this.app.vault.adapter.getBasePath(), this.i18n.manifest.dir, 'Admin', `${this.i18n.settings.I18N_LANGUAGE}.json`);
+                        console.log(dir)
+                        console.log(doc)
                     });
                 });
 

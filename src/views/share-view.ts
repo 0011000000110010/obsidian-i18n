@@ -43,6 +43,7 @@ export class ShareView extends ItemView {
         if (this.localTranslationJson && !this.updateMark) {
             const editEl = this.contentEl;
             editEl.addClass('i18n-share__container');
+            editEl.parentElement?.getElementsByClassName('view-header')[0].remove();
             // ==============================
             // headeEl
             // ==============================
@@ -61,8 +62,6 @@ export class ShareView extends ItemView {
             manifestEl.createEl('button', { text: '提交译文', cls: ['i18n-button', 'i18n-button--success', 'i18n-button-left'] }, async (el) => {
                 el.addEventListener("click", async () => {
                     if (this.verify) {
-                        // this.i18n.api.giteeGetToken();
-                        // I18N_SHARE_CACHE_LOGIN
                         const res = await this.i18n.api.giteePostIssue(`[提交译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson)), '提交译文');
                         if (res?.state) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${res.data.number}`);
                         this.i18n.notice.result('提交译文', true);
@@ -111,19 +110,18 @@ export class ShareView extends ItemView {
             // 主容器
             const editEl = this.contentEl;
             editEl.addClass('i18n-share-update__container');
+            editEl.parentElement?.getElementsByClassName('view-header')[0].remove();
             // 操作行 El
             const operateEl = editEl.createEl('div', { cls: 'i18n-share-update__operate' });
             operateEl.createEl('button', { text: '更新译文', cls: ['i18n-button', 'i18n-button--success', 'i18n-button-left'] }, async (el) => {
                 el.addEventListener("click", async () => {
-                    // if (this.verify) {
-                    //     console.log(JSON.stringify(this.localTranslationJson, null, 4));
-                    //     const number = await this.i18n.api.submite(`[更新译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson, null, 4)), '更新译文');
-                    //     if (number != null) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${number}`);
-                    //     NoticeOperationResult('更新译文', true);
-                    // } else {
-                    //     NoticeOperationResult('更新译文', false, '请检查后重试');
-                    // }
-                    this.i18n.notice.result('更新译文', false, '暂未开放');
+                    if (this.verify) {
+                        const res = await this.i18n.api.giteePostIssue(`[更新译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson, null, 4)), '更新译文');
+                        if (res?.state) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${res.data.number}`);
+                        this.i18n.notice.result('更新译文', true);
+                    } else {
+                        this.i18n.notice.result('更新译文', false, '请检查后重试');
+                    }
                 });
             })
             // 对比器 El

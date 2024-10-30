@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import BaseSetting from "../base-setting";
-import { PluginManifest, Setting } from "obsidian";
+import { Setting } from "obsidian";
 import { LANGUAGES } from "src/data/data";
 import { t } from "src/lang/inxdex";
 

@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
 
-import { App, Notice, Plugin, PluginManifest, WorkspaceLeaf } from 'obsidian';
+import { App, Plugin, PluginManifest, WorkspaceLeaf } from 'obsidian';
 import { DEFAULT_SETTINGS, I18nSettings } from './settings/data';
 import { I18nSettingTab } from './settings';
 import { t } from './lang/inxdex';
@@ -73,13 +73,13 @@ export default class I18N extends Plugin {
         Icons();
         // [加载] 通知类
         this.notice = new Notification(this.app, this);
-        // [加载] API类
-        this.api = new API(this);
         // [加载] 配置
         await this.loadSettings();
         console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
         document.documentElement.style.setProperty('--i18n-color-primary', this.settings.I18N_COLOR);
         if (this.settings.I18N_AGREEMENT) {
+            // [加载] API类
+            this.api = new API(this);
             // [函数] 首次运行
             this.firstRun();
             // [函数] 检测更新
@@ -87,7 +87,7 @@ export default class I18N extends Plugin {
             // [函数] 云端标记插件
             this.ignoreCache();
             // [函数] 云端目录缓存
-            this.directoryCache(); 
+            this.directoryCache();
             // [函数] 自动更新
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
             // [函数] 沉浸式翻译
@@ -290,7 +290,7 @@ export default class I18N extends Plugin {
         if (leaves.length > 0) {
             leaf = leaves[0];
         } else {
-            leaf = workspace.getLeaf('window'); // 'window' true
+            leaf = workspace.getLeaf('window'); // 'window' true 
             if (leaf != null) await leaf.setViewState({ type: ADMIN_VIEW_TYPE, active: true });
         }
         if (leaf != null) workspace.revealLeaf(leaf);

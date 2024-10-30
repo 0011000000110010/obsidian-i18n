@@ -30,6 +30,7 @@ export class EditorView extends ItemView {
     onload(): void {
         if (this.translationDoc != '') this.translationJson = fs.readJsonSync(this.translationDoc);
         const editEl = this.contentEl;
+        editEl.parentElement?.getElementsByClassName('view-header')[0].remove();
         editEl.addClass('i18n-edit__container');
 
         const manifestEl_1 = editEl.createEl('div');
@@ -65,8 +66,6 @@ export class EditorView extends ItemView {
         const descriptionInputEl = manifestEl.createEl('input');
         descriptionInputEl.addClass('i18n-edit__description-input');
 
-
-
         // 描述翻译DOM
         if (this.i18n.settings.I18N_MODE_NIT && this.i18n.settings.I18N_NIT_API == 'BAIDU' && this.translationJson != undefined) {
             const translationDescriptionButton = new ButtonComponent(manifestEl);
@@ -95,9 +94,6 @@ export class EditorView extends ItemView {
         operateEl.addClass('i18n-edit__operate');
 
         if (this.translationJson != undefined) {
-            // ==============================
-            // headeEl
-            // ==============================
             // 翻译版本
             translationVersionEl.value = formatTimestamp_concise(this.translationJson.manifest.translationVersion);
             // 旧描述
