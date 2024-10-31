@@ -1306,5 +1306,11 @@
         "translations": {
             "1.0.1": -639075600000
         }
+    },
+    {
+        "id": "obsidian-better-codeblock",
+        "translations": {
+            "1.0.8": 1730276942890
+        }
     }
 ]
