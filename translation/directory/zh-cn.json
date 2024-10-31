@@ -1318,5 +1318,11 @@
         "translations": {
             "1.6.0": 1730365135812
         }
+    },
+    {
+        "id": "password-protect",
+        "translations": {
+            "1.1.6": 1730373976833
+        }
     }
 ]
