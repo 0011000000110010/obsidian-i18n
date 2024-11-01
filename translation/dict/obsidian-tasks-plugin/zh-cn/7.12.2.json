@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730475263904,
+        "translationVersion": 1730476171869,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -372,7 +372,10 @@
         "return`${this.label} - end`": "return`${this.label} - 结束`",
         "return`<i>no ${r} date</i>`": "return`<i>无 ${r} 日期</i>`",
         ".replace(\" 1 day ago\",\" yesterday\")": ".replace(\" 1 day ago\",\" 昨天\")",
+        ".replace(\" in 0 days\",\" today\")": ".replace(\" in 0 days\",\" 在今天\")",
+        ".replace(\"in a day\",\"tomorrow\")": ".replace(\"in a day\",\"在明天\")",
         "var fI=\"Try 'Mon' or 'tm' then space\"": "var fI=\"尝试 'Mon' 或 'tm' 然后按空格\"",
+        ".setAttribute(\"title\",`Right-click to edit ${cc(c)}`": ".setAttribute(\"title\",`右键编辑 ${cc(c)}`",
         "\"priority:: highest\"": "\"优先级:: 最高\"",
         "\"priority:: high\"": "\"优先级:: 高\"",
         "\"priority:: medium\"": "\"优先级:: 中\"",
@@ -387,7 +390,6 @@
         "\"repeat::\"": "\"重复::\"",
         "\"onCompletion::\"": "\"完成时::\"",
         "\"dependsOn::\"": "\"依赖于::\"",
-        "priority:: *(highest|high|medium|low|lowest)/)": "优先级:: *(最高|高|中|低|最低)/)",
         "start:: ": "开始:: ",
         "created:: ": "创建:: ",
         "scheduled:: ": "计划:: ",
@@ -398,9 +400,6 @@
         "onCompletion:: ": "完成时:: ",
         "Pr(new RegExp(\"dependsOn:: ": "Pr(new RegExp(\"依赖于:: ",
         "`<i>invalid ${r} date</i>`": "`无效的 ${r} 日期`",
-        ".replace(\" in 0 days\",\" today\")": ".replace(\" in 0 days\",\" 在今天\")",
-        ".replace(\"in a day\",\"tomorrow\")": ".replace(\"in a day\",\"在明天\")",
-        ".setAttribute(\"title\",`Right-click to edit ${cc(c)}`": ".setAttribute(\"title\",`右键编辑 ${cc(c)}`",
         "\"due date\"": "\"截止日期\"",
         "\"start date\"": "\"开始日期\"",
         "\"scheduled date\"": "\"计划日期\"",
