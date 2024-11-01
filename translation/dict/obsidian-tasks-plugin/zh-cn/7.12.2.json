@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730351695892,
+        "translationVersion": 1730465977336,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -380,6 +380,30 @@
         ".replace(\" 1 day ago\",\" yesterday\")": ".replace(\" 1 day ago\",\" 昨天\")",
         ".replace(\" in 0 days\",\" today\")": ".replace(\" in 0 days\",\" 今天\")",
         ".replace(\"in a day\",\"tomorrow\")": ".replace(\"in a day\",\"明天\")",
-        "var fI=\"Try 'Mon' or 'tm' then space\"": "var fI=\"尝试 'Mon' 或 'tm' 然后按空格\""
+        "var fI=\"Try 'Mon' or 'tm' then space\"": "var fI=\"尝试 'Mon' 或 'tm' 然后按空格\"",
+        "\"priority:: highest\"": "\"优先级:: 最高\"",
+        "\"priority:: high\"": "\"优先级:: 高\"",
+        "\"priority:: medium\"": "\"优先级:: 中\"",
+        "\"priority:: low\"": "\"优先级:: 低\"",
+        "\"priority:: lowest\"": "\"优先级:: 最低\"",
+        "\"start::\"": "\"开始::\"",
+        "\"created::\"": "\"创建::\"",
+        "\"scheduled::\"": "\"计划::\"",
+        "\"due::\"": "\"截止::\"",
+        "\"completion::\"": "\"完成::\"",
+        "\"cancelled::\"": "\"已取消::\"",
+        "\"repeat::\"": "\"重复::\"",
+        "\"onCompletion::\"": "\"完成时::\"",
+        "\"dependsOn::\"": "\"依赖于::\"",
+        "priority:: *(highest|high|medium|low|lowest)/)": "优先级:: *(最高|高|中|低|最低)/)",
+        "start:: ": "开始:: ",
+        "created:: ": "创建:: ",
+        "scheduled:: ": "计划:: ",
+        "due:: ": "截止:: ",
+        "completion:: ": "完成:: ",
+        "cancelled:: ": "已取消:: ",
+        "repeat:: ": "重复:: ",
+        "onCompletion:: ": "完成时:: ",
+        "Pr(new RegExp(\"dependsOn:: ": "Pr(new RegExp(\"依赖于:: "
     }
 }
