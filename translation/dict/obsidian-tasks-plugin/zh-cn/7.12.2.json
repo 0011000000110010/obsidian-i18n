@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730465977336,
+        "translationVersion": 1730468864688,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -404,6 +404,12 @@
         "cancelled:: ": "已取消:: ",
         "repeat:: ": "重复:: ",
         "onCompletion:: ": "完成时:: ",
-        "Pr(new RegExp(\"dependsOn:: ": "Pr(new RegExp(\"依赖于:: "
+        "Pr(new RegExp(\"dependsOn:: ": "Pr(new RegExp(\"依赖于:: ",
+        "\"due\"": "\"截止\"",
+        "\"start\"": "\"开始\"",
+        "\"scheduled\"": "\"计划\"",
+        "\"done\"": "\"完成\"",
+        "\"cancelled\"": "\"取消\"",
+        "`<i>invalid ${r} date</i>`": "`无效的 ${r} 日期`"
     }
 }
