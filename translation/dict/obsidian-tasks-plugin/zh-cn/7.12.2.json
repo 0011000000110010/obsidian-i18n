@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730468864688,
+        "translationVersion": 1730475263904,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -218,12 +218,6 @@
         "labelText:\"Before this\"": "labelText:\"父依赖\"",
         "labelText:\"After this\"": "labelText:\"子任务\"",
         "\"Only future dates:\"": "\"仅限未来日期:\"",
-        "\"Lowest\"": "\"Lowest（极低）\"",
-        "\"Low\"": "\"Low（低）\"",
-        "\"Normal\"": "\"Normal（一般）\"",
-        "\"Medium\"": "\"Medium（中）\"",
-        "\"High\"": "\"High（高）\"",
-        "\"Highest\"": "\"Highest（极高）\"",
         "{parsedRecurrence:\"<i>not recurring</>\",isRecurrenceValid:!0}": "{parsedRecurrence:\"<i>不重复</>\",isRecurrenceValid:!0}",
         "{parsedRecurrence:\"<i>due, scheduled or start date required</i>\",isRecurrenceValid:!1}": "{parsedRecurrence:\"<i>需要截止日期、计划日期或开始日期</i>\",isRecurrenceValid:!1}",
         "{parsedRecurrence:\"<i>invalid recurrence rule</i>\",isRecurrenceValid:!1}": "{parsedRecurrence:\"<i>重复规则无效</i>\",isRecurrenceValid:!1}",
@@ -378,8 +372,6 @@
         "return`${this.label} - end`": "return`${this.label} - 结束`",
         "return`<i>no ${r} date</i>`": "return`<i>无 ${r} 日期</i>`",
         ".replace(\" 1 day ago\",\" yesterday\")": ".replace(\" 1 day ago\",\" 昨天\")",
-        ".replace(\" in 0 days\",\" today\")": ".replace(\" in 0 days\",\" 今天\")",
-        ".replace(\"in a day\",\"tomorrow\")": ".replace(\"in a day\",\"明天\")",
         "var fI=\"Try 'Mon' or 'tm' then space\"": "var fI=\"尝试 'Mon' 或 'tm' 然后按空格\"",
         "\"priority:: highest\"": "\"优先级:: 最高\"",
         "\"priority:: high\"": "\"优先级:: 高\"",
@@ -405,11 +397,27 @@
         "repeat:: ": "重复:: ",
         "onCompletion:: ": "完成时:: ",
         "Pr(new RegExp(\"dependsOn:: ": "Pr(new RegExp(\"依赖于:: ",
-        "\"due\"": "\"截止\"",
-        "\"start\"": "\"开始\"",
-        "\"scheduled\"": "\"计划\"",
-        "\"done\"": "\"完成\"",
-        "\"cancelled\"": "\"取消\"",
-        "`<i>invalid ${r} date</i>`": "`无效的 ${r} 日期`"
+        "`<i>invalid ${r} date</i>`": "`无效的 ${r} 日期`",
+        ".replace(\" in 0 days\",\" today\")": ".replace(\" in 0 days\",\" 在今天\")",
+        ".replace(\"in a day\",\"tomorrow\")": ".replace(\"in a day\",\"在明天\")",
+        ".setAttribute(\"title\",`Right-click to edit ${cc(c)}`": ".setAttribute(\"title\",`右键编辑 ${cc(c)}`",
+        "\"due date\"": "\"截止日期\"",
+        "\"start date\"": "\"开始日期\"",
+        "\"scheduled date\"": "\"计划日期\"",
+        "\"recurring (repeat)\"": "\"重复\"",
+        "displayText:`${e.createdDateSymbol} created today (${i})`": "displayText:`${e.createdDateSymbol} 今日创建 (${i})`",
+        "Pi(n,i,r.dependsOnSymbol,\"depends on id\")": "Pi(n,i,r.dependsOnSymbol,\"取决于ID\")",
+        "Pi(n,i,r.onCompletionSymbol,\"on completion\"": "Pi(n,i,r.onCompletionSymbol,\"结束\"",
+        "displayText:\"generate unique id\"": "displayText:\"生成唯一id\"",
+        "id:\"due\"": "id:\"截止\"",
+        "id:\"scheduled\"": "id:\"计划\"",
+        "id:\"start\"": "id:\"开始\"",
+        "id:\"done\"": "id:\"完成\"",
+        "id:\"cancelled\"": "id:\"取消\"",
+        "return\"start\"": "return\"开始\"",
+        "return t>=0?`Postpone ${o} by ${a} ${n}, to ${s}`": "return t>=0?`推迟 ${o} 于 ${a} ${n} 后, 即 ${s}`",
+        "return(t>=0?`${u} in ${a} ${n}, on ${s}`:`${u} ${-a} ${n} ago, on ${s}`": "return(t>=0?`${u} 于 ${a} ${n} 后, 即 ${s}`:`${u} ${-a} ${n} 以前, 即 ${s}`",
+        "`Backdate ${o} by ${-a} ${n}, to ${s}`": "`回溯 ${o} 于 ${-a} ${n} 前, 即 ${s}`",
+        "(right-click for more options)": "(单击右键以获取更多选项)"
     }
 }
