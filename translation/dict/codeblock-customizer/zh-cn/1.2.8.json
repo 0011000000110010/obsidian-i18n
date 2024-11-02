@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730113498010,
+        "translationVersion": 1730549112197,
         "pluginVersion": "1.2.8"
     },
     "description": {
@@ -248,6 +248,24 @@
         "\"Inline code background color\"": "\"内联代码背景颜色\"",
         "\"Inline code text color\"": "\"内联代码文本颜色\"",
         "'To set this color enable the option \"Enable inline code styling\" first.'": "'要设置此颜色，请先启用选项 \"启用内联代码样式\"。'",
-        ".addOptions({ \"basic\": \"Basic\", \"codeblock\": \"Codeblock\", \"languageSpecific\": \"Language specific colors\", \"alternateHighlight\": \"Alternative highlight colors\", \"header\": \"Header\", \"headerLanguage\": \"Header language\", \"gutter\": \"Gutter\", \"inlineCode\": \"Inline code\", \"printToPDF\": \"Print to PDF\" })": ".addOptions({ \"basic\": \"基本设置\", \"codeblock\": \"代码块\", \"languageSpecific\": \"语言特定颜色\", \"alternateHighlight\": \"替代高亮颜色\", \"header\": \"标题\", \"headerLanguage\": \"标题语言\", \"gutter\": \"行号\", \"inlineCode\": \"内联代码\", \"printToPDF\": \"打印为 PDF\" })"
+        ".addOptions({ \"basic\": \"Basic\", \"codeblock\": \"Codeblock\", \"languageSpecific\": \"Language specific colors\", \"alternateHighlight\": \"Alternative highlight colors\", \"header\": \"Header\", \"headerLanguage\": \"Header language\", \"gutter\": \"Gutter\", \"inlineCode\": \"Inline code\", \"printToPDF\": \"Print to PDF\" })": ".addOptions({ \"basic\": \"基本设置\", \"codeblock\": \"代码块\", \"languageSpecific\": \"语言特定颜色\", \"alternateHighlight\": \"替代高亮颜色\", \"header\": \"标题\", \"headerLanguage\": \"标题语言\", \"gutter\": \"行号\", \"inlineCode\": \"内联代码\", \"printToPDF\": \"打印为 PDF\" })",
+        "\"Gutter text color\"": "\"活动行文本颜色\"",
+        "'To set this color enable the option \"Hihglight active line number\" first.'": "'要设置此颜色，请先启用 \"高亮显示活动行号\" 选项。'",
+        "\"color picker dialog\"": "\"颜色选择对话框\"",
+        "\"toggle color picker dialog\"": "\"切换颜色选择对话框\"",
+        "\"color swatch\"": "\"颜色样本\"",
+        "\"use previous color\"": "\"使用上一个颜色\"",
+        "\"Save\"": "\"保存\"",
+        "\"Cancel\"": "\"取消\"",
+        "\"Clear\"": "\"清除\"",
+        "\"save and close\"": "\"保存并关闭\"",
+        "\"cancel and close\"": "\"取消并关闭\"",
+        "\"clear and close\"": "\"清除并关闭\"",
+        "\"color input field\"": "\"颜色输入字段\"",
+        "\"color selection area\"": "\"颜色选择区域\"",
+        "\"hue selection slider\"": "\"色调选择滑块\"",
+        "\"selection slider\"": "\"选择滑块\"",
+        "\"Copy code\"": "\"复制代码\"",
+        "\"Wrap/Unwrap code\"": "\"折叠/展开代码\""
     }
 }

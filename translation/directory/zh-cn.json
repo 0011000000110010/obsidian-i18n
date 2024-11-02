@@ -847,7 +847,8 @@
     {
         "id": "obsidian-tasks-plugin",
         "translations": {
-            "7.10.0": -639075600000
+            "7.10.0": -639075600000,
+            "7.12.2": 1730342209678
         }
     },
     {
@@ -1291,7 +1292,7 @@
     {
         "id": "tickticksync",
         "translations": {
-            "1.0.38": 1730260690552
+            "1.0.38": 1730262202363
         }
     },
     {
@@ -1304,6 +1305,36 @@
         "id": "find-and-replace-in-selection",
         "translations": {
             "1.0.1": -639075600000
+        }
+    },
+    {
+        "id": "obsidian-better-codeblock",
+        "translations": {
+            "1.0.8": 1730276942890
+        }
+    },
+    {
+        "id": "spotify-link",
+        "translations": {
+            "1.6.0": 1730365135812
+        }
+    },
+    {
+        "id": "password-protect",
+        "translations": {
+            "1.1.6": 1730373976833
+        }
+    },
+    {
+        "id": "system3-relay",
+        "translations": {
+            "0.3.3": 1730379853435
+        }
+    },
+    {
+        "id": "default-query-in-backlink",
+        "translations": {
+            "0.1.0-b2": 1730471186253
         }
     }
 ]
