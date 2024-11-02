@@ -414,7 +414,7 @@
         "\"Priority\"": "\"优先级\"",
         "\"Description\"": "\"描述\"",
         ":`Remove ${cc(r)}`": ":`移除 ${cc(r).replace(\"due date\",\"截止日期\").replace(\"scheduled date\",\"计划日期\").replace(\"start date\",\"开始日期\").replace(\"done date\",\"完成日期\").replace(\"created date\",\"创建日期\")}`",
-        ".format(\"ddd Do MMM\")": ".format(\"MMM  ddd  Do \")",
+        ".format(\"ddd Do MMM\")": ".format(\"MMM  Do  ddd\")",
         ".format(\"DD MMM YYYY\")": ".format(\"YYYY  MMM  DD\")",
         "\"Lowest\"": "\"最低\"",
         "\"Low\"": "\"低\"",
