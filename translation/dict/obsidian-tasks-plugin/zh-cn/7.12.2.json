@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730536287752,
+        "translationVersion": 1730554936733,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -440,6 +440,23 @@
         ".format(\"ddd Do MMM\")": ".format(\"MMMDo  ddd\")",
         "return(t>=0?`${u} in ${a} ${n}, on ${s}`:`${u} ${-a} ${n} ago, on ${s}`)": "return(t>=0?`${u}于 ${a} ${n} 后, 即： ${s}`:`${u}于 ${-a} ${n}以前, 即： ${s}`).replace(\"days\",\"天\").replace(\"day\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"Due\",\"截止\").replace(\"Scheduled\",\"计划\").replace(\"Start\",\"开始\").replace(\"Done\",\"完成\")",
         "return t>=0?`Postpone ${o} by ${a} ${n}, to ${s}`:`Backdate ${o} by ${-a} ${n}, to ${s}`": "return (t>=0?`推迟 ${o}于 ${a} ${n}后, 即: ${s}`:`回溯 ${o}于 ${-a} ${n}前, 即: ${s}`).replace(\"days\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\")",
-        "t:\"a\"": "t:\"1\""
+        "t:\"a\"": "t:\"1\"",
+        "Error(\"removeListener 只接受 Function 的实例\"": "Error(\"移除监听器 只接受 Function 的实例\"",
+        "Error(`Missing Mustache data property: ${s.join(\" > \")}`": "Error(`缺少 Mustache 数据属性: ${s.join(\" > \")}`",
+        "Error(`Tasks: Does not support files with the ${t.extension} file extension.`": "Error(`任务:不支持文件扩展名为${t.extension}的文件。`",
+        "Error(\"Invalid tags: \"": "Error(\"标签无效: \"",
+        "Error(\"Unclosed tag at \"": "Error(\"未闭合标签位于 \"",
+        "Error('Unopened section \"'": "Error('未打开的部分 \"'",
+        "Error('Unclosed section \"'": "Error('未封闭部分 \"'",
+        "Error(\"Cannot use higher-order sections without the original template\"": "Error(\"没有原始模板，无法使用高阶部分\"",
+        "Error('Invalid template! Template should be a \"string\" but \"'": "Error('模板无效！模板应该是\"string\" 但是 \"'",
+        "Error(`grouperRegExp() unimplemented for ${this.fieldNameSingular()}`": "Error(`grouperRegExp() 未实施 ${this.fieldNameSingular()}`",
+        "Error(`\"${n}\" is not a valid sort key`": "Error(`\"${n}\" 不是有效的排序键`",
+        "Error(`Unable to compare two different sort key types '${n}' and '${i}' order`": "Error(`无法比较两种不同排序键类型\"${n}\"和\"${i}\"的顺序`",
+        "Error(`Unable to determine sort order for sort key types '${n}' and '${i}'`": "Error(`无法确定排序键类型的排序顺序 '${n}' 和 '${i}'`",
+        "Error(\"grouper() function not valid for FunctionField. Use createGrouperFromLine() instead.\"": "Error(\"grouper()函数对 FunctionField 无效。请改用 createGrouperFromLine()。\"",
+        "Error(\"do not understand hide/show option\"": "Error(\"不能理解隐藏/显示选项\"",
+        "Error(\"MenuDividerInstruction.apply(): Method not implemented.\"": "Error(\"MenuDividerInstruction.apply(): 方法未实现。\"",
+        "Error(\"Developer note: CSS class cannot be an empty string, please specify one.\"": "Error(\"开发者注意:CSS 类不能为空字符串，请指定一个。\""
     }
 }
