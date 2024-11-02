@@ -14,7 +14,7 @@ export default class I18nNITOpenAI extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_OPENAI_URL = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
 
         const i18nNITOpenAIKey = new Setting(this.containerEl); 
@@ -27,7 +27,7 @@ export default class I18nNITOpenAI extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_OPENAI_KEY = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
 
         const i18nNITOpenAIModel = new Setting(this.containerEl);
@@ -40,7 +40,7 @@ export default class I18nNITOpenAI extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_OPENAI_MODEL = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
 
         const i18nAIOpenAITips = new Setting(this.containerEl);
@@ -53,7 +53,7 @@ export default class I18nNITOpenAI extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_OPENAI_TIPS = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
     }
 }

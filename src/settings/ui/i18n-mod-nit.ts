@@ -22,7 +22,9 @@ export default class I18nModeNIT extends BaseSetting {
                 this.settingTab.nitDisplay();
             });
             cb.setClass('i18n-button');
-            this.settings.I18N_MODE_NIT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
+            cb.setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            this.settings.I18N_MODE_NIT ? cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`) : cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`);
+            // this.settings.I18N_MODE_NIT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
         });
 
         const i18nNITAPI = new Setting(this.containerEl);
@@ -35,7 +37,7 @@ export default class I18nModeNIT extends BaseSetting {
                 this.settings.I18N_NIT_API = value;
                 this.i18n.saveSettings();
                 this.settingTab.nitDisplay();
-            })
+            }).selectEl.addClass('i18n-select')
         );
         i18nNITAPI.addButton(cb => cb
             .setButtonText(t('SETTING_NIT_TEST_BUTTON_TEXT'))

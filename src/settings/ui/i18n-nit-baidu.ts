@@ -48,7 +48,7 @@ export default class I18nNitBaiDu extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_APIS.BAIDU.FROM = value
                 this.i18n.saveSettings();
-            })
+            }).selectEl.addClass('i18n-select')
         );
 
         const i18nNitBaiDuTo = new Setting(this.containerEl);
@@ -61,7 +61,7 @@ export default class I18nNitBaiDu extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_APIS.BAIDU.TO = value
                 this.i18n.saveSettings();
-            })
+            }).selectEl.addClass('i18n-select')
         );
 
         const i18nNitBaiDuAppID = new Setting(this.containerEl);
@@ -74,7 +74,7 @@ export default class I18nNitBaiDu extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_APIS.BAIDU.APP_ID = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
 
         const i18nNitBaiDuAppIDKey = new Setting(this.containerEl);
@@ -87,7 +87,7 @@ export default class I18nNitBaiDu extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_NIT_APIS.BAIDU.KEY = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
     }
 }

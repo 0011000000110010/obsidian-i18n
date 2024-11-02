@@ -106,6 +106,43 @@ export interface I18nSettings {
 	// ==============================
 	I18N_ADMIN_MODE: boolean;
 	I18N_ADMIN_TOKEN: string;
+	// ==============================
+	//         Styles
+	// ==============================
+	// I18N_COLOR_PRIMARY: string;
+	// I18N_COLOR_PRIMARY_1: string;
+	// I18N_COLOR_PRIMARY_2: string;
+	// I18N_COLOR_PRIMARY_3: string;
+	// I18N_COLOR_PRIMARY_4: string;
+	// I18N_COLOR_PRIMARY_5: string;
+	// I18N_COLOR_SUCCESS: string;
+	// I18N_COLOR_SUCCESS_1: string;
+	// I18N_COLOR_SUCCESS_2: string;
+	// I18N_COLOR_SUCCESS_3: string;
+	// I18N_COLOR_SUCCESS_4: string;
+	// I18N_COLOR_SUCCESS_5: string;
+	// I18N_COLOR_WARNING: string;
+	// I18N_COLOR_WARNING_1: string;
+	// I18N_COLOR_WARNING_2: string;
+	// I18N_COLOR_WARNING_3: string;
+	// I18N_COLOR_WARNING_4: string;
+	// I18N_COLOR_WARNING_5: string;
+	// I18N_COLOR_DANGER: string;
+	// I18N_COLOR_DANGER_1: string;
+	// I18N_COLOR_DANGER_2: string;
+	// I18N_COLOR_DANGER_3: string;
+	// I18N_COLOR_DANGER_4: string;
+	// I18N_COLOR_DANGER_5: string;
+	// I18N_COLOR_INFO: string;
+	// I18N_COLOR_INFO_1: string;
+	// I18N_COLOR_INFO_2: string;
+	// I18N_COLOR_INFO_3: string;
+	// I18N_COLOR_INFO_4: string;
+	// I18N_COLOR_INFO_5: string;
+	I18N_TAG_TYPE: string;
+	I18N_TAG_SHAPE: string;
+	I18N_BUTTON_TYPE: string;
+	I18N_BUTTON_SHAPE: string;
 }
 
 export const DEFAULT_SETTINGS: I18nSettings = {
@@ -247,7 +284,6 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 			".setTitle\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
 			".addHeading\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
 			".renderMarkdown\\(\\s*(['\"`])(.+?)\\1\\s*\\)",
-			// ".createEl\\((['\"`])([\\w:-]+)\\1,\\s*\\{\\s*text:\\s*(['\"`])(.+?)\\3\\s*\\}\\s*\\)",
 			".innerText\\s*=\\s*(['\"`]).*?\\1"
 		]
 	},
@@ -261,4 +297,41 @@ export const DEFAULT_SETTINGS: I18nSettings = {
 	// ==============================
 	I18N_ADMIN_MODE: false,
 	I18N_ADMIN_TOKEN: '',
+	// ==============================
+	//         Styles
+	// ==============================
+	// I18N_COLOR_PRIMARY: '#409EFF',
+	// I18N_COLOR_PRIMARY_1: '#79BBFF',
+	// I18N_COLOR_PRIMARY_2: '#A0CFFF',
+	// I18N_COLOR_PRIMARY_3: '#C6E2FF',
+	// I18N_COLOR_PRIMARY_4: '#D9ECFF',
+	// I18N_COLOR_PRIMARY_5: '#ECF5FF',
+	// I18N_COLOR_SUCCESS: '#67C23A',
+	// I18N_COLOR_SUCCESS_1: '#95D475',
+	// I18N_COLOR_SUCCESS_2: '#B3E19D',
+	// I18N_COLOR_SUCCESS_3: '#D1EDC4',
+	// I18N_COLOR_SUCCESS_4: '#E1F3D8',
+	// I18N_COLOR_SUCCESS_5: '#F0F9EB',
+	// I18N_COLOR_WARNING: '#E6A23C',
+	// I18N_COLOR_WARNING_1: '#EEBE77',
+	// I18N_COLOR_WARNING_2: '#F3D19E',
+	// I18N_COLOR_WARNING_3: '#F8E3C5',
+	// I18N_COLOR_WARNING_4: '#FAECD8',
+	// I18N_COLOR_WARNING_5: '#FDF6EC',
+	// I18N_COLOR_DANGER: '#F56C6C',
+	// I18N_COLOR_DANGER_1: '#F89898',
+	// I18N_COLOR_DANGER_2: '#FAB6B6',
+	// I18N_COLOR_DANGER_3: '#FCD3D3',
+	// I18N_COLOR_DANGER_4: '#FDE2E2',
+	// I18N_COLOR_DANGER_5: '#FEF0F0',
+	// I18N_COLOR_INFO: '#909399',
+	// I18N_COLOR_INFO_1: '#B1B3B8',
+	// I18N_COLOR_INFO_2: '#C8C9CC',
+	// I18N_COLOR_INFO_3: '#DEDFE0',
+	// I18N_COLOR_INFO_4: '#E9E9EB',
+	// I18N_COLOR_INFO_5: '#F4F4F5',
+	I18N_TAG_TYPE: 'light',
+	I18N_TAG_SHAPE: 'square',
+	I18N_BUTTON_TYPE: 'default',
+	I18N_BUTTON_SHAPE: 'square',
 }

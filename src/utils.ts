@@ -204,58 +204,7 @@ export function validateTranslation(json: Translation, options: ValidationOption
 	return true;
 }
 
-// export function NoticePrimary(prefix: string, text: unknown, duration = 4000) {
-// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
-// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--primary`);
-// 	return notice;
-// }
-// export function NoticeSuccess(prefix: string, text: unknown, duration = 4000) {
-// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
-// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
-// 	return notice;
-// }
-// export function NoticeInfo(prefix: string, text: unknown, duration = 4000) {
-// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
-// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--info`);
-// 	return notice;
-// }
-// export function NoticeWarning(prefix: string, text: unknown, duration = 4000) {
-// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
-// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--warning`);
-// 	return notice;
-// }
-// export function NoticeError(prefix: string, text: unknown, duration = 10000) {
-// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-// 	const notice = new Notice(`[${prefix}] ${text}`, duration);
-// 	notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
-// 	return notice;
-// }
-// export function NoticeOperationResult(prefix: string, isSuccess: boolean, text: unknown = "", duration = 4000): Notice {
-// 	const hasClass = document.body ? document.body.classList.contains('theme-dark') : false;
-// 	if (isSuccess) {
-// 		if (text != "") {
-// 			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration)
-// 			notice.noticeEl.addClass(`notice__${hasClass ? 'dark' : 'light'}--success`)
-// 			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}\n${text}`, duration).noticeEl.addClass(`notice__${hasClass ? 'dark' : 'light'}_success`)
-// 			return notice;
-// 		}
-// 		else {
-// 			const notice = new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration)
-// 			notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--success`);
-// 			// new Notice(`[${prefix}] ${t('PUBLIC_SUCCESS')}`, duration).noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}_success`); 
-// 			return notice
-// 		}
-// 	} else {
-// 		const notice = new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000)
-// 		notice.noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}--error`);
-// 		// new Notice(`[${prefix}] ${t('PUBLIC_FAILURE')}\n${text}`, 10000).noticeEl.addClass('notice__container', `notice__${hasClass ? 'dark' : 'light'}_error`);
-// 		return notice
-// 	}
-// }
+
 
 // 恢复翻译
 
@@ -318,7 +267,7 @@ export const compareTranslation = (oldTranslation: Translation, newTranslation: 
 
 	for (const [key, value] of Object.entries(oldTranslation.dict)) {
 		if (!(key in newTranslation.dict)) {
-			removed[key] = value; // Or you could use oldTranslation.dict[key] if you still have access to it.  
+			removed[key] = value;
 		}
 	}
 

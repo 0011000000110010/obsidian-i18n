@@ -22,6 +22,7 @@ export default class I18nRE extends BaseSetting {
         i18nREMode.addText(cb => cb
             .setValue(this.settings.I18N_RE_MODE)
             .setDisabled(true)
+            .inputEl.addClass('i18n-input')
         );
 
         // RE 标志
@@ -34,7 +35,7 @@ export default class I18nRE extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_RE_FLAGS = value;
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
         // RE 长度
         const i18nRELength = new Setting(this.containerEl);
@@ -58,7 +59,7 @@ export default class I18nRE extends BaseSetting {
             .setPlaceholder(t('SETTING_RE_EDIT_MODE_PLACEHOLDER'))
             .onChange((value) => {
                 modeString = value
-            })
+            }).inputEl.addClass('i18n-input')
         );
         i18nREModes.addButton(cb => cb
             .setButtonText(t('SETTING_RE_EDIT_INSERT_BUTTON_TEXT'))
@@ -76,6 +77,7 @@ export default class I18nRE extends BaseSetting {
             })
             .setClass('i18n-button')
             .setClass('i18n-button--primary')
+            
         );
         i18nREModes.addButton(cb => cb
             .setButtonText(this.settings.I18N_RE_MODE_DISPLAY ? t('SETTING_PUBLIC_HIDE') : t('SETTING_PUBLIC_SHOW'))
@@ -134,7 +136,7 @@ export default class I18nRE extends BaseSetting {
             .setPlaceholder(t('SETTING_RE_EDIT_ITEM_PLACEHOLDER'))
             .onChange((value) => {
                 regexpString = value
-            })
+            }).inputEl.addClass('i18n-input')
         );
         i18nREDatas.addButton(cb => cb
             .setButtonText(t('SETTING_RE_EDIT_ITEM_INSERT_BUTTON_TEXT'))

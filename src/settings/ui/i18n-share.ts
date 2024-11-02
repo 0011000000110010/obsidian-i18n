@@ -8,7 +8,7 @@ import { AdminModal } from "src/modal/i18n-admin-modal";
 // ==============================
 export default class I18nShare extends BaseSetting {
     main(): void {
-        
+
         new Setting(this.containerEl).setName(t('SETTING_CLOUD_COLLABORATION_NAME')).setDesc(t('SETTING_CLOUD_COLLABORATION_DESC')).addButton(cb => {
             cb.setButtonText(this.settings.I18N_SHARE_MODE ? '关闭' : '开启')
             cb.onClick(async () => {
@@ -17,7 +17,8 @@ export default class I18nShare extends BaseSetting {
                 this.settingTab.shareDisplay();
             });
             cb.setClass('i18n-button');
-            this.settings.I18N_SHARE_MODE ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
+            cb.setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            this.settings.I18N_SHARE_MODE ? cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`) : cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`);
         });
 
         new Setting(this.containerEl).setName(t('SETTING_CLOUD_COLLABORATION_TOKEN_NAME')).setDesc(t('SETTING_CLOUD_COLLABORATION_TOKEN_DESC')).addText(cb => cb
@@ -26,16 +27,8 @@ export default class I18nShare extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_SHARE_TOKEN = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         );
-        // i18nShareTokenSetting.addToggle(cb => cb
-        //     .setValue(this.settings.I18N_ADMIN_MODE)
-        //     .onChange(() => {
-        //         this.settings.I18N_ADMIN_MODE = !this.settings.I18N_ADMIN_MODE;
-        //         this.i18n.saveSettings();
-        //     })
-        //     .toggleEl.addClass('i18n-checkbox')
-        // );
 
         new Setting(this.containerEl).setName('Admin Token').setDesc('审核提交的译文').addText(cb => cb
             .setValue(this.settings.I18N_ADMIN_TOKEN)
@@ -43,7 +36,7 @@ export default class I18nShare extends BaseSetting {
             .onChange((value) => {
                 this.settings.I18N_ADMIN_TOKEN = value
                 this.i18n.saveSettings();
-            })
+            }).inputEl.addClass('i18n-input')
         ).addToggle(cb => cb
             .setValue(this.settings.I18N_ADMIN_MODE)
             .onChange(() => {

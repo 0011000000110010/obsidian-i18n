@@ -104,7 +104,6 @@ export class EditorView extends ItemView {
             descriptionInputEl.value = this.translationJson.description.translation;
             descriptionInputEl.addEventListener('input', () => { this.translationJson.description.translation = descriptionInputEl.value });
 
-
             // ==============================
             // dictEl
             // ==============================
@@ -136,8 +135,8 @@ export class EditorView extends ItemView {
                         valueCellEl.innerHTML = res.s2;
                     });
                     const operateEl = rowEl.createEl('td');
-                    operateEl.addClass('i18n-edit__table-operate');
-                    operateEl.createEl('button', { text: '还原', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
+                    // operateEl.addClass('i18n-edit__table-operate');
+                    operateEl.createEl('button', { text: '还原', cls: ['i18n-basic-button', 'i18n-basic-button--warning'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             dictItem.value = dictItem.key;
                             keyCellEl.textContent = dictItem.key;
@@ -146,7 +145,9 @@ export class EditorView extends ItemView {
                             // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
-                    operateEl.createEl('button', { text: '删除', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
+                    const operateEl1 = rowEl.createEl('td');
+                    // operateEl1.addClass('i18n-edit__table-operate');
+                    operateEl1.createEl('button', { text: '删除', cls: ['i18n-basic-button', 'i18n-basic-button--danger'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             rowEl.remove();
                             this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
@@ -192,7 +193,10 @@ export class EditorView extends ItemView {
             searchInput.inputEl.addClass('i18n-edit__search-input')
 
             const AaButton = new ButtonComponent(searchEl);
-            AaButton.setClass('i18n-button').setClass('i18n-button--primary').setClass('i18n-edit__search-button');
+            AaButton.setClass('i18n-button')
+            AaButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            AaButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            AaButton.setClass('i18n-button--left')
             AaButton.setIcon('a-large-small');
             AaButton.onClick(() => {
                 if (Aa) {
@@ -207,7 +211,10 @@ export class EditorView extends ItemView {
             });
             // 搜索 向上
             const searchUpButton = new ButtonComponent(searchEl);
-            searchUpButton.setClass('i18n-button').setClass('i18n-button--primary').setClass('i18n-edit__search-button');
+            searchUpButton.setClass('i18n-button')
+            searchUpButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            searchUpButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            searchUpButton.setClass('i18n-button--left')
             searchUpButton.setIcon('arrow-up');
             searchUpButton.onClick(() => {
                 if (isSearch) {
@@ -223,7 +230,10 @@ export class EditorView extends ItemView {
             });
             // 搜索 向下
             const searchDownButton = new ButtonComponent(searchEl);
-            searchDownButton.setClass('i18n-button').setClass('i18n-button--primary').setClass('i18n-edit__search-button');
+            searchDownButton.setClass('i18n-button')
+            searchDownButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            searchDownButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            searchDownButton.setClass('i18n-button--left')
             searchDownButton.setIcon('arrow-down');
             searchDownButton.onClick(() => {
                 if (isSearch) {
@@ -238,7 +248,11 @@ export class EditorView extends ItemView {
             });
             // 显示数量
             const searchCountButton = new ButtonComponent(searchEl);
-            searchCountButton.setClass('i18n-button').setClass('i18n-button--primary').setClass('i18n-edit__search-button').setButtonText('0/0');
+            searchCountButton.setClass('i18n-button')
+            searchCountButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            searchCountButton.setClass('i18n-button--left')
+            searchCountButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            searchCountButton.setButtonText('0/0');
             // ==============================
             // operateEl
             // ==============================
@@ -247,7 +261,10 @@ export class EditorView extends ItemView {
             insertItemInput.onChange((value) => { });
             // 插入 按钮
             const insertItemButton = new ButtonComponent(operateEl);
-            insertItemButton.setClass('i18n-button').setClass('i18n-button--primary').setClass('i18n-edit__operate-button');
+            insertItemButton.setClass('i18n-button')
+            insertItemButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            insertItemButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            insertItemButton.setClass('i18n-button--left')
             insertItemButton.setButtonText(t('EDITOR_INSERT_ITEM_BUTTON_TEXT'));
             insertItemButton.onClick(() => {
                 const key = insertItemInput.inputEl.value;
@@ -273,20 +290,22 @@ export class EditorView extends ItemView {
                         valueCellEl.innerHTML = res.s2;
                     });
                     const operateEl = rowEl.createEl('td');
-                    operateEl.addClass('i18n-edit__table-operate');
-                    operateEl.createEl('button', { text: '还原', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
+                    operateEl.createEl('button', { text: '还原', cls: ['i18n-basic-button', 'i18n-basic-button--warning'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             dictItem.value = dictItem.key;
                             keyCellEl.textContent = dictItem.key;
                             valueCellEl.textContent = dictItem.key;
                             this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
+                            // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
-                    operateEl.createEl('button', { text: '删除', cls: ['i18n-edit__operate-operate-button'] }, async (el) => {
+                    const operateEl1 = rowEl.createEl('td');
+                    operateEl1.createEl('button', { text: '删除', cls: ['i18n-basic-button', 'i18n-basic-button--danger'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             rowEl.remove();
                             this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
                             this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
+                            // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
                     const diff = this.diff(dictItem.key, dictItem.value)
@@ -299,10 +318,32 @@ export class EditorView extends ItemView {
                     this.i18n.notice.error(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_INSERT_ITEM_BUTTON_NOTICE_CONTENT_B'));
                 }
             });
+            // 删除 按钮
+            const deleteButton = new ButtonComponent(operateEl);
+            deleteButton.setClass('i18n-button')
+            deleteButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            deleteButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            deleteButton.setClass('i18n-button--left')
+            deleteButton.setButtonText('删除');
+            deleteButton.setTooltip('一键删除所有未翻译项')
+            deleteButton.onClick(() => {
+                let count = 0;
+                this.translationDict.forEach(item => {
+                    if (item.key === item.value) {
+                        item.el.remove();
+                        this.translationDict = this.translationDict.filter(item => item.key !== item.key);
+                        count++;
+                    }
+                })
+                if (count > 0) { this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), `共删除${count}项未翻译内容`); count = 0 }
+            });
             // 插件DOM
             const mainButton = new ButtonComponent(operateEl);
-            mainButton.setClass('i18n-button').setClass('i18n-button--primary').setClass('i18n-edit__operate-button');
-            mainButton.setButtonText('插件').setTooltip('打开main.js文件');
+            mainButton.setClass('i18n-button')
+            mainButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            mainButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            mainButton.setButtonText('插件').setTooltip('打开main.js文件')
+            mainButton.setClass('i18n-button--left')
             mainButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
                     const command = `start "" "${path.join(this.translationDoc.split('\\').slice(0, -2).join('\\'), 'main.js')}"`
@@ -329,7 +370,10 @@ export class EditorView extends ItemView {
             });
             // 译文DOM
             const langButton = new ButtonComponent(operateEl);
-            langButton.setClass('i18n-button').setClass('i18n-button--primary').setClass('i18n-edit__operate-button');
+            langButton.setClass('i18n-button')
+            langButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
+            langButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            langButton.setClass('i18n-button--left')
             langButton.setButtonText('译文').setTooltip('打开译文文件');
             langButton.onClick(async () => {
                 if (navigator.userAgent.match(/Win/i)) {
@@ -357,7 +401,10 @@ export class EditorView extends ItemView {
 
             // 保存DOM
             const saveTranslationButton = new ButtonComponent(operateEl);
-            saveTranslationButton.setClass('i18n-button').setClass('i18n-button--success').setClass('i18n-edit__save-button').setClass('i18n-edit__operate-button');
+            saveTranslationButton.setClass('i18n-button')
+            saveTranslationButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`)
+            saveTranslationButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            saveTranslationButton.setClass('i18n-button--left')
             saveTranslationButton.setButtonText(t('EDITOR_SAVE_TRANSLATION_BUTTON_TEXT'));
             saveTranslationButton.onClick(async () => {
                 try {
@@ -384,8 +431,8 @@ export class EditorView extends ItemView {
         let keyHighlightedHTML = "";
         let valueHighlightedHTML = "";
         differences.forEach((part: { added: unknown; removed: unknown; value: unknown; }) => {
-            if (part.added) { valueHighlightedHTML += `<span class='color__text--green'>${part.value}</span>` }
-            else if (part.removed) { keyHighlightedHTML += `<span class='color__text--red'>${part.value}</span>` }
+            if (part.added) { valueHighlightedHTML += `<span class='color__text--success'>${part.value}</span>` }
+            else if (part.removed) { keyHighlightedHTML += `<span class='color__text--danger'>${part.value}</span>` }
             else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; }
         });
         return { s1: keyHighlightedHTML, s2: valueHighlightedHTML };

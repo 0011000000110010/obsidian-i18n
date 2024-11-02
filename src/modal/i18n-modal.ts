@@ -34,7 +34,7 @@ export class I18NModal extends Modal {
     settingPlugins: { open: () => void; openTabById: (arg0: string) => void; };
 
     regexps: string[];
-    developerMode = false;
+    developerMode = false; 
 
     // ============================================================
     //                       构造函数
@@ -69,7 +69,13 @@ export class I18NModal extends Modal {
 
         const helpTitle = new Setting(this.titleEl).setClass('i18n__help').setName(t('I18N_HELP_TITLE_NAME'));
 
-        new ButtonComponent(helpTitle.controlEl).setIcon('i18n_qq').setTooltip(t('I18N_HELP_TITLE_QQ_BUTTON_TIP')).setClass('i18n-button').onClick(() => { window.open(Url.QQ_GROUP) });
+        new ButtonComponent(helpTitle.controlEl)
+            .setIcon('i18n_qq')
+            .setTooltip(t('I18N_HELP_TITLE_QQ_BUTTON_TIP'))
+            .setClass('i18n-button')
+            .setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`)
+            .setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            .onClick(() => { window.open(Url.QQ_GROUP) });
         // if (this.settings.I18N_SUBMIT_MODE) {
         //     const submiteHistoryButton = new ButtonComponent(helpTitle.controlEl);
         //     submiteHistoryButton.setIcon('history');
@@ -80,17 +86,63 @@ export class I18NModal extends Modal {
         //     taskButton.setTooltip('诚挚地邀请你帮助我们共同为插件进行翻译');
         //     taskButton.onClick(() => { window.open(Url.TASK) });
         // } 
-        if (this.settings.I18N_MODE_NDT) new ButtonComponent(helpTitle.controlEl).setIcon('i18n-contributor').setTooltip('译文贡献榜单').setClass('i18n-button').onClick(() => { new ContributorModal(this.app, this.i18n).open() });
-        if (this.settings.I18N_MODE_LDT && this.settings.I18N_NAME_TRANSLATION) { new ButtonComponent(helpTitle.controlEl).setClass('i18n-button').setClass('i18n-button--primary').setIcon('name-setting').setTooltip('插件列表').onClick(() => { this.close(); new NameTranslationModal(this.app, this.i18n).open(); }); }
-        new ButtonComponent(helpTitle.controlEl).setIcon('settings').setTooltip(t('I18N_HELP_TITLE_SETTING_BUTTON_TIP')).setClass('i18n-button').onClick(() => { this.settingPlugins.open(); this.settingPlugins.openTabById(this.i18n.manifest.id); this.close(); });
-        new ButtonComponent(helpTitle.controlEl).setIcon('circle-help').setTooltip(t('I18N_HELP_TITLE_HELP_BUTTON_TIP')).setClass('i18n-button').onClick(() => { new WizardModal(this.app, this.i18n).open() });
-        if (this.developerMode) { new ButtonComponent(helpTitle.controlEl).setIcon('refresh-ccw').setTooltip('刷新插件').setClass('i18n-button').onClick(async () => { this.close(); await this.reloadPlugin(this.i18n.manifest.id); }); }
-
+        if (this.settings.I18N_MODE_NDT) new ButtonComponent(helpTitle.controlEl)
+            .setClass('i18n-button')
+            .setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`)
+            .setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            .setIcon('i18n-contributor')
+            .setTooltip('译文贡献榜单')
+            .onClick(() => { new ContributorModal(this.app, this.i18n).open() });
+        if (this.settings.I18N_MODE_LDT && this.settings.I18N_NAME_TRANSLATION) {
+            new ButtonComponent(helpTitle.controlEl)
+                .setClass('i18n-button')
+                .setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`)
+                .setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+                .setIcon('name-setting')
+                .setTooltip('插件列表')
+                .onClick(() => { this.close(); new NameTranslationModal(this.app, this.i18n).open(); });
+        }
+        new ButtonComponent(helpTitle.controlEl)
+            .setClass('i18n-button')
+            .setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`)
+            .setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            .setIcon('settings')
+            .setTooltip(t('I18N_HELP_TITLE_SETTING_BUTTON_TIP'))
+            .onClick(() => { this.settingPlugins.open(); this.settingPlugins.openTabById(this.i18n.manifest.id); this.close(); });
+        new ButtonComponent(helpTitle.controlEl)
+            .setClass('i18n-button')
+            .setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`)
+            .setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            .setIcon('circle-help')
+            .setTooltip(t('I18N_HELP_TITLE_HELP_BUTTON_TIP'))
+            .onClick(() => { new WizardModal(this.app, this.i18n).open() });
+        if (this.developerMode) {
+            new ButtonComponent(helpTitle.controlEl)
+                .setClass('i18n-button')
+                .setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`)
+                .setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+                .setIcon('refresh-ccw')
+                .setTooltip('刷新插件')
+                .onClick(async () => { this.close(); await this.reloadPlugin(this.i18n.manifest.id); });
+        }
         const searchTitle = new Setting(this.titleEl).setClass('i18n__search').setName(t('I18N_SEARCH_TITLE_NAME'));
-        searchTitle.addDropdown(cb => cb.addOptions(I18N_SORT).setValue(this.settings.I18N_SORT).onChange((value) => { this.settings.I18N_SORT = value; this.i18n.saveSettings(); this.reloadShowData(); }));
-        searchTitle.addDropdown(cb => cb.addOptions(I18N_TYPE).setValue(this.settings.I18N_TYPE).onChange((value) => { this.settings.I18N_TYPE = value; this.i18n.saveSettings(); this.reloadShowData(); }));
-        searchTitle.addSearch(cb => cb.setValue(this.settings.I18N_SEARCH_TEXT).onChange((value) => { this.settings.I18N_SEARCH_TEXT = value; this.i18n.saveSettings(); this.reloadShowData(); }));
-        if (this.i18n.settings.I18N_RE_TEMP_MODE) { new Setting(this.titleEl).setClass('i18n__search').addText(cb => cb.setValue(this.settings.I18N_RE_TEMP).setPlaceholder('临时正则表达式(使用|分割)').onChange((value) => { this.settings.I18N_RE_TEMP = value; this.i18n.saveSettings(); this.regexps = [...this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE], ...this.i18n.settings.I18N_RE_TEMP.split('|')].filter(item => { return item !== '' }); }).inputEl.addClass('i18n__re-input')).infoEl.remove(); }
+        searchTitle.addDropdown(cb => cb.addOptions(I18N_SORT).setValue(this.settings.I18N_SORT).onChange((value) => { this.settings.I18N_SORT = value; this.i18n.saveSettings(); this.reloadShowData(); }).selectEl.addClass('i18n-select'));
+        searchTitle.addDropdown(cb => cb.addOptions(I18N_TYPE).setValue(this.settings.I18N_TYPE).onChange((value) => { this.settings.I18N_TYPE = value; this.i18n.saveSettings(); this.reloadShowData(); }).selectEl.addClass('i18n-select'));
+        searchTitle.addSearch(cb => cb.setValue(this.settings.I18N_SEARCH_TEXT).onChange((value) => { this.settings.I18N_SEARCH_TEXT = value; this.i18n.saveSettings(); this.reloadShowData(); }).inputEl.addClass('i18n-input'));
+        if (this.i18n.settings.I18N_RE_TEMP_MODE) {
+            new Setting(this.titleEl)
+                .setClass('i18n__search')
+                .addText(cb => cb
+                    .setValue(this.settings.I18N_RE_TEMP)
+                    .setPlaceholder('临时正则表达式(使用|分割)')
+                    .onChange((value) => {
+                        this.settings.I18N_RE_TEMP = value;
+                        this.i18n.saveSettings();
+                        this.regexps = [...this.settings.I18N_RE_DATAS[this.settings.I18N_RE_MODE], ...this.i18n.settings.I18N_RE_TEMP.split('|')].filter(item => { return item !== '' });
+                    })
+                    .inputEl.addClass('i18n__re-input', 'i18n-input')
+                ).infoEl.remove();
+        }
     }
     // ============================================================
     //                        展示数据
@@ -215,26 +267,26 @@ export class I18NModal extends Modal {
             itemEl.setClass('i18n__item');
             itemEl.nameEl.addClass('i18n__item-title');
 
-            // modal-header
             const desc: { mark: number, label: { color: string; text: string; }, text: string } = { mark: 1, label: { color: '', text: '' }, text: '' };
             if (stateObj.isStateDoc) {
                 if (localTranslationJson && translationFormatMark) {
                     if (compareVersions(plugin.version, localTranslationJson.manifest.pluginVersion) === 1) {
-                        desc.label.color = 'orange'; desc.label.text = t('I18N_ITEM_LABEL_D_NAME'); // 已过时
+                        desc.label.color = 'warning'; desc.label.text = t('I18N_ITEM_LABEL_D_NAME'); // 已过时
                     } else {
                         if (stateObj.getState()) {
-                            desc.label.color = 'green'; desc.label.text = t('I18N_ITEM_LABEL_B_NAME');
-                        } else { desc.label.color = 'red'; desc.label.text = t('I18N_ITEM_LABEL_C_NAME'); }
+                            desc.label.color = 'success'; desc.label.text = t('I18N_ITEM_LABEL_B_NAME');
+                        } else { desc.label.color = 'danger'; desc.label.text = t('I18N_ITEM_LABEL_C_NAME'); }
                     }
                     desc.text = `更新日期: ${formatTimestamp(Number(localTranslationJson?.manifest.translationVersion))} ${t('I18N_ITEM_LABEL_BCD_DESC_VERSION')}:[${localTranslationJson?.manifest.pluginVersion}]`;
                 } else {
-                    desc.label.color = 'red';
+                    desc.label.color = 'danger';
                     desc.label.text = t('I18N_ITEM_LABEL_E_NAME');
                     desc.text = t('I18N_ITEM_LABEL_E_DESC');
                 }
-            } else { desc.label.color = 'grey'; desc.label.text = t('I18N_ITEM_LABEL_A_NAME'); desc.text = t('I18N_ITEM_LABEL_A_DESC'); }
-            if (this.i18n.ignoreMark && this.i18n.ignorePlugins.includes(plugin.id)) { desc.label.color = 'blue'; desc.label.text = '自带翻译'; desc.text = t('I18N_ITEM_LABEL_F_DESC'); }
-            itemEl.nameEl.innerHTML = `<span class="i18n__item-state i18n__item-state--${desc.label.color}">${desc.label.text}</span><span class="i18n__item-title b"> ${plugin.name}</span> <span class="i18n__item-version" style="color:--simple-blue-2;">(${plugin.version})</span> `;
+            } else { desc.label.color = 'info'; desc.label.text = t('I18N_ITEM_LABEL_A_NAME'); desc.text = t('I18N_ITEM_LABEL_A_DESC'); }
+            if (this.i18n.ignoreMark && this.i18n.ignorePlugins.includes(plugin.id)) { desc.label.color = 'primary'; desc.label.text = '自带翻译'; desc.text = t('I18N_ITEM_LABEL_F_DESC'); }
+
+            itemEl.nameEl.innerHTML = `<span class="i18n-tag i18n-tag--${this.settings.I18N_TAG_TYPE}-${desc.label.color} is-${this.settings.I18N_TAG_SHAPE}">${desc.label.text}</span><span class="i18n__item-title b"> ${plugin.name}</span> <span class="i18n__item-version" style="color:--simple-blue-2;">(${plugin.version})</span> `;
             itemEl.settingEl.onmouseover = (e) => { this.detailsEl.innerHTML = desc.text };
             itemEl.settingEl.onmouseout = (e) => { this.detailsEl.innerHTML = t('I18N_ITEM_LABEL_G_DESC') };
 
@@ -344,7 +396,7 @@ export class I18NModal extends Modal {
             //                     本地译文翻译(提取) 
             // ============================================================
             if (this.settings.I18N_MODE_LDT && !isLangDoc) {
-                itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                     el.addEventListener("click", () => {
                         try {
                             // 1. 获取 main.js 字符串
@@ -372,7 +424,7 @@ export class I18NModal extends Modal {
             //                     本地译文翻译(增量提取) 
             // ============================================================
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_INCREMENTAL_EXTRACTION && isLangDoc && translationFormatMark) {
-                itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_EXTRACT_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-info`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                     el.addEventListener("click", () => {
                         if (stateObj.isStateDoc && !stateObj.getState()) {
                             try {
@@ -404,7 +456,7 @@ export class I18NModal extends Modal {
             // ============================================================
             if (this.settings.I18N_MODE_NDT && this.i18n.translationDirectory && translationFormatMark && cloudTranslationJson != undefined) {
                 if (!isLangDoc) {
-                    itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                    itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_DOWNLOAD_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                         el.addEventListener("click", async () => {
                             try {
                                 // 1. 确保语言目录存在
@@ -429,7 +481,7 @@ export class I18NModal extends Modal {
                     });
                 }
                 if (isLangDoc && updateMark) {
-                    itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                    itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_UPDATE_TRANSLATION_BUTTON_TEXT'), cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-warning`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                         el.addEventListener("click", async () => {
                             try {
                                 // 1. 从云端获取译文
@@ -458,7 +510,7 @@ export class I18NModal extends Modal {
             //                    网络接口翻译(生成)
             // ============================================================
             if (this.settings.I18N_MODE_NIT && !isLangDoc) {
-                itemEl.controlEl.createEl('button', { text: API_TYPES[this.settings.I18N_NIT_API], cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                itemEl.controlEl.createEl('button', { text: API_TYPES[this.settings.I18N_NIT_API], cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-primary`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                     el.addEventListener("click", async () => {
                         try {
                             const mainStr = fs.readFileSync(mainDoc).toString();
@@ -524,7 +576,7 @@ export class I18NModal extends Modal {
             if (isLangDoc && stateObj.isStateDoc && translationFormatMark) {
                 // 翻译按钮
                 if (stateObj.getState() == false) {
-                    itemEl.controlEl.createEl('button', { text: '替换', cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                    itemEl.controlEl.createEl('button', { text: '替换', cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-primary`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                         el.addEventListener("click", () => {
                             try {
                                 // 1. 读取译文
@@ -558,11 +610,10 @@ export class I18NModal extends Modal {
                             this.reloadShowData();
                         });
                     });
-
                 }
                 // 还原按钮
                 if (stateObj.getState() == true) {
-                    itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_RESTORE_BUTTON_TEXT'), cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                    itemEl.controlEl.createEl('button', { text: t('I18N_ITEM_RESTORE_BUTTON_TEXT'), cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                         el.addEventListener("click", () => {
                             try {
                                 // 1. 删除 main.js
@@ -594,7 +645,7 @@ export class I18NModal extends Modal {
             }
 
             if (this.developerMode) {
-                itemEl.controlEl.createEl('button', { text: '测试', cls: ['i18n-button', 'i18n-button--primary'] }, (el) => {
+                itemEl.controlEl.createEl('button', { text: '测试', cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-primary`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                     el.addEventListener("click", async () => {
                         // @ts-ignore
                         const dir = path.join(this.app.vault.adapter.getBasePath(), this.i18n.manifest.dir, 'Admin');

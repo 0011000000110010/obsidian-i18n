@@ -10,6 +10,7 @@ import I18nNitBaiDu from './ui/i18n-nit-baidu';
 import I18nAIOpenAI from './ui/i18n-nit-openAI';
 import I18nRE from './ui/i18n-re';
 import I18nShare from './ui/i18n-share';
+import I18nStyle from './ui/i18n-style';
 
 class I18nSettingTab extends PluginSettingTab {
 	i18n: I18N;
@@ -32,6 +33,7 @@ class I18nSettingTab extends PluginSettingTab {
 		this.contentEl.addClass('i18n-setting__content');
 
 		const tabItems = [
+			{ text: '主题', content: () => this.styleDisplay() },
 			{ text: '基础设置', content: () => this.basisDisplay() },
 			{ text: '本地模式', content: () => this.ldtDisplay() },
 			{ text: '云端模式', content: () => this.ndtDisplay() },
@@ -55,7 +57,7 @@ class I18nSettingTab extends PluginSettingTab {
 			});
 		});
 	}
-
+	styleDisplay() { this.contentEl.empty(); new I18nStyle(this).display(); }
 	basisDisplay() { this.contentEl.empty(); new I18nBasis(this).display(); }
 	ldtDisplay() { this.contentEl.empty(); new I18nModLDT(this).display(); }
 	ndtDisplay() { this.contentEl.empty(); new I18nModNDT(this).display(); }

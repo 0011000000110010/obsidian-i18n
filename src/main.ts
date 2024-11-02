@@ -290,10 +290,10 @@ export default class I18N extends Plugin {
         if (leaves.length > 0) {
             leaf = leaves[0];
         } else {
-            leaf = workspace.getLeaf('window'); // 'window' true 
+            leaf = workspace.getLeaf('window'); // 'window' true  
             if (leaf != null) await leaf.setViewState({ type: ADMIN_VIEW_TYPE, active: true });
         }
-        if (leaf != null) workspace.revealLeaf(leaf);
+        if (leaf != null) workspace.revealLeaf(leaf); 
     }
     detachAdminView() { this.app.workspace.detachLeavesOfType(ADMIN_VIEW_TYPE) }
 

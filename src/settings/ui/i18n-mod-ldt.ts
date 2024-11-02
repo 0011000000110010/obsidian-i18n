@@ -16,7 +16,8 @@ export default class I18nModLDT extends BaseSetting {
                 this.settingTab.ldtDisplay();
             })
             cb.setClass('i18n-button');
-            this.settings.I18N_MODE_LDT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
+            cb.setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            this.settings.I18N_MODE_LDT ? cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`) : cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`);
         });
         const i18nAutomaticUpdate = new Setting(this.containerEl);
         i18nAutomaticUpdate.setName(t('SETTING_LDT_AUTOMATIC_UPDATE_NAME'));
@@ -54,7 +55,7 @@ export default class I18nModLDT extends BaseSetting {
                 this.i18n.reloadPluginsName();
                 this.i18n.saveSettings();
             })
-            .inputEl.addClass('i18n-name__input')
+            .inputEl.addClass('i18n-name__input', 'i18n-input')
         );
         i18nNameTranslation.addText(cb => cb
             .setValue(this.settings.I18N_NAME_TRANSLATION_SUFFIX)
@@ -64,7 +65,7 @@ export default class I18nModLDT extends BaseSetting {
                 this.i18n.saveSettings();
                 // this.settingTab.ldtDisplay();
             })
-            .inputEl.addClass('i18n-name__input')
+            .inputEl.addClass('i18n-name__input', 'i18n-input')
         );
         i18nNameTranslation.addToggle(cb => cb
             .setValue(this.settings.I18N_NAME_TRANSLATION)

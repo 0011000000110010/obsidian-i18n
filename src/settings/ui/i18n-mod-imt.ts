@@ -11,7 +11,7 @@ export default class I18nModIMT extends BaseSetting {
             .setButtonText('重启')
             .onClick(() => {
                 document.location.reload();
-            }).buttonEl.addClasses(['i18n-button', 'i18n-button--primary'])
+            }).buttonEl.addClasses(['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-warning`, `is-${this.settings.I18N_BUTTON_SHAPE}`])
         );
         i18nModIMT.addButton(cb => {
             cb.setButtonText(this.settings.I18N_MODE_IMT ? '关闭' : '开启');
@@ -23,7 +23,9 @@ export default class I18nModIMT extends BaseSetting {
                 this.settings.I18N_MODE_IMT ? this.i18n.activateIMT() : this.i18n.enableIMT();
             })
             cb.setClass('i18n-button');
-            this.settings.I18N_MODE_IMT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
+            cb.setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            this.settings.I18N_MODE_IMT ? cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`) : cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`);
+            // this.settings.I18N_MODE_IMT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
         });
 
         new Setting(this.containerEl).setName('指定翻译范围').setHeading();

@@ -8,15 +8,15 @@ import { t } from "src/lang/inxdex";
 export default class I18nBasis extends BaseSetting {
     main(): void {
         // 插件主题
-        const i18nColor = new Setting(this.containerEl).setName('插件主题').setDesc('为 Obsidian I18N 选择一个主题色。主题色将影响选中、按钮等元素的颜色。').addColorPicker(cb => cb
-            .setValue(this.settings.I18N_COLOR)
-            .onChange((value) => {
-                // 409EFF
-                document.documentElement.style.setProperty('--i18n-color-primary', value);
-                this.settings.I18N_COLOR = value;
-                this.i18n.saveSettings();
-            })
-        );
+        // new Setting(this.containerEl).setName('插件主题').setDesc('为 Obsidian I18N 选择一个主题色。主题色将影响选中、按钮等元素的颜色。').addColorPicker(cb => cb
+        //     .setValue(this.settings.I18N_COLOR)
+        //     .onChange((value) => {
+        //         // 409EFF
+        //         document.documentElement.style.setProperty('--i18n-color-primary', value);
+        //         this.settings.I18N_COLOR = value;
+        //         this.i18n.saveSettings();
+        //     })
+        // );
         // 翻译语言
         new Setting(this.containerEl).setName('翻译语言').setDesc(t('SETTING_LANGUAGE_DESC')).addDropdown(cb => cb
             .addOptions(LANGUAGES)
@@ -24,9 +24,8 @@ export default class I18nBasis extends BaseSetting {
             .onChange(async (value) => {
                 this.settings.I18N_LANGUAGE = value;
                 await this.i18n.saveSettings();
-            })
+            }).selectEl.addClass('i18n-select')
         );
-        let a;
         // 检查更新
         new Setting(this.containerEl)
             .setName('检查更新')
@@ -47,7 +46,7 @@ export default class I18nBasis extends BaseSetting {
                         } else {
                             this.i18n.notice.result('检查更新', false, `请求manifest.json失败\n${res.data}`)
                             return
-                        };
+                        }
                     } else {
                         this.i18n.notice.result('检查更新', false, '未找到manifest.json文件')
                         return;
@@ -59,7 +58,7 @@ export default class I18nBasis extends BaseSetting {
                         } else {
                             this.i18n.notice.result('检查更新', false, `请求styles.css失败\n${res.data}`)
                             return;
-                        };
+                        }
                     } else {
                         this.i18n.notice.result('检查更新', false, '未找到styles.css文件')
                         return;
@@ -71,7 +70,7 @@ export default class I18nBasis extends BaseSetting {
                         } else {
                             this.i18n.notice.result('检查更新', false, `请求main.js失败\n${res.data}`)
                             return;
-                        };
+                        }
                     } else {
                         this.i18n.notice.result('检查更新', false, '未找到main.js文件')
                         return;

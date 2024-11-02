@@ -19,7 +19,9 @@ export default class I18nModNDT extends BaseSetting {
                 this.settingTab.ndtDisplay();
             });
             cb.setClass('i18n-button');
-            this.settings.I18N_MODE_NDT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
+            cb.setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
+            this.settings.I18N_MODE_NDT ? cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`) : cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`);
+            // this.settings.I18N_MODE_NDT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
         });
 
         const i18nIgnore = new Setting(this.containerEl);
@@ -36,9 +38,6 @@ export default class I18nModNDT extends BaseSetting {
             .toggleEl.addClass('i18n-checkbox')
         );
 
-        // let temp_ndt_lang = '';
-        // let temp_ndt_url = '';
-
         const i18nNdtApi = new Setting(this.containerEl);
         i18nNdtApi.setName(t('SETTING_NDT_APIS_NAME'));
         i18nNdtApi.setDesc(t('SETTING_NDT_APIS_DESC'));
@@ -47,14 +46,14 @@ export default class I18nModNDT extends BaseSetting {
             .setValue(this.settings.I18N_GITEE_OWNER)
             .onChange((value) => {
                 this.settings.I18N_GITEE_OWNER = value;
-            })
+            }).inputEl.addClass('i18n-input')
         );
         i18nNdtApi.addText(cb => cb
             .setPlaceholder('repo')
             .setValue(this.settings.I18N_GITEE_REPO)
             .onChange((value) => {
                 this.settings.I18N_GITEE_REPO = value;
-            })
+            }).inputEl.addClass('i18n-input')
         );
     }
 }

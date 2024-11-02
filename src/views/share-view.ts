@@ -59,7 +59,7 @@ export class ShareView extends ItemView {
             manifestEl.createEl('input', { value: this.localTranslationJson.manifest.pluginVersion, cls: ['i18n-edit__plugin-version-input'] }).disabled = true
             manifestEl.createEl('span', { text: '新描述', cls: 'i18n-share__label-wrap' })
             manifestEl.createEl('input', { value: this.localTranslationJson.description.translation, cls: ['i18n-edit__description-input'] }).disabled = true
-            manifestEl.createEl('button', { text: '提交译文', cls: ['i18n-button', 'i18n-button--success', 'i18n-button-left'] }, async (el) => {
+            manifestEl.createEl('button', { text: '提交译文', cls: ['i18n-button', `i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`, `is-${this.i18n.settings.I18N_BUTTON_SHAPE}`, 'i18n-button--left'] }, async (el) => {
                 el.addEventListener("click", async () => {
                     if (this.verify) {
                         const res = await this.i18n.api.giteePostIssue(`[提交译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson)), '提交译文');
@@ -90,7 +90,7 @@ export class ShareView extends ItemView {
                     const differences = diffWords(key, this.localTranslationJson.dict[key]);
                     let keyHighlightedHTML = "";
                     let valueHighlightedHTML = "";
-                    differences.forEach((part: { added: unknown; removed: unknown; value: unknown; }) => { if (part.added) { valueHighlightedHTML += `<span class='color__text--green'>${part.value}</span>` } else if (part.removed) { keyHighlightedHTML += `<span class='color__text--red'>${part.value}</span>` } else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; } });
+                    differences.forEach((part: { added: unknown; removed: unknown; value: unknown; }) => { if (part.added) { valueHighlightedHTML += `<span class='color__text--success'>${part.value}</span>` } else if (part.removed) { keyHighlightedHTML += `<span class='color__text--danger'>${part.value}</span>` } else { keyHighlightedHTML += part.value; valueHighlightedHTML += part.value; } });
                     keyCellEl.innerHTML = keyHighlightedHTML;
                     valueCellEl.innerHTML = valueHighlightedHTML;
                 }
@@ -113,7 +113,7 @@ export class ShareView extends ItemView {
             editEl.parentElement?.getElementsByClassName('view-header')[0].remove();
             // 操作行 El
             const operateEl = editEl.createEl('div', { cls: 'i18n-share-update__operate' });
-            operateEl.createEl('button', { text: '更新译文', cls: ['i18n-button', 'i18n-button--success', 'i18n-button-left'] }, async (el) => {
+            operateEl.createEl('button', { text: '更新译文', cls: ['i18n-button', `i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`, `is-${this.i18n.settings.I18N_BUTTON_SHAPE}`, 'i18n-button--left'] }, async (el) => {
                 el.addEventListener("click", async () => {
                     if (this.verify) {
                         const res = await this.i18n.api.giteePostIssue(`[更新译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson, null, 4)), '更新译文');

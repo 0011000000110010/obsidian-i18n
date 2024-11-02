@@ -37,3 +37,22 @@ export const I18N_TYPE = {
     '2': '翻译',
     '3': '还原'
 }
+
+export const TAG_TYPE = {
+    'light': '样式一',
+    'dark': '样式二',
+    'plain': '样式三'
+}
+export const TAG_SHAPE = {
+    'square': '方形',
+    'round': '圆形'
+}
+
+export const BUTTON_TYPE = {
+    'plain': '样式一',
+    'default': '样式二'
+}
+export const BUTTON_SHAPE = {
+    'square': '方形',
+    'round': '圆形'
+}
