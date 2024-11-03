@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730559723382,
+        "translationVersion": 1730606254109,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -379,7 +379,6 @@
         "Name:\"Tasks Emoji Format\"": "Name:\"Tasks 表情格式\"",
         ",\"Try 'every day when done'\"": ",\"尝试 'every day when done'\"",
         "dI=\"Try 'Mon' or 'tm' then space\"": "dI=\"尝试 'Mon' 或 'tm' 然后按空格\"",
-        "return`Task's ${e} changed to ${t}`": "return`任务 ${e} 变更为 ${t}`",
         "return`Task's ${e} removed`": "return`任务 ${e} 被移除`",
         "return`${this.label} - start`": "return`${this.label} - 开始`",
         "return`${this.label} - end`": "return`${this.label} - 结束`",
@@ -457,6 +456,7 @@
         "t:\"a\"": "t:\"1\"",
         ".setAttribute(\"title\",`Right-click to edit ${cc(c)}`": ".setAttribute(\"title\",`右键编辑 ${cc(c).replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\").replace(\"day\",\"天\")}`",
         "return(t>=0?`${u} in ${a} ${n}, on ${s}`:`${u} ${-a} ${n} ago, on ${s}`)": "return(t>=0?`${u} ${a} ${n} 后, 即： ${s}`:`${u}于 ${-a} ${n}以前, 即： ${s}`).replace(\"days\",\"天\").replace(\"day\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"Created\",\"创建\").replace(\"Due\",\"截止\").replace(\"Scheduled\",\"计划\").replace(\"Start\",\"开始\").replace(\"Done\",\"完成\")",
-        "return t>=0?`Postpone ${o} by ${a} ${n}, to ${s}`:`Backdate ${o} by ${-a} ${n}, to ${s}`": "return (t>=0?`推迟 ${o}于 ${a} ${n}后, 即: ${s}`:`回溯 ${o}于 ${-a} ${n}前, 即: ${s}`).replace(\"days\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\").replace(\"day\",\"天\")"
+        "return t>=0?`Postpone ${o} by ${a} ${n}, to ${s}`:`Backdate ${o} by ${-a} ${n}, to ${s}`": "return (t>=0?`推迟 ${o}于 ${a} ${n}后, 即: ${s}`:`回溯 ${o}于 ${-a} ${n}前, 即: ${s}`).replace(\"days\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\").replace(\"day\",\"天\")",
+        "return`Task's ${e} changed to ${t}`": "return`任务 ${e.replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\"Date\",\"日期\")} 变更为 ${t}`"
     }
 }
