@@ -133,7 +133,6 @@ export class Notification {
 			this.notices.shift();
 		}
 		this.notices.push(notice);
-		console.log(this.notices);
 	}
 }
 

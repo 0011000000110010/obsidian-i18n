@@ -34,7 +34,7 @@ export class I18NModal extends Modal {
     settingPlugins: { open: () => void; openTabById: (arg0: string) => void; };
 
     regexps: string[];
-    developerMode = false; 
+    developerMode = false;
 
     // ============================================================
     //                       构造函数

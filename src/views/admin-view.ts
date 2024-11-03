@@ -21,7 +21,7 @@ export class AdminView extends ItemView {
         super(leaf);
         this.i18n = i18n;
         this.i18n.notice.reload();
-        this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
+        // this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
     }
 
     async onload() {

@@ -23,7 +23,7 @@ export class EditorView extends ItemView {
         super(leaf);
         this.i18n = i18n;
         this.i18n.notice.reload();
-        this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
+        // this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
         this.translationDoc = this.i18n.editorTranslationDoc
     }
 
@@ -65,13 +65,13 @@ export class EditorView extends ItemView {
         descriptionLabelEl.addClass('i18n-edit__label-wrap');
         const descriptionInputEl = manifestEl.createEl('input');
         descriptionInputEl.addClass('i18n-edit__description-input');
-
         // 描述翻译DOM
         if (this.i18n.settings.I18N_MODE_NIT && this.i18n.settings.I18N_NIT_API == 'BAIDU' && this.translationJson != undefined) {
             const translationDescriptionButton = new ButtonComponent(manifestEl);
             translationDescriptionButton.setClass('i18n-button');
-            translationDescriptionButton.setClass('i18n-button--primary');
-            translationDescriptionButton.setClass('i18n-edit__save-button');
+            translationDescriptionButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`);
+            translationDescriptionButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`);
+            translationDescriptionButton.setClass('i18n-button--left');
             translationDescriptionButton.setButtonText('百度');
             translationDescriptionButton.onClick(async () => {
                 try {
@@ -134,20 +134,45 @@ export class EditorView extends ItemView {
                         keyCellEl.innerHTML = res.s1;
                         valueCellEl.innerHTML = res.s2;
                     });
-                    const operateEl = rowEl.createEl('td');
-                    // operateEl.addClass('i18n-edit__table-operate');
-                    operateEl.createEl('button', { text: '还原', cls: ['i18n-basic-button', 'i18n-basic-button--warning'] }, async (el) => {
+                    if (this.i18n.settings.I18N_MODE_NIT) rowEl.createEl('td').createEl('button', { text: 'AI', cls: ['i18n-basic-button', 'i18n-basic-button--primary'] }, async (el) => {
+                        el.addEventListener('click', async () => {
+                            const regex = /(['"`])(.*)(\1)/;
+                            if (this.i18n.settings.I18N_NIT_API == 'BAIDU') {
+                                const tempArray = dictItem.key.match(regex);
+                                if (tempArray != null) {
+                                    const response = await this.i18n.api.baiduAPI(tempArray[2]);
+                                    const newKey = response.state ? dictItem.key.replace(tempArray[2], response.data) : dictItem.key;
+                                    const diff = this.diff(dictItem.key, newKey)
+                                    dictItem.value = newKey;
+                                    keyCellEl.innerHTML = diff.s1;
+                                    valueCellEl.innerHTML = diff.s2;
+                                    this.i18n.notice.success('译文编辑器', '翻译成功');
+                                }
+                            }
+                            if (this.i18n.settings.I18N_NIT_API == 'OPENAI') {
+                                const tempArray = dictItem.key.match(regex);
+                                if (tempArray != null) {
+                                    const response = await this.i18n.api.openAI('', tempArray[2]);
+                                    let newValue = ''
+                                    if ('content' in response) { newValue = key.replace(tempArray[2], response.content); } else { newValue = key; }
+                                    const diff = this.diff(dictItem.key, newValue)
+                                    dictItem.value = newValue;
+                                    keyCellEl.innerHTML = diff.s1;
+                                    valueCellEl.innerHTML = diff.s2;
+                                    this.i18n.notice.success('译文编辑器', '翻译成功');
+                                }
+                            }
+                        })
+                    });
+                    rowEl.createEl('td').createEl('button', { text: '还原', cls: ['i18n-basic-button', 'i18n-basic-button--warning'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             dictItem.value = dictItem.key;
                             keyCellEl.textContent = dictItem.key;
                             valueCellEl.textContent = dictItem.key;
                             this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
-                            // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
-                    const operateEl1 = rowEl.createEl('td');
-                    // operateEl1.addClass('i18n-edit__table-operate');
-                    operateEl1.createEl('button', { text: '删除', cls: ['i18n-basic-button', 'i18n-basic-button--danger'] }, async (el) => {
+                    rowEl.createEl('td').createEl('button', { text: '删除', cls: ['i18n-basic-button', 'i18n-basic-button--danger'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             rowEl.remove();
                             this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
@@ -289,8 +314,37 @@ export class EditorView extends ItemView {
                         keyCellEl.innerHTML = res.s1;
                         valueCellEl.innerHTML = res.s2;
                     });
-                    const operateEl = rowEl.createEl('td');
-                    operateEl.createEl('button', { text: '还原', cls: ['i18n-basic-button', 'i18n-basic-button--warning'] }, async (el) => {
+                    if (this.i18n.settings.I18N_MODE_NIT) rowEl.createEl('td').createEl('button', { text: 'AI', cls: ['i18n-basic-button', 'i18n-basic-button--primary'] }, async (el) => {
+                        el.addEventListener('click', async () => {
+                            const regex = /(['"`])(.*)(\1)/;
+                            if (this.i18n.settings.I18N_NIT_API == 'BAIDU') {
+                                const tempArray = dictItem.key.match(regex);
+                                if (tempArray != null) {
+                                    const response = await this.i18n.api.baiduAPI(tempArray[2]);
+                                    const newKey = response.state ? dictItem.key.replace(tempArray[2], response.data) : dictItem.key;
+                                    const diff = this.diff(dictItem.key, newKey)
+                                    dictItem.value = newKey;
+                                    keyCellEl.innerHTML = diff.s1;
+                                    valueCellEl.innerHTML = diff.s2;
+                                    this.i18n.notice.success('译文编辑器', '翻译成功');
+                                }
+                            }
+                            if (this.i18n.settings.I18N_NIT_API == 'OPENAI') {
+                                const tempArray = dictItem.key.match(regex);
+                                if (tempArray != null) {
+                                    const response = await this.i18n.api.openAI('', tempArray[2]);
+                                    let newValue = ''
+                                    if ('content' in response) { newValue = key.replace(tempArray[2], response.content); } else { newValue = key; }
+                                    const diff = this.diff(dictItem.key, newValue)
+                                    dictItem.value = newValue;
+                                    keyCellEl.innerHTML = diff.s1;
+                                    valueCellEl.innerHTML = diff.s2;
+                                    this.i18n.notice.success('译文编辑器', '翻译成功');
+                                }
+                            }
+                        })
+                    });
+                    rowEl.createEl('td').createEl('button', { text: '还原', cls: ['i18n-basic-button', 'i18n-basic-button--warning'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             dictItem.value = dictItem.key;
                             keyCellEl.textContent = dictItem.key;
@@ -299,8 +353,7 @@ export class EditorView extends ItemView {
                             // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_RESTORE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
-                    const operateEl1 = rowEl.createEl('td');
-                    operateEl1.createEl('button', { text: '删除', cls: ['i18n-basic-button', 'i18n-basic-button--danger'] }, async (el) => {
+                    rowEl.createEl('td').createEl('button', { text: '删除', cls: ['i18n-basic-button', 'i18n-basic-button--danger'] }, async (el) => {
                         el.addEventListener('click', async () => {
                             rowEl.remove();
                             this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
@@ -438,31 +491,16 @@ export class EditorView extends ItemView {
         return { s1: keyHighlightedHTML, s2: valueHighlightedHTML };
     }
 
-    async onOpen() {
-    }
+    async onOpen() { }
 
-    async onClose() {
-        this.contentEl.empty();
-        this.i18n.detachEditView();
-    }
-
-    focus(): void {
-        this.focus();
-        this.onClose();
-    }
-
+    async onClose() { this.contentEl.empty(); this.i18n.detachEditView(); }
+    focus(): void { this.focus(); this.onClose(); }
     // 用于返回当前视图的唯一标识。
-    getViewType(): string {
-        return EDIT_VIEW_TYPE;
-    }
+    getViewType(): string { return EDIT_VIEW_TYPE; }
     // 用于返回一个更加人性化的视图名称
-    getDisplayText(): string {
-        return t('EDITOR_PUBLIC_HEAD');
-    }
+    getDisplayText(): string { return t('EDITOR_PUBLIC_HEAD'); }
     // 用于返回一个更加人性化的视图图标
-    getIcon(): string {
-        return 'i18n_translate';
-    }
+    getIcon(): string { return 'i18n_translate'; }
 }
 
 

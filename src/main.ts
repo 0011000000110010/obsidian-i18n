@@ -76,7 +76,7 @@ export default class I18N extends Plugin {
         // [加载] 配置
         await this.loadSettings();
         console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
-        document.documentElement.style.setProperty('--i18n-color-primary', this.settings.I18N_COLOR);
+        // document.documentElement.style.setProperty('--i18n-color-primary', this.settings.I18N_COLOR);
         if (this.settings.I18N_AGREEMENT) {
             // [加载] API类
             this.api = new API(this);
@@ -293,7 +293,7 @@ export default class I18N extends Plugin {
             leaf = workspace.getLeaf('window'); // 'window' true  
             if (leaf != null) await leaf.setViewState({ type: ADMIN_VIEW_TYPE, active: true });
         }
-        if (leaf != null) workspace.revealLeaf(leaf); 
+        if (leaf != null) workspace.revealLeaf(leaf);
     }
     detachAdminView() { this.app.workspace.detachLeavesOfType(ADMIN_VIEW_TYPE) }
 
