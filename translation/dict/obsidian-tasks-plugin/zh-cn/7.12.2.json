@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730643761175,
+        "translationVersion": 1730652385906,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -441,6 +441,8 @@
         "Medium:": "中:",
         "Low:": "低:",
         "Lowest:": "最低:",
+        ".Lowest": ".最低",
+        ".Low": ".低",
         "\"delete\"": "\"删除\"",
         "\"keep\"": "\"保留\"",
         "id:\"created\"": "id:\"创建\"",
@@ -450,13 +452,14 @@
         "(now|today|tonight|tomorrow|tmr|tmrw|yesterday|last\\s*night)": "(now|today|tonight|tomorrow|tmr|tmrw|yesterday|last\\s*night|现在|今天|今晚|明天|昨天|昨晚)",
         "[\"today\",\"tomorrow\",\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\",\"next week\",\"next month\",\"next year\"]": "[\"今天\",\"明天\",\"星期日\",\"星期一\",\"星期二\",\"星期三\",\"星期四\",\"星期五\",\"星期六\",\"下周\",\"下个月\",\"明年\"]",
         "sunday:0,sun:0,\"sun.\":0,monday:1,mon:1,\"mon.\":1,tuesday:2,tue:2,\"tue.\":2,wednesday:3,wed:3,\"wed.\":3,thursday:4,thurs:4,\"thurs.\":4,thur:4,\"thur.\":4,thu:4,\"thu.\":4,friday:5,fri:5,\"fri.\":5,saturday:6,sat:6,\"sat.\":6": "星期日:0,星期一:1,星期二:2,星期三:3,星期四:4,星期五:5,星期六:6,sunday:0,sun:0,\"sun.\":0,monday:1,mon:1,\"mon.\":1,tuesday:2,tue:2,\"tue.\":2,wednesday:3,wed:3,\"wed.\":3,thursday:4,thurs:4,\"thurs.\":4,thur:4,\"thur.\":4,thu:4,\"thu.\":4,friday:5,fri:5,\"fri.\":5,saturday:6,sat:6,\"sat.\":6",
-        ".Lowest": ".最低",
-        ".Low": ".低",
         ".format(\"ddd Do MMM\")": ".format(\"MMMDo  ddd\")",
         "t:\"a\"": "t:\"1\"",
         ".setAttribute(\"title\",`Right-click to edit ${cc(c)}`": ".setAttribute(\"title\",`右键编辑 ${cc(c).replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\").replace(\"day\",\"天\")}`",
         "return(t>=0?`${u} in ${a} ${n}, on ${s}`:`${u} ${-a} ${n} ago, on ${s}`)": "return(t>=0?`${u} ${a} ${n} 后, 即： ${s}`:`${u}于 ${-a} ${n}以前, 即： ${s}`).replace(\"days\",\"天\").replace(\"day\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"Created\",\"创建\").replace(\"Due\",\"截止\").replace(\"Scheduled\",\"计划\").replace(\"Start\",\"开始\").replace(\"Done\",\"完成\")",
         "return t>=0?`Postpone ${o} by ${a} ${n}, to ${s}`:`Backdate ${o} by ${-a} ${n}, to ${s}`": "return (t>=0?`推迟 ${o}于 ${a} ${n}后, 即: ${s}`:`回溯 ${o}于 ${-a} ${n}前, 即: ${s}`).replace(\"days\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\").replace(\"day\",\"天\")",
-        "return`Task's ${e} changed to ${t}`": "return`任务 ${e.replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\"Date\",\"日期\")} 变更为 ${t}`"
+        "return`Task's ${e} changed to ${t}`": "return`任务 ${e.replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\"Date\",\"日期\")} 变更为 ${t}`",
+        ".Highest": ".最高",
+        ".High": ".高",
+        ".Medium": ".中"
     }
 }
