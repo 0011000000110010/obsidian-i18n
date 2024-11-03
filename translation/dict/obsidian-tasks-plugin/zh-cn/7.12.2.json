@@ -1,11 +1,11 @@
 {
     "manifest": {
-        "translationVersion": 1730606254109,
+        "translationVersion": 1730643761175,
         "pluginVersion": "7.12.2"
     },
     "description": {
         "original": "Track tasks across your vault. Supports due dates, recurring tasks, done dates, sub-set of checklist items, and filtering.",
-        "translation": "跟踪你库中的任务。支持截止日期、重复任务、完成日期、子任务列表项和过滤功能。(第一行翻译可更改右键菜单日期格式)"
+        "translation": "跟踪你库中的任务。支持截止日期、重复任务、完成日期、子任务列表项和过滤功能。(搜索.format(\"ddd Do MMM\")翻译可更改右键菜单日期格式)"
     },
     "dict": {
         "Notice(\"Cannot postpone a null date\")": "Notice(\"不能推迟无效日期\")",
