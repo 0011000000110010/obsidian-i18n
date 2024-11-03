@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730652385906,
+        "translationVersion": 1730654896416,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -421,7 +421,6 @@
         "\"recurring (repeat)\"": "\"重复\"",
         "`<i>invalid ${r} date</i>`": "`无效的 ${r} 日期`",
         "Pr(new RegExp(\"dependsOn:: ": "Pr(new RegExp(\"依赖于:: ",
-        "(right-click for more options)": "(单击右键以获取更多选项)",
         "displayText:\"generate unique id\"": "displayText:\"生成唯一id\"",
         "Pi(n,i,r.dependsOnSymbol,\"depends on id\")": "Pi(n,i,r.dependsOnSymbol,\"取决于ID\")",
         "Pi(n,i,r.onCompletionSymbol,\"on completion\"": "Pi(n,i,r.onCompletionSymbol,\"结束\"",
@@ -455,11 +454,13 @@
         ".format(\"ddd Do MMM\")": ".format(\"MMMDo  ddd\")",
         "t:\"a\"": "t:\"1\"",
         ".setAttribute(\"title\",`Right-click to edit ${cc(c)}`": ".setAttribute(\"title\",`右键编辑 ${cc(c).replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\").replace(\"day\",\"天\")}`",
-        "return(t>=0?`${u} in ${a} ${n}, on ${s}`:`${u} ${-a} ${n} ago, on ${s}`)": "return(t>=0?`${u} ${a} ${n} 后, 即： ${s}`:`${u}于 ${-a} ${n}以前, 即： ${s}`).replace(\"days\",\"天\").replace(\"day\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"Created\",\"创建\").replace(\"Due\",\"截止\").replace(\"Scheduled\",\"计划\").replace(\"Start\",\"开始\").replace(\"Done\",\"完成\")",
         "return t>=0?`Postpone ${o} by ${a} ${n}, to ${s}`:`Backdate ${o} by ${-a} ${n}, to ${s}`": "return (t>=0?`推迟 ${o}于 ${a} ${n}后, 即: ${s}`:`回溯 ${o}于 ${-a} ${n}前, 即: ${s}`).replace(\"days\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\" date\",\"日期\").replace(\"day\",\"天\")",
         "return`Task's ${e} changed to ${t}`": "return`任务 ${e.replace(\"created\",\"创建\").replace(\"due\",\"截止\").replace(\"scheduled\",\"计划\").replace(\"start\",\"开始\").replace(\"done\",\"完成\").replace(\"Date\",\"日期\")} 变更为 ${t}`",
         ".Highest": ".最高",
         ".High": ".高",
-        ".Medium": ".中"
+        ".Medium": ".中",
+        "(right-click for more options)": "(右键显示更多选项)",
+        "return(t>=0?`${u} in ${a} ${n}, on ${s}`:`${u} ${-a} ${n} ago, on ${s}`)": "return(t>=0?`${u} ${a} ${n} 后, 即： ${s}`:`${u}于 ${-a} ${n}前, 即： ${s}`).replace(\"days\",\"天\").replace(\"day\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"Created\",\"创建\").replace(\"Due\",\"截止\").replace(\"Scheduled\",\"计划\").replace(\"Start\",\"开始\").replace(\"Done\",\"完成\").replace(\" 0 天 后\",\"于今天\").replace(\" 1 天 后\",\"于明天\").replace(\" 0 天前\",\"于今天\").replace(\" 1 天前\",\"昨天\")",
+        "Right-click for options": "右键显示选项"
     }
 }
