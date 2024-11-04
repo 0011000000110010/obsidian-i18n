@@ -1,4 +1,4 @@
-name: Run Python Script
+name: 将GItee的最新release同步到Github
 
 on:
   workflow_dispatch:
