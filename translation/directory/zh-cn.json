@@ -1348,5 +1348,11 @@
         "translations": {
             "1.0.0": 1730692079686
         }
+    },
+    {
+        "id": "obsidian-tidy-footnotes",
+        "translations": {
+            "0.1.2": 1730719655464
+        }
     }
 ]
