@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730654896416,
+        "translationVersion": 1730694183719,
         "pluginVersion": "7.12.2"
     },
     "description": {
@@ -442,8 +442,6 @@
         "Lowest:": "最低:",
         ".Lowest": ".最低",
         ".Low": ".低",
-        "\"delete\"": "\"删除\"",
-        "\"keep\"": "\"保留\"",
         "id:\"created\"": "id:\"创建\"",
         "`${o} priority`": "`${o} 优先级`",
         "`${e.createdDateSymbol} created`": "`${e.createdDateSymbol} 创建`",
@@ -461,6 +459,18 @@
         ".Medium": ".中",
         "(right-click for more options)": "(右键显示更多选项)",
         "return(t>=0?`${u} in ${a} ${n}, on ${s}`:`${u} ${-a} ${n} ago, on ${s}`)": "return(t>=0?`${u} ${a} ${n} 后, 即： ${s}`:`${u}于 ${-a} ${n}前, 即： ${s}`).replace(\"days\",\"天\").replace(\"day\",\"天\").replace(\"weeks\",\"周\").replace(\"week\",\"周\").replace(\"month\",\"月\").replace(\"created\",\"创建\").replace(\"Created\",\"创建\").replace(\"Due\",\"截止\").replace(\"Scheduled\",\"计划\").replace(\"Start\",\"开始\").replace(\"Done\",\"完成\").replace(\" 0 天 后\",\"于今天\").replace(\" 1 天 后\",\"于明天\").replace(\" 0 天前\",\"于今天\").replace(\" 1 天前\",\"昨天\")",
-        "Right-click for options": "右键显示选项"
+        "Right-click for options": "右键显示选项",
+        "[15](\"b\")": "[15](\"\")",
+        "[15](\"e\")": "[15](\"\")",
+        "[15](\"t\")": "[15](\"\")",
+        "[15](\"f\")": "[15](\"\")",
+        "[15](\"r\")": "[15](\"\")",
+        "[15](\"d\")": "[15](\"\")",
+        "[15](\"s\")": "[15](\"\")",
+        "[15](\"a\")": "[15](\"\")",
+        "[15](\"u\")": "[15](\"\")",
+        "[15](\"c\")": "[15](\"\")",
+        "[15](\"x\")": "[15](\"\")",
+        "[15](\"-\")": "[15](\"\")"
     }
 }
