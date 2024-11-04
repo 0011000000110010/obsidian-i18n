@@ -32,6 +32,6 @@ jobs:
 
     - name: Run script
       env:
-        MY_GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_GITHUB }}
+        ACCESS_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_GITHUB }}
       run: |
         python ./obsidian-i18n-translation/script/sync-release-gitee2github.py  # 执行脚本
