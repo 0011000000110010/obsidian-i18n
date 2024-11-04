@@ -16,6 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Checkout Gitee repository
+      run: |
+            git clone https://gitee.com/zero--two/obsidian-i18n-translation.git
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -27,4 +31,4 @@ jobs:
 
     - name: Run script
       run: |
-        python ./script/sync-release-gitee2github.py  # 执行脚本
+        python ./obsidian-i18n-translation/script/sync-release-gitee2github.py  # 执行脚本
