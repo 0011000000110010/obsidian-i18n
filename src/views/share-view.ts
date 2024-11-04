@@ -52,13 +52,13 @@ export class ShareView extends ItemView {
             manifestEl_1.createEl('span', { text: '译文版本', cls: 'i18n-edit__label-wrap' })
             manifestEl_1.createEl('input', { value: formatTimestamp_concise(this.localTranslationJson.manifest.translationVersion), cls: ['i18n-edit__plugin-version-input'] }).disabled = true
             manifestEl_1.createEl('span', { text: '旧描述', cls: 'i18n-edit__label-wrap' })
-            manifestEl_1.createEl('input', { value: this.localTranslationJson.description.original, cls: ['i18n-edit__description-input'] }).disabled = true
+            manifestEl_1.createEl('input', { value: this.localTranslationJson.description.original, cls: ['i18n-edit__description-input'] }).disabled = true;
 
             const manifestEl = editEl.createEl('div', { cls: 'i18n-share__manifest' });
             manifestEl.createEl('span', { text: '插件版本', cls: 'i18n-edit__label-wrap' })
-            manifestEl.createEl('input', { value: this.localTranslationJson.manifest.pluginVersion, cls: ['i18n-edit__plugin-version-input'] }).disabled = true
+            manifestEl.createEl('input', { value: this.localTranslationJson.manifest.pluginVersion, cls: ['i18n-edit__plugin-version-input'] }).disabled = true;
             manifestEl.createEl('span', { text: '新描述', cls: 'i18n-share__label-wrap' })
-            manifestEl.createEl('input', { value: this.localTranslationJson.description.translation, cls: ['i18n-edit__description-input'] }).disabled = true
+            manifestEl.createEl('input', { value: this.localTranslationJson.description.translation, cls: ['i18n-edit__description-input'] }).disabled = true;
             manifestEl.createEl('button', { text: '提交译文', cls: ['i18n-button', `i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`, `is-${this.i18n.settings.I18N_BUTTON_SHAPE}`, 'i18n-button--left'] }, async (el) => {
                 el.addEventListener("click", async () => {
                     if (this.verify) {
@@ -156,7 +156,7 @@ export class ShareView extends ItemView {
             // dictEl
             // ============================== 
             if (JSON.stringify(this.localTranslationJson) === JSON.stringify(tempCloudTranslationJson.data)) { editEl.createEl('div', { text: `[提示] 内容同云端一致`, cls: 'i18n-share__tip-danger' }); this.verify = false }
-            if (this.localTranslationJson.manifest.translationVersion <= tempCloudTranslationJson.data.manifest.translationVersion) { editEl.createEl('div', { text: `[提示] 更新时间小于云端`, cls: 'i18n-share__tip-danger' }); this.verify = false }
+            // if (this.localTranslationJson.manifest.translationVersion <= tempCloudTranslationJson.data.manifest.translationVersion) { editEl.createEl('div', { text: `[提示] 更新时间小于云端`, cls: 'i18n-share__tip-danger' }); this.verify = false }
         }
     }
 

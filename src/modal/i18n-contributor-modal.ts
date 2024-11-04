@@ -18,11 +18,15 @@ export class ContributorModal extends Modal {
         modalEl.addClass('i18n-share-history__container');
         // 删除关闭按钮
         modalEl.removeChild(modalEl.getElementsByClassName('modal-close-button')[0]);
-        this.titleEl.addClass('i18n-share-history__title-box');
-
-        const titleSetting = new Setting(this.titleEl);
-        titleSetting.setClass('i18n-share-history__title').setName('译文贡献榜单');
-        // new ButtonComponent(titleSetting.controlEl).setButtonText('退出').onClick(() => { this.close() });
+        this.titleEl.parentElement?.addClass('i18n-contributor__title-box');
+        this.contentEl.addClass('i18n-contributor__content');
+        const titleSetting = new Setting(this.titleEl).setClass('i18n-contributor__title').setName('译文贡献榜单');
+        new ButtonComponent(titleSetting.controlEl)
+            .setClass('i18n-button')
+            .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
+            .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            .setIcon('refresh-ccw')
+            .onClick(() => { this.reloadShowData() });
     }
 
     public async showMain() {
@@ -38,25 +42,13 @@ export class ContributorModal extends Modal {
             let rank = 1;
 
             for (const { name, url, translation, modification, erasure } of this.i18n.contributorCache) {
-                const rowEl = tableEl.createEl('tr');
-                rowEl.addClass('i18n-contributor__row');
+                const rowEl = tableEl.createEl('tr', { cls: ['i18n-contributor__row'] });
                 rowEl.addEventListener('click', () => { window.open(url) });
-                const rankEl = rowEl.createEl('td');
-                rankEl.addClass('i18n-contributor__rank');
-                rankEl.textContent = rank.toString();
+                const rankCls = (rank <= 3) ? `i18n-contributor__rank-${rank}` : 'i18n-contributor__rank-4';
+                rowEl.createEl('td', { text: rank.toString(), cls: ['i18n-contributor__rank', rankCls] });
                 rank++;
-                const nameEl = rowEl.createEl('td');
-                nameEl.addClass('i18n-contributor__name');
-                nameEl.textContent = name;
-                const translationEl = rowEl.createEl('td');
-                translationEl.addClass('i18n-contributor__translation');
-                translationEl.textContent = (translation + modification + erasure).toString();
-                // const modificationEl = rowEl.createEl('td');
-                // modificationEl.textContent = modification.toString();
-                // modificationEl.addClass('i18n-contributor__modification');
-                // const deleteEl = rowEl.createEl('td');
-                // deleteEl.textContent = modification.toString();
-                // deleteEl.addClass('i18n-contributor__delete');
+                rowEl.createEl('td', { text: name, cls: ['i18n-contributor__name'] });
+                rowEl.createEl('td', { text: (translation + modification + erasure).toString(), cls: ['i18n-contributor__translation'] });
             }
         }
     }

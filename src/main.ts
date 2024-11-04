@@ -67,13 +67,13 @@ export default class I18N extends Plugin {
     originalPluginsManifests: PluginManifest[];
 
     i18nReviewEl: HTMLElement;
-
+    admin: AdminModal;
     async onload() {
         // [加载] 图标类
         Icons();
         // [加载] 通知类
         this.notice = new Notification(this.app, this);
-        // [加载] 配置
+        // [加载] 配置 
         await this.loadSettings();
         console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
         // document.documentElement.style.setProperty('--i18n-color-primary', this.settings.I18N_COLOR);
@@ -92,13 +92,16 @@ export default class I18N extends Plugin {
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
             // [函数] 沉浸式翻译
             if (this.settings.I18N_MODE_IMT) this.activateIMT();
-            // const translateIcon = 
             // const sideDock = translateIcon.parentNode;
             // sideDock?.appendChild(translateIcon); // appendChild prepend
             // [功能] 翻译
             this.addRibbonIcon('i18n_translate', t('I18N_NAME'), (evt: MouseEvent) => { new I18NModal(this.app, this).open() });
+
             // [功能] 审核
-            if (this.settings.I18N_ADMIN_MODE) this.i18nReviewEl = this.addRibbonIcon('i18n-review', 'I18N审核', (evt: MouseEvent) => { new AdminModal(this.app, this).open() });
+            if (this.settings.I18N_ADMIN_MODE) this.i18nReviewEl = this.addRibbonIcon('i18n-review', 'I18N审核', (evt: MouseEvent) => {
+                this.admin = new AdminModal(this.app, this)
+                this.admin.open();
+            });
 
             // [视图] 对比器视图
             this.registerView(ADMIN_VIEW_TYPE, (leaf) => new AdminView(leaf, this));

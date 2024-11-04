@@ -180,6 +180,7 @@ export class I18NModal extends Modal {
         //           主逻辑
         // ==============================
         for (const plugin of this.showPlugins) {
+
             // ============================================================
             //                         路径及状态
             // ============================================================
@@ -271,13 +272,13 @@ export class I18NModal extends Modal {
             if (stateObj.isStateDoc) {
                 if (localTranslationJson && translationFormatMark) {
                     if (compareVersions(plugin.version, localTranslationJson.manifest.pluginVersion) === 1) {
-                        desc.label.color = 'warning'; desc.label.text = t('I18N_ITEM_LABEL_D_NAME'); // 已过时
+                        desc.label.color = 'warning'; desc.label.text = t('I18N_ITEM_LABEL_D_NAME');
                     } else {
                         if (stateObj.getState()) {
                             desc.label.color = 'success'; desc.label.text = t('I18N_ITEM_LABEL_B_NAME');
                         } else { desc.label.color = 'danger'; desc.label.text = t('I18N_ITEM_LABEL_C_NAME'); }
                     }
-                    desc.text = `更新日期: ${formatTimestamp(Number(localTranslationJson?.manifest.translationVersion))} ${t('I18N_ITEM_LABEL_BCD_DESC_VERSION')}:[${localTranslationJson?.manifest.pluginVersion}]`;
+                    desc.text = `<span class="i18n-tag i18n-tag--${this.settings.I18N_TAG_TYPE}-primary is-${this.settings.I18N_TAG_SHAPE}">修改日期</span> ${formatTimestamp(fs.statSync(langDoc).mtimeMs)} <span class="i18n-tag i18n-tag--${this.settings.I18N_TAG_TYPE}-primary is-${this.settings.I18N_TAG_SHAPE}">支持版本</span> ${localTranslationJson?.manifest.pluginVersion}`;
                 } else {
                     desc.label.color = 'danger';
                     desc.label.text = t('I18N_ITEM_LABEL_E_NAME');
@@ -286,9 +287,9 @@ export class I18NModal extends Modal {
             } else { desc.label.color = 'info'; desc.label.text = t('I18N_ITEM_LABEL_A_NAME'); desc.text = t('I18N_ITEM_LABEL_A_DESC'); }
             if (this.i18n.ignoreMark && this.i18n.ignorePlugins.includes(plugin.id)) { desc.label.color = 'primary'; desc.label.text = '自带翻译'; desc.text = t('I18N_ITEM_LABEL_F_DESC'); }
 
-            itemEl.nameEl.innerHTML = `<span class="i18n-tag i18n-tag--${this.settings.I18N_TAG_TYPE}-${desc.label.color} is-${this.settings.I18N_TAG_SHAPE}">${desc.label.text}</span><span class="i18n__item-title b"> ${plugin.name}</span> <span class="i18n__item-version" style="color:--simple-blue-2;">(${plugin.version})</span> `;
+            itemEl.nameEl.innerHTML = `<span class="i18n-tag i18n-tag--${this.settings.I18N_TAG_TYPE}-${desc.label.color} is-${this.settings.I18N_TAG_SHAPE}">${desc.label.text}</span><span class="i18n__item-name">${plugin.name}</span> <span class="i18n__item-version">[${plugin.version}]</span> `;
             itemEl.settingEl.onmouseover = (e) => { this.detailsEl.innerHTML = desc.text };
-            itemEl.settingEl.onmouseout = (e) => { this.detailsEl.innerHTML = t('I18N_ITEM_LABEL_G_DESC') };
+            itemEl.settingEl.onmouseout = (e) => { this.detailsEl.innerHTML = '无' };
 
             // ====================
             // 打开插件设置

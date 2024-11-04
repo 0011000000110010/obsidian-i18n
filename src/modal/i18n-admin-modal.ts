@@ -10,6 +10,19 @@ export class AdminModal extends Modal {
     constructor(app: App, i18n: I18N) {
         super(app);
         this.i18n = i18n;
+        this.a();
+    }
+    public async a() {
+        const res = await this.i18n.api.giteeGetAllIssue();
+        if (res.state) {
+            if (res.data.length > 0) {
+                this.i18n.issuesList = res.data;
+            } else {
+                this.i18n.notice.result('获取', true, '暂时没有可审核任务');
+            }
+        } else {
+            this.i18n.notice.result('获取', false, '获取失败,请检查网络后重试');
+        }
     }
 
     public async showHead() {
@@ -25,18 +38,33 @@ export class AdminModal extends Modal {
             .setClass('i18n-button')
             .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
             .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
-            .setButtonText('获取').onClick(async () => { this.i18n.issuesList = await this.i18n.api.giteeGetAllIssue(); console.log(this.i18n.issuesList); this.reloadShowData() });
-        new ButtonComponent(titleSetting.controlEl)
-            .setClass('i18n-button')
-            .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
-            .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
-            .setButtonText('退出').onClick(() => { this.close() });
+            .setIcon('refresh-ccw')
+            .onClick(async () => {
+                const res = await this.i18n.api.giteeGetAllIssue();
+                if (res.state) {
+                    if (res.data.length > 0) {
+                        this.i18n.issuesList = res.data;
+                    } else {
+                        this.i18n.notice.result('获取', true, '暂时没有可审核任务');
+                    }
+                } else {
+                    this.i18n.notice.result('获取', false, '获取失败,请检查网络后重试');
+                }
+                this.reloadShowData();
+            });
+        // new ButtonComponent(titleSetting.controlEl)
+        //     .setClass('i18n-button')
+        //     .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
+        //     .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+        //     .setButtonText('退出').onClick(() => { this.close() });
     }
 
     public async showMain() {
-        for (const issues of this.i18n.issuesList.data) {
-            if (issues.title.includes('[提交译文]')) this.issue(issues, '提交译文')
-            if (issues.title.includes('[更新译文]')) this.issue(issues, '更新译文')
+        if (this.i18n.issuesList) {
+            for (const issues of this.i18n.issuesList) {
+                if (issues.title.includes('[提交译文]')) this.issue(issues, '提交译文')
+                if (issues.title.includes('[更新译文]')) this.issue(issues, '更新译文')
+            }
         }
     }
 

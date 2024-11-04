@@ -21,7 +21,6 @@ export class AdminView extends ItemView {
         super(leaf);
         this.i18n = i18n;
         this.i18n.notice.reload();
-        // this.contentEl.style.setProperty('--i18n-color-primary', this.i18n.settings.I18N_COLOR);
     }
 
     async onload() {
@@ -203,8 +202,8 @@ export class AdminView extends ItemView {
                         const res = await this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed')
                         if (res.state) {
                             this.i18n.notice.result('驳回', true);
-                            this.i18n.issuesList.data = this.i18n.issuesList.data.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
-                            this.i18n.detachAdminView();
+                            this.i18n.issuesList = this.i18n.issuesList.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
+                            this.i18n.admin.reloadShowData();
                         } else {
                             this.i18n.notice.result('驳回', false, res.data);
                         }
@@ -219,7 +218,7 @@ export class AdminView extends ItemView {
                         try {
                             // 更新翻译版本和字典  
                             this.issueTranslationJson.dict = Object.fromEntries(this.submitTranslationObj.filter(item => item.state === true).map(item => [item.key, item.value]));
-
+                            this.issueTranslationJson.manifest.translationVersion = Date.now();
                             // 构建译文路径和内容 
                             const translationID = this.i18n.issuesObj.title.replace("[提交译文] ", "");
                             const translationPath = `translation/dict/${translationID}/${this.i18n.settings.I18N_LANGUAGE}/${this.issueTranslationJson.manifest.pluginVersion}.json`;
@@ -272,8 +271,8 @@ export class AdminView extends ItemView {
                             const giteePatchIssueRes = await this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed');
                             if (!giteePatchIssueRes.state) { this.i18n.notice.result('合并', false, `无法关闭 issue\n请前往gitee手动关闭此issue\n${giteePatchIssueRes.data}`); return; } else { this.i18n.notice.result('批准', true, `4/4 关闭 issue`); }
                             this.i18n.notice.result('合并', true);
-                            this.i18n.issuesList.data = this.i18n.issuesList.data.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
-                            this.i18n.detachAdminView();
+                            this.i18n.issuesList = this.i18n.issuesList.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
+                            this.i18n.admin.reloadShowData();
                         } catch (error) {
                             this.i18n.notice.result('合并', false, error);
                         }
@@ -549,8 +548,8 @@ export class AdminView extends ItemView {
                         const res = await this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed')
                         if (res.state) {
                             this.i18n.notice.result('驳回', true);
-                            this.i18n.issuesList.data = this.i18n.issuesList.data.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
-                            this.i18n.detachAdminView();
+                            this.i18n.issuesList = this.i18n.issuesList.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
+                            this.i18n.admin.reloadShowData();
                         } else {
                             this.i18n.notice.result('驳回', false, res.data);
                         }
@@ -571,6 +570,7 @@ export class AdminView extends ItemView {
                             const trueRemovedEntries = this.updateTranslationObj.filter(item => item.type === 'removed' && item.state === true).map(item => [item.key, item.value]);
                             const allEntries = [...unchangedEntries, ...modifiedEntries, ...addedEntries, ...falseRemovedEntries];
                             this.issueTranslationJson.dict = Object.fromEntries(allEntries);
+                            this.issueTranslationJson.manifest.translationVersion = Date.now();
 
                             const translationPath = `translation/dict/${id}/${this.i18n.settings.I18N_LANGUAGE}/${this.issueTranslationJson.manifest.pluginVersion}.json`;
                             const translationSha = await this.i18n.api.giteeGetSha(translationPath);
@@ -611,8 +611,8 @@ export class AdminView extends ItemView {
                             const giteePatchIssueRes = await this.i18n.api.giteePatchIssue(this.i18n.issuesObj.number, 'closed');
                             if (!giteePatchIssueRes.state) { this.i18n.notice.result('合并', false, `无法关闭 issue\n请前往gitee手动关闭此issue\n${giteePatchIssueRes.data}`); return; } else { this.i18n.notice.result('批准', true, `3/3 关闭 issue`); }
                             this.i18n.notice.result('合并', true);
-                            this.i18n.issuesList.data = this.i18n.issuesList.data.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
-                            this.i18n.detachAdminView();
+                            this.i18n.issuesList = this.i18n.issuesList.filter((item: { number: string; }) => item.number !== this.i18n.issuesObj.number);
+                            this.i18n.admin.reloadShowData();
                         } catch (error) {
                             this.i18n.notice.result('合并', false, error);
                         }

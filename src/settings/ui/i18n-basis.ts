@@ -30,79 +30,83 @@ export default class I18nBasis extends BaseSetting {
         new Setting(this.containerEl)
             .setName('检查更新')
             .setDesc('插件启动时自动检查是否存在更新')
-            .addButton(cb => cb.setButtonText('下载').onClick(async () => {
-                const res = await this.i18n.api.giteeGetReleasesLatest();
-                if (res.data.tag_name === this.i18n.updatesVersion) {
-                    const manifest = res.data.assets.find((obj: { name: string; }) => obj.name === 'manifest.json');
-                    const style = res.data.assets.find((obj: { name: string; }) => obj.name === 'styles.css');
-                    const main = res.data.assets.find((obj: { name: string; }) => obj.name === 'main.js');
-                    let styleString = '';
-                    let mainString = '';
-                    let manifestString = '';
-                    if (manifest !== undefined) {
-                        const res = await this.i18n.api.giteeDownload(manifest.browser_download_url);
-                        if (res.state) {
-                            manifestString = res.data;
+            .addButton(cb => cb.setButtonText('下载')
+                .setClass('i18n-button')
+                .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
+                .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+                .onClick(async () => {
+                    const res = await this.i18n.api.giteeGetReleasesLatest();
+                    if (res.data.tag_name === this.i18n.updatesVersion) {
+                        const manifest = res.data.assets.find((obj: { name: string; }) => obj.name === 'manifest.json');
+                        const style = res.data.assets.find((obj: { name: string; }) => obj.name === 'styles.css');
+                        const main = res.data.assets.find((obj: { name: string; }) => obj.name === 'main.js');
+                        let styleString = '';
+                        let mainString = '';
+                        let manifestString = '';
+                        if (manifest !== undefined) {
+                            const res = await this.i18n.api.giteeDownload(manifest.browser_download_url);
+                            if (res.state) {
+                                manifestString = res.data;
+                            } else {
+                                this.i18n.notice.result('检查更新', false, `请求manifest.json失败\n${res.data}`)
+                                return
+                            }
                         } else {
-                            this.i18n.notice.result('检查更新', false, `请求manifest.json失败\n${res.data}`)
-                            return
-                        }
-                    } else {
-                        this.i18n.notice.result('检查更新', false, '未找到manifest.json文件')
-                        return;
-                    }
-                    if (style !== undefined) {
-                        const res = await this.i18n.api.giteeDownload(style.browser_download_url);
-                        if (res.state) {
-                            styleString = res.data;
-                        } else {
-                            this.i18n.notice.result('检查更新', false, `请求styles.css失败\n${res.data}`)
+                            this.i18n.notice.result('检查更新', false, '未找到manifest.json文件')
                             return;
                         }
-                    } else {
-                        this.i18n.notice.result('检查更新', false, '未找到styles.css文件')
-                        return;
-                    }
-                    if (main !== undefined) {
-                        const res = await this.i18n.api.giteeDownload(main.browser_download_url);
-                        if (res.state) {
-                            mainString = res.data;
+                        if (style !== undefined) {
+                            const res = await this.i18n.api.giteeDownload(style.browser_download_url);
+                            if (res.state) {
+                                styleString = res.data;
+                            } else {
+                                this.i18n.notice.result('检查更新', false, `请求styles.css失败\n${res.data}`)
+                                return;
+                            }
                         } else {
-                            this.i18n.notice.result('检查更新', false, `请求main.js失败\n${res.data}`)
+                            this.i18n.notice.result('检查更新', false, '未找到styles.css文件')
                             return;
                         }
+                        if (main !== undefined) {
+                            const res = await this.i18n.api.giteeDownload(main.browser_download_url);
+                            if (res.state) {
+                                mainString = res.data;
+                            } else {
+                                this.i18n.notice.result('检查更新', false, `请求main.js失败\n${res.data}`)
+                                return;
+                            }
+                        } else {
+                            this.i18n.notice.result('检查更新', false, '未找到main.js文件')
+                            return;
+                        }
+                        try {
+                            // @ts-ignore
+                            const i18nDir = path.join(path.normalize(this.app.vault.adapter.getBasePath()), this.i18n.manifest.dir)
+                            console.log(i18nDir);
+                            fs.ensureDirSync(i18nDir);
+                            await fs.writeFile(path.join(i18nDir, 'styles.css'), styleString);
+                            await fs.writeFile(path.join(i18nDir, 'main.js'), mainString);
+                            await fs.writeFile(path.join(i18nDir, 'manifest.json'), manifestString);
+                            this.i18n.notice.result('检查更新', true, '更新成功');
+                            // // @ts-ignore
+                            // const a: PluginManifest[] = Object.values(this.app.plugins.manifests);
+                            // const foundIndex = a.findIndex(manifest => manifest.id === this.i18n.manifest.id);
+                            // if (foundIndex !== -1) a[foundIndex].version = this.i18n.updatesVersion;
+                            // this.i18n.updatesMark = false;
+                            // this.i18n.updatesVersion = '';
+                            // // @ts-ignore
+                            // await this.app.plugins.disablePlugin(this.i18n.manifest.id);
+                            // // @ts-ignore
+                            // await this.app.plugins.enablePlugin(this.i18n.manifest.id);
+                            document.location.reload();
+                        } catch (e) {
+                            this.i18n.notice.result('检查更新', false, `写入文件失败${e}`);
+                        }
                     } else {
-                        this.i18n.notice.result('检查更新', false, '未找到main.js文件')
-                        return;
+                        this.i18n.notice.result('检查更新', false, '未找到文件')
                     }
-                    try {
-                        // @ts-ignore
-                        const i18nDir = path.join(path.normalize(this.app.vault.adapter.getBasePath()), this.i18n.manifest.dir)
-                        console.log(i18nDir);
-                        fs.ensureDirSync(i18nDir);
-                        await fs.writeFile(path.join(i18nDir, 'styles.css'), styleString);
-                        await fs.writeFile(path.join(i18nDir, 'main.js'), mainString);
-                        await fs.writeFile(path.join(i18nDir, 'manifest.json'), manifestString);
-                        this.i18n.notice.result('检查更新', true, '更新成功');
-                        // // @ts-ignore
-                        // const a: PluginManifest[] = Object.values(this.app.plugins.manifests);
-                        // const foundIndex = a.findIndex(manifest => manifest.id === this.i18n.manifest.id);
-                        // if (foundIndex !== -1) a[foundIndex].version = this.i18n.updatesVersion;
-                        // this.i18n.updatesMark = false;
-                        // this.i18n.updatesVersion = '';
-                        // // @ts-ignore
-                        // await this.app.plugins.disablePlugin(this.i18n.manifest.id);
-                        // // @ts-ignore
-                        // await this.app.plugins.enablePlugin(this.i18n.manifest.id);
-                        document.location.reload();
-                    } catch (e) {
-                        this.i18n.notice.result('检查更新', false, `写入文件失败${e}`);
-                    }
-                } else {
-                    this.i18n.notice.result('检查更新', false, '未找到文件')
-                }
 
-            }).setClass(this.i18n.updatesMark ? '1' : 'i18n--hidden'))
+                }).setClass(this.i18n.updatesMark ? '1' : 'i18n--hidden'))
 
             .addToggle(cb => cb
                 .setValue(this.settings.I18N_CHECK_UPDATES)

@@ -461,7 +461,7 @@ export class EditorView extends ItemView {
             saveTranslationButton.setButtonText(t('EDITOR_SAVE_TRANSLATION_BUTTON_TEXT'));
             saveTranslationButton.onClick(async () => {
                 try {
-                    this.translationJson.manifest.translationVersion = Date.now();
+                    // this.translationJson.manifest.translationVersion = Date.now();
                     const dict: { [key: string]: string } = {};
                     this.translationDict.forEach(item => { dict[item.key] = item.value; })
                     this.translationJson.dict = dict;
