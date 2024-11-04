@@ -1,11 +1,11 @@
 {
     "manifest": {
-        "translationVersion": 1729440134559,
+        "translationVersion": 1730720427084,
         "pluginVersion": "0.2.2"
     },
     "description": {
         "original": "Typewriter-style scrolling which keeps the view centered in the editor.",
-        "translation": "打字机风格的滚动，保持视图在编辑器中居中。"
+        "translation": "打字机风格的滚动，保持视图在编辑器中居中。推荐与zen插件搭配使用"
     },
     "dict": {
         "name: 'Toggle On/Off'": "name: '开/关切换'",
