@@ -6,7 +6,7 @@ import io
 # Gitee 和 GitHub 的信息
 GITEE_REPO = 'zero--two/obsidian-i18n-translation'
 GITHUB_REPO = '0011000000110010/obsidian-i18n'
-GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')  # 用于身份验证
+GITHUB_TOKEN = os.environ.get('secret.GITHUB_TOKEN')  # 用于身份验证
 
 # 检查 GitHub 上是否存在同名的 Release
 def check_existing_release(release_name):
