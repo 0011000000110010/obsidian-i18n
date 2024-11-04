@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730012127045,
+        "translationVersion": 1730689359728,
         "pluginVersion": "0.1.8"
     },
     "description": {
@@ -17,6 +17,8 @@
         ".setName(\"Hide frontmatter\")": ".setName(\"隐藏frontmatter\")",
         ".setName(\"Hide backlinks\")": ".setName(\"隐藏反向链接\")",
         ".setDesc(\"Hide frontmatter in daily notes\")": ".setDesc(\"在日常笔记中隐藏正面内容\")",
-        ".setDesc(\"Hide backlinks in daily notes\")": ".setDesc(\"在日常笔记中隐藏反向链接\")"
+        ".setDesc(\"Hide backlinks in daily notes\")": ".setDesc(\"在日常笔记中隐藏反向链接\")",
+        ".addRibbonIcon(\"calendar-range\",\"Open Daily Note Editor\"": ".addRibbonIcon(\"calendar-range\",\"打开日记流\"",
+        "return\"Daily Note\"": "return\"日记流\""
     }
 }
