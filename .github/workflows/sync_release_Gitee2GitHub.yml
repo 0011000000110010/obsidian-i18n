@@ -1,4 +1,6 @@
 name: 将GItee的最新release同步到Github
+  env:
+    MY_GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_GITHUB }}
 
 on:
   workflow_dispatch:
