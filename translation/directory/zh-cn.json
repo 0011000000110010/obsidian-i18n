@@ -1336,5 +1336,17 @@
         "translations": {
             "0.1.0-b2": 1730471186253
         }
+    },
+    {
+        "id": "vault-name-status-bar",
+        "translations": {
+            "1.1.1": 1730688321552
+        }
+    },
+    {
+        "id": "immersive-translate",
+        "translations": {
+            "1.0.0": 1730692079686
+        }
     }
 ]
