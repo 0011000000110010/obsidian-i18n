@@ -1366,5 +1366,11 @@
         "translations": {
             "1.0.3": 1730799373498
         }
+    },
+    {
+        "id": "obsidian-completr",
+        "translations": {
+            "3.2.0": 1730799385649
+        }
     }
 ]
