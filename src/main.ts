@@ -92,6 +92,8 @@ export default class I18N extends Plugin {
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
             // [函数] 沉浸式翻译
             if (this.settings.I18N_MODE_IMT) this.activateIMT();
+            // [函数] 审核获取
+            if (this.settings.I18N_SHARE_MODE) this.getAdmin();
             // const sideDock = translateIcon.parentNode;
             // sideDock?.appendChild(translateIcon); // appendChild prepend
             // [功能] 翻译
@@ -385,6 +387,21 @@ export default class I18N extends Plugin {
         html?.removeAttribute('imt-trans-position');
         // 调用clearStorage函数（可能用于清除某种存储，如localStorage或sessionStorage），并等待其执行完成
         await clearStorage();
+    }
+
+
+    async getAdmin() {
+        const res = await this.api.giteeGetAllIssue();
+        if (res.state) {
+            if (res.data.length > 0) {
+                this.issuesList = res.data;
+                this.notice.result('获取', true, `${this.issuesList.length}条待审核内容`);
+            } else {
+                this.notice.result('获取', true, '暂时没有可审核任务');
+            }
+        } else {
+            this.notice.result('获取', false, '获取失败,请检查网络后重试');
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 {
-    "version": "1.5.7",
-    "content": "优化 审核流程\n优化 审核界面UI\n优化 贡献榜单UI",
+    "version": "1.5.8",
+    "content": "优化 提交流程(避免误触)\n新增 待审核数量提示",
     "token": "MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }

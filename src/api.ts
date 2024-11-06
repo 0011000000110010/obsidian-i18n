@@ -258,7 +258,6 @@ export class API {
 				url: `https://gitee.com/${this.settings.I18N_GITEE_OWNER}/${this.settings.I18N_GITEE_REPO}/raw/master/translation/dict/${id}/${this.settings.I18N_LANGUAGE}/${version}.json`,
 				method: 'GET'
 			};
-			console.log(RequestUrlParam)
 			const response = await requestUrl(RequestUrlParam);
 			return { 'state': true, 'data': response.json };
 		} catch (error) {

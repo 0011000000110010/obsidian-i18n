@@ -6,6 +6,7 @@ import I18N from "src/main";
 // @ts-ignore
 import { diffWords } from 'diff';
 import { deflate, formatTimestamp_concise } from 'src/utils';
+import { AgreementConfirmModal } from 'src/modal/i18n-contributor-confirm-modal';
 
 export const SHARE_VIEW_TYPE = 'i18n-share-view'
 
@@ -61,13 +62,19 @@ export class ShareView extends ItemView {
             manifestEl.createEl('input', { value: this.localTranslationJson.description.translation, cls: ['i18n-edit__description-input'] }).disabled = true;
             manifestEl.createEl('button', { text: '提交译文', cls: ['i18n-button', `i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`, `is-${this.i18n.settings.I18N_BUTTON_SHAPE}`, 'i18n-button--left'] }, async (el) => {
                 el.addEventListener("click", async () => {
-                    if (this.verify) {
-                        const res = await this.i18n.api.giteePostIssue(`[提交译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson)), '提交译文');
-                        if (res?.state) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${res.data.number}`);
-                        this.i18n.notice.result('提交译文', true);
-                    } else {
-                        this.i18n.notice.result('提交译文', false, '请检查后重试');
-                    }
+                    new AgreementConfirmModal(this.app, this.i18n, async (result) => {
+                        if (result === '我已仔细检查译文') {
+                            if (this.verify) {
+                                const res = await this.i18n.api.giteePostIssue(`[提交译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson)), '提交译文');
+                                if (res?.state) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${res.data.number}`);
+                                this.i18n.notice.result('提交译文', true);
+                            } else {
+                                this.i18n.notice.result('提交译文', false, '请检查后重试');
+                            }
+                        } else {
+                            this.i18n.notice.result('更新译文', false, '请输入 "我已仔细检查译文"');
+                        }
+                    }).open()
                 });
             })
 
@@ -115,13 +122,19 @@ export class ShareView extends ItemView {
             const operateEl = editEl.createEl('div', { cls: 'i18n-share-update__operate' });
             operateEl.createEl('button', { text: '更新译文', cls: ['i18n-button', `i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`, `is-${this.i18n.settings.I18N_BUTTON_SHAPE}`, 'i18n-button--left'] }, async (el) => {
                 el.addEventListener("click", async () => {
-                    if (this.verify) {
-                        const res = await this.i18n.api.giteePostIssue(`[更新译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson, null, 4)), '更新译文');
-                        if (res?.state) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${res.data.number}`);
-                        this.i18n.notice.result('更新译文', true);
-                    } else {
-                        this.i18n.notice.result('更新译文', false, '请检查后重试');
-                    }
+                    new AgreementConfirmModal(this.app, this.i18n, async (result) => {
+                        if (result === '我已仔细检查译文') {
+                            if (this.verify) {
+                                const res = await this.i18n.api.giteePostIssue(`[更新译文] ${this.PluginObj.id}`, deflate(JSON.stringify(this.localTranslationJson, null, 4)), '更新译文');
+                                if (res?.state) window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${res.data.number}`);
+                                this.i18n.notice.result('更新译文', true);
+                            } else {
+                                this.i18n.notice.result('更新译文', false, '请检查后重试');
+                            }
+                        } else {
+                            this.i18n.notice.result('更新译文', false, '请输入 "我已仔细检查译文"');
+                        }
+                    }).open()
                 });
             })
             // 对比器 El

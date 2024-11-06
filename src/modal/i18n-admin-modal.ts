@@ -17,6 +17,7 @@ export class AdminModal extends Modal {
         if (res.state) {
             if (res.data.length > 0) {
                 this.i18n.issuesList = res.data;
+                this.i18n.notice.result('获取', true, `${this.i18n.issuesList.length}条待审核内容`);
             } else {
                 this.i18n.notice.result('获取', true, '暂时没有可审核任务');
             }

@@ -180,7 +180,6 @@ export class I18NModal extends Modal {
         //           主逻辑
         // ==============================
         for (const plugin of this.showPlugins) {
-
             // ============================================================
             //                         路径及状态
             // ============================================================
@@ -648,18 +647,11 @@ export class I18NModal extends Modal {
             if (this.developerMode) {
                 itemEl.controlEl.createEl('button', { text: '测试', cls: ['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-primary`, `is-${this.settings.I18N_BUTTON_SHAPE}`] }, (el) => {
                     el.addEventListener("click", async () => {
-                        // @ts-ignore
-                        const dir = path.join(this.app.vault.adapter.getBasePath(), this.i18n.manifest.dir, 'Admin');
-                        // @ts-ignore
-                        const doc = path.join(this.app.vault.adapter.getBasePath(), this.i18n.manifest.dir, 'Admin', `${this.i18n.settings.I18N_LANGUAGE}.json`);
-                        console.log(dir)
-                        console.log(doc)
+                        console.log('a')
                     });
                 });
-
             }
         }
-
     }
 
     // window.location.reload();
