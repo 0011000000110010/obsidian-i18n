@@ -1,5 +1,5 @@
 {
-    "version": "1.5.8",
-    "content": "优化 提交流程(避免误触)\n新增 待审核数量提示",
+    "version": "1.5.9",
+    "content": "修复 译文编辑器批量删除会删除所有的问题",
     "token": "MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }

@@ -177,7 +177,6 @@ export class EditorView extends ItemView {
                             rowEl.remove();
                             this.translationDict = this.translationDict.filter(item => item.key !== dictItem.key);
                             this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000);
-                            // this.notices.push(NoticeSuccess(t('EDITOR_PUBLIC_HEAD'), t('EDITOR_DELETE_ITEM_BUTTON_NOTICE_CONTENT_A'), 1000));
                         })
                     });
                     const diff = this.diff(dictItem.key, dictItem.value)
@@ -380,15 +379,27 @@ export class EditorView extends ItemView {
             deleteButton.setButtonText('删除');
             deleteButton.setTooltip('一键删除所有未翻译项')
             deleteButton.onClick(() => {
-                let count = 0;
-                this.translationDict.forEach(item => {
-                    if (item.key === item.value) {
-                        item.el.remove();
-                        this.translationDict = this.translationDict.filter(item => item.key !== item.key);
-                        count++;
-                    }
-                })
-                if (count > 0) { this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), `共删除${count}项未翻译内容`); count = 0 }
+                // let count = 0;
+                // this.translationDict.forEach(item => {
+                //     console.log(item.key);
+                //     console.log(item.value);
+                //     console.log(item.value === item.key);
+                //     if (item.key === item.value) {
+                //         item.el.remove();
+                //         this.translationDict = this.translationDict.filter(item => item.key !== item.value);
+                //         count++;
+                //     }
+                // })
+                // if (count > 0) { this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), `共删除${count}项未翻译内容`); count = 0 }
+                // 假设 this.translationDict 是您要过滤的数组
+                const originalLength = this.translationDict.length;
+                this.translationDict = this.translationDict.filter(item => {
+                    const shouldRemove = item.key === item.value;
+                    if (shouldRemove) item.el.remove();
+                    return !shouldRemove;
+                });
+                const deletedCount = originalLength - this.translationDict.length;
+                this.i18n.notice.success(t('EDITOR_PUBLIC_HEAD'), `共删除${deletedCount}项未翻译内容`);
             });
             // 插件DOM
             const mainButton = new ButtonComponent(operateEl);
