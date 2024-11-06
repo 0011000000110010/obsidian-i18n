@@ -1348,5 +1348,35 @@
         "translations": {
             "1.0.0": 1730692079686
         }
+    },
+    {
+        "id": "obsidian-tidy-footnotes",
+        "translations": {
+            "0.1.2": 1730719655464
+        }
+    },
+    {
+        "id": "obsidian-tts",
+        "translations": {
+            "0.5.4": 1730720331812
+        }
+    },
+    {
+        "id": "nav-link-header",
+        "translations": {
+            "1.0.3": 1730799373498
+        }
+    },
+    {
+        "id": "obsidian-completr",
+        "translations": {
+            "3.2.0": 1730799385649
+        }
+    },
+    {
+        "id": "quick-explorer",
+        "translations": {
+            "0.2.10": 1730852633319
+        }
     }
 ]

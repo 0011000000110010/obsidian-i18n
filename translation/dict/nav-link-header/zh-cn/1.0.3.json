@@ -1,0 +1,44 @@
+{
+    "manifest": {
+        "translationVersion": 1730799373498,
+        "pluginVersion": "1.0.3"
+    },
+    "description": {
+        "original": "Display navigation links at the top of the notes.",
+        "translation": "在笔记顶部显示导航链接。"
+    },
+    "dict": {
+        "Notice(\"Failed to read the daily note template\")": "Notice(\"无法阅读每日笔记模板\")",
+        "Notice(\"Unable to create new file.\")": "Notice(\"无法创建新文件。\")",
+        ".log(_)": ".log(_)",
+        ".error(`Failed to read the daily note template '${l}'`,u)": ".error(`无法阅读每日笔记模板 '${l}'`,u)",
+        ".error(`Failed to create file: '${b}'`,x)": ".error(`文件建立失败: '${b}'`,x)",
+        ".error(`Failed to create file: '${h}'`,_)": ".error(`文件建立失败: '${h}'`,_)",
+        "name:\"Anno Domini\"": "name:\"公元\"",
+        "name:\"Before Christ\"": "name:\"公元前\"",
+        "text:\"Create a new note\"": "text:\"创建一个新笔记\"",
+        "text:`File \"${this.fileTitle}\" does not exist. Are you sure you want to create a new note?`": "text:`文件 \"${this.fileTitle}\" 不存在. 确定新建文件？`",
+        ".setButtonText(\"Create\")": ".setButtonText(\"创建\")",
+        ".setButtonText(\"Create (Don't ask again)\")": ".setButtonText(\"创建(不再询问)\")",
+        ".setButtonText(\"Cancel\")": ".setButtonText(\"取消\")",
+        ".setName(\"Display navigation links in each view\")": ".setName(\"在每个视图中显示导航链接\")",
+        ".setName(\"Display navigation links in page preview\")": ".setName(\"在页面预览中显示导航链接\")",
+        ".setName(\"Enable annotated links\")": ".setName(\"启用注释链接\")",
+        ".setName(\"Annotation strings\")": ".setName(\"注释字符串\")",
+        ".setName(\"Enable daily note links\")": ".setName(\"启用每日笔记链接\")",
+        ".setName(\"Enable weekly note links\")": ".setName(\"启用每周笔记链接\")",
+        ".setName(\"Enable monthly note links\")": ".setName(\"启用每月笔记链接\")",
+        ".setName(\"Enable quarterly note links\")": ".setName(\"启用季度笔记链接\")",
+        ".setName(\"Enable yearly note links\")": ".setName(\"启用年度笔记链接\")",
+        ".setName(\"Display placeholder\")": ".setName(\"显示占位符\")",
+        ".setName(\"Confirm when creating a new file\")": ".setName(\"在创建新文件时确认\")",
+        ".setDesc(\"Display annotated backlinks in the navigation. If one of the annotation strings is placed immediately before a link, the link is recognized as an annotated link. Notes with annotated links appear as backlinks at the top of the destination note. \")": ".setDesc(\"在导航中显示带注释的反向链接。如果其中一个注释字符串放在链接之前，则该链接将被识别为带注释的链接。带有注释链接的注释在目标注释的顶部显示为反向链接。\")",
+        ".setDesc(\"Define the annotation strings. Any string, including emoji, is acceptable as long as the following link is recognized as a backlink. To specify multiple annotations, separate them with commas.\")": ".setDesc(\"定义注释字符串。任何字符串，包括表情符号，只要以下链接被识别为反向链接，都是可以接受的。要指定多个注释，请用逗号分隔它们。\")",
+        ".setDesc(\"Display links to adjacent daily notes.\")": ".setDesc(\"显示链接到相邻的每日笔记。\")",
+        ".setDesc(\"Display links to adjacent weekly notes.\")": ".setDesc(\"显示相邻每周笔记的链接。\")",
+        ".setDesc(\"Display links to adjacent monthly notes.\")": ".setDesc(\"显示相邻月度笔记的链接。\")",
+        ".setDesc(\"Display links to adjacent quarterly notes.\")": ".setDesc(\"显示相邻季度笔记的链接\")",
+        ".setDesc(\"Display links to adjacent yearly notes.\")": ".setDesc(\"显示相邻年度笔记的链接。\")",
+        ".setDesc(\"Display a placeholder when there is nothing to display. This prevents the contents of the view from being rattled when the link is loaded.\")": ".setDesc(\"当没有要显示的内容时显示占位符。这可以防止在加载链接时视图的内容出现抖动。\")"
+    }
+}
