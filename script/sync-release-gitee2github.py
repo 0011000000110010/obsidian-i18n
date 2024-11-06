@@ -36,8 +36,9 @@ def download_gitee_release():
     response.raise_for_status()  # 检查请求是否成功
     release_data = response.json()
     
-    # 获取 Release 名称
+    # 获取 Release 名称和描述
     release_name = release_data.get('name', 'Latest Release')
+    release_description = release_data.get('body', 'No description provided.')  # 获取描述
     
     # 创建子目录以存放下载的文件
     download_dir = f'downloads/{release_name}'
@@ -65,16 +66,16 @@ def download_gitee_release():
         else:
             print(f'跳过源代码文件 {file_name}。')
     
-    return release_name, downloaded_files  # 返回 Release 名称和下载的文件路径列表
+    return release_name, release_description, downloaded_files  # 返回 Release 名称、描述和下载的文件路径列表
 
 # 上传到 GitHub
-def upload_to_github(release_name, downloaded_files):
+def upload_to_github(release_name, release_description, downloaded_files):
     # 创建新的 GitHub Release
     create_release_url = f'https://api.github.com/repos/{GITHUB_REPO}/releases'
     release_data = {
         'tag_name': release_name,  # 使用 Release 名称作为标签
         'name': release_name,
-        'body': f'Release {release_name} from Gitee',
+        'body': release_description,  # 使用 Gitee 的描述
         'draft': False,
         'prerelease': False
     }
@@ -107,6 +108,6 @@ def upload_to_github(release_name, downloaded_files):
         print(f'{file_name} 上传完成。')
 
 if __name__ == '__main__':
-    release_name, downloaded_files = download_gitee_release()  # 获取 Release 名称和下载的文件路径
+    release_name, release_description, downloaded_files = download_gitee_release()  # 获取 Release 名称、描述和下载的文件路径
     if not check_existing_release(release_name):  # 检查是否存在同名 Release
-        upload_to_github(release_name, downloaded_files)  # 上传下载的文件并同步 Release 名称
+        upload_to_github(release_name, release_description, downloaded_files)  # 上传下载的文件并同步 Release 名称和描述

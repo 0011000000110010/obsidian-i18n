@@ -366,5 +366,13 @@
         "translation": 20,
         "modification": 0,
         "erasure": 0
+    },
+    {
+        "login": "pennhui",
+        "name": "PennHui",
+        "url": "https://gitee.com/pennhui",
+        "translation": 211,
+        "modification": 0,
+        "erasure": 75
     }
 ]
