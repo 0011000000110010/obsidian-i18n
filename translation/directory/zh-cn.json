@@ -1382,5 +1382,11 @@
         "translations": {
             "0.2.10": 1730852633319
         }
+    },
+    {
+        "id": "obsidian-remember-file-state",
+        "translations": {
+            "1.1.2": 1730995532034
+        }
     }
 ]
