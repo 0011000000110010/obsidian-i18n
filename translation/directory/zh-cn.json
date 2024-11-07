@@ -568,7 +568,8 @@
     {
         "id": "obsidian-custom-attachment-location",
         "translations": {
-            "4.22.1": -639075600000
+            "4.22.1": -639075600000,
+            "4.27.5": 1730962726105
         }
     },
     {
