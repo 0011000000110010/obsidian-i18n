@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731072541492,
+        "translationVersion": 1731074101932,
         "pluginVersion": "3.2.6"
     },
     "description": {
@@ -296,7 +296,6 @@
         "\"If you are requested to login, you can open a browser to login from:\"": "\"如果要求您登录,您可以打开浏览器从以下位置登录:\"",
         "\"Don't show again\"": "\"不再显示\"",
         "\"File URI is not supported in this environment. \"": "\"此环境中不支持文件URI。\"",
-        "\"Open media\"": "\"打开媒体\"",
         "\"Show website native controls\"": "\"显示网站本机控件\"",
         "\"Hide website controls\"": "\"隐藏网站控件\"",
         "\"Exit fullscreen\"": "\"退出全屏\"",
@@ -316,6 +315,7 @@
         "\"Unmute\":\"Mute\"": "\"取消静音\":\"静音\"",
         "\"Enable in-player fullscreen\"": "\"启用播放器全屏\"",
         "\"Disable in-player fullscreen\"": "\"禁用播放器全屏\"",
-        "\"supported websites...\"": "\"支持的网站...\""
+        "\"supported websites...\"": "\"支持的网站...\"",
+        ".addRibbonIcon(\"play\",\"Open media\"": ".addRibbonIcon(\"play\",\"Media-Extended：打开媒体文件\""
     }
 }
