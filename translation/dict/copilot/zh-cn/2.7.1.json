@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": -639075600000,
+        "translationVersion": 1731171750959,
         "pluginVersion": "2.7.1"
     },
     "description": {
@@ -512,6 +512,7 @@
         "explicitly, or hit the ": "或者点击",
         " button.": "按钮。",
         "name: \"Indexing Exclusions\",": "name: \"索引排除项\",",
-        "description: \"Comma separated list of paths, tags, note titles or file extension, e.g. folder1, folder1/folder2, #tag1, #tag2, [[note1]], [[note2]], *.jpg, *.excallidraw.md etc, to be excluded from the indexing process. NOTE: Tags must be in the note properties, not the note content. Files which were previously indexed will remain in the index unless you force re-index.\"": "description: \"要从索引过程中排除的路径、标签、笔记标题或文件扩展名的逗号分隔列表，例如文件夹1、文件夹1/文件夹2、#标签1、#标签2、[[笔记1]]、[[笔记2]]、*.jpg、*.excallidraw.md 等。注意: 标签必须在笔记属性中，而不是笔记内容中。先前索引的文件将保留在索引中，除非您强制重新索引。\""
+        "description: \"Comma separated list of paths, tags, note titles or file extension, e.g. folder1, folder1/folder2, #tag1, #tag2, [[note1]], [[note2]], *.jpg, *.excallidraw.md etc, to be excluded from the indexing process. NOTE: Tags must be in the note properties, not the note content. Files which were previously indexed will remain in the index unless you force re-index.\"": "description: \"要从索引过程中排除的路径、标签、笔记标题或文件扩展名的逗号分隔列表，例如文件夹1、文件夹1/文件夹2、#标签1、#标签2、[[笔记1]]、[[笔记2]]、*.jpg、*.excallidraw.md 等。注意: 标签必须在笔记属性中，而不是笔记内容中。先前索引的文件将保留在索引中，除非您强制重新索引。\"",
+        ".setTitle(\"Copilot: Summarize Selection\")": ".setTitle(\"Copilot: 总结选中内容\")"
     }
 }
