@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730916571363,
+        "translationVersion": 1731143655576,
         "pluginVersion": "0.11.21"
     },
     "description": {
@@ -8,34 +8,29 @@
         "translation": "将 “页面预览 ”悬停弹出窗口转化为完全可用的编辑器实例"
     },
     "dict": {
-        ".log(r.endSpeed/this.v0)": ".log(r.endSpeed/this.v0)",
-        ".error(S)": ".error(S)",
-        ".error(a)": ".error(a)",
+        "name:\"drag\"": "name:\"拖动\"",
         "name:\"gesture\"": "name:\"手势\"",
         "name:\"resize\"": "name:\"调整大小\"",
+        "name:\"Toggle bouncing popovers\"": "name:\"切换弹出窗口\"",
         "name:\"Open new Hover Editor\"": "name:\"打开新的悬停编辑器\"",
         "name:\"Open link under cursor in new Hover Editor\"": "name:\"在新的悬停编辑器中打开光标下的链接\"",
         "name:\"Open current file in new Hover Editor\"": "name:\"在新的悬停编辑器中打开当前文件\"",
         "name:\"Convert active pane to Hover Editor\"": "name:\"将活动窗格转换为悬停编辑器\"",
-        "name:\"Restore active Hover Editor\"": "name:\"恢复活动的悬停编辑器\"",
-        ".setName(\"Default Mode\")": ".setName(\"默认模式\")",
-        ".setName(\"Auto Pin\")": ".setName(\"自动引脚\")",
-        ".setName(\"Auto Focus\")": ".setName(\"自动对焦\")",
-        ".setName(\"Minimize downwards\")": ".setName(\"向下最小化\")",
-        ".setTitle(\"Open in Hover Editor\")": ".setTitle(\"在悬停编辑器中打开\")",
-        ".setTitle(\"Convert to Hover Editor\")": ".setTitle(\"转换为悬停编辑器\")",
-        "name:\"drag\"": "name:\"拖动\"",
-        "name:\"Toggle bouncing popovers\"": "name:\"切换弹出窗口\"",
         "name:\"Dock active Hover Editor to workspace\"": "name:\"将活动的悬停编辑器停靠到工作区\"",
+        "name:\"Restore active Hover Editor\"": "name:\"恢复活动的悬停编辑器\"",
         "name:\"Minimize active Hover Editor\"": "name:\"最小化活动的悬停编辑器\"",
         "name:`Snap active Hover Editor to ${a}`": "name:`将活动的悬停编辑器捕捉到 ${a}`",
         "text:`Consider adding CSS \"touch-action: none\" to this element\n`": "text:`考虑添加 CSS \"touch-action: none\" to this element\n`",
         "text:'Consider adding CSS \"box-sizing: border-box\" to this resizable element'": "text:'考虑添加 CSS \"box-sizing: border-box\" to this resizable element'",
         "text:\"There are no listeners set for this action\"": "text:\"此操作没有设置监听器\"",
+        ".setName(\"Default Mode\")": ".setName(\"默认模式\")",
+        ".setName(\"Auto Pin\")": ".setName(\"自动引脚\")",
         ".setName(\"Trigger hover preview on embeds\")": ".setName(\"触发嵌入式悬停预览\")",
         ".setName(\"Trigger hover preview on sub-heading links\")": ".setName(\"触发副标题链接的悬停预览\")",
         ".setName(\"Trigger hover preview on block links\")": ".setName(\"触发块链接的悬停预览\")",
         ".setName(\"Trigger hover preview on footnotes\")": ".setName(\"触发脚注的悬停预览\")",
+        ".setName(\"Auto Focus\")": ".setName(\"自动对焦\")",
+        ".setName(\"Minimize downwards\")": ".setName(\"向下最小化\")",
         ".setName(\"Snap to edges\")": ".setName(\"卡住边缘\")",
         ".setName(\"Show view header by default\")": ".setName(\"默认显示视图标题\")",
         ".setName(\"Click to zoom image\")": ".setName(\"点击放大图片\")",
@@ -54,6 +49,13 @@
         ".setDesc(\"Enter any valid CSS unit\")": ".setDesc(\"输入任何有效的 CSS \")",
         ".setDesc(\"How long to wait before showing a Hover Editor when hovering over a link\")": ".setDesc(\"当鼠标悬停在链接上时，显示悬停编辑器需要等待多长时间\")",
         ".setDesc(\"How long to wait before closing a Hover Editor once the mouse leaves\")": ".setDesc(\"当鼠标悬停在链接上时，显示悬停编辑器需要等待多长时间\")",
-        ".setTitle(\"Dock Hover Editor to workspace\")": ".setTitle(\"将悬停编辑器停靠在工作区\")"
+        ".setTitle(\"Dock Hover Editor to workspace\")": ".setTitle(\"将悬停编辑器停靠在工作区\")",
+        ".setTitle(\"Open in Hover Editor\")": ".setTitle(\"在悬停编辑器中打开\")",
+        ".setTitle(\"Convert to Hover Editor\")": ".setTitle(\"转换为悬停编辑器\")",
+        "preview:\"Reading view\"": "preview:\"阅读视图\"",
+        "source:\"Editing view\"": "source:\"编辑视图\"",
+        "match:\"Match current view\"": "match:\"匹配当前视图\"",
+        "onMove:\"On drag or resize\"": "onMove:\"拖动或调整大小时\"",
+        "always:\"Always\"": "always:\"总是\""
     }
 }
