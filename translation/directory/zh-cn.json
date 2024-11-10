@@ -1410,5 +1410,11 @@
         "translations": {
             "2.0.0": 1731239230794
         }
+    },
+    {
+        "id": "obsidian-tracker",
+        "translations": {
+            "1.14.0": 1731239246402
+        }
     }
 ]
