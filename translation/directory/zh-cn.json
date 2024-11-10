@@ -1404,5 +1404,11 @@
         "translations": {
             "1.5.2": 1731239204617
         }
+    },
+    {
+        "id": "easy-toggle-sidebars",
+        "translations": {
+            "2.0.0": 1731239230794
+        }
     }
 ]
