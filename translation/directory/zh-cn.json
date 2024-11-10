@@ -1398,5 +1398,11 @@
         "translations": {
             "2.1.4": 1731143621640
         }
+    },
+    {
+        "id": "obsidian-columns",
+        "translations": {
+            "1.5.2": 1731239204617
+        }
     }
 ]
