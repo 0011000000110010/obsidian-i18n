@@ -1424,5 +1424,11 @@
         "translations": {
             "1.1.2": 1731312554302
         }
+    },
+    {
+        "id": "personal-assistant",
+        "translations": {
+            "1.4.1": 1731317175478
+        }
     }
 ]
