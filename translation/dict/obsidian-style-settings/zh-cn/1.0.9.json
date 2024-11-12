@@ -1,42 +1,48 @@
 {
-  "manifest": {
-    "translationVersion": -639075600000,
-    "pluginVersion": "1.0.9"
-  },
-  "description": {
-    "original": "Offers controls for adjusting theme, plugin, and snippet CSS variables.",
-    "translation": "提供调整主题、插件和代码片段 CSS 变量的控制选项。"
-  },
-  "dict": {
-    ".setText(`Error importing style settings: ${p}`)": ".setText(`导入样式设置时出错：${p}`)",
-    ".setText(\"Error importing style settings: config is empty\")": ".setText(\"导入样式设置时出错：配置为空\")",
-    ".setText(`${this.filterResultCount} Results`)": ".setText(`${this.filterResultCount} 结果`)",
-    ".setButtonText(\"Save\")": ".setButtonText(\"保存\")",
-    ".setName(`Export settings for: ${this.section}`)": ".setName(`导出设置：${this.section}`)",
-    ".setName(\"Import style setting\")": ".setName(\"导入样式设置\")",
-    ".setDesc(\"Import an entire or partial configuration. Warning: this may override existing settings\")": ".setDesc(\"导入整个或部分配置。警告：这可能会覆盖现有设置。\")",
-    ".setPlaceholder(\"Paste config here...\")": ".setPlaceholder(\"在此处粘贴配置…\")",
-    ".setPlaceholder(\"Search Style Settings...\")": ".setPlaceholder(\"搜索样式设置......注意如果设置项为英文，需汉化对应的插件！\")",
-    ".setTooltip(\"Reset all settings to default\")": ".setTooltip(\"重置所有设置为默认值\")",
-    ".setTooltip(\"Export settings\")": ".setTooltip(\"导出设置\")",
-    ".appendText(\"Style settings configured by theme and plugin authors will show up here. You can also create your own configuration by creating a CSS snippet in your vault. \")": ".appendText(\"风格设置将在此处显示，这些设置由主题和插件作者配置。您也可以在保险库中创建一个 CSS 代码片段来创建自己的配置。\")",
-    ".createEl(\"a\",{text:\"Click here for details and examples.\",href:\"https://github.com/mgmeyers/obsidian-style-settings#obsidian-style-settings-plugin\"})": ".createEl(\"a\",{text:\"点击此处获得细节与示例。\",href:\"https://github.com/mgmeyers/obsidian-style-settings#obsidian-style-settings-plugin\"})",
-    "text:\"Import\"": "text:\"导入\"",
-    "text:\"Export\"": "text:\"导出\"",
-    ".setTooltip('Reset all settings to default')": ".setTooltip('将所有设置重置为默认值')",
-    ".setTooltip('Export settings')": ".setTooltip('导出设置')",
-    ".setName('Import style setting')": ".setName('导入样式设置')",
-    ".setDesc('Import an entire or partial configuration. Warning: this may override existing settings')": ".setDesc('导入整个或部分配置。警告：这可能会覆盖现有设置')",
-    "text:\"Import from file\"": "text:\"从文件导入\"",
-    ".setPlaceholder('Paste config here...')": ".setPlaceholder('在此处粘贴配置...')",
-    ".setButtonText('Save')": ".setButtonText('保存')",
-    "text:\"Copy to clipboard\"": "text:\"复制到剪贴板\"",
-    "text:\"Download\"": "text:\"下载\"",
-    "text: 'Error importing config'": "text: '导入配置时出错'",
-    "text: 'No style settings found'": "text: '未找到样式设置'",
-    "text: 'Click here for details and examples.'": "text: '点击此处查看详细信息和示例。'",
-    "text: 'Default (light): '": "text: '默认（浅色）: '",
-    "text: 'Default (dark): '": "text: '默认（深色）: '",
-    ".export(\"All settings\"": ".export(\"所有设置\""
-  }
+    "manifest": {
+        "translationVersion": 1731384700419,
+        "pluginVersion": "1.0.9"
+    },
+    "description": {
+        "original": "Offers controls for adjusting theme, plugin, and snippet CSS variables.",
+        "translation": "提供调整主题、插件和代码片段 CSS 变量的控制选项。"
+    },
+    "dict": {
+        "text:\"Copy to clipboard\"": "text:\"复制到剪贴板\"",
+        "text:\"Download\"": "text:\"下载\"",
+        "text:\"Import from file\"": "text:\"从文件导入\"",
+        "text:\"Import\"": "text:\"导入\"",
+        "text:\"Export\"": "text:\"导出\"",
+        ".setText(`Error importing style settings: ${p}`)": ".setText(`导入样式设置时出错：${p}`)",
+        ".setText(\"Error importing style settings: config is empty\")": ".setText(\"导入样式设置时出错：配置为空\")",
+        ".setText(`${this.filterResultCount} Results`)": ".setText(`${this.filterResultCount} 结果`)",
+        ".setButtonText(\"Save\")": ".setButtonText(\"保存\")",
+        ".setName(`Export settings for: ${this.section}`)": ".setName(`导出设置：${this.section}`)",
+        ".setName(\"Import style setting\")": ".setName(\"导入样式设置\")",
+        ".setDesc(\"Import an entire or partial configuration. Warning: this may override existing settings\")": ".setDesc(\"导入整个或部分配置。警告：这可能会覆盖现有设置。\")",
+        ".setPlaceholder(\"Paste config here...\")": ".setPlaceholder(\"在此处粘贴配置…\")",
+        ".setPlaceholder(\"Search Style Settings...\")": ".setPlaceholder(\"搜索样式设置......注意如果设置项为英文，需汉化对应的插件！\")",
+        ".setTooltip(\"Reset all settings to default\")": ".setTooltip(\"重置所有设置为默认值\")",
+        ".setTooltip(\"Export settings\")": ".setTooltip(\"导出设置\")",
+        ".appendText(\"Style settings configured by theme and plugin authors will show up here. You can also create your own configuration by creating a CSS snippet in your vault. \")": ".appendText(\"风格设置将在此处显示，这些设置由主题和插件作者配置。您也可以在保险库中创建一个 CSS 代码片段来创建自己的配置。\")",
+        ".createEl(\"a\",{text:\"Click here for details and examples.\",href:\"https://github.com/mgmeyers/obsidian-style-settings#obsidian-style-settings-plugin\"})": ".createEl(\"a\",{text:\"点击此处获得细节与示例。\",href:\"https://github.com/mgmeyers/obsidian-style-settings#obsidian-style-settings-plugin\"})",
+        ".setTooltip('Reset all settings to default')": ".setTooltip('将所有设置重置为默认值')",
+        ".setTooltip('Export settings')": ".setTooltip('导出设置')",
+        ".setName('Import style setting')": ".setName('导入样式设置')",
+        ".setDesc('Import an entire or partial configuration. Warning: this may override existing settings')": ".setDesc('导入整个或部分配置。警告：这可能会覆盖现有设置')",
+        ".setPlaceholder('Paste config here...')": ".setPlaceholder('在此处粘贴配置...')",
+        ".setButtonText('Save')": ".setButtonText('保存')",
+        "text: 'Error importing config'": "text: '导入配置时出错'",
+        "text: 'No style settings found'": "text: '未找到样式设置'",
+        "text: 'Click here for details and examples.'": "text: '点击此处查看详细信息和示例。'",
+        "text: 'Default (light): '": "text: '默认（浅色）: '",
+        "text: 'Default (dark): '": "text: '默认（深色）: '",
+        ".export(\"All settings\"": ".export(\"所有设置\"",
+        "name:\"Show style settings view\"": "name:\"显示样式设置视图\"",
+        "name:\"Style Settings\"": "name:\"样式设置\"",
+        "name:`Toggle ${a.title}`": "name:`切换${a.title}`",
+        "text:\"Error importing config\"": "text:\"导入配置时出现错误\"",
+        "text:\"No style settings found\"": "text:\"没有找到样式设置\"",
+        "text:\"Click here for details and examples.\"": "text:\"点击此处查看详情和示例\""
+    }
 }
