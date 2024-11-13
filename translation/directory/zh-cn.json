@@ -1447,5 +1447,11 @@
         "translations": {
             "0.26.1": 1731498005055
         }
+    },
+    {
+        "id": "optimize-canvas-connections",
+        "translations": {
+            "1.0.0": 1731498105089
+        }
     }
 ]
