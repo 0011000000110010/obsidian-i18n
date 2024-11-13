@@ -43,7 +43,7 @@ export class AdminView extends ItemView {
             translationManifestEl.createEl('span', { text: '插件版本', cls: 'i18n-edit__label-wrap' });
             translationManifestEl.createEl('input', { value: this.issueTranslationJson.manifest.pluginVersion, cls: ['i18n-input', 'i18n-edit__plugin-version-input'] }).disabled = true;
             translationManifestEl.createEl('span', { text: '新描述', cls: 'i18n-edit__label-wrap' });
-            translationManifestEl.createEl('input', { value: this.issueTranslationJson.description.original, cls: ['i18n-input', 'i18n-edit__description-input'] }, (el) => {
+            translationManifestEl.createEl('input', { value: this.issueTranslationJson.description.translation, cls: ['i18n-input', 'i18n-edit__description-input'] }, (el) => {
                 el.addEventListener("input", () => { this.issueTranslationJson.description.translation = el.value })
             });
 
