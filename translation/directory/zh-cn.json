@@ -1467,5 +1467,11 @@
         "translations": {
             "0.4.2": 1731550330537
         }
+    },
+    {
+        "id": "canvas-mindmap",
+        "translations": {
+            "1.0.2": 1731593378730
+        }
     }
 ]
