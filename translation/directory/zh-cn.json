@@ -1454,5 +1454,11 @@
         "translations": {
             "1.0.0": 1731498105089
         }
+    },
+    {
+        "id": "obsidian-tikzjax",
+        "translations": {
+            "0.5.2": 1731549736063
+        }
     }
 ]
