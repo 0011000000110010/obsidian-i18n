@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731420580569,
+        "translationVersion": 1731592983047,
         "pluginVersion": "3.2.0"
     },
     "description": {
@@ -25,6 +25,7 @@
         "name: \"Zoom to selection\"": "name: \"缩放到选择区域\"",
         "name: `Clone node ${direction}`": "name: `克隆节点 ${direction}`",
         "name: `Expand node ${direction}`": "name: `扩展节点 ${direction}`",
+        "name: \"Toggle Focus Mode\"": "name: \"切换聚焦模式\"",
         ".setButtonText(\"Open Tutorial\")": ".setButtonText(\"打开教程\")",
         ".setName(\"General\")": ".setName(\"常规\")",
         ".setName(\"Node type on double click\")": ".setName(\"双击节点类型\")",
@@ -93,6 +94,7 @@
         ".setDesc(\"When enabled, edges into disabled portals will be shown.\")": ".setDesc(\"启用时，指向禁用门户的边缘将显示。\")",
         ".setDesc(\"The properties of the canvas.\")": ".setDesc(\"画布的属性。\")",
         ".setDesc(\"The CSS classes used in the canvas.\")": ".setDesc(\"画布中使用的 CSS 类。\")",
+        ".setTitle(\"Encapsulate\")": ".setTitle(\"封装\")",
         "label: \"Text Alignment\"": "label: \"对齐\"",
         "label: \"Left (default)\"": "label: \"左\"",
         "label: \"Center\"": "label: \"中\"",
@@ -103,9 +105,7 @@
         "label: \"Diamond\"": "label: \"菱形\"",
         "label: \"Parallelogram\"": "label: \"斜四\"",
         "label: \"Circle\"": "label: \"圆形\"",
-        "label: \"Predefined Process\"": "label: \"预定义过程\"",
         "label: \"Document\"": "label: \"文档\"",
-        "label: \"Database\"": "label: \"数据库\"",
         "label: \"Border\"": "label: \"边框\"",
         "label: \"Solid (default)\"": "label: \"实线\"",
         "label: \"Dashed\"": "label: \"虚线\"",
@@ -121,12 +121,10 @@
         "label: \"Halved Triangle\"": "label: \"半三\"",
         "label: \"Diamond Outline\"": "label: \"空菱\"",
         "label: \"Circle Outline\"": "label: \"空圆\"",
-        "label: \"Pathfinding Method\"": "label: \"路径\"",
         "label: \"Bezier (default)\"": "label: \"贝塞\"",
         "label: \"Direct\"": "label: \"线段\"",
         "label: \"Square\"": "label: \"直角\"",
         "label: \"A*\"": "label: \"A*\"",
-        "label: \"Drag to add group\"": "label: \"拖动添加组\"",
         "label: \"Drag to add slide\"": "label: \"拖动添加幻灯片\"",
         "label: \"Set as start slide\"": "label: \"设置为起始幻灯片\"",
         "label: \"Disable node popup\"": "label: \"禁用节点弹出菜单\"",
@@ -135,7 +133,9 @@
         "label: \"Toggle locked height\"": "label: \"切换锁定高度\"",
         "label: \"Properties\"": "label: \"属性\"",
         "label: \"Focus Mode\"": "label: \"聚焦模式\"",
-        "name: \"Toggle Focus Mode\"": "name: \"切换聚焦模式\"",
-        ".setTitle(\"Encapsulate\")": ".setTitle(\"封装\")"
+        "label: \"Predefined Process\"": "label: \"预定\"",
+        "label: \"Database\"": "label: \"圆筒\"",
+        "label: \"Pathfinding Method\"": "label: \"线形\"",
+        "label: \"Drag to add group\"": "label: \"添加组（点击或拖动）\""
     }
 }
