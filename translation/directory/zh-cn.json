@@ -1461,5 +1461,11 @@
         "translations": {
             "0.5.2": 1731549736063
         }
+    },
+    {
+        "id": "obsidian-latex-environments",
+        "translations": {
+            "0.4.2": 1731550330537
+        }
     }
 ]
