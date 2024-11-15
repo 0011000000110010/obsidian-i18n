@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731592983047,
+        "translationVersion": 1731658392730,
         "pluginVersion": "3.2.0"
     },
     "description": {
@@ -95,7 +95,6 @@
         ".setDesc(\"The properties of the canvas.\")": ".setDesc(\"画布的属性。\")",
         ".setDesc(\"The CSS classes used in the canvas.\")": ".setDesc(\"画布中使用的 CSS 类。\")",
         ".setTitle(\"Encapsulate\")": ".setTitle(\"封装\")",
-        "label: \"Text Alignment\"": "label: \"对齐\"",
         "label: \"Left (default)\"": "label: \"左\"",
         "label: \"Center\"": "label: \"中\"",
         "label: \"Right\"": "label: \"右\"",
@@ -136,6 +135,7 @@
         "label: \"Predefined Process\"": "label: \"预定\"",
         "label: \"Database\"": "label: \"圆筒\"",
         "label: \"Pathfinding Method\"": "label: \"线形\"",
-        "label: \"Drag to add group\"": "label: \"添加组（点击或拖动）\""
+        "label: \"Drag to add group\"": "label: \"添加组（点击或拖动）\"",
+        "label: \"Text Alignment\"": "label: \"文字对齐\""
     }
 }
