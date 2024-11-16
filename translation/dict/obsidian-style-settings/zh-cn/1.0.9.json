@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731732632788,
+        "translationVersion": 1731732682309,
         "pluginVersion": "1.0.9"
     },
     "description": {
@@ -54,6 +54,10 @@
         "\"aria:palette\":\"color selection area\"": "\"aria:palette\":\"颜色选择区\"",
         "\"aria:hue\":\"hue selection slider\"": "\"aria:hue\":\"色调选择滑块\"",
         "\"aria:opacity\":\"selection slider\"": "\"aria:opacity\":\"选择滑块\"",
-        "\"Restore default\"": "\"恢复默认\""
+        "\"Restore default\"": "\"恢复默认\"",
+        "name:\"Show style settings view\"": "name:\"显示样式设置视图\"",
+        "name:\"Style Settings\"": "name:\"样式设置\"",
+        "name:`Toggle ${a.title}`": "name:`切换${a.title}`",
+        "text:\"Click here for details and examples.\"": "text:\"点击此处查看详情和示例\""
     }
 }
