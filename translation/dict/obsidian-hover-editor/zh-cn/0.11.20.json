@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731765501339,
+        "translationVersion": 1731765811960,
         "pluginVersion": "0.11.20"
     },
     "description": {
@@ -33,8 +33,6 @@
         ".setTitle(\"Open in Hover Editor\")": ".setTitle(\"在悬停编辑器中打开\")",
         ".setTitle(\"Convert to Hover Editor\")": ".setTitle(\"转换为悬停编辑器\")",
         ".textContent=`${a} is not yet created. Click to create.`": ".textContent=`${a} 尚未创建。点击以创建。`",
-        "name:\"gesture\"": "name:\"手势\"",
-        "name:\"resize\"": "name:\"调整大小\"",
         "name:\"Toggle bouncing popovers\"": "name:\"切换弹跳式弹出窗口\"",
         "name:\"Open new Hover Editor\"": "name:\"打开新的悬停编辑器\"",
         "name:\"Open link under cursor in new Hover Editor\"": "name:\"在新的悬停编辑器中打开光标下的链接\"",
