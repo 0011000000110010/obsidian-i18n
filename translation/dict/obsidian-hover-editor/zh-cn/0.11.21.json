@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731579921830,
+        "translationVersion": 1731766908488,
         "pluginVersion": "0.11.21"
     },
     "description": {
@@ -8,12 +8,9 @@
         "translation": "将 “页面预览 ”悬停弹出窗口转化为完全可用的编辑器实例"
     },
     "dict": {
-        "name:\"gesture\"": "name:\"手势\"",
-        "name:\"resize\"": "name:\"调整大小\"",
         ".setName(\"Default Mode\")": ".setName(\"默认模式\")",
         ".setName(\"Auto Pin\")": ".setName(\"自动固定\")",
         ".setName(\"Minimize downwards\")": ".setName(\"向下最小化\")",
-        "name:\"drag\"": "name:\"拖动\"",
         "name:\"Toggle bouncing popovers\"": "name:\"切换弹出窗口\"",
         ".setName(\"Show view header by default\")": ".setName(\"默认显示视图标题\")",
         ".setName(\"Click to zoom image\")": ".setName(\"点击放大图片\")",
@@ -59,6 +56,9 @@
         ".setDesc(\"How long to wait before showing a Hover Editor when hovering over a link\")": ".setDesc(\"当鼠标悬停在链接上时，显示Hover Editor需要等待多长时间\")",
         ".setDesc(`Quickly arrange popovers by dragging them to the edges of the screen. The left and right edges ": ".setDesc(`将弹出窗口拖至屏幕边缘即可快速排列。",
         "will maximize the popover vertically. The top edge will maximize the popover to fill the entire ": "拖至屏幕左侧或右侧边缘可以使其垂直最大化，拖至顶部边缘可以使其填满整个屏幕，",
-        "screen. Dragging the popovers away from the edges will restore the popver to its original size.": "将弹出窗口从边缘拖离可以使其恢复到原始大小。"
+        "screen. Dragging the popovers away from the edges will restore the popver to its original size.": "将弹出窗口从边缘拖离可以使其恢复到原始大小。",
+        "重要提示：这个影响功能，不要翻译\"name:\"drag\"": "name:\"拖动\"",
+        "重要提示：这个影响功能，不要翻译\"name:\"gesture\"": "name:\"手势\"",
+        "重要提示：这个影响功能，不要翻译\"name:\"resize\"": "name:\"调整大小\""
     }
 }
