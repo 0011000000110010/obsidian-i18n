@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731765811960,
+        "translationVersion": 1731766121680,
         "pluginVersion": "0.11.20"
     },
     "description": {
@@ -42,6 +42,9 @@
         "name:\"Restore active Hover Editor\"": "name:\"恢复活动悬停编辑器\"",
         "name:\"Minimize active Hover Editor\"": "name:\"最小化活动悬停编辑器\"",
         "name:\"Snap active Hover Editor to ${a}\"": "name:\"将活动悬停编辑器对齐到 ${a}\"",
-        "Na={preview:\"Reading view\",source:\"Editing view\",match:\"Match current view\"},qa={onMove:\"On drag or resize\",always:\"Always\"}": "Na={preview: \"阅读视图\",source: \"编辑视图\",match: \"匹配当前视图\"},qa={onMove: \"在拖动或调整大小时\",always: \"始终\"}"
+        "Na={preview:\"Reading view\",source:\"Editing view\",match:\"Match current view\"},qa={onMove:\"On drag or resize\",always:\"Always\"}": "Na={preview: \"阅读视图\",source: \"编辑视图\",match: \"匹配当前视图\"},qa={onMove: \"在拖动或调整大小时\",always: \"始终\"}",
+        "重要提示：这个影响功能，不要翻译\"name:\"drag\"": "name:\"拖动\"",
+        "重要提示：这个影响功能，不要翻译\"name:\"gesture\"": "name:\"手势\"",
+        "重要提示：这个影响功能，不要翻译\"name:\"resize\"": "name:\"调整大小\""
     }
 }
