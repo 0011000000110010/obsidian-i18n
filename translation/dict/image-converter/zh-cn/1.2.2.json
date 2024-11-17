@@ -1,11 +1,11 @@
 {
     "manifest": {
-        "translationVersion": 1731050342441,
+        "translationVersion": 1731844966597,
         "pluginVersion": "1.2.2"
     },
     "description": {
         "original": "Convert, compress and resize images from one format to another by dragging and dropping or pasting into the note. HEIC, TIF, JPG, WEBP, PNG.",
-        "translation": "通过拖放或粘贴到注释中，将图像从一种格式转换为另一种格式，并对其进行压缩和调整大小。HEIC、TIF、JPG、WEBP、PNG。"
+        "translation": "通过拖放或粘贴到笔记中，将图片从一种格式转换、压缩和调整大小为另一种格式。支持HEIC、TIF、JPG、WEBP、PNG格式。"
     },
     "dict": {
         "Notice(`Failed to process ${o.file.name}: ${l.message}`)": "Notice(`无法处理 ${o.file.name} 文件：${l.message}`)",
@@ -163,6 +163,7 @@
         ".setTitle(\"Copy Image\")": ".setTitle(\"复制图片\")",
         ".setTitle(\"Copy as Base64 encoded image\")": ".setTitle(\"复制为Base64编码的图像\")",
         ".setTitle(\"Resize Image\")": ".setTitle(\"调整图片大小\")",
-        ".setTitle(\"Delete Image from vault\")": ".setTitle(\"从保险库中删除图片\")"
+        ".setTitle(\"Delete Image from vault\")": ".setTitle(\"从保险库中删除图片\")",
+        "text:\"Below settings allow you to specify how long Obsidian should \t\t\t\t\t\t\t\t\t\t\t\twait before timing-out the image processing. E.g.: when file is extra\t\t\t\t\t\t\t\t\t\t\t\tlarge 100MB+ it might freeze Obsidian - Image Converter will try to do\t\t\t\t\t\t\t\t\t\t\t\tthe best it can to process it - however if it takes too long it will stop\"": "text:\"以下设置允许您指定 Obsidian 在超时图像处理之前应等待的时间。例如：当文件超大 100MB+ 时，它可能会冻结 Obsidian - Image Converter 将尝试尽最大努力处理它 - 但是，如果时间过长，它会停止。\""
     }
 }
