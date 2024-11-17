@@ -1481,5 +1481,11 @@
         "translations": {
             "1.6.1": 1731593762629
         }
+    },
+    {
+        "id": "image-magician",
+        "translations": {
+            "0.1.9": 1731845257994
+        }
     }
 ]
