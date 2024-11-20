@@ -1521,5 +1521,11 @@
         "translations": {
             "0.74": 1732103899159
         }
+    },
+    {
+        "id": "superstition",
+        "translations": {
+            "1.0.2": 1732104003139
+        }
     }
 ]
