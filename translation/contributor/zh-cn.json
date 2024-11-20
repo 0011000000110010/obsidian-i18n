@@ -398,5 +398,13 @@
         "translation": 55,
         "modification": 0,
         "erasure": 0
+    },
+    {
+        "login": "nuist-bin",
+        "name": "沧浪",
+        "url": "https://gitee.com/nuist-bin",
+        "translation": 16,
+        "modification": 0,
+        "erasure": 0
     }
 ]
