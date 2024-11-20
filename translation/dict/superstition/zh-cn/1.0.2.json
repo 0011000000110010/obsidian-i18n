@@ -1,0 +1,21 @@
+{
+    "manifest": {
+        "translationVersion": 1732104003139,
+        "pluginVersion": "1.0.2"
+    },
+    "description": {
+        "original": "Manage routines with traditional calendar concept of 宜/忌",
+        "translation": "用宜/忌的传统日历概念管理例程"
+    },
+    "dict": {
+        "text: \"Today's routines\"": "text: \"今天的例行公事\"",
+        "text: \"宜 (Suitable)\"": "text: \"☯️ 宜 (Suitable)\"",
+        "text: \"忌 (Unsuitable)\"": "text: \"👻 忌 (Unsuitable)\"",
+        ".setButtonText(\"Add\")": ".setButtonText(\"添加\")",
+        ".setButtonText(\"Delete\")": ".setButtonText(\"删除\")",
+        ".setName(\"Add New Activity\")": ".setName(\"添加新活动\")",
+        ".setDesc(`Period: ${this.plugin.activities[activity].period} days`)": ".setDesc(`周期: ${this.plugin.activities[activity].period} 天一次`)",
+        ".setPlaceholder(\"Activity name\")": ".setPlaceholder(\"活动名称\")",
+        ".setPlaceholder(\"Period (days)\")": ".setPlaceholder(\"周期 (天)\")"
+    }
+}
