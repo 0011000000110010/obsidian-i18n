@@ -1,0 +1,21 @@
+{
+    "manifest": {
+        "translationVersion": 1732103871765,
+        "pluginVersion": "1.1.0"
+    },
+    "description": {
+        "original": "Done is better than perfect. Complete your first-messy-draft before you make it perfect. Your delete key will be DISABLED and all you can do is JUST BURN YOUR KEYBOARDS🔥",
+        "translation": "完成比完美好。在你把它弄得完美之前，先完成你的第一稿。您的删除键将被禁用，您所能做的就是烧掉您的键盘🔥"
+    },
+    "dict": {
+        "Notice(`Brain Dump Mode \\u{1F525} Backspace DISABLED`)": "Notice(`Brain Dump 模式 \\u{1F525} 已禁用退格键`)",
+        ".setName(\"Enable brain dump mode\")": ".setName(\"启用 brain dump 模式\")",
+        ".setName(\"Enable shark mode\")": ".setName(\"启用鲨鱼模式\")",
+        ".setName(\"Your speed goal (minute)\")": ".setName(\"速度目标(分钟)\")",
+        ".setName(\"Speed measure window (milliseconds)\")": ".setName(\"测速窗口(毫秒)\")",
+        ".setDesc(\"If turned on, delete key will be disabled\")": ".setDesc(\"如果打开，删除键将被禁用\")",
+        ".setDesc(\"Escape from the shark by typing fast \\u{1F988}\")": ".setDesc(\"通过快速打字逃离鲨鱼 \\u{1F988}\")",
+        ".setDesc(\"How fast can you type?\")": ".setDesc(\"你能打字多快？\")",
+        ".setDesc(\"Lower, the harder.\")": ".setDesc(\"越低越难。\")"
+    }
+}
