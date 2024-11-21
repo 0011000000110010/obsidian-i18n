@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731844966597,
+        "translationVersion": 1732196507261,
         "pluginVersion": "1.2.2"
     },
     "description": {
@@ -43,7 +43,6 @@
         ".log(`Processing image ${A} of ${r.length}: ${k.name} ${k.path}`)": ".log(`处理图像 ${A}，共 ${r.length} 张：${k.name} ${k.path}`)",
         ".log(`${A} of ${r.length} ${k.name} ${k.path}  ${o} seconds elapsed`)": ".log(`已翻译为：已完成 ${r.length} 个 ${k.name} ${k.path}，已耗时 ${o} 秒`)",
         ".log(\"Failed to get image dimensions\")": ".log(\"获取图片尺寸失败。\")",
-        ".error(\"Iconv-lite warning: decode()": ".error(\"Iconv-lite warning: decode()",
         ".error(`Error processing ${o.file.name}:`,l)": ".error(`处理 ${o.file.name} 时出现错误:`,l)",
         ".error(\"An error occurred:\",n)": ".error(\"发生了错误:\",n)",
         ".error(\"Could not determine image dimensions, using default settings\")": ".error(\"无法确定图像尺寸，使用默认设置。\")",
@@ -69,7 +68,6 @@
         "name:\"Output\"": "name:\"输出\"",
         "name:\"Settings\"": "name:\"设置\"",
         "name:\"Advanced\"": "name:\"高级\"",
-        "name:\"Rename\"": "name:\"重命名\"",
         "description:\"The leanest and most handsome HTTP client in the Nodelands.\"": "description:\"Nodelands 中最简洁、最漂亮的 HTTP 客户端。\"",
         "description:\"Get image size without full download (JPG, GIF, PNG, WebP, BMP, TIFF, PSD)\"": "description:\"获取图片尺寸而无需完全下载（JPG、GIF、PNG、WebP、BMP、TIFF、PSD）\"",
         "text:\"Preview:\"": "text:\"预览:\"",
@@ -164,6 +162,16 @@
         ".setTitle(\"Copy as Base64 encoded image\")": ".setTitle(\"复制为Base64编码的图像\")",
         ".setTitle(\"Resize Image\")": ".setTitle(\"调整图片大小\")",
         ".setTitle(\"Delete Image from vault\")": ".setTitle(\"从保险库中删除图片\")",
-        "text:\"Below settings allow you to specify how long Obsidian should \t\t\t\t\t\t\t\t\t\t\t\twait before timing-out the image processing. E.g.: when file is extra\t\t\t\t\t\t\t\t\t\t\t\tlarge 100MB+ it might freeze Obsidian - Image Converter will try to do\t\t\t\t\t\t\t\t\t\t\t\tthe best it can to process it - however if it takes too long it will stop\"": "text:\"以下设置允许您指定 Obsidian 在超时图像处理之前应等待的时间。例如：当文件超大 100MB+ 时，它可能会冻结 Obsidian - Image Converter 将尝试尽最大努力处理它 - 但是，如果时间过长，它会停止。\""
+        "text:\"Below settings allow you to specify how long Obsidian should \t\t\t\t\t\t\t\t\t\t\t\twait before timing-out the image processing. E.g.: when file is extra\t\t\t\t\t\t\t\t\t\t\t\tlarge 100MB+ it might freeze Obsidian - Image Converter will try to do\t\t\t\t\t\t\t\t\t\t\t\tthe best it can to process it - however if it takes too long it will stop\"": "text:\"以下设置允许您指定 Obsidian 在超时图像处理之前应等待的时间。例如：当文件超大 100MB+ 时，它可能会冻结 Obsidian - Image Converter 将尝试尽最大努力处理它 - 但是，如果时间过长，它会停止。\"",
+        ".addOptions({None:\"None\",Fit:\"Fit\",Fill:\"Fill\",LongestEdge:\"Longest Edge\",ShortestEdge:\"Shortest Edge\",Width:\"Width\",Height:\"Height\"})": ".addOptions({None:\"无\",Fit:\"适合\",Fill:\"填充\",LongestEdge:\"最长边\",ShortestEdge:\"最短边\",Width:\"宽度\",Height:\"高度\"})",
+        ".addOption(\"default\",\"Default\")": ".addOption(\"default\",\"默认\")",
+        ".addOption(\"root\",\"Root folder\")": ".addOption(\"root\",\"根目录\")",
+        ".addOption(\"current\",\"Same folder as current file\")": ".addOption(\"current\",\"与当前文件相同的文件夹\")",
+        ".addOption(\"subfolder\",\"In subfolder\")": ".addOption(\"subfolder\",\"在子文件夹中\")",
+        ".addOption(\"customOutput\",\"Custom output path\")": ".addOption(\"customOutput\",\"自定义输出路径\")",
+        ".addOption(\"front\",\"Front of the link\").addOption(\"back\",\"Back of the link\")": ".addOption(\"front\",\"链接的前面\").addOption(\"back\",\"链接的后面\")",
+        ".addOptions({disabled:\"Keep original name\",custom:\"Custom template\"})": ".addOptions({disabled:\"保留原始名称\",custom:\"自定义模板\"})",
+        ".addOptions({duplicate_replace:\"Replace\",duplicate_rename:\"Rename\"})": ".addOptions({duplicate_replace:\"替换\",duplicate_rename:\"重命名\"})",
+        "name:\"Rename\"": "name:\"重命名\""
     }
 }
