@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1732539209835,
+        "translationVersion": 1732544928633,
         "pluginVersion": "7.14.0"
     },
     "description": {
@@ -377,7 +377,6 @@
         ".error(\"Tasks: Cannot create task on line:\",r)": ".error(\"任务:无法在行创建任务:\",r)",
         "Name:\"Tasks Emoji Format\"": "Name:\"Tasks 表情格式\"",
         ",\"Try 'every day when done'\"": ",\"尝试 'every day when done'\"",
-        "dI=\"Try 'Mon' or 'tm' then space\"": "dI=\"尝试 'Mon' 或 'tm' 然后按空格\"",
         "return`Task's ${e} removed`": "return`任务 ${e} 被移除`",
         "return`${this.label} - start`": "return`${this.label} - 开始`",
         "return`${this.label} - end`": "return`${this.label} - 结束`",
@@ -385,7 +384,6 @@
         ".replace(\" 1 day ago\",\" yesterday\")": ".replace(\" 1 day ago\",\" 昨天\")",
         ".replace(\" in 0 days\",\" today\")": ".replace(\" in 0 days\",\" 在今天\")",
         ".replace(\"in a day\",\"tomorrow\")": ".replace(\"in a day\",\"在明天\")",
-        "var fI=\"Try 'Mon' or 'tm' then space\"": "var fI=\"尝试 'Mon' 或 'tm' 然后按空格\"",
         "\"priority:: highest\"": "\"优先级:: 最高\"",
         "\"priority:: high\"": "\"优先级:: 高\"",
         "\"priority:: medium\"": "\"优先级:: 中\"",
@@ -563,6 +561,12 @@
         "case\"last\":": "case\"上\":case\"last\":case\"last\":",
         "case\"past\":": "case\"past\":case\"past\":case\"past\":",
         "${this.totalTasksCount()} tasks": "${this.totalTasksCount()} 个任务",
-        "${t.length} tasks": "${t.length} 个任务"
+        "${t.length} tasks": "${t.length} 个任务",
+        "monthNames:[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"]": "monthNames:[\"1月\",\"2月\",\"3月\",\"4月\",\"5月\",\"6月\",\"7月\",\"8月\",\"9月\",\"10月\",\"11月\",\"12月\"]",
+        "longhand:[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"]": "longhand:[\"1月\",\"2月\",\"3月\",\"4月\",\"5月\",\"6月\",\"7月\",\"8月\",\"9月\",\"10月\",\"11月\",\"12月\"]",
+        "shorthand:[\"Sun\",\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sat\"]": "shorthand:[\"周日\",\"周一\",\"周二\",\"周三\",\"周四\",\"周五\",\"周六\"]",
+        "xE(l,u,t,n,\"Clear\",()=>new qu(e,t).apply(t)),xE(l,u,t,n,\"Today\"": "xE(l,u,t,n,\"清除\",()=>new qu(e,t).apply(t)),xE(l,u,t,n,\"今天\"",
+        "\"Take out the trash\"": "\"请输入任务描述\"",
+        "\"Try 'Mon' or 'tm' then space\"": "\"试试 'Mon' 或 'tm' 然后按空格\""
     }
 }
