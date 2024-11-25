@@ -1,0 +1,14 @@
+{
+    "manifest": {
+        "translationVersion": 1732185444958,
+        "pluginVersion": "0.1.13"
+    },
+    "description": {
+        "original": "Automatically reload in-development plugins when their files are changed",
+        "translation": "Automatically reload in-development plugins when their files are changed"
+    },
+    "dict": {
+        "Notice(`Plugin \"${plugin}\" has been reloaded`)": "Notice(`Plugin \"${plugin}\" has been reloaded`)这是测试文件",
+        "name: \"Check plugins for changes and reload them\"": "name: \"Check plugins for changes and reload them\""
+    }
+}
