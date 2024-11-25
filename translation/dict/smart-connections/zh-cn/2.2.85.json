@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1732510619370,
+        "translationVersion": 1732518047629,
         "pluginVersion": "2.2.85"
     },
     "description": {
@@ -14,9 +14,6 @@
         "data-description='Chat with your notes in ChatGPT without uploading your notes to the cloud!'": "data-description='在 ChatGPT 中与您的笔记进行聊天,而无需将笔记上传到云端！'",
         "data-description='Join the supporter community chat.'": "data-description='加入支持者社区聊天。'",
         "data-description='Revert to the stable release of Smart Connections. Requires \"Check for Updates\" and then \"Update Plugin\" to complete the process.'": "data-description='回退到 Smart Connections 的稳定版本。需要先“检查更新”,然后“更新插件”以完成该过程。'",
-        "data-description=\"Folder to store Smart Chat history. Use a preceeding <code>.</code> to hide it (ex. <code>.smart-chats</code>).\"": "data-description=\"用于存储智能聊天历史的文件夹。使用前置 <code>.</code> 隐藏文件夹(例如:<code>.smart-chats</code>)。",
-        "data-description=\"Folder to store system prompts. Available in chat by typing '@'\"": "data-description=\"用于存储系统提示的文件夹。在聊天中输入 '@' 即可使用。",
-        "data-description=\"API Key required to use Cohere re-ranker.\"": "data-description=\"使用 Cohere 重新排序器所需的 API 密钥。",
         "data-description=\"Toggle the re-ranker\"": "data-description=\"切换重新排序器\"",
         "data-description=\"Show full path in view.\"": "data-description=\"在视图中显示完整路径\"",
         "data-description=\"Limit the number of results.\"": "data-description=\"限制结果数量\"",
@@ -514,6 +511,9 @@
         "Search Smart Connections": "搜索智能连接",
         "\"Describe what you're looking for (e.g., 'PKM strategies', 'story elements', 'personal AI alignment')\"": "\"描述你要查找的内容(例如:'PKM 策略','故事元素','个人 AI 对齐')\"",
         "Use semantic (embeddings) search to surface relevant notes. Results are sorted by similarity to your query. Note: returns different results than lexical (keyword) search.": "使用语义(嵌入)搜索来展示相关笔记。结果按与查询的相似度排序。注意:与词汇(关键词)搜索返回的结果不同。",
-        "-----------智能连接搜索------------": "-----------智能连接搜索-----------"
+        "-----------智能连接搜索------------": "-----------智能连接搜索-----------",
+        "data-description=\"Folder to store Smart Chat history. Use a preceeding <code>.</code> to hide it (ex. <code>.smart-chats</code>).\"": "data-description=\"用于存储智能聊天历史的文件夹。使用前置 <code>.</code> 隐藏文件夹(例如:<code>.smart-chats</code>).\"",
+        "data-description=\"Folder to store system prompts. Available in chat by typing '@'\"": "data-description=\"用于存储系统提示的文件夹。在聊天中输入 '@' 即可使用。\"",
+        "data-description=\"API Key required to use Cohere re-ranker.\"": "data-description=\"使用 Cohere 重新排序器所需的 API 密钥。\""
     }
 }
