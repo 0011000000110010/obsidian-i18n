@@ -143,7 +143,6 @@
         "\"btn:save\":\"Save\",\"btn:cancel\":\"Cancel\"": "\"btn:save\":\"保存\",\"btn:cancel\":\"取消\"",
         "\"aria:btn:save\":\"save and close\",\"aria:btn:cancel\":\"cancel and close\",": "\"aria:btn:save\":\"保存并关闭\",\"aria:btn:cancel\":\"取消并关闭\",",
         "text:this.filterMode?`${this.filterResultCount} Results`": "text:this.filterMode?`${this.filterResultCount} 个结果`",
-        "\"Restore default\"": "\"恢复默认\"",
-        "test": "测试"
+        "\"Restore default\"": "\"恢复默认\""
     }
 }
