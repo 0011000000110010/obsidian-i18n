@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1732174910348,
+        "translationVersion": 1732714859589,
         "pluginVersion": "0.5.67"
     },
     "description": {
@@ -231,6 +231,23 @@
         ".setDesc(\"The name of the default ID column in tables, when the table is on grouped data; this is the auto-generated first column\" +\n            \"that links to the source file/group.\")": ".setDesc(\"在表格对分组数据进行操作时，默认ID列的名称；这是自动生成的第一列\" +\n            \"链接到file/groupp.\")",
         "Error('Could not dynamically require \"'": "Error('无法动态要求\"'",
         "Error(\"Can't call config() after localforage \"": "Error(\"无法在 localfeed 之后调用 config()\"",
-        "Error('Method '": "Error('方法'"
+        "Error('Method '": "Error('方法'",
+        ".setDesc(\"The prefix to inline queries (to mark them as Dataview queries). Defaults to '='.\")": ".setDesc(\"内联查询的前缀（用于标记为Dataview查询）。默认为'='。\")",
+        ".setDesc(\"The prefix to JavaScript inline queries (to mark them as DataviewJS queries). Defaults to '$='.\")": ".setDesc(\"JavaScript 内联查询的前缀（用于将其标记为 DataviewJS 查询）。默认值为 '$='。\")",
+        ".setDesc(\"If toggled off, the small number in the result header of TASK and TABLE queries will be hidden.\")": ".setDesc(\"如果切换关闭，TASK 和 TABLE 查询结果头部的小数字将被隐藏。\")",
+        ".setDesc(\"What null/non-existent should show up as in tables, by default. This supports Markdown notation.\")": ".setDesc(\"在表格中默认应显示什么为空/不存在。这支持Markdown语法。\")",
+        " .setDesc(\"If enabled, inline queries will also be evaluated inside full code blocks.\")": " .setDesc(\"如果启用，内联查询也将在完整代码块中进行评估。\")",
+        ".setDesc(\"If set, queries which return 0 results will render a warning message.\")": ".setDesc(\"如果设置了该选项，返回0结果的查询将显示警告信息。\")",
+        ".setDesc(\"How long to wait (in milliseconds) for files to stop changing before updating views.\")": ".setDesc(\"在更新视图之前，等待文件停止更改的时间（以毫秒为单位）。\")",
+        ".setDesc(\"The default date format (see Luxon date format options).\" ": ".setDesc(\"默认日期格式（参见Luxon日期格式选项）。\" ",
+        ".setDesc(\"The default date and time format (see Luxon date format options).\" +": ".setDesc(\"默认日期和时间格式（参见Luxon日期格式选项）。\" +",
+        ".setDesc(\"The name of the default ID column in tables; this is the auto-generated first column that links to the source file.\")": ".setDesc(\"表格中默认ID列的名称；这是自动生成的第一列，用于链接到源文件。\")",
+        "setDesc(\"The name of the default ID column in tables, when the table is on grouped data; this is the auto-generated first column\"": "setDesc(\"当表格基于分组数据时，默认 ID 列的名称；这是自动生成的第一列。\"",
+        ".appendText(\"If enabled, Dataview will automatically append tasks with their completion date when they are checked in Dataview views.\");": ".appendText(\"如果启用，Dataview将在Dataview视图中自动附加已完成任务的完成日期。\");",
+        ".appendText('If enabled, will use emoji shorthand instead of inline field formatting to fill out implicit task field \"completion\".')": ".appendText('如果启用，将使用表情符号简写代替内联字段格式来填写隐式任务字段“完成”。')",
+        ".appendText(\"Disable this to customize the completion date format or field name, or to use Dataview inline field formatting.\");": ".appendText(\"禁用此选项以自定义完成日期格式或字段名称，或使用Dataview内联字段格式。\");",
+        ".appendText('Only available when \"automatic task completion tracking\" is enabled.');": ".appendText('仅在启用“自动任务完成跟踪”时可用。');",
+        ".setDesc('Only available when \"automatic task completion tracking\" is enabled.');": ".setDesc('仅在启用“自动任务完成跟踪”时可用。');",
+        ".setDesc(\"If enabled, completing a task in a Dataview will automatically complete its subtasks too.\")": ".setDesc(\"如果启用，在数据视图中完成一个任务将自动完成其子任务。\")"
     }
 }
