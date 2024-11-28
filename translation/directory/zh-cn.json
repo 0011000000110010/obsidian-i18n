@@ -1610,5 +1610,11 @@
         "translations": {
             "1.2.1": 1732719407101
         }
+    },
+    {
+        "id": "file-explorer-plus",
+        "translations": {
+            "1.2.1": 1732761423805
+        }
     }
 ]
