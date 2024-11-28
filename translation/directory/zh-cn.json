@@ -1617,5 +1617,11 @@
         "translations": {
             "1.2.1": 1732761423805
         }
+    },
+    {
+        "id": "search-on-internet",
+        "translations": {
+            "0.5.0": 1732798157141
+        }
     }
 ]
