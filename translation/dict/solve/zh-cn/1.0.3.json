@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1732708307046,
+        "translationVersion": 1732790740449,
         "pluginVersion": "1.0.3"
     },
     "description": {
@@ -21,8 +21,6 @@
         "description:\"an uppercase letter\"": "description:\"一个大写字母\"",
         "description:\"a Unicode character in Lt, Lm, or Lo\"": "description:\"一个在Lt、Lm或Lo中的Unicode字符\"",
         "description:\"a space\"": "description:\"一个空格\"",
-        ".setText(\"Solve \\u{1F914}\")": ".setText(\"解决 🤔\")",
-        ".setText(\"Solve \\u{1F634}\")": ".setText(\"解决 😴\")",
         ".setName(\"Introduction\")": ".setName(\"介绍\")",
         ".setName(\"Engine\")": ".setName(\"引擎\")",
         ".setName(\"Explicit mode\")": ".setName(\"显式模式\")",
