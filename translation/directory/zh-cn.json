@@ -1629,5 +1629,11 @@
         "translations": {
             "1.1.11": 1732806676072
         }
+    },
+    {
+        "id": "frontmatter-modified-date",
+        "translations": {
+            "1.4.7": 1732865660655
+        }
     }
 ]
