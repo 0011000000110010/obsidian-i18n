@@ -1642,5 +1642,11 @@
         "translations": {
             "5.0.5": 1732891889437
         }
+    },
+    {
+        "id": "obsidian-quran-lookup",
+        "translations": {
+            "0.2.0": 1733153559933
+        }
     }
 ]
