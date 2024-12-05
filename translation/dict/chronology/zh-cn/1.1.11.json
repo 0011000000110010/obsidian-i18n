@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1733382262554,
+        "translationVersion": 1733384025991,
         "pluginVersion": "1.1.11"
     },
     "description": {
@@ -20,6 +20,19 @@
         ".setDesc(\"Used to display the daily indicator in the calendar\")": ".setDesc(\"用于在日历中显示每日指标\")",
         ".setDesc(`Default will use the one from your locale (${l[r]}). A plugin restart is required.`)": ".setDesc(`默认将使用您所在地区的设置 (${l[r]})。需要重启插件。`)",
         ".setDesc(\"The name of the metadata attribute to use for creation date\")": ".setDesc(\"用于创建日期的元数据属性名称\")",
-        ".setDesc(\"The name of the metadata attribute to use for modified date\")": ".setDesc(\"用于修改日期的元数据属性名称\")"
+        ".setDesc(\"The name of the metadata attribute to use for modified date\")": ".setDesc(\"用于修改日期的元数据属性名称\")",
+        ".addRibbonIcon(\"clock\",\"Open Chronology\"": ".addRibbonIcon(\"clock\",\"打开Chronology\"",
+        "title:\"today\"": "title:\"今天\"",
+        "\"Open on start up\"": "\"启动时打开\"",
+        "\"24 hours display\"": "\"24小时制\"",
+        "\"Group Notes in same time slot\"": "\"同一时间段的笔记分组\"",
+        "\"Opens the chronology sidebar when Obsidian starts.\"": "\"当 Obsidian 启动时，打开 chronology 侧边栏。\"",
+        "\"Prefers a List of notes, for day and week view\"": "\"偏好以列表形式显示笔记，适用于日视图和周视图\"",
+        "\"Group notes in same time slot in the timeline view\"": "\"在时间线视图中将同一时间段的笔记分组\"",
+        "\"Compute Heat\"": "\"计算热度\"",
+        "\"Compute heat for each day in the calendar\"": "\"计算日历中每一天的热度\"",
+        "\"Uses 24 hours display mode in timeline\"": "\"在时间线中使用24小时显示模式\"",
+        "\"Display Simple List\"": "\"显示简单列表\"",
+        "\"Default\"": "\"默认\""
     }
 }
