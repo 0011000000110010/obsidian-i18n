@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1732864479230,
+        "translationVersion": 1733397480948,
         "pluginVersion": "1.1.1"
     },
     "description": {
@@ -23,6 +23,15 @@
         ".createEl(\"h1\",{text:\"Clear Unused Images - Logs\"})": ".createEl(\"h1\",{text:\"Clear Unused Images - 日志\"})",
         ".createEl(\"button\",{text:\"Close\"})": ".createEl(\"button\",{text:\"关闭\"})",
         ".addOption(\".trash\",\"Move to Obsidian Trash\")": ".addOption(\".trash\",\"移至软件回收站\")",
-        ".addRibbonIcon(\"image-file\",\"Clear Unused Images\"": ".addRibbonIcon(\"image-file\",\"清除未使用的图像\""
+        ".addRibbonIcon(\"image-file\",\"Clear Unused Images\"": ".addRibbonIcon(\"image-file\",\"清除未使用的图像\"",
+        ".setName(\"Ribbon Icon\")": ".setName(\"功能区图标\")",
+        ".setDesc(\"Turn off if you dont want to view the delete logs Modal to pop up after deletion is completed. It wont appear if no image is deleted\")": ".setDesc(\"如果您不想查看删除完成后弹出的删除日志模式，请关闭。如果没有删除图像，则不会出现\")",
+        ".setName(\"Delete Logs\")": ".setName(\"删除日志\")",
+        ".Setting(t).setName(\"Deleted Image Destination\")": ".Setting(t).setName(\"已删除图像目标\")",
+        ".setDesc(\"Select where you want images to be moved once they are deleted\")": ".setDesc(\"选择图像删除后要移动到的位置\")",
+        "setDesc(\"Provide the FULL path of the folder names (Case Sensitive) divided by comma (,) to be excluded from clearing. \\n\\t\\t\\t\\t\\ti.e. For images under Personal/Files/Zodiac -> Personal/Files/Zodiac should be used for exclusion\").": "setDesc(\"提供文件夹名称的完整路径（区分大小写），用逗号（，）分隔，以排除清除。\\n\\t\\t\\t\\t \\t.e对于个人/文件/十二生肖->个人/文件/Sodiac下的图像，应使用排除\").",
+        ".setName(\"Excluded Folder Full Paths\").": ".setName(\"排除的文件夹完整路径\").",
+        ".setDesc(\"Turn on this option if you want to also exclude all subfolders of the folder paths provided above.\")": ".setDesc(\"如果您还想排除上面提供的文件夹路径的所有子文件夹，请启用此选项。\")",
+        ".setDesc(\"Turn on if you want Ribbon Icon for clearing the images.\")": ".setDesc(\"如果要使用功能区图标清除图像，请启用此选项。\")"
     }
 }
