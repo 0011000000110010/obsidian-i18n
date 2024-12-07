@@ -1,0 +1,46 @@
+{
+    "manifest": {
+        "translationVersion": 1733540495800,
+        "pluginVersion": "1.0.0"
+    },
+    "description": {
+        "original": "Typewriter scrolling, highlighting of the current line, dimming of unfocused paragraphs, writing focus and more.",
+        "translation": "Typewriter scrolling, highlighting of the current line, dimming of unfocused paragraphs, writing focus and more."
+    },
+    "dict": {
+        "name:`Move typewriter ${t}`": "name:`移动打字机${t}`",
+        "name:`Toggle ${this.commandTitle}`": "name:`切换${this.commandTitle}`",
+        "name:`Enable ${this.commandTitle}`": "name:`启用${this.commandTitle}`",
+        "name:`Disable ${this.commandTitle}`": "name:`禁用${this.commandTitle}`",
+        "text:\"Fetching release notes...\"": "text:\"正在获取发行说明。。。\"",
+        ".setName(`Current line highlight color in ${this.themeMode} themes`)": ".setName(`${this.themeMode}主题中的当前行突出显示颜色`)",
+        ".setName(\"Current line highlight style\")": ".setName(\"当前线条突出显示样式\")",
+        ".setName(\"Current line underline thickness\")": ".setName(\"当前线下划线厚度\")",
+        ".setName(\"Intensity of the fade lines gradient\")": ".setName(\"渐变线的强度\")",
+        ".setName(\"Dimming behavior in unfocused notes\")": ".setName(\"未聚焦音符中的调光行为\")",
+        ".setName(\"Dim unfocused mode\")": ".setName(\"昏暗非聚焦模式\")",
+        ".setName(\"Opacity of dimmed elements\")": ".setName(\"暗淡元素的不透明度\")",
+        ".setName(\"Amount of lines above and below the current line\")": ".setName(\"当前行上方和下方的行数\")",
+        ".setName(\"Maximum number of characters per line\")": ".setName(\"每行最大字符数\")",
+        ".setName(\"Typewriter offset\")": ".setName(\"打字机偏移量\")",
+        ".setName(\"Writing focus vignette style\")": ".setName(\"写作焦点小插曲风格\")",
+        ".setDesc(`The color of the current line highlight in ${this.themeMode} themes`)": ".setDesc(`当前行的颜色在${this.themeMode}主题中突出显示`)",
+        ".setDesc(\"The style of the current line highlight\")": ".setDesc(\"当前线条的样式突出显示\")",
+        ".setDesc(\"The thickness of the underline that highlights the current line\")": ".setDesc(\"突出显示当前线条的下划线的粗细\")",
+        ".setDesc(\"How soon lines shall be faded out\")": ".setDesc(\"线条多久会消失\")",
+        ".setDesc(\"How to dim paragraphs / sentences in notes / editors that your cursor is not on (e.g. if you have multiple notes open in split panes)\")": ".setDesc(\"如何在光标不在的注释/编辑器中淡化段落/句子（例如，如果您在拆分窗格中打开了多个注释）\")",
+        ".setDesc(\"Choose to dim unfocused paragraphs or sentences\")": ".setDesc(\"选择模糊不集中的段落或句子\")",
+        ".setDesc(\"The opacity of dimmed elements\")": ".setDesc(\"暗淡元素的不透明度\")",
+        ".setDesc(\"The amount of lines to always keep above and below the current line\")": ".setDesc(\"始终保持在当前行之上和之下的行数\")",
+        ".setDesc(\"The maximum number of characters per line\")": ".setDesc(\"每行的最大字符数\")",
+        ".setDesc(\"Positions the typewriter line at the specified percentage of the screen\")": ".setDesc(\"将打字机行定位在屏幕的指定百分比处\")",
+        ".setDesc(\"The style of the vignette in writing focus mode\")": ".setDesc(\"写作焦点模式中的小插曲风格\")",
+        ".addHeading(\"Typewriter\")": ".addHeading(\"打字机\")",
+        ".addHeading(\"Keep lines above and below\")": ".addHeading(\"保持上方和下方的线条\")",
+        ".addHeading(\"Highlight current line\")": ".addHeading(\"突出显示当前行\")",
+        ".addHeading(\"Dimming\")": ".addHeading(\"调光\")",
+        ".addHeading(\"Limit line width\")": ".addHeading(\"限制线宽\")",
+        ".addHeading(\"Writing focus\")": ".addHeading(\"写作重点\")",
+        ".addHeading(\"Update notice and funding\")": ".addHeading(\"更新通知和资金\")"
+    }
+}
