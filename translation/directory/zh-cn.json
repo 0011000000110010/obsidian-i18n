@@ -1668,5 +1668,11 @@
         "translations": {
             "0.2.8": 1733460396997
         }
+    },
+    {
+        "id": "typewriter-mode",
+        "translations": {
+            "1.0.0": 1733540495800
+        }
     }
 ]
