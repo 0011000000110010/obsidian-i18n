@@ -1674,5 +1674,11 @@
         "translations": {
             "1.0.0": 1733540495800
         }
+    },
+    {
+        "id": "advanced-cursors",
+        "translations": {
+            "0.5.1": 1733638961669
+        }
     }
 ]
