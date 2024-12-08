@@ -1687,5 +1687,11 @@
         "translations": {
             "4.6.2": 1733638992597
         }
+    },
+    {
+        "id": "obsidian-sort-and-permute-lines",
+        "translations": {
+            "0.7.0": 1733639144362
+        }
     }
 ]
