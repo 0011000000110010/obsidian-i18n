@@ -1693,5 +1693,11 @@
         "translations": {
             "0.7.0": 1733639205101
         }
+    },
+    {
+        "id": "obsidian-sortable",
+        "translations": {
+            "0.3.1": 1733639239829
+        }
     }
 ]
