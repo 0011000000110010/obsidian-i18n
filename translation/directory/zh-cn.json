@@ -1711,5 +1711,11 @@
         "translations": {
             "2.0.1": 1733639306204
         }
+    },
+    {
+        "id": "folder-note-plugin",
+        "translations": {
+            "0.7.3": 1733664145981
+        }
     }
 ]
