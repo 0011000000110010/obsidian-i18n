@@ -1705,5 +1705,11 @@
         "translations": {
             "1.1.3": 1733639264085
         }
+    },
+    {
+        "id": "obsidian-snippet-downloader",
+        "translations": {
+            "2.0.1": 1733639306204
+        }
     }
 ]
