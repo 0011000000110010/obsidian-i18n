@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1733397459868,
+        "translationVersion": 1733645571391,
         "pluginVersion": "1.5.0"
     },
     "dict": {
@@ -46,7 +46,6 @@
         "title: Base": "title: 基地",
         "title: Mantle": "title: 地幔",
         "title: Crust": "title: 地壳",
-        "title: File Editor & Markdown Elements": "title: 签名错误",
         "description: Callouts, Checkboxes, Codeblocks, Lists, Tables, Tags, etc.": "description: 标注、复选框、代码块、列表、表格、标签等。",
         "title: Active line highlight": "title: 活动线高亮显示",
         "title: Callouts": "title: 标注",
@@ -310,6 +309,7 @@
         "title: Star the Theme on GitHub": "title: 在GitHub上标记主题",
         "description: \"[https://github.com/anubisnekhet/anuppuccin](https://github.com/anubisnekhet/anuppuccin)\"": "description: \"[https://github.com/anubisnekhet/anuppuccin](https://github.com/anubisnekhet/anuppuccin)\"",
         "title: Submit an Issue on GitHub": "title: 在GitHub上提交问题",
-        "description: \"[https://github.com/anubisnekhet/anuppuccin/issues](https://github.com/anubisnekhet/anuppuccin/issues)\"": "description: \"[https://github.com/anubisnekhet/anuppuccin/issues](https://github.com/anubisnekhet/anuppuccin/issues)\""
+        "description: \"[https://github.com/anubisnekhet/anuppuccin/issues](https://github.com/anubisnekhet/anuppuccin/issues)\"": "description: \"[https://github.com/anubisnekhet/anuppuccin/issues](https://github.com/anubisnekhet/anuppuccin/issues)\"",
+        "title: File Editor & Markdown Elements": "title: 文件编辑器和Markdown元素"
     }
 }
