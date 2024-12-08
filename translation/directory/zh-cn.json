@@ -1680,5 +1680,11 @@
         "translations": {
             "0.5.1": 1733638961669
         }
+    },
+    {
+        "id": "darlal-switcher-plus",
+        "translations": {
+            "4.6.2": 1733638992597
+        }
     }
 ]
