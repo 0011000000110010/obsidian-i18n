@@ -1729,5 +1729,11 @@
         "translations": {
             "1.0.9": 1733912500582
         }
+    },
+    {
+        "id": "obsidian-reading-time",
+        "translations": {
+            "1.1.2": 1733912516869
+        }
     }
 ]
