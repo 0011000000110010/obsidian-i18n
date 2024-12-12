@@ -6,10 +6,10 @@ import { t } from "src/lang/inxdex";
 export default class I18nModLDT extends BaseSetting {
     main(): void {
         const i18nModLDT = new Setting(this.containerEl);
-        i18nModLDT.setName(t('SETTING_LDT_NAME'));
-        i18nModLDT.setDesc('是否开启本地文件模式');
+        i18nModLDT.setName(`${t('设置_本地_标题')} ${this.settings.I18N_MODE_LDT ? '🟢' : '🔴'}`);
+        i18nModLDT.setDesc(t('设置_本地_描述'));
         i18nModLDT.addButton(cb => {
-            cb.setButtonText(this.settings.I18N_MODE_LDT ? '关闭' : '开启');
+            cb.setButtonText(this.settings.I18N_MODE_LDT ? t('设置_通用_关闭_文本') : t('设置_通用_开启_文本'));
             cb.onClick(() => {
                 this.settings.I18N_MODE_LDT = !this.settings.I18N_MODE_LDT;
                 this.i18n.saveSettings();
@@ -20,8 +20,8 @@ export default class I18nModLDT extends BaseSetting {
             this.settings.I18N_MODE_LDT ? cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`) : cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`);
         });
         const i18nAutomaticUpdate = new Setting(this.containerEl);
-        i18nAutomaticUpdate.setName(t('SETTING_LDT_AUTOMATIC_UPDATE_NAME'));
-        i18nAutomaticUpdate.setDesc(t('SETTING_LDT_AUTOMATIC_UPDATE_DESC'));
+        i18nAutomaticUpdate.setName(t('设置_本地_智能更新_标题'));
+        i18nAutomaticUpdate.setDesc(t('设置_本地_智能更新_描述'));
         i18nAutomaticUpdate.addToggle(cb => cb
             .setValue(this.settings.I18N_AUTOMATIC_UPDATE)
             .onChange(() => {
@@ -33,8 +33,8 @@ export default class I18nModLDT extends BaseSetting {
         );
 
         const i18nIncrementalExtraction = new Setting(this.containerEl);
-        i18nIncrementalExtraction.setName('增量提取');
-        i18nIncrementalExtraction.setDesc('增量提取功能允许您在本地已有译文的基础上，继续提取并自动合并新译文，实现译文的持续更新与累积。');
+        i18nIncrementalExtraction.setName(t('设置_本地_扩展提取_标题'));
+        i18nIncrementalExtraction.setDesc(t('设置_本地_扩展提取_描述'));
         i18nIncrementalExtraction.addToggle(cb => cb
             .setValue(this.settings.I18N_INCREMENTAL_EXTRACTION)
             .onChange(() => {
@@ -46,8 +46,8 @@ export default class I18nModLDT extends BaseSetting {
         );
 
         const i18nNameTranslation = new Setting(this.containerEl);
-        i18nNameTranslation.setName('名称翻译');
-        i18nNameTranslation.setDesc('启用插件名称翻译功能，将在插件后添加[]以展示其翻译名称(插件设置界面刷新操作会导致当前翻译失效，需重启ob重新加载翻译)');
+        i18nNameTranslation.setName(t('设置_本地_名称翻译_标题'));
+        i18nNameTranslation.setDesc(t('设置_本地_名称翻译_描述'));
         i18nNameTranslation.addText(cb => cb
             .setValue(this.settings.I18N_NAME_TRANSLATION_PREFIX)
             .onChange((value) => {
@@ -63,7 +63,6 @@ export default class I18nModLDT extends BaseSetting {
                 this.settings.I18N_NAME_TRANSLATION_SUFFIX = value;
                 this.i18n.reloadPluginsName();
                 this.i18n.saveSettings();
-                // this.settingTab.ldtDisplay();
             })
             .inputEl.addClass('i18n-name__input', 'i18n-input')
         );

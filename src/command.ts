@@ -1,17 +1,18 @@
 import { App } from "obsidian";
 import I18N from "./main";
-import { I18NModal } from "./modal/i18n-modal";
+import { I18NPluginModal } from "./modal/i18n-plugin-modal";
 import { WizardModal } from "./modal/i18n-wizard-modal";
+import { t } from "./lang/inxdex";
 
 const Commands = (app: App, i18n: I18N) => {
     i18n.addCommand({
-        id: "i18n-translate",
-        name: "打开翻译面板",
-        callback: () => { new I18NModal(app, i18n).open() }
+        id: 'i18n-translate',
+        name: t('命令_打开翻译面板'),
+        callback: () => { new I18NPluginModal(app, i18n).open() }
     });
     i18n.addCommand({
-        id: "i18n-help",
-        name: "打开帮助面板",
+        id: 'i18n-help',
+        name: t('命令_打开帮助面板'),
         callback: () => { new WizardModal(app, i18n).open() }
     });
 }

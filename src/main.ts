@@ -7,21 +7,23 @@ import { I18nSettingTab } from './settings';
 import { t } from './lang/inxdex';
 
 import { clearStorage, restoreTranslate, State, Notification } from './utils';
-import { I18NModal } from './modal/i18n-modal';
+import { I18NPluginModal } from './modal/i18n-plugin-modal';
 import { WizardModal } from './modal/i18n-wizard-modal';
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
-import { API } from './api';
-import { ImtConfig, NameTranslationJSON, TranslationDirectory } from './data/types';
+import { API, TranslationAPI } from './api';
+import { ImtConfig, NameTranslationJSON, OBThemeManifest, Theme, TranslationDirectory } from './data/types';
 import Icons from './icon';
 import { EditorView, EDIT_VIEW_TYPE } from './views/editor-view';
-// import { ContrastView, EONTRASTV_VIEW_TYPE } from './views/contrast-view';
 import { AgreementModal } from './modal/i18n-agreement-modal';
 import Url from './url';
 import Commands from './command';
 import { SHARE_VIEW_TYPE, ShareView } from './views/share-view';
 import { ADMIN_VIEW_TYPE, AdminView } from './views/admin-view';
 import { AdminModal } from './modal/i18n-admin-modal';
+import { I18NThemeModal } from './modal/i18n-theme-modal';
+import { Contributor, Issue } from './data/gitee-types';
+import { DOWNLOAD_VIEW_TYPE, DownloadView } from './views/download-view';
 
 declare global {
     interface Window {
@@ -37,38 +39,63 @@ export default class I18N extends Plugin {
     settings: I18nSettings;
     // [变量] API
     api: API;
+    // [变量] 翻译API
+    tapi: TranslationAPI;
     // [变量] Notice
     notice: Notification;
+
     // [变量] 是否存在更新标记
     updatesMark = false;
     updatesVersion: string;
+
     // [变量] 插件目录标记
-    translationDirectoryMark: boolean;
+    pluginDirectoryMark: boolean;
     // [变量] 插件目录缓存列表
-    translationDirectory: TranslationDirectory;
+    pluginDirectory: TranslationDirectory;
+    // [变量] 主题目录标记
+    themeDirectoryMark: boolean;
+    // [变量] 主题目录缓存列表
+    themeDirectory: TranslationDirectory;
+
     // [变量] 标记汉化标记
     ignoreMark = true;
     // [变量] 标记汉化缓存列表
     ignorePlugins: string[];
     // [变量] 插件贡献者缓存列表
-    contributorCache: any[] | undefined;
+    contributorCache: Contributor[] | undefined;
 
     // [变量][编辑器] 选中译文地址
-    editorTranslationDoc = '';
-    // [变量][共享云端] 选中译文对象
-    sharePluginObj: PluginManifest;
-    shareTranslationDoc: string;
+    editorType = '';
+    editorPath = '';
+    // [变量][编辑器] 选中插件地址
+    editorState: State;
 
-    issuesObj: any;
-    issuesList: any;
+    // [变量][共享云端] 选中译文对象
+    sharePath: string;
+    shareType: number;
+    shareObj: PluginManifest | OBThemeManifest;
+
+    // [变量][共享云端] 审核
+    issue: Issue;
+    issues: Issue[];
+
+    // [变量][共享云端] 下载
+    downloadType: string;
+    downloadPath: string;
+    downloadCloudJson: Plugin | Theme;
+    downloadLocalJson: Plugin | Theme;
+    downloadView: I18NThemeModal | I18NPluginModal;
 
     nameTranslationJSON: NameTranslationJSON;
-    // translationPluginsManifests: PluginManifest[];
     originalPluginsManifests: PluginManifest[];
 
     i18nReviewEl: HTMLElement;
     admin: AdminModal;
+    themeModal: I18NThemeModal;
+    pluginModal: I18NPluginModal;
+
     async onload() {
+        const startTime = Date.now();
         // [加载] 图标类
         Icons();
         // [加载] 通知类
@@ -76,41 +103,53 @@ export default class I18N extends Plugin {
         // [加载] 配置 
         await this.loadSettings();
         console.log(`%c ${this.manifest.name} %c v${this.manifest.version} `, `padding: 2px; border-radius: 2px 0 0 2px; color: #fff; background: #5B5B5B;`, `padding: 2px; border-radius: 0 2px 2px 0; color: #fff; background: #409EFF;`);
-        // document.documentElement.style.setProperty('--i18n-color-primary', this.settings.I18N_COLOR);
         if (this.settings.I18N_AGREEMENT) {
             // [加载] API类
             this.api = new API(this);
+            this.tapi = new TranslationAPI(this);
             // [函数] 首次运行
             this.firstRun();
             // [函数] 检测更新
             if (this.settings.I18N_CHECK_UPDATES) this.checkUpdates();
             // [函数] 云端标记插件
             this.ignoreCache();
-            // [函数] 云端目录缓存
-            this.directoryCache();
+            // [函数] 云端插件目录缓存
+            this.pliginDirectoryCache();
+            // [函数] 云端主题目录缓存
+            this.themeDirectoryCache();
             // [函数] 自动更新
             if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) await this.i18nAutomaticUpdate(this.app);
             // [函数] 沉浸式翻译
             if (this.settings.I18N_MODE_IMT) this.activateIMT();
             // [函数] 审核获取
-            if (this.settings.I18N_SHARE_MODE) this.getAdmin();
+            // if (this.settings.I18N_ADMIN_VERIFY && this.settings.I18N_ADMIN_MODE) this.getAdmin();
             // const sideDock = translateIcon.parentNode;
             // sideDock?.appendChild(translateIcon); // appendChild prepend
             // [功能] 翻译
-            this.addRibbonIcon('i18n_translate', t('I18N_NAME'), (evt: MouseEvent) => { new I18NModal(this.app, this).open() });
+            this.addRibbonIcon('i18n_translate', t('通用_I18N_文本'), () => {
+                if (this.settings.I18N_MODE === 0) {
+                    this.pluginModal = new I18NPluginModal(this.app, this);
+                    this.pluginModal.open()
+                } else if (this.settings.I18N_MODE === 1) {
+                    this.themeModal = new I18NThemeModal(this.app, this);
+                    this.themeModal.open()
+                }
+            });
 
             // [功能] 审核
-            if (this.settings.I18N_ADMIN_MODE) this.i18nReviewEl = this.addRibbonIcon('i18n-review', 'I18N审核', (evt: MouseEvent) => {
+            if (this.settings.I18N_ADMIN_VERIFY && this.settings.I18N_ADMIN_MODE) this.i18nReviewEl = this.addRibbonIcon('i18n-review', 'I18N审核', (evt: MouseEvent) => {
                 this.admin = new AdminModal(this.app, this)
                 this.admin.open();
             });
 
-            // [视图] 对比器视图
+            // [视图] 审核视图
             this.registerView(ADMIN_VIEW_TYPE, (leaf) => new AdminView(leaf, this));
             // [视图] 编辑器视图
             this.registerView(EDIT_VIEW_TYPE, (leaf) => new EditorView(leaf, this));
             // [视图] 共建云端视图
             this.registerView(SHARE_VIEW_TYPE, (leaf) => new ShareView(leaf, this));
+            // [视图] 下载视图
+            this.registerView(DOWNLOAD_VIEW_TYPE, (leaf) => new DownloadView(leaf, this));
             // 状态栏
             // this.addStatusBarItem().setText(`[模式] ${mode[this.settings.I18N_MODE]}`);
 
@@ -123,12 +162,17 @@ export default class I18N extends Plugin {
         } else {
             new AgreementModal(this.app, this).open();
         }
+        const endTime = Date.now();
+        if (this.settings.I18N_START_TIME) {
+            this.notice.success(t('设置_基础_启动耗时_标题'), `${((endTime - startTime) / 1000).toFixed(5)}s`);
+        }
     }
 
     async onunload() {
-        this.detachEditView();
+        this.detachAdminView();
+        this.detachEditorView();
         this.detachShareView();
-        this.detachEditView();
+        this.detachDownloadView();
         this.restorePluginsName();
         if (this.settings.I18N_MODE_IMT) await this.enableIMT();
     }
@@ -137,9 +181,13 @@ export default class I18N extends Plugin {
 
     }
 
-    async loadSettings() { this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData()); }
+    async loadSettings() {
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    }
 
-    async saveSettings() { await this.saveData(this.settings); }
+    async saveSettings() {
+        await this.saveData(this.settings);
+    }
 
     async firstRun() {
         if (this.settings.I18N_WIZARD) {
@@ -154,35 +202,65 @@ export default class I18N extends Plugin {
         const res = await this.api.version();
         if (res.state) {
             if (this.manifest.version !== res.data.version) {
-                this.notice.primary('检查更新', `发现新版本(${res.data.version})\n${res.data.content}`, 10000);
+                this.notice.primary(t('功能_检查更新_前缀'), `${t('功能_检查更新_通知一')}(${res.data.version})\n${res.data.content}`, 10000);
                 this.updatesMark = true;
                 this.updatesVersion = res.data.version;
             }
         } else {
-            this.notice.result('检查更新', false, res.data);
+            this.notice.result(t('功能_检查更新_前缀'), false, res.data);
         }
     }
 
     async ignoreCache() {
         if (!this.settings.I18N_MODE_NDT || !this.settings.I18N_IGNORE) { this.ignoreMark = false; return; }
         const res = await this.api.getMark();
-        if (!res.state) { this.ignoreMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, t('SETTING_NDT_IGNORE_NOTICE_B')); return; }
-        try { this.ignorePlugins = res.data; this.ignoreMark = true; this.notice.result(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), true); }
-        catch (error) { this.ignoreMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_IGNORE_HEAD'), false, error); }
+        if (!res.state) { this.ignoreMark = false; this.notice.result(t('设置_云端_标记汉化_标题'), false, t('设置_云端_通知一')); return; }
+        try { this.ignorePlugins = res.data; this.ignoreMark = true; if (this.settings.I18N_NOTICE) this.notice.result(t('设置_云端_标记汉化_标题'), true); }
+        catch (error) { this.ignoreMark = false; this.notice.result(t('设置_云端_标记汉化_标题'), false, error); }
     }
 
-    async directoryCache() {
-        if (!this.settings.I18N_MODE_NDT) { this.translationDirectoryMark = false; return; }
-        const res = await this.api.giteeGetDirectory();
-        if (!res.state) { this.translationDirectoryMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, t('SETTING_NDT_MODE_NOTICE_B')); return; }
-        try { this.translationDirectory = res.data; this.translationDirectoryMark = true; this.notice.result(t('SETTING_NDT_PUBLIC_MODE_HEAD'), true); }
-        catch (error) { this.translationDirectoryMark = false; this.notice.result(t('SETTING_NDT_PUBLIC_MODE_HEAD'), false, error); }
+    async pliginDirectoryCache() {
+        if (!this.settings.I18N_MODE_NDT) {
+            this.pluginDirectoryMark = false;
+            return;
+        }
+        const res = await this.api.giteeGetDirectory('translation');
+        if (!res.state) {
+            this.pluginDirectoryMark = false;
+            this.notice.result(t('设置_云端_标题_缩写'), false, t('设置_云端_通知一')); return;
+        }
+        try {
+            this.pluginDirectory = res.data;
+            this.pluginDirectoryMark = true;
+            if (this.settings.I18N_NOTICE) this.notice.result(t('设置_云端_标题_缩写'), true, t('设置_云端_通知三'));
+        } catch (error) {
+            this.pluginDirectoryMark = false; this.notice.result(t('设置_云端_标题_缩写'), false, error);
+        }
+    }
+
+    async themeDirectoryCache() {
+        if (!this.settings.I18N_MODE_NDT) {
+            this.themeDirectoryMark = false;
+            return;
+        }
+        const res = await this.api.giteeGetDirectory('theme');
+        if (!res.state) {
+            this.themeDirectoryMark = false;
+            this.notice.result(t('设置_云端_标题_缩写'), false, t('设置_云端_通知一')); return;
+        }
+        try {
+            this.themeDirectory = res.data;
+            this.themeDirectoryMark = true;
+            if (this.settings.I18N_NOTICE) this.notice.result(t('设置_云端_标题_缩写'), true, t('设置_云端_通知二'));
+        } catch (error) {
+            this.themeDirectoryMark = false; this.notice.result(t('设置_云端_标题_缩写'), false, error);
+        }
     }
 
     async i18nAutomaticUpdate(app: App) {
         if (this.settings.I18N_MODE_LDT && this.settings.I18N_AUTOMATIC_UPDATE) {
             let plugins: PluginManifest[] = [];
-            this.notice.success(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), t('SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_A'));
+            if (this.settings.I18N_NOTICE) this.notice.success(t('设置_本地_智能更新_标题'), t('设置_本地_智能更新_通知一'));
             // @ts-ignore
             plugins = Object.values(app.plugins.manifests).filter(item => item.id !== 'i18n');
             let updateitem = 0;
@@ -227,18 +305,20 @@ export default class I18N extends Plugin {
                         // @ts-ignore
                         await this.app.plugins.enablePlugin(plugin.id);
                     } catch (error) {
-                        this.notice.error(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), error);
+                        this.notice.error(t('设置_本地_智能更新_标题'), error);
                     }
                 }
             }
-            updateitem == 0 ? this.notice.success(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), t('SETTING_LDT_AUTOMATIC_UPDATE_NOTICE_B')) : this.notice.success(t('SETTING_LDT_PUBLIC_AUTOMATIC_UPDATE_HEAD'), `更新${updateitem}个插件`)
+            if (this.settings.I18N_NOTICE) updateitem == 0 ? this.notice.success(t('设置_本地_智能更新_标题'), t('设置_本地_智能更新_通知二')) : this.notice.success(t('设置_本地_智能更新_标题'), `${t('设置_本地_智能更新_通知三')}${updateitem}${t('设置_本地_智能更新_通知四')}`)
         }
     }
 
-    trenslatorPluginsName() {
+    public trenslatorPluginsName() {
         // @ts-ignore
         const thisnDir = path.join(path.normalize(this.app.vault.adapter.getBasePath()), this.manifest.dir, 'name.json');
         this.nameTranslationJSON = fs.pathExistsSync(thisnDir) ? fs.readJsonSync(thisnDir) : {};
+        //  @ts-ignore
+        this.nameTranslationJSON = Object.keys(this.nameTranslationJSON).sort().reduce((obj, key) => { obj[key] = this.nameTranslationJSON[key]; return obj; }, {});
         // @ts-ignore
         const translationPluginsManifests: PluginManifest[] = Object.values(this.app.plugins.manifests);
         this.originalPluginsManifests = JSON.parse(JSON.stringify(translationPluginsManifests));
@@ -249,7 +329,7 @@ export default class I18N extends Plugin {
         });
     }
 
-    restorePluginsName() {
+    public restorePluginsName() {
         if (this.originalPluginsManifests !== undefined) {
             // 创建一个基于 id 的查找表  
             const originalPluginsById = new Map<string, PluginManifest>(this.originalPluginsManifests.map(oplugin => [oplugin.id, oplugin]));
@@ -262,15 +342,19 @@ export default class I18N extends Plugin {
         }
     }
 
-    reloadPluginsName() {
+    public reloadPluginsName() {
         this.restorePluginsName();
         this.trenslatorPluginsName();
     }
 
-    async activateEditView() {
+    /**
+     * 激活编辑器视图。
+     * 如果编辑器视图已经存在于工作区中，则使用它；否则，在右侧边栏中创建一个新的叶子。
+     */
+    public async activateEditorView() {
         const { workspace } = this.app;
         // 清空
-        this.detachEditView();
+        this.detachEditorView();
         let leaf: WorkspaceLeaf | null = null;
         const leaves = workspace.getLeavesOfType(EDIT_VIEW_TYPE);
 
@@ -285,9 +369,15 @@ export default class I18N extends Plugin {
         // “显示”叶子，以防它在折叠的侧边栏中
         if (leaf != null) workspace.revealLeaf(leaf);
     }
-    detachEditView() { this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE) }
-
-    async activateAdminView() {
+    /**
+     * 从工作区中分离编辑器视图。
+     */
+    public detachEditorView() { this.app.workspace.detachLeavesOfType(EDIT_VIEW_TYPE) }
+    /**
+     * 激活管理员视图。
+     * 如果管理员视图已经存在于工作区中，则使用它；否则，在右侧边栏中创建一个新的叶子。
+     */
+    public async activateAdminView() {
         const { workspace } = this.app;
         this.detachAdminView();
         let leaf: WorkspaceLeaf | null = null;
@@ -300,9 +390,15 @@ export default class I18N extends Plugin {
         }
         if (leaf != null) workspace.revealLeaf(leaf);
     }
-    detachAdminView() { this.app.workspace.detachLeavesOfType(ADMIN_VIEW_TYPE) }
-
-    async activateShareView() {
+    /**
+     * 从工作区中分离管理员视图。
+     */
+    public detachAdminView() { this.app.workspace.detachLeavesOfType(ADMIN_VIEW_TYPE) }
+    /**
+     * 激活分享视图。
+     * 如果分享视图已经存在于工作区中，则使用它；否则，在右侧边栏中创建一个新的叶子。
+     */
+    public async activateShareView() {
         const { workspace } = this.app;
         this.detachShareView();
         let leaf: WorkspaceLeaf | null = null;
@@ -315,8 +411,31 @@ export default class I18N extends Plugin {
         }
         if (leaf != null) workspace.revealLeaf(leaf);
     }
-    detachShareView() { this.app.workspace.detachLeavesOfType(SHARE_VIEW_TYPE) }
-
+    /**
+     * 从工作区中分离分享视图。
+     */
+    public detachShareView() { this.app.workspace.detachLeavesOfType(SHARE_VIEW_TYPE) }
+    /**
+     * 激活分享视图。
+     * 如果分享视图已经存在于工作区中，则使用它；否则，在右侧边栏中创建一个新的叶子。
+     */
+    public async activateDownloadView() {
+        const { workspace } = this.app;
+        this.detachDownloadView();
+        let leaf: WorkspaceLeaf | null = null;
+        const leaves = workspace.getLeavesOfType(DOWNLOAD_VIEW_TYPE);
+        if (leaves.length > 0) {
+            leaf = leaves[0];
+        } else {
+            leaf = workspace.getLeaf('window');
+            if (leaf != null) await leaf.setViewState({ type: DOWNLOAD_VIEW_TYPE, active: true });
+        }
+        if (leaf != null) workspace.revealLeaf(leaf);
+    }
+    /**
+     * 从工作区中分离分享视图。
+     */
+    public detachDownloadView() { this.app.workspace.detachLeavesOfType(DOWNLOAD_VIEW_TYPE) }
 
     activateIMT() {
         // 检查window对象上是否已存在immersiveTranslateConfig属性  
@@ -360,6 +479,7 @@ export default class I18N extends Plugin {
             // if (closeBtn) { closeBtn.style.display = 'none'; }
         }
     }
+
     async enableIMT() {
         // 查找ID为immersive-translate-popup的元素  
         const imtPopup = document.querySelector('#immersive-translate-popup');
@@ -389,13 +509,12 @@ export default class I18N extends Plugin {
         await clearStorage();
     }
 
-
     async getAdmin() {
         const res = await this.api.giteeGetAllIssue();
         if (res.state) {
             if (res.data.length > 0) {
-                this.issuesList = res.data;
-                this.notice.result('获取', true, `${this.issuesList.length}条待审核内容`);
+                this.issues = res.data;
+                this.notice.result('获取', true, `${this.issues.length}条待审核内容`);
             } else {
                 this.notice.result('获取', true, '暂时没有可审核任务');
             }
@@ -403,5 +522,28 @@ export default class I18N extends Plugin {
             this.notice.result('获取', false, '获取失败,请检查网络后重试');
         }
     }
+
+    /** 加载编辑器视图。
+     * @param type 编辑器的类型。
+     * @param path 编辑器文件的路径。
+     */
+    public editorLoad(type: string, path: string, state: State) {
+        this.editorType = type;
+        this.editorPath = path;
+        this.editorState = state
+        this.activateEditorView();
+    }
+    /** 加载共享视图。
+     * @param type 共享内容的类型，0表示插件，1表示主题。
+     * @param path 共享文件的路径。
+     * @param obj 插件或主题的manifest对象。
+     */
+    public shareLoad(type: number, path: string, obj: PluginManifest | OBThemeManifest) {
+        this.shareType = type;
+        this.sharePath = path;
+        this.shareObj = obj;
+        this.activateShareView();
+    }
+
 }
 

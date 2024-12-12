@@ -57,7 +57,9 @@ export class AgreementModal extends Modal {
         agreement.setClass('i18n-agreement__operate');
         const agreeButton = new ButtonComponent(agreement.controlEl);
         agreeButton.setButtonText('同意');
-        agreeButton.setCta();
+        agreeButton.setClass('i18n-button')
+        agreeButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`)
+        agreeButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
         agreeButton.onClick(async () => {
             if (this.areement_1 === true && this.areement_2 === true) {
                 this.i18n.notice.result('I18N协议', true);
@@ -75,6 +77,9 @@ export class AgreementModal extends Modal {
         });
         const consentButton = new ButtonComponent(agreement.controlEl);
         consentButton.setButtonText('不同意');
+        consentButton.setClass('i18n-button')
+        consentButton.setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-danger`)
+        consentButton.setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
         consentButton.onClick(async () => {
             // @ts-ignore
             await this.app.plugins.disablePlugin('i18n');

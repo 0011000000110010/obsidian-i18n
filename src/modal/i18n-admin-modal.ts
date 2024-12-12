@@ -1,5 +1,6 @@
 import { App, ButtonComponent, Modal, Setting } from 'obsidian';
 import I18N from 'src/main';
+import { parseIssueTitle } from 'src/utils';
 
 // ==============================
 //         审核界面
@@ -16,8 +17,8 @@ export class AdminModal extends Modal {
         const res = await this.i18n.api.giteeGetAllIssue();
         if (res.state) {
             if (res.data.length > 0) {
-                this.i18n.issuesList = res.data;
-                this.i18n.notice.result('获取', true, `${this.i18n.issuesList.length}条待审核内容`);
+                this.i18n.issues = res.data;
+                this.i18n.notice.result('获取', true, `${this.i18n.issues.length}条待审核内容`);
             } else {
                 this.i18n.notice.result('获取', true, '暂时没有可审核任务');
             }
@@ -36,15 +37,12 @@ export class AdminModal extends Modal {
         const titleSetting = new Setting(this.titleEl);
         titleSetting.setName('I18N审核').setClass('i18n-share-history__title');
         new ButtonComponent(titleSetting.controlEl)
-            .setClass('i18n-button')
-            .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
-            .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
-            .setIcon('refresh-ccw')
-            .onClick(async () => {
+            .setClass('i18n-button').setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`).setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            .setIcon('refresh-ccw').onClick(async () => {
                 const res = await this.i18n.api.giteeGetAllIssue();
                 if (res.state) {
                     if (res.data.length > 0) {
-                        this.i18n.issuesList = res.data;
+                        this.i18n.issues = res.data;
                     } else {
                         this.i18n.notice.result('获取', true, '暂时没有可审核任务');
                     }
@@ -53,18 +51,12 @@ export class AdminModal extends Modal {
                 }
                 this.reloadShowData();
             });
-        // new ButtonComponent(titleSetting.controlEl)
-        //     .setClass('i18n-button')
-        //     .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
-        //     .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
-        //     .setButtonText('退出').onClick(() => { this.close() });
     }
 
     public async showMain() {
-        if (this.i18n.issuesList) {
-            for (const issues of this.i18n.issuesList) {
-                if (issues.title.includes('[提交译文]')) this.issue(issues, '提交译文')
-                if (issues.title.includes('[更新译文]')) this.issue(issues, '更新译文')
+        if (this.i18n.issues) {
+            for (const issues of this.i18n.issues) {
+                if (this.isRandomContentFormat(issues.title)) this.issue(issues);
             }
         }
     }
@@ -82,25 +74,51 @@ export class AdminModal extends Modal {
         modalElement.scrollTo(0, scrollTop);
     }
 
-    issue = (issues: any, stateText: string) => {
+    private issue = (issue: any) => {
+        const title = issue.title;
+        const [type, language, id] = parseIssueTitle(title);
         const itemEl = new Setting(this.contentEl);
         itemEl.setClass('i18n__item');
         itemEl.nameEl.addClass('i18n__item-title');
-        let style = '';
-        if (stateText === '提交译文') style = 'success'
-        if (stateText === '更新译文') style = 'warning'
-        itemEl.nameEl.innerHTML = `<span class="i18n-tag i18n-tag--${this.i18n.settings.I18N_TAG_TYPE}-${style} is-${this.i18n.settings.I18N_TAG_SHAPE}">${stateText}</span><span class="i18n__item-title"> ${issues.title.replace(`[${stateText}] `, "")}(${issues.user.name})</span>`;
-        new ButtonComponent(itemEl.controlEl)
-            .setClass('i18n-button')
-            .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`)
-            .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+
+        let typeCss = '';
+        if (type[0] === '0') typeCss = 'primary'
+        if (type[0] === '1') typeCss = 'danger'
+        let typeName = '';
+        if (type[0] === '0') typeName = '插件'
+        if (type[0] === '1') typeName = '主题'
+        let submissionTypeCss = ''
+        if (type[1] === '0') submissionTypeCss = 'primary';
+        if (type[1] === '1') submissionTypeCss = 'success';
+        if (type[1] === '2') submissionTypeCss = 'warning';
+        let submissionTypeName = ''
+        if (type[1] === '0') submissionTypeName = '标记汉化';
+        if (type[1] === '1') submissionTypeName = `提交${type[0] === '0' ? '插件' : '主题'}`;
+        if (type[1] === '2') submissionTypeName = `更新${type[0] === '0' ? '插件' : '主题'}`;
+
+        itemEl.nameEl.innerHTML = `<span class="i18n-tag i18n-tag--${this.i18n.settings.I18N_TAG_TYPE}-${typeCss} is-${this.i18n.settings.I18N_TAG_SHAPE}">${typeName}</span>
+        <span class="i18n-tag i18n-tag--${this.i18n.settings.I18N_TAG_TYPE}-${submissionTypeCss} is-${this.i18n.settings.I18N_TAG_SHAPE}">${submissionTypeName}</span>
+        <span class="i18n__item-title"> ${id}[${language}](${issue.user.name})</span>`;
+
+        new ButtonComponent(itemEl.controlEl).setClass('i18n-button').setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-primary`).setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
             .setButtonText('审核')
-            .onClick(() => { this.i18n.issuesObj = issues; this.i18n.activateAdminView(); });
-        new ButtonComponent(itemEl.controlEl)
-            .setClass('i18n-button')
-            .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
-            .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
-            .setButtonText('查看')
-            .onClick(() => { window.open(`https://gitee.com/${this.i18n.settings.I18N_GITEE_OWNER}/${this.i18n.settings.I18N_GITEE_REPO}/issues/${issues.number}`); });
+            .onClick(() => {
+                this.i18n.issue = issue;
+                this.i18n.activateAdminView();
+            });
+        new ButtonComponent(itemEl.controlEl).setClass('i18n-button').setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`).setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+            .setButtonText(`查看[${issue.comments}]`)
+            .onClick(() => { window.open(`https://gitee.com/zero--two/obsidian-i18n-translation/issues/${issue.number}`); });
     }
+    /**
+     * 检查给定的字符串是否符合随机内容格式。
+     * 该格式定义为三个方括号包裹的部分组成，各部分间可以有任意数量的空格。
+     * @param str 要检查的字符串。
+     * @returns 如果字符串符合格式返回 `true`，否则返回 `false`。
+     */
+    private isRandomContentFormat = (str: string) => {
+        const regex = /^\[.*?\]\s*\[.*?\]\s*\[.*?\]$/;
+        return regex.test(str);
+    }
+
 }

@@ -1,5 +1,5 @@
 import * as fs from 'fs-extra';
-import * as path from 'path';
+import { join, normalize } from 'path';
 import BaseSetting from "../base-setting";
 import { Setting } from "obsidian";
 import { LANGUAGES } from "src/data/data";
@@ -7,30 +7,37 @@ import { t } from "src/lang/inxdex";
 
 export default class I18nBasis extends BaseSetting {
     main(): void {
-        // 插件主题
-        // new Setting(this.containerEl).setName('插件主题').setDesc('为 Obsidian I18N 选择一个主题色。主题色将影响选中、按钮等元素的颜色。').addColorPicker(cb => cb
-        //     .setValue(this.settings.I18N_COLOR)
-        //     .onChange((value) => {
-        //         // 409EFF
-        //         document.documentElement.style.setProperty('--i18n-color-primary', value);
-        //         this.settings.I18N_COLOR = value;
-        //         this.i18n.saveSettings();
-        //     })
-        // );
+        // 鸣谢列表
+        new Setting(this.containerEl)
+            .setName(t('设置_基础_鸣谢列表_标题'))
+            .setDesc(t('设置_基础_鸣谢列表_描述'))
+            .addButton(cb => cb.setButtonText(t('设置_基础_鸣谢列表_按钮'))
+                .setClass('i18n-button')
+                .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-success`)
+                .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
+                .onClick(async () => {
+                    this.i18n.notice.warning('Git', '\n曲淡歌', 10000);
+                    this.i18n.notice.success('审核人员', '\n曲淡歌\nFENDI\n宇桐非\n孤猫', 10000);
+                    this.i18n.notice.error('贡献人员', '详情查看贡献榜单', 10000);
+                })
+            );
         // 翻译语言
-        new Setting(this.containerEl).setName('翻译语言').setDesc(t('SETTING_LANGUAGE_DESC')).addDropdown(cb => cb
-            .addOptions(LANGUAGES)
-            .setValue(this.settings.I18N_LANGUAGE)
-            .onChange(async (value) => {
-                this.settings.I18N_LANGUAGE = value;
-                await this.i18n.saveSettings();
-            }).selectEl.addClass('i18n-select')
-        );
+        new Setting(this.containerEl)
+            .setName(t('设置_基础_翻译语言_标题'))
+            .setDesc(t('设置_基础_翻译语言_描述'))
+            .addDropdown(cb => cb
+                .addOptions(LANGUAGES)
+                .setValue(this.settings.I18N_LANGUAGE)
+                .onChange(async (value) => {
+                    this.settings.I18N_LANGUAGE = value;
+                    await this.i18n.saveSettings();
+                }).selectEl.addClass('i18n-select')
+            );
         // 检查更新
         new Setting(this.containerEl)
-            .setName('检查更新')
-            .setDesc('插件启动时自动检查是否存在更新')
-            .addButton(cb => cb.setButtonText('下载')
+            .setName(t('设置_基础_检查更新_标题'))
+            .setDesc(t('设置_基础_检查更新_描述'))
+            .addButton(cb => cb.setButtonText(t('设置_基础_检查更新_按钮'))
                 .setClass('i18n-button')
                 .setClass(`i18n-button--${this.i18n.settings.I18N_BUTTON_TYPE}-info`)
                 .setClass(`is-${this.i18n.settings.I18N_BUTTON_SHAPE}`)
@@ -80,24 +87,14 @@ export default class I18nBasis extends BaseSetting {
                             return;
                         }
                         try {
-                            // @ts-ignore
-                            const i18nDir = path.join(path.normalize(this.app.vault.adapter.getBasePath()), this.i18n.manifest.dir)
+                            //@ts-ignore
+                            const i18nDir = join(normalize(this.app.vault.adapter.getBasePath()), this.i18n.manifest.dir)
                             console.log(i18nDir);
                             fs.ensureDirSync(i18nDir);
-                            await fs.writeFile(path.join(i18nDir, 'styles.css'), styleString);
-                            await fs.writeFile(path.join(i18nDir, 'main.js'), mainString);
-                            await fs.writeFile(path.join(i18nDir, 'manifest.json'), manifestString);
+                            await fs.writeFile(join(i18nDir, 'styles.css'), styleString);
+                            await fs.writeFile(join(i18nDir, 'main.js'), mainString);
+                            await fs.writeFile(join(i18nDir, 'manifest.json'), manifestString);
                             this.i18n.notice.result('检查更新', true, '更新成功');
-                            // // @ts-ignore
-                            // const a: PluginManifest[] = Object.values(this.app.plugins.manifests);
-                            // const foundIndex = a.findIndex(manifest => manifest.id === this.i18n.manifest.id);
-                            // if (foundIndex !== -1) a[foundIndex].version = this.i18n.updatesVersion;
-                            // this.i18n.updatesMark = false;
-                            // this.i18n.updatesVersion = '';
-                            // // @ts-ignore
-                            // await this.app.plugins.disablePlugin(this.i18n.manifest.id);
-                            // // @ts-ignore
-                            // await this.app.plugins.enablePlugin(this.i18n.manifest.id);
                             document.location.reload();
                         } catch (e) {
                             this.i18n.notice.result('检查更新', false, `写入文件失败${e}`);
@@ -107,7 +104,6 @@ export default class I18nBasis extends BaseSetting {
                     }
 
                 }).setClass(this.i18n.updatesMark ? '1' : 'i18n--hidden'))
-
             .addToggle(cb => cb
                 .setValue(this.settings.I18N_CHECK_UPDATES)
                 .onChange(async () => {
@@ -124,24 +120,54 @@ export default class I18nBasis extends BaseSetting {
                 .toggleEl.addClass('i18n-checkbox')
             );
         // 跳转设置
-        new Setting(this.containerEl).setName(t('SETTING_OPEN_SETTING_NAME')).setDesc(t('SETTING_OPEN_SETTING_DESC')).addToggle(cb => cb
-            .setValue(this.settings.I18N_OPEN_SETTINGS)
-            .onChange(() => {
-                this.settings.I18N_OPEN_SETTINGS = !this.settings.I18N_OPEN_SETTINGS;
-                this.i18n.saveSettings();
-                this.settingTab.basisDisplay();
-            })
-            .toggleEl.addClass('i18n-checkbox')
-        );
+        new Setting(this.containerEl)
+            .setName(t('设置_基础_跳转设置_标题'))
+            .setDesc(t('设置_基础_跳转设置_描述'))
+            .addToggle(cb => cb
+                .setValue(this.settings.I18N_OPEN_SETTINGS)
+                .onChange(() => {
+                    this.settings.I18N_OPEN_SETTINGS = !this.settings.I18N_OPEN_SETTINGS;
+                    this.i18n.saveSettings();
+                    this.settingTab.basisDisplay();
+                })
+                .toggleEl.addClass('i18n-checkbox')
+            );
         // 译文编辑
-        new Setting(this.containerEl).setName(t('SETTING_EDITOR_NAME')).setDesc(t('SETTING_EDITOR_DESC')).addToggle(cb => cb
-            .setValue(this.settings.I18N_EDIT_MODE)
-            .onChange(() => {
-                this.settings.I18N_EDIT_MODE = !this.settings.I18N_EDIT_MODE;
-                this.i18n.saveSettings();
-                this.settingTab.basisDisplay();
-            })
-            .toggleEl.addClass('i18n-checkbox')
-        );
+        new Setting(this.containerEl)
+            .setName(t('设置_基础_译文编辑_标题'))
+            .setDesc(t('设置_基础_译文编辑_描述'))
+            .addToggle(cb => cb
+                .setValue(this.settings.I18N_EDIT_MODE)
+                .onChange(() => {
+                    this.settings.I18N_EDIT_MODE = !this.settings.I18N_EDIT_MODE;
+                    this.i18n.saveSettings();
+                    this.settingTab.basisDisplay();
+                })
+                .toggleEl.addClass('i18n-checkbox')
+            );
+        // 启动时间
+        new Setting(this.containerEl)
+            .setName(t('设置_基础_通知提示_标题'))
+            .setDesc(t('设置_基础_通知提示_描述'))
+            .addToggle(cb => cb
+                .setValue(this.settings.I18N_NOTICE)
+                .onChange(() => {
+                    this.settings.I18N_NOTICE = !this.settings.I18N_NOTICE;
+                    this.i18n.saveSettings();
+                })
+                .toggleEl.addClass('i18n-checkbox')
+            );
+        // 启动时间
+        new Setting(this.containerEl)
+            .setName(t('设置_基础_启动耗时_标题'))
+            .setDesc(t('设置_基础_启动耗时_描述'))
+            .addToggle(cb => cb
+                .setValue(this.settings.I18N_START_TIME)
+                .onChange(() => {
+                    this.settings.I18N_START_TIME = !this.settings.I18N_START_TIME;
+                    this.i18n.saveSettings();
+                })
+                .toggleEl.addClass('i18n-checkbox')
+            );
     }
 }

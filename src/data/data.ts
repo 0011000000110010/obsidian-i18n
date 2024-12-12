@@ -1,7 +1,12 @@
 import { ApiTypes, BaiduErrorCode, Languages } from "./types"
 
 export const LANGUAGES: Languages = {
-    "zh-cn": "简体中文"
+    'zh-cn': '简体中文'
+}
+
+export const DOWNLOAD = {
+    'gitee': 'gitee(国内)',
+    'github': 'github(国外)'
 }
 
 export const API_TYPES: ApiTypes = {

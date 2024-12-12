@@ -23,21 +23,15 @@ export interface LangBAIDU {
 	[code: string]: any,
 }
 
-// [译文] 声明
-export interface TranslationManifest {
-	translationVersion: number
-	pluginVersion: string
-}
-// [译文] 描述
-export interface TranslationDescription {
-	original: string,
-	translation: string
-}
-// [译文] 译文
-export interface Translation {
-	manifest: TranslationManifest
-	description: TranslationDescription
-	dict: Record<string, string>
+
+// 贡献者目录类型
+export interface Contributor {
+	login: string;
+	name: string;
+	url: string;
+	translation: number;
+	modification: number;
+	erasure: number;
 }
 
 // [目录] 译文条目（单个译文对象）  
@@ -45,8 +39,48 @@ export interface TranslationDirectoryItem {
 	id: string;
 	translations: Record<string, number>;
 }
+
 // [目录] 译文条目集合（译文目录）
 export type TranslationDirectory = TranslationDirectoryItem[];
+
+export interface OBThemeManifest {
+	name: string;
+	version: string;
+	minAppVersion: string;
+	author: string;
+	authorUrl: string;
+}
+
+
+// [译文] 声明
+export interface PluginManifest {
+	translationVersion: number
+	pluginVersion: string
+}
+// [译文] 描述
+export interface PluginDescription {
+	original: string,
+	translation: string
+}
+// [译文] 译文
+export interface Plugin {
+	manifest: PluginManifest
+	description: PluginDescription
+	dict: Record<string, string>
+}
+// [主题] 主题描述
+export interface ThemeManifest {
+	translationVersion: number
+	pluginVersion: string
+}
+// [译文] 主题译文
+export interface Theme {
+	manifest: ThemeManifest
+	dict: Record<string, string>
+}
+
+
+
 
 export type Languages = {
 	[key: string]: string;
@@ -60,14 +94,12 @@ export type BaiduErrorCode = {
 	[key: string]: string;
 };
 
-
 export interface ValidationOptions {
 	checkFormat?: boolean;
 	checkAuthor?: boolean;
 	checkVersion?: boolean;
 	checkTranslations?: boolean;
 }
-
 
 export interface SubmitMark {
 	id: string;
@@ -153,3 +185,4 @@ export type ImtConfig = {
 		[key in keyof PageRule]: PageRule[key];
 	};
 };
+

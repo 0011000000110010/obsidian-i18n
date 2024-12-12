@@ -1,12 +1,13 @@
 import { Setting } from "obsidian";
 import BaseSetting from "../base-setting";
+import { t } from "src/lang/inxdex";
 
 // 自动更新
 export default class I18nModIMT extends BaseSetting {
     main(): void {
         const i18nModIMT = new Setting(this.containerEl);
-        i18nModIMT.setName('沉浸式翻译');
-        i18nModIMT.setDesc('是否开启沉浸式翻译模式');
+        i18nModIMT.setName(`${t('设置_沉浸_标题')} ${this.settings.I18N_MODE_IMT ? '🟢' : '🔴'}`);
+        i18nModIMT.setDesc(t('设置_沉浸_描述'));
         i18nModIMT.addButton(cb => cb
             .setButtonText('重启')
             .onClick(() => {
@@ -14,7 +15,7 @@ export default class I18nModIMT extends BaseSetting {
             }).buttonEl.addClasses(['i18n-button', `i18n-button--${this.settings.I18N_BUTTON_TYPE}-warning`, `is-${this.settings.I18N_BUTTON_SHAPE}`])
         );
         i18nModIMT.addButton(cb => {
-            cb.setButtonText(this.settings.I18N_MODE_IMT ? '关闭' : '开启');
+            cb.setButtonText(this.settings.I18N_MODE_IMT ? t('设置_通用_关闭_文本') : t('设置_通用_开启_文本'));
             cb.onClick(() => {
                 this.settings.I18N_MODE_IMT = !this.settings.I18N_MODE_IMT;
                 if (!this.settings.I18N_MODE_IMT) document.location.reload();
@@ -25,7 +26,6 @@ export default class I18nModIMT extends BaseSetting {
             cb.setClass('i18n-button');
             cb.setClass(`is-${this.settings.I18N_BUTTON_SHAPE}`)
             this.settings.I18N_MODE_IMT ? cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-danger`) : cb.setClass(`i18n-button--${this.settings.I18N_BUTTON_TYPE}-success`);
-            // this.settings.I18N_MODE_IMT ? cb.setClass('i18n-button--danger') : cb.setClass('i18n-button--primary');
         });
 
         new Setting(this.containerEl).setName('指定翻译范围').setHeading();

@@ -2,15 +2,16 @@ import { App, PluginSettingTab } from 'obsidian';
 import I18N from "../main";
 
 import I18nBasis from './ui/i18n-basis';
-import I18nModLDT from './ui/i18n-mod-ldt';
-import I18nModNDT from './ui/i18n-mod-ndt';
-import I18nModeNIT from './ui/i18n-mod-nit';
-import I18nModIMT from './ui/i18n-mod-imt';
+import I18nModLDT from './ui/i18n-mode-ldt';
+import I18nModNDT from './ui/i18n-mode-ndt';
+import I18nModeNIT from './ui/i18n-mode-nit';
+import I18nModIMT from './ui/i18n-mode-imt';
 import I18nNitBaiDu from './ui/i18n-nit-baidu';
 import I18nAIOpenAI from './ui/i18n-nit-openAI';
 import I18nRE from './ui/i18n-re';
-import I18nShare from './ui/i18n-share';
+import I18nShare from './ui/i18n-mode-share';
 import I18nStyle from './ui/i18n-style';
+import { t } from 'src/lang/inxdex';
 
 class I18nSettingTab extends PluginSettingTab {
 	i18n: I18N;
@@ -33,14 +34,14 @@ class I18nSettingTab extends PluginSettingTab {
 		this.contentEl.addClass('i18n-setting__content');
 
 		const tabItems = [
-			{ text: '主题', content: () => this.styleDisplay() },
-			{ text: '基础设置', content: () => this.basisDisplay() },
-			{ text: '本地模式', content: () => this.ldtDisplay() },
-			{ text: '云端模式', content: () => this.ndtDisplay() },
-			{ text: '机器翻译', content: () => this.nitDisplay() },
-			{ text: '沉浸翻译', content: () => this.imtDisplay() },
-			{ text: '共建云端', content: () => this.shareDisplay() },
-			{ text: '正则配置', content: () => this.reDisplay() },
+			{ text: t('设置_主题_标题_缩写'), content: () => this.styleDisplay() },
+			{ text: t('设置_基础_标题_缩写'), content: () => this.basisDisplay() },
+			{ text: t('设置_本地_标题_缩写'), content: () => this.ldtDisplay() },
+			{ text: t('设置_云端_标题_缩写'), content: () => this.ndtDisplay() },
+			{ text: t('设置_AI_标题_缩写'), content: () => this.nitDisplay() },
+			{ text: t('设置_沉浸_标题_缩写'), content: () => this.imtDisplay() },
+			{ text: t('设置_共享_标题_缩写'), content: () => this.shareDisplay() },
+			{ text: t('设置_正则_标题_缩写'), content: () => this.reDisplay() },
 		];
 		const tabItemsEls: HTMLDivElement[] = [];
 
