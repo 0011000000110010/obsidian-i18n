@@ -1,5 +1,8 @@
 {
-    "version": "1.6.0",
-    "content": "修复 译文编辑器批量删除会删除所有的问题",
+    "version": "1.6.2",
+    "content": "注意 提交请使用新版本!!!\n新增 隐藏某些通知\n新增 自定义检查译文更新\n新增 主题支持机器翻译\n修复 审核数据获取问题",
     "token": "MWYwMDhjNmE4OTQ3ZjFkZTE4MmI1ODBhNzhhOTdjODU="
 }
+
+
+

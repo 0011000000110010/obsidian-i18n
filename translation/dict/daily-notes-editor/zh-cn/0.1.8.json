@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730689359728,
+        "translationVersion": 1730962232133,
         "pluginVersion": "0.1.8"
     },
     "description": {
@@ -19,6 +19,8 @@
         ".setDesc(\"Hide frontmatter in daily notes\")": ".setDesc(\"在日常笔记中隐藏正面内容\")",
         ".setDesc(\"Hide backlinks in daily notes\")": ".setDesc(\"在日常笔记中隐藏反向链接\")",
         ".addRibbonIcon(\"calendar-range\",\"Open Daily Note Editor\"": ".addRibbonIcon(\"calendar-range\",\"打开日记流\"",
-        "return\"Daily Note\"": "return\"日记流\""
+        "return\"Daily Note\"": "return\"日记流编辑器\"",
+        "t.innerHTML='<div class=\"dn-blank-day-text svelte-16g9gs\">Create a daily note for today ✍</div>'": "t.innerHTML='点此创建今天的笔记 ✍'",
+        "t.textContent=\"—— No more of results ——\",": "t.textContent=\"—— 这是我的底线了 ——\","
     }
 }

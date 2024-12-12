@@ -2,7 +2,8 @@
     {
         "id": "advanced-canvas",
         "translations": {
-            "3.1.0": -639075600000
+            "3.1.0": -639075600000,
+            "3.2.0": 1731413476699
         }
     },
     {
@@ -98,7 +99,8 @@
     {
         "id": "cmdr",
         "translations": {
-            "0.5.1": -639075600000
+            "0.5.1": -639075600000,
+            "0.5.2": 1731311257518
         }
     },
     {
@@ -122,13 +124,18 @@
     {
         "id": "consistent-attachments-and-links",
         "translations": {
-            "3.21.2": -639075600000
+            "3.21.2": -639075600000,
+            "3.21.9": 1732180815015
         }
     },
     {
         "id": "copilot",
         "translations": {
-            "2.6.6": -639075600000
+            "2.6.6": -639075600000,
+            "2.7.1": 1730984066356,
+            "2.7.2": 1731704167728,
+            "2.7.4": 1732709217452,
+            "2.7.6": 1733282924562
         }
     },
     {
@@ -212,13 +219,14 @@
     {
         "id": "file-explorer-note-count",
         "translations": {
-            "1.2.2": -639075600000
+            "1.2.2": -639075600000,
+            "1.2.3": 1731915556413
         }
     },
     {
         "id": "file-order",
         "translations": {
-            "0.0.11": -639075600000
+            "0.0.11": 1733638923621
         }
     },
     {
@@ -285,7 +293,8 @@
     {
         "id": "image-converter",
         "translations": {
-            "1.1.7": -639075600000
+            "1.1.7": -639075600000,
+            "1.2.2": 1733157961839
         }
     },
     {
@@ -327,7 +336,8 @@
     {
         "id": "links",
         "translations": {
-            "1.17.19": -639075600000
+            "1.17.19": -639075600000,
+            "1.17.23": 1731312296968
         }
     },
     {
@@ -357,7 +367,8 @@
     {
         "id": "make-md",
         "translations": {
-            "0.9.1007": -639075600000
+            "0.9.1007": -639075600000,
+            "0.9.1011": 1731155744960
         }
     },
     {
@@ -405,7 +416,7 @@
     {
         "id": "mousewheel-image-zoom",
         "translations": {
-            "1.0.22": -639075600000
+            "1.0.22": 1733653826257
         }
     },
     {
@@ -441,7 +452,8 @@
     {
         "id": "novel-word-count",
         "translations": {
-            "3.11.1": -639075600000
+            "3.11.1": -639075600000,
+            "3.12.0": 1731515173016
         }
     },
     {
@@ -465,7 +477,8 @@
     {
         "id": "obsidian-advanced-uri",
         "translations": {
-            "1.44.1": -639075600000
+            "1.44.1": -639075600000,
+            "1.44.2": 1732971325419
         }
     },
     {
@@ -483,7 +496,8 @@
     {
         "id": "obsidian-attachment-name-formatting",
         "translations": {
-            "2.1.8": -639075600000
+            "2.1.8": -639075600000,
+            "2.1.10": 1731064484427
         }
     },
     {
@@ -568,7 +582,8 @@
     {
         "id": "obsidian-custom-attachment-location",
         "translations": {
-            "4.22.1": -639075600000
+            "4.22.1": -639075600000,
+            "4.27.5": 1730962726105
         }
     },
     {
@@ -592,7 +607,9 @@
     {
         "id": "obsidian-day-planner",
         "translations": {
-            "0.22.1": -639075600000
+            "0.22.1": -639075600000,
+            "0.25.0": 1730990415641,
+            "0.27.0": 1732465075004
         }
     },
     {
@@ -634,7 +651,9 @@
     {
         "id": "obsidian-git",
         "translations": {
-            "2.26.0": -639075600000
+            "2.26.0": -639075600000,
+            "2.27.0": 1730962356896,
+            "2.28.2": 1731497952199
         }
     },
     {
@@ -660,7 +679,8 @@
         "id": "obsidian-icon-folder",
         "translations": {
             "2.14.3": -639075600000,
-            "2.14.4": 1729869446924
+            "2.14.4": 1729869446924,
+            "2.14.6": 1733639022303
         }
     },
     {
@@ -732,7 +752,8 @@
     {
         "id": "obsidian-meta-bind-plugin",
         "translations": {
-            "1.2.2": -639075600000
+            "1.2.2": -639075600000,
+            "1.2.5": 1732708152667
         }
     },
     {
@@ -823,7 +844,7 @@
     {
         "id": "obsidian-style-settings",
         "translations": {
-            "1.0.9": -639075600000
+            "1.0.9": 1732678845290
         }
     },
     {
@@ -848,7 +869,8 @@
         "id": "obsidian-tasks-plugin",
         "translations": {
             "7.10.0": -639075600000,
-            "7.12.2": 1730342209678
+            "7.13.0": 1732196835504,
+            "7.14.0": 1732539209835
         }
     },
     {
@@ -899,7 +921,8 @@
     {
         "id": "omnisearch",
         "translations": {
-            "1.24.1": -639075600000
+            "1.24.1": -639075600000,
+            "1.25.1": 1732063391514
         }
     },
     {
@@ -923,7 +946,7 @@
     {
         "id": "oz-clear-unused-images",
         "translations": {
-            "1.1.1": -639075600000
+            "1.1.1": 1733397480948
         }
     },
     {
@@ -965,14 +988,18 @@
     {
         "id": "quickadd",
         "translations": {
-            "1.11.1": -639075600000
+            "1.11.1": -639075600000,
+            "1.11.4": 1731379954131
         }
     },
     {
         "id": "recent-files-obsidian",
         "translations": {
             "1.5.0": -639075600000,
-            "1.7.0": 1729874243029
+            "1.7.0": 1729874243029,
+            "1.7.1": 1731631369525,
+            "1.7.2": 1732502666483,
+            "1.7.3": 1733477352147
         }
     },
     {
@@ -1008,7 +1035,8 @@
     {
         "id": "smart-connections",
         "translations": {
-            "2.1.101": -639075600000
+            "2.1.101": -639075600000,
+            "2.2.85": 1732510619370
         }
     },
     {
@@ -1052,7 +1080,8 @@
     {
         "id": "templater-obsidian",
         "translations": {
-            "2.7.3": -639075600000
+            "2.7.3": -639075600000,
+            "2.9.1": 1731380553673
         }
     },
     {
@@ -1101,7 +1130,8 @@
     {
         "id": "workspaces-plus",
         "translations": {
-            "0.4.16": -639075600000
+            "0.4.16": -639075600000,
+            "0.3.3": 1731895822772
         }
     },
     {
@@ -1233,7 +1263,8 @@
     {
         "id": "note-toolbar",
         "translations": {
-            "1.14.9": 1730054340351
+            "1.14.9": 1730054340351,
+            "1.15": 1731550266630
         }
     },
     {
@@ -1245,7 +1276,8 @@
     {
         "id": "pexels-banner",
         "translations": {
-            "2.4.0": 1730107401067
+            "2.4.0": 1730107401067,
+            "2.10.2": 1732763059795
         }
     },
     {
@@ -1281,7 +1313,9 @@
     {
         "id": "rich-foot",
         "translations": {
-            "1.4.0": 1730185363513
+            "1.4.0": 1730185363513,
+            "1.7.0": 1732707051057,
+            "1.8.0": 1732983379207
         }
     },
     {
@@ -1377,7 +1411,329 @@
     {
         "id": "quick-explorer",
         "translations": {
-            "0.2.10": 1730852633319
+            "0.2.10": 1730852633319,
+            "0.2.11": 1731239194299
+        }
+    },
+    {
+        "id": "obsidian-remember-file-state",
+        "translations": {
+            "1.1.2": 1730995532034
+        }
+    },
+    {
+        "id": "obsidian42-strange-new-worlds",
+        "translations": {
+            "2.1.4": 1731143621640,
+            "2.1.5": 1731385189249
+        }
+    },
+    {
+        "id": "obsidian-columns",
+        "translations": {
+            "1.5.2": 1731239204617
+        }
+    },
+    {
+        "id": "easy-toggle-sidebars",
+        "translations": {
+            "2.0.0": 1731239230794
+        }
+    },
+    {
+        "id": "obsidian-tracker",
+        "translations": {
+            "1.14.0": 1731239246402
+        }
+    },
+    {
+        "id": "multi-properties",
+        "translations": {
+            "1.1.2": 1731312554302
+        }
+    },
+    {
+        "id": "personal-assistant",
+        "translations": {
+            "1.4.1": 1731317175478
+        }
+    },
+    {
+        "id": "nuke-orphans",
+        "translations": {
+            "1.2.5": 1731379551120
+        }
+    },
+    {
+        "id": "note-definitions",
+        "translations": {
+            "0.26.1": 1731498005055,
+            "0.27": 1732421678680
+        }
+    },
+    {
+        "id": "optimize-canvas-connections",
+        "translations": {
+            "1.0.0": 1731498105089
+        }
+    },
+    {
+        "id": "obsidian-tikzjax",
+        "translations": {
+            "0.5.2": 1731549736063
+        }
+    },
+    {
+        "id": "obsidian-latex-environments",
+        "translations": {
+            "0.4.2": 1731550330537
+        }
+    },
+    {
+        "id": "canvas-mindmap",
+        "translations": {
+            "1.0.2": 1731593378730
+        }
+    },
+    {
+        "id": "pseudocode-in-obs",
+        "translations": {
+            "1.6.1": 1731593762629
+        }
+    },
+    {
+        "id": "image-magician",
+        "translations": {
+            "0.1.9": 1731845257994
+        }
+    },
+    {
+        "id": "surfing",
+        "translations": {
+            "0.9.12": 1731895248150,
+            "0.9.14": 1732071936509
+        }
+    },
+    {
+        "id": "keyboard-analyzer",
+        "translations": {
+            "0.1.3": 1731978795631
+        }
+    },
+    {
+        "id": "better-search-views",
+        "translations": {
+            "0.2.2": 1732174648396
+        }
+    },
+    {
+        "id": "brain-dump-mode",
+        "translations": {
+            "1.1.0": 1732103871765
+        }
+    },
+    {
+        "id": "tokenz",
+        "translations": {
+            "0.74": 1732103899159
+        }
+    },
+    {
+        "id": "superstition",
+        "translations": {
+            "1.0.2": 1732104003139
+        }
+    },
+    {
+        "id": "link-preview",
+        "translations": {
+            "0.1.3": 1732287529578
+        }
+    },
+    {
+        "id": "featured-image",
+        "translations": {
+            "1.1.0": 1732291313351
+        }
+    },
+    {
+        "id": "blue-star",
+        "translations": {
+            "1.2.4": 1732346795655
+        }
+    },
+    {
+        "id": "tokei",
+        "translations": {
+            "0.8.0": 1732350537423
+        }
+    },
+    {
+        "id": "auto-note-mover",
+        "translations": {
+            "1.2.0": 1732350758711
+        }
+    },
+    {
+        "id": "chatgpt-md",
+        "translations": {
+            "1.5.0": 1732368814972
+        }
+    },
+    {
+        "id": "settings-management",
+        "translations": {
+            "1.0.5": 1732443294533
+        }
+    },
+    {
+        "id": "short-internal-links-to-headings",
+        "translations": {
+            "1.1.5": 1732604987271
+        }
+    },
+    {
+        "id": "automatic-renumbering",
+        "translations": {
+            "1.1.0": 1732689587313
+        }
+    },
+    {
+        "id": "solve",
+        "translations": {
+            "1.0.3": 1732708307046
+        }
+    },
+    {
+        "id": "aqu-blur-mode",
+        "translations": {
+            "1.0.5": 1732715824624
+        }
+    },
+    {
+        "id": "file-manager",
+        "translations": {
+            "1.2.1": 1732719407101
+        }
+    },
+    {
+        "id": "file-explorer-plus",
+        "translations": {
+            "1.2.1": 1732761423805
+        }
+    },
+    {
+        "id": "search-on-internet",
+        "translations": {
+            "0.5.0": 1732798157141
+        }
+    },
+    {
+        "id": "moc-link-helper",
+        "translations": {
+            "1.1.11": 1732806676072
+        }
+    },
+    {
+        "id": "frontmatter-modified-date",
+        "translations": {
+            "1.4.7": 1732865660655
+        }
+    },
+    {
+        "id": "insta-toc",
+        "translations": {
+            "5.0.5": 1732891889437
+        }
+    },
+    {
+        "id": "obsidian-quran-lookup",
+        "translations": {
+            "0.2.0": 1733153559933
+        }
+    },
+    {
+        "id": "edit-history",
+        "translations": {
+            "0.1.3": 1733382024170
+        }
+    },
+    {
+        "id": "chronology",
+        "translations": {
+            "1.1.11": 1733664506776
+        }
+    },
+    {
+        "id": "gpt3-notes",
+        "translations": {
+            "0.2.8": 1733460396997
+        }
+    },
+    {
+        "id": "typewriter-mode",
+        "translations": {
+            "1.0.0": 1733540495800
+        }
+    },
+    {
+        "id": "advanced-cursors",
+        "translations": {
+            "0.5.1": 1733638961669
+        }
+    },
+    {
+        "id": "darlal-switcher-plus",
+        "translations": {
+            "4.6.2": 1733639331313
+        }
+    },
+    {
+        "id": "obsidian-sort-and-permute-lines",
+        "translations": {
+            "0.7.0": 1733639205101
+        }
+    },
+    {
+        "id": "obsidian-sortable",
+        "translations": {
+            "0.3.1": 1733639239829
+        }
+    },
+    {
+        "id": "mermaid-tools",
+        "translations": {
+            "1.1.3": 1733639264085
+        }
+    },
+    {
+        "id": "obsidian-snippet-downloader",
+        "translations": {
+            "2.0.1": 1733639306204
+        }
+    },
+    {
+        "id": "folder-note-plugin",
+        "translations": {
+            "0.7.3": 1733664145981
+        }
+    },
+    {
+        "id": "metaedit",
+        "translations": {
+            "1.8.2": 1733729753395
+        }
+    },
+    {
+        "id": "zenmode",
+        "translations": {
+            "1.0.9": 1733912500582
+        }
+    },
+    {
+        "id": "obsidian-reading-time",
+        "translations": {
+            "1.1.2": 1733912516869
         }
     }
 ]

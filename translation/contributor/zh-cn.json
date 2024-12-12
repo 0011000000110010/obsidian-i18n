@@ -3,9 +3,9 @@
         "login": "ob-i18n",
         "name": "佚名",
         "url": "https://gitee.com/ob-i18n",
-        "translation": 931,
-        "modification": 4,
-        "erasure": 1
+        "translation": 4173,
+        "modification": 81,
+        "erasure": 6
     },
     {
         "login": "",
@@ -51,9 +51,9 @@
         "login": "fendi86",
         "name": "Fendi",
         "url": "https://gitee.com/fendi86",
-        "translation": 5999,
-        "modification": 37,
-        "erasure": 160
+        "translation": 7666,
+        "modification": 87,
+        "erasure": 229
     },
     {
         "login": "",
@@ -187,7 +187,7 @@
         "login": "zero--two",
         "name": "zero",
         "url": "https://gitee.com/zero--two",
-        "translation": 1203,
+        "translation": 1659,
         "modification": 0,
         "erasure": 0
     },
@@ -339,17 +339,17 @@
         "login": "zhang-wenzhen",
         "name": "阿弟要精致",
         "url": "https://gitee.com/zhang-wenzhen",
-        "translation": 674,
-        "modification": 19,
-        "erasure": 1
+        "translation": 770,
+        "modification": 20,
+        "erasure": 33
     },
     {
         "login": "hwpy",
         "name": "宇桐非",
         "url": "https://gitee.com/hwpy",
-        "translation": 6203,
-        "modification": 86,
-        "erasure": 14
+        "translation": 10970,
+        "modification": 183,
+        "erasure": 45
     },
     {
         "login": "cuberwu",
@@ -371,8 +371,56 @@
         "login": "pennhui",
         "name": "PennHui",
         "url": "https://gitee.com/pennhui",
-        "translation": 211,
+        "translation": 1416,
+        "modification": 10,
+        "erasure": 79
+    },
+    {
+        "login": "wc3472",
+        "name": "wc3472",
+        "url": "https://gitee.com/wc3472",
+        "translation": 0,
+        "modification": 31,
+        "erasure": 0
+    },
+    {
+        "login": "seven-and-one-fourth",
+        "name": "七又四分之一",
+        "url": "https://gitee.com/seven-and-one-fourth",
+        "translation": 130,
+        "modification": 7,
+        "erasure": 0
+    },
+    {
+        "login": "shimingmeihao",
+        "name": "事明",
+        "url": "https://gitee.com/shimingmeihao",
+        "translation": 55,
         "modification": 0,
-        "erasure": 75
+        "erasure": 0
+    },
+    {
+        "login": "nuist-bin",
+        "name": "沧浪",
+        "url": "https://gitee.com/nuist-bin",
+        "translation": 72,
+        "modification": 0,
+        "erasure": 0
+    },
+    {
+        "login": "lorangeve",
+        "name": "Lorangeve",
+        "url": "https://gitee.com/lorangeve",
+        "translation": 19,
+        "modification": 0,
+        "erasure": 2
+    },
+    {
+        "login": "wutpeach",
+        "name": "梅宝",
+        "url": "https://gitee.com/wutpeach",
+        "translation": 32,
+        "modification": 5,
+        "erasure": 1
     }
 ]

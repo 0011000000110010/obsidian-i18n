@@ -1,7 +1,7 @@
 {
     "manifest": {
-        "translationVersion": 1730866458114,
-        "pluginVersion": "7.12.2"
+        "translationVersion": 1732196835504,
+        "pluginVersion": "7.13.0"
     },
     "description": {
         "original": "Track tasks across your vault. Supports due dates, recurring tasks, done dates, sub-set of checklist items, and filtering.",
