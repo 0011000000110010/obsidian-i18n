@@ -108,7 +108,7 @@ def main():
     print("开始处理...")
     
     # 加载JSON文件
-    ranked_plugins = load_json_file('zh-cn/ranked_plugins.json')
+    ranked_plugins = load_json_file('script/ranked_plugins.json')
     directory = load_json_file('translation/directory/zh-cn.json')
     
     print(f"ranked_plugins.json 包含 {len(ranked_plugins)} 条记录")
