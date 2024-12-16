@@ -1755,5 +1755,11 @@
         "translations": {
             "0.3.8": 1734070499296
         }
+    },
+    {
+        "id": "timelines-revamped",
+        "translations": {
+            "2.4.0": 1734358644878
+        }
     }
 ]
