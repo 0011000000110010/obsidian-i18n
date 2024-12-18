@@ -422,5 +422,13 @@
         "translation": 32,
         "modification": 5,
         "erasure": 1
+    },
+    {
+        "login": "yang-racy",
+        "name": "瑞心",
+        "url": "https://gitee.com/yang-racy",
+        "translation": 44,
+        "modification": 12,
+        "erasure": 40
     }
 ]
