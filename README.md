@@ -2,9 +2,9 @@
 
 ## 免责声明
 
-此仓库为我个人使用，因此，对于从本仓库获取的翻译文件，我建议用户在使用前仔细检查，以确保其内容的准确性。对于插件开发者，我在此请求不要打扰。如果您的插件已经集成了国际化（i18n）功能，我将考虑撤下我目前使用的翻译文件，以确保用户能够享受到官方提供的统一语言体验。
+此仓库为我个人使用，因此，对于从本仓库获取的翻译文件，我建议用户在使用前仔细检查，以确保其内容的准确性。对于插件开发者，我在此请求不要打扰。如果您的插件已经集成了国际化（i18n）功能，我将考虑撤下我目前使用的翻译文件，以确保我能够享受到官方提供的统一语言体验。
 
-This repository is for my personal use, therefore, for translation files obtained from this repository, I advise users to carefully check them before use to ensure their accuracy. To plugin developers, I request not to disturb. If your plugin has already integrated internationalization (i18n) support, I will consider removing the translation files I am currently using, to ensure users can enjoy a unified language experience provided by the official source.
+This repository is for my personal use, hence, I recommend that users carefully review any translation files obtained from this repository before use to ensure their accuracy. To plugin developers, I kindly request not to disturb. Should your plugin have integrated internationalization (i18n) capabilities, I will consider taking down the translation files I am currently using to ensure that I can enjoy the unified language experience provided by the official source.
 
 
 ## 介绍
