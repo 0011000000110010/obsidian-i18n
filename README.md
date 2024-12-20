@@ -1,7 +1,18 @@
 # obsidian-i18n-translation
 
-## 排除插件(插件作者不允许提供他的插件的翻译文件)
-obsidian-tasks-plugin
+## 排除插件
+
+
+以下插件的作者表示不能接受通过本插件的方法来修改其插件代码，因此本插件将不收录下列插件的译文。
+
+不上架的原因与讨论见：[关于这个插件无法上架的解释以及与官方人员的讨论记录](https://github.com/0011000000110010/obsidian-i18n/discussions/19)
+
+tasks插件作者表示不允许使用本插件进行翻译：[Remove all translations for obsidian-tasks-plugin - 删除所有 obsidian-tasks-plugin 的翻译文件](https://github.com/0011000000110010/obsidian-i18n/issues/18)
+
+
+排除插件id列表：
+- obsidian-tasks-plugin
+
 
 ## 介绍
 
