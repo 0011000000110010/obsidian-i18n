@@ -1,5 +1,8 @@
 # obsidian-i18n-translation
 
+## 排除插件(插件作者不允许提供他的插件的翻译文件)
+obsidian-tasks-plugin
+
 ## 介绍
 
 
