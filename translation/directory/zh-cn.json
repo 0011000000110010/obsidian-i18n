@@ -871,14 +871,6 @@
         }
     },
     {
-        "id": "obsidian-tasks-plugin",
-        "translations": {
-            "7.10.0": -639075600000,
-            "7.13.0": 1732196835504,
-            "7.14.0": 1732539209835
-        }
-    },
-    {
         "id": "obsidian-textgenerator-plugin",
         "translations": {
             "0.7.37": -639075600000,
