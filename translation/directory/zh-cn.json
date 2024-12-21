@@ -1768,5 +1768,11 @@
         "translations": {
             "1.7.0": 1734756141572
         }
+    },
+    {
+        "id": "obsidian-activity-history",
+        "translations": {
+            "0.1.4": 1734756167532
+        }
     }
 ]
