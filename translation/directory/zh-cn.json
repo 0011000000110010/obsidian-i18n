@@ -1762,5 +1762,11 @@
         "translations": {
             "1.0.2": 1734623271538
         }
+    },
+    {
+        "id": "obsidian-heading-shifter",
+        "translations": {
+            "1.7.0": 1734756141572
+        }
     }
 ]
