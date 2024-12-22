@@ -1774,5 +1774,11 @@
         "translations": {
             "0.1.4": 1734756167532
         }
+    },
+    {
+        "id": "plugins-annotations",
+        "translations": {
+            "1.7.8": 1734876435703
+        }
     }
 ]
