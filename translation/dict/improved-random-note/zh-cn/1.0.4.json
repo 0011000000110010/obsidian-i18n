@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1735725718555,
+        "translationVersion": 1735725949581,
         "pluginVersion": "1.0.4"
     },
     "description": {
@@ -16,6 +16,7 @@
         ".setDesc('Default setting for opening random notes')": ".setDesc('打开随机笔记的默认设置')",
         ".setDesc(\"Folders splits by comma ','\")": ".setDesc(\"按命令拆分文件夹 ','\")",
         ".setDesc('Enter one tag to filter')": ".setDesc('输入一个标签进行过滤')",
-        ".setDesc('Enter tags to exclude, separated by comma')": ".setDesc('输入要排除的标签，以逗号分隔')"
+        ".setDesc('Enter tags to exclude, separated by comma')": ".setDesc('输入要排除的标签，以逗号分隔')",
+        "Open improved random note": "打开一篇随机笔记"
     }
 }
