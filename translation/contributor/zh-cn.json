@@ -430,5 +430,13 @@
         "translation": 61,
         "modification": 14,
         "erasure": 41
+    },
+    {
+        "login": "song_of_light",
+        "name": "曲淡歌",
+        "url": "https://gitee.com/song_of_light",
+        "translation": 12,
+        "modification": 0,
+        "erasure": 0
     }
 ]
