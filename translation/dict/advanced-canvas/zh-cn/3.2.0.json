@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731658392730,
+        "translationVersion": 1735740980114,
         "pluginVersion": "3.2.0"
     },
     "description": {
@@ -136,6 +136,18 @@
         "label: \"Database\"": "label: \"圆筒\"",
         "label: \"Pathfinding Method\"": "label: \"线形\"",
         "label: \"Drag to add group\"": "label: \"添加组（点击或拖动）\"",
-        "label: \"Text Alignment\"": "label: \"文字对齐\""
+        "label: \"Text Alignment\"": "label: \"文字对齐\"",
+        "Node type on double click": "双击时创建的节点类型",
+        "The type of node that will be created when double clicking on the canvas.": "在画布上双击时将创建的节点类型。",
+        "Always align new nodes to grid": "始终将新节点对齐到网格",
+        "\"text\": \"Text\"": "\"text\": \"文本\"",
+        "\"file\": \"File\"": "\"file\": \"文件\"",
+        "When enabled, new nodes will be aligned to the grid.": "启用后，新节点将与网格对齐。",
+        "Default text node width": "默认文本节点宽度",
+        "The default width of a text node.": "文本节点的默认宽度。",
+        "Default text node height": "默认文本节点高度",
+        "The default height of a text node.": "文本节点的默认高度。",
+        "Default file node width": "默认文件节点宽度",
+        "The default width of a file node.": "文件节点的默认宽度。"
     }
 }
