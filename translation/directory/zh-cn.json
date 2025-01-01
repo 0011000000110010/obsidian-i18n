@@ -1781,5 +1781,11 @@
         "translations": {
             "1.7.8": 1734876435703
         }
+    },
+    {
+        "id": "obsidian-excel-to-markdown-table",
+        "translations": {
+            "0.4.0": 1735725214174
+        }
     }
 ]
