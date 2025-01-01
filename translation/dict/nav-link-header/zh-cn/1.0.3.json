@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1730799373498,
+        "translationVersion": 1735724980449,
         "pluginVersion": "1.0.3"
     },
     "description": {
@@ -10,10 +10,7 @@
     "dict": {
         "Notice(\"Failed to read the daily note template\")": "Notice(\"无法阅读每日笔记模板\")",
         "Notice(\"Unable to create new file.\")": "Notice(\"无法创建新文件。\")",
-        ".log(_)": ".log(_)",
         ".error(`Failed to read the daily note template '${l}'`,u)": ".error(`无法阅读每日笔记模板 '${l}'`,u)",
-        ".error(`Failed to create file: '${b}'`,x)": ".error(`文件建立失败: '${b}'`,x)",
-        ".error(`Failed to create file: '${h}'`,_)": ".error(`文件建立失败: '${h}'`,_)",
         "name:\"Anno Domini\"": "name:\"公元\"",
         "name:\"Before Christ\"": "name:\"公元前\"",
         "text:\"Create a new note\"": "text:\"创建一个新笔记\"",
@@ -39,6 +36,21 @@
         ".setDesc(\"Display links to adjacent monthly notes.\")": ".setDesc(\"显示相邻月度笔记的链接。\")",
         ".setDesc(\"Display links to adjacent quarterly notes.\")": ".setDesc(\"显示相邻季度笔记的链接\")",
         ".setDesc(\"Display links to adjacent yearly notes.\")": ".setDesc(\"显示相邻年度笔记的链接。\")",
-        ".setDesc(\"Display a placeholder when there is nothing to display. This prevents the contents of the view from being rattled when the link is loaded.\")": ".setDesc(\"当没有要显示的内容时显示占位符。这可以防止在加载链接时视图的内容出现抖动。\")"
+        ".setDesc(\"Display a placeholder when there is nothing to display. This prevents the contents of the view from being rattled when the link is loaded.\")": ".setDesc(\"当没有要显示的内容时显示占位符。这可以防止在加载链接时视图的内容出现抖动。\")",
+        ".error(`Failed to create file: '${b}'`,x)": ".error(`文件创建失败: '${b}'`,x)",
+        ".error(`Failed to create file: '${h}'`,_)": ".error(`文件创建失败: '${h}'`,_)",
+        "name:\"Open previous periodic note\"": "name:\"打开上一个周期笔记\"",
+        "name:\"Open next periodic note\"": "name:\"打开下一个周期笔记\"",
+        "name:\"Open parent periodic note\"": "name:\"打开父级周期笔记\"",
+        ".setName(\"Property mappings\")": ".setName(\"属性映射\")",
+        ".setName(\"Allow a space between the annotation string and the link\")": ".setName(\"允许在注释字符串和链接之间留出空格\")",
+        ".setName(\"Use property as display name\")": ".setName(\"使用属性作为显示名称\")",
+        ".setName(\"Filter duplicate notes\")": ".setName(\"过滤重复笔记\")",
+        ".setName(\"Display property name\")": ".setName(\"显示属性名称\")",
+        ".setDesc(\"Even if there is a space between the annotation string and the link, the link is still recognized as an annotated link.\")": ".setDesc(\"即使注释字符串和链接之间有空格，链接仍会被识别为注释链接。\")",
+        ".setDesc(\"Define the property mappings. Each mapping consists of a property and an emoji. Each line should be in the format 'property:emoji'.\")": ".setDesc(\"定义属性映射。每个映射由一个属性和一个表情符号组成。每行的格式应为 “属性：表情符号”。\")",
+        ".setDesc(\"Filter out duplicate notes in the navigation.\")": ".setDesc(\"过滤掉导航中重复的笔记\")",
+        ".setDesc(\"Use the property value as the display name for property links.\")": ".setDesc(\"使用属性值作为属性链接的显示名称\")",
+        ".setDesc(\"The property name to display for property links. If left blank, the property name will not be displayed.\")": ".setDesc(\"用于显示属性链接的属性名称。如果留空，则不显示属性名称。\")"
     }
 }
