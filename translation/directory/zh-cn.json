@@ -1800,5 +1800,11 @@
         "translations": {
             "0.1.5": 1736048521621
         }
+    },
+    {
+        "id": "obsidian-dice-roller",
+        "translations": {
+            "11.4.1": 1736048916938
+        }
     }
 ]
