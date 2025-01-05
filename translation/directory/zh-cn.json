@@ -1793,5 +1793,11 @@
         "translations": {
             "1.0.4": 1735725949581
         }
+    },
+    {
+        "id": "plugin-manager",
+        "translations": {
+            "0.1.5": 1736048521621
+        }
     }
 ]
