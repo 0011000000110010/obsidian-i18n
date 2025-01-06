@@ -1806,5 +1806,11 @@
         "translations": {
             "11.4.1": 1736048916938
         }
+    },
+    {
+        "id": "last-modified-timestamp-in-status-bar",
+        "translations": {
+            "1.3.0": 1736154797277
+        }
     }
 ]
