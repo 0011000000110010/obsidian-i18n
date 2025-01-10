@@ -9,6 +9,14 @@
     },
     {
         "login": "",
+        "name": "☆海★",
+        "url": "",
+        "translation": 55,
+        "modification": 0,
+        "erasure": 0
+    },
+    {
+        "login": "",
         "name": "四方天际",
         "url": "",
         "translation": 186,
@@ -32,10 +40,10 @@
         "erasure": 0
     },
     {
-        "login": "",
+        "login": "song_of_light",
         "name": "曲淡歌",
-        "url": "",
-        "translation": 2576,
+        "url": "https://gitee.com/song_of_light",
+        "translation": 2588,
         "modification": 0,
         "erasure": 0
     },
@@ -430,13 +438,5 @@
         "translation": 126,
         "modification": 86,
         "erasure": 62
-    },
-    {
-        "login": "song_of_light",
-        "name": "曲淡歌",
-        "url": "https://gitee.com/song_of_light",
-        "translation": 12,
-        "modification": 0,
-        "erasure": 0
     }
 ]
