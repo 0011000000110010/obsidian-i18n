@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1736155919077,
+        "translationVersion": 1736509145008,
         "pluginVersion": "1.0.0"
     },
     "description": {
@@ -27,8 +27,6 @@
         ".setName(\"Embed Images\")": ".setName(\"嵌入图像\")",
         ".setName(\"Text Links\")": ".setName(\"文本链接\")",
         ".setName(\"Delete Orphaned Images\")": ".setName(\"删除孤立图像\")",
-        ".setName(\"Image Extensions\")": ".setName(\"图像扩展名\")",
-        ".setName(\"Max Delete Count\")": ".setName(\"最大删除数\")",
         ".setName(\"Show Sidebar Button\")": ".setName(\"显示侧边栏按钮\")",
         ".setDesc(\"Create a report with embedded images. This will display the images in the note.\")": ".setDesc(\"创建带有嵌入图像的报告，这将在注释中显示图像。\")",
         ".setDesc(\"Create a report with text links to the images. This will not display the images in the note.\")": ".setDesc(\"创建包含图片文本链接的报告，这不会在笔记中显示图片。\")",
@@ -37,6 +35,12 @@
         ".setDesc(\"Maximum number of orphaned images to delete (-1 for no limit).\")": ".setDesc(\"要删除的孤立图像的最大数量（-1 表示无限制）。\")",
         ".setDesc(\"Enable or disable the sidebar button to find orphaned images.\")": ".setDesc(\"启用或禁用侧边栏按钮来查找孤立图像。\")",
         ".setPlaceholder(\"Enter image extensions\")": ".setPlaceholder(\"输入图片扩展名\")",
-        ".setPlaceholder(\"-1\")": ".setPlaceholder(\"-1\")"
+        ".setPlaceholder(\"-1\")": ".setPlaceholder(\"-1\")",
+        ".setName(\"Image extensions\")": ".setName(\"图像扩展名\")",
+        ".setName(\"Max delete count\")": ".setName(\"最大删除数\")",
+        ".setName(\"Move to Trash\")": ".setName(\"移至垃圾箱\")",
+        ".setDesc(\"If enabled, orphaned images will be moved to the system trash instead of deleted.\")": ".setDesc(\"如果启用，孤立的图像将被移至系统垃圾箱而不是被删除。\")",
+        ".setName(\"Image Extensions\")": ".setName(\"图像扩展名\")",
+        ".setName(\"Max Delete Count\")": ".setName(\"最大删除数\")"
     }
 }
