@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731845257994,
+        "translationVersion": 1736939797718,
         "pluginVersion": "0.1.9"
     },
     "description": {
@@ -122,6 +122,25 @@
         "FORMAT_EXPORT_SUCCESS: 'Export successful: \"${src}\" as \"${dst}\"'": "FORMAT_EXPORT_SUCCESS: '导出成功: \"${src}\" 为 \"${dst}\"'",
         "FORMAT_EXPORT_FAILED: 'Export failed: \"${src}\"'": "FORMAT_EXPORT_FAILED: '导出失败: \"${src}\"'",
         "FORMAT_FAILED_EXT_LIST: 'Some file extensions, such as \"[${list}]\" have failed to register in the obsidian app. The plugin will not support viewing them. Consider changing the ${name} plugin settings.'": "FORMAT_FAILED_EXT_LIST: '一些文件扩展名，如“[${list}]”，未能在obsidian应用中注册成功。该插件将无法支持查看它们。请考虑更改${name}插件的设置。'",
-        "\"Entries\"": "\"条目\""
+        "\"Entries\"": "\"条目\"",
+        "Notice(message)": "Notice(message)",
+        "alog(\n          context,\n          pluginSetings,\n          settings,\n          srcFilePath,\n          ()": "alog(\n          context,\n          pluginSetings,\n          settings,\n          srcFilePath,\n          ()",
+        "alog(\n        context,\n        context.plugin.settingsUtil.getSettingsRef()": "alog(\n        context,\n        context.plugin.settingsUtil.getSettingsRef()",
+        "alog(\n          this.context,\n          this.context.plugin.settingsUtil.getSettingsRef()": "alog(\n          this.context,\n          this.context.plugin.settingsUtil.getSettingsRef()",
+        "alog(\n              this.context,\n              this.context.plugin.settingsUtil.getSettingsRef()": "alog(\n              this.context,\n              this.context.plugin.settingsUtil.getSettingsRef()",
+        ".error(L2(B, C)": ".error(L2(B, C)",
+        "name: \"\" };\n        if (path2.length === 0)\n          return ret;\n        var code = path2.charCodeAt(0);\n        var isAbsolute = code === 47;\n        var start;\n        if (isAbsolute) {\n          ret.root = \"": "name: \"\" };\n        if (path2.length === 0)\n          return ret;\n        var code = path2.charCodeAt(0);\n        var isAbsolute = code === 47;\n        var start;\n        if (isAbsolute) {\n          ret.root = \"",
+        "name : `${this.name}: ${this.message}`": "name : `${this.name}: ${this.message}`",
+        "name: \"obsidian-image-magician-plugin\"": "name: \"obsidian-image-magician-plugin\"",
+        "name: \"Jinho Yun\"": "name: \"Jinho Yun\"",
+        "name: \"\",\n  active: false,\n  format: cloneDeep_default(ExportFormatPng),\n  imgProps: {\n    quality: 1,\n    sizeAdjustments: []\n  },\n  pathOpts: {\n    sourceDir: \"": "name: \"\",\n  active: false,\n  format: cloneDeep_default(ExportFormatPng),\n  imgProps: {\n    quality: 1,\n    sizeAdjustments: []\n  },\n  pathOpts: {\n    sourceDir: \"",
+        "text: \"0\"": "text: \"0\"",
+        "text: \"x\"": "text: \"x\"",
+        ".setName(\n            `${textPreviewSettings} (${exportPathData.src.ext} to ${settings.format.ext})`\n          )": ".setName(\n            `${textPreviewSettings} (${exportPathData.src.ext} to ${settings.format.ext})`\n          )",
+        ".setName(\n            `${builtInFiltersName} (${t(\"NO_ACTIVE_ITEMS\")})`\n          )": ".setName(\n            `${builtInFiltersName} (${t(\"NO_ACTIVE_ITEMS\")})`\n          )",
+        ".setName(\n            `${builtInFiltersName} (${activeCount} ${t(\n              \"ACTIVE_ITEMS\"\n            )})`\n          )": ".setName(\n            `${builtInFiltersName} (${activeCount} ${t(\n              \"活动项目\"\n            )})`\n          )",
+        ".setDesc(\"\");\n        }\n      };\n      tipSet = new import_obsidian10.Setting(this.contentEl).setName(t(\"AUTO_EXPORT_TIP\")": ".setDesc(\"\");\n        }\n      };\n      tipSet = new import_obsidian10.Setting(this.contentEl).setName(t(\"AUTO_EXPORT_TIP\")",
+        ".setDesc(\"\");\n          exportPreviewSet?.settingEl.removeClass(\"imgk-warning\")": ".setDesc(\"\");\n          exportPreviewSet?.settingEl.removeClass(\"imgk-warning\")",
+        ".setDesc(\"\");\n          exportPreviewDstSet?.setDesc(\"\")": ".setDesc(\"\");\n          exportPreviewDstSet?.setDesc(\"\")"
     }
 }
