@@ -1834,5 +1834,11 @@
         "translations": {
             "0.8.3": 1736939609441
         }
+    },
+    {
+        "id": "color-folders-files",
+        "translations": {
+            "1.4.1": 1736939845822
+        }
     }
 ]
