@@ -1828,5 +1828,11 @@
         "translations": {
             "0.6.0": 1736509176986
         }
+    },
+    {
+        "id": "nl-fast-image-cleaner",
+        "translations": {
+            "0.8.3": 1736939609441
+        }
     }
 ]
