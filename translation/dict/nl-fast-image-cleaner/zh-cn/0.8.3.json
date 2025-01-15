@@ -1,0 +1,36 @@
+{
+    "manifest": {
+        "translationVersion": 1736939609441,
+        "pluginVersion": "0.8.3"
+    },
+    "description": {
+        "original": "This plugin allows you to quickly remove image attachment and referenced link from your documents in both LIVE , READ mode by right-click menu",
+        "translation": "次插件允许您通过右键点击菜单，在LIVE，READ中快速删除图像附件和引用链接"
+    },
+    "dict": {
+        "Notice(` cannot get the image file`)": "Notice(` 无法获取图像文件`)",
+        "Notice(\"Image moved to Obsidian Trash !\", SUCCESS_NOTICE_TIMEOUT)": "Notice(\"将图像移至Obsidian回收站 ！\", 成功_通知_超时)",
+        "Notice(\"Image moved to System Trash !\", SUCCESS_NOTICE_TIMEOUT)": "Notice(\"将图像移至系统回收站 ！\", 成功_通知_超时)",
+        "Notice(\"Image deleted Permanently !\", SUCCESS_NOTICE_TIMEOUT)": "Notice(\"将图像永久删除 ！\", 成功_通知_超时)",
+        "Notice(\"Attachment folder has been deleted!\", 3e3)": "Notice(\"附件文件夹已删除\", 3e3)",
+        "Notice(\"Faild to delelte the image !\", SUCCESS_NOTICE_TIMEOUT)": "Notice(\"将图像移至Obsidian回收站 ！\", 成功_通知_超时",
+        "Notice(\"Failed to delete the file/folder !\", SUCCESS_NOTICE_TIMEOUT)": "Notice(\"图像删除失败 ！\", 成功_通知_超时)",
+        "Notice(\"All attachments and its parent folder have been deleted!\", 3e3)": "Notice(\"所有的附件及子文件已被删除\", 3e3)",
+        "Notice(\"Error, could not clear the file!\")": "Notice(\"错误，无法删除文本\")",
+        ".log(\"Fast file Cleaner plugin loaded...\")": ".log(\"快速附件清洁器已加载...\")",
+        ".log(\"Fast file Cleaner plugin unloaded...\")": ".log(\"快速附件清洁器卸载...\")",
+        ".error(error)": ".error(错误)",
+        "text: \"Fast Attachment Cleaner Settings\"": "text: \"快速附件清洁器设置\"",
+        "text: \" Detection of multiple attachment reference links - logs \"": "text: \" 检测到多个附件参考链接 - 日志 \"",
+        "text: \"close\"": "text: \"关闭\"",
+        "text: \"remove link\"": "text: \"删除链接\"",
+        "text: \"Detected that the image you are attempting to delete is being referenced multiple times within the current document. \\n As a result. We kindly ask that you manually remove the link.\"": "text: \"检测到您尝试删除的图像在当前文档中被多次引用。 \\因此，我们请求您手动删除链接\"",
+        "text: \"Delete the file and its all attachments - logs \"": "text: \"删除附件及所有附件 - 日志 \"",
+        "text: \"Cancel\"": "text: \"取消\"",
+        "text: \"Confirm\"": "text: \"确认\"",
+        ".setName(\"Deleted Attachment Destination\")": ".setName(\"已删除附件的目的地\")",
+        ".setDesc(\"Select where you want Attachments to be moved once they are deleted\")": ".setDesc(\"删除附件后选择您希望移动的位置\")",
+        ".setTitle(\"clear file and referenced link\")": ".setTitle(\"清除附件及引用连接\")",
+        ".setTitle(\"Delete the file and its all attachments\")": ".setTitle(\"删除文件及所有附件\")"
+    }
+}
