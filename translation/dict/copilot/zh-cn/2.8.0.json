@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1737031077005,
+        "translationVersion": 1737116487637,
         "pluginVersion": "2.8.0"
     },
     "description": {
@@ -1425,6 +1425,11 @@
         "[COMMAND_IDS.SIMPLIFY]: \"Simplify selection\"": "[COMMAND_IDS.SIMPLIFY]: \"简化选择\"",
         "[COMMAND_IDS.SUMMARIZE]: \"Summarize selection\"": "[COMMAND_IDS.SUMMARIZE]: \"总结选择\"",
         "[COMMAND_IDS.TOGGLE_COPILOT_CHAT_WINDOW]: \"Toggle Copilot Chat Window\"": "[COMMAND_IDS.TOGGLE_COPILOT_CHAT_WINDOW]: \"切换Copilot聊天窗口\"",
-        "[COMMAND_IDS.TRANSLATE]: \"Translate selection\"": "[COMMAND_IDS.TRANSLATE]: \"翻译选择\""
+        "[COMMAND_IDS.TRANSLATE]: \"Translate selection\"": "[COMMAND_IDS.TRANSLATE]: \"翻译选择\"",
+        "\"Relevance is a combination of semantic similarity and links.\"": "\"相关性是语义相似性和链接的结合。\"",
+        "\"No relevant notes found\"": "\"未找到相关笔记\"",
+        "\"Relevant Notes\"": "\"相关笔记\"",
+        "\"Suggested Prompts\"": "\"建议提示\"",
+        "\"Failed to initialize vector store. Please make sure you have a valid API key for your embedding model and restart the plugin.\"": "\"无法初始化向量存储。请确保您为嵌入模型提供了有效的API密钥，并重新启动插件。\""
     }
 }
