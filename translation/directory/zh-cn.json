@@ -1863,5 +1863,11 @@
         "translations": {
             "4.0.0": 1737031095325
         }
+    },
+    {
+        "id": "hidden-folder-obsidian",
+        "translations": {
+            "1.0.7": 1737116529409
+        }
     }
 ]
