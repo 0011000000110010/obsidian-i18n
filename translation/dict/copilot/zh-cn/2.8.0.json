@@ -1,11 +1,11 @@
 {
     "manifest": {
-        "translationVersion": 1737116487637,
+        "translationVersion": 1737165751137,
         "pluginVersion": "2.8.0"
     },
     "description": {
         "original": "A ChatGPT Copilot in Obsidian.",
-        "translation": "Ob的AI编程/聊天助手"
+        "translation": "AI助手"
     },
     "dict": {
         "Notice(\"Copilot vault index is up-to-date.\")": "Notice(\"Copilot 保管库(Vault)索引是最新的。\")",
