@@ -1882,5 +1882,11 @@
         "translations": {
             "1.9.0": 1737461616090
         }
+    },
+    {
+        "id": "obsidian-statusbar-pomo",
+        "translations": {
+            "0.1.15": 1737956867228
+        }
     }
 ]
