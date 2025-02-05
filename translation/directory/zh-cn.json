@@ -1910,5 +1910,11 @@
         "translations": {
             "1.4.0": 1738734091580
         }
+    },
+    {
+        "id": "obsidian-tasks-plugin",
+        "translations": {
+            "7.14.0": 1738739040065
+        }
     }
 ]
