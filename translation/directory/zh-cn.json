@@ -1902,5 +1902,11 @@
         "translations": {
             "0.6.3": 1738653995820
         }
+    },
+    {
+        "id": "obsius-publish",
+        "translations": {
+            "1.4.0": 1738734091580
+        }
     }
 ]
