@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1734480400522,
+        "translationVersion": 1738997457870,
         "pluginVersion": "0.9.16"
     },
     "description": {
@@ -13,9 +13,6 @@
         ".setName(\"Automatically rename attachment\")": ".setName(\"自动重命名附件\")",
         ".setName(\"Exclude subpaths\")": ".setName(\"排除子路径\")",
         ".setDesc(\"Root folder of new attachment\")": ".setDesc(\"新附件的根文件夹\")",
-        ".setPlaceholder(\"pdf|docx?\")": ".setPlaceholder(\"pdf|docx?\")",
-        ".setPlaceholder(\"pdf|docx?|xlsx?|pptx?|zip|rar\")": ".setPlaceholder(\"pdf|docx?|xlsx?|pptx?|zip|rar\")",
-        ".setPlaceholder(\"pdf\")": ".setPlaceholder(\"pdf\")",
         ".setName(\"Root path to save attachment\")": ".setName(\"附件保存的根路径\")",
         ".setName(\"Root folder\")": ".setName(\"根文件夹\")",
         ".setName(\"Attachment format\")": ".setName(\"附件格式\")",
@@ -56,7 +53,6 @@
         "Notice(\"Removed override setting of \" + file.path)": "Notice(\"已移除覆盖设置：\" + file.path)",
         "Notice(`Reset attachment setting of ${file.path}`)": "Notice(`已重置附件设置 ${file.path}`)",
         ".log(\"DEBUG is enabled\")": ".log(\"调试模式已启用\")",
-        ".log(new Date()": ".log(new Date()",
         ".log(`Invalid link: ${link}, err: ${err}`)": ".log(`无效链接：${link}，错误：${err}`)",
         ".log(`Plugin loading: ${this.manifest.name} v.${this.manifest.version}`)": ".log(`插件加载中：${this.manifest.name} v.${this.manifest.version}`)",
         ".log(\"unloading attachment management.\")": ".log(\"正在卸载附件管理\")",
@@ -70,8 +66,6 @@
         "text: \"Moment format options\"": "text: \"Moment 格式选项\"",
         "text: \"Overriding Settings\"": "text: \"覆盖设置\"",
         "text: \"Tips\"": "text: \"提示\"",
-        "settings:\", setting);\n          if (setting.type === \"": "settings:\", setting);\n          if (setting.type === \"",
-        "settings:\", setting);\n          if (!this.settings.autoRenameAttachment) {\n            debugLog(\"": "settings:\", setting);\n          if (!this.settings.autoRenameAttachment) {\n            debugLog(\"",
         ".setButtonText(\"Save\")": ".setButtonText(\"保存\")",
         ".setButtonText(\"Add extension overrides\")": ".setButtonText(\"添加扩展覆盖\")",
         ".setButtonText(\"Reset\")": ".setButtonText(\"重置\")",
