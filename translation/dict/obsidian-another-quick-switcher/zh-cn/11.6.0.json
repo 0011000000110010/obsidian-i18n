@@ -1,11 +1,11 @@
 {
     "manifest": {
-        "translationVersion": 1735005408832,
+        "translationVersion": 1739068010473,
         "pluginVersion": "11.6.0"
     },
     "description": {
         "original": "This is an Obsidian plugin which is another choice of Quick switcher.",
-        "translation": "This is an Obsidian plugin which is another choice of Quick switcher."
+        "translation": "这是 Obsidian 的一个插件，它是快速切换器的另一种选择。"
     },
     "dict": {
         ".setButtonText(\"Add\")": ".setButtonText(\"添加\")",
