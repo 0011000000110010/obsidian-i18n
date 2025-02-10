@@ -10,7 +10,7 @@ This repository is for my personal use, hence, I recommend that users carefully 
 ## 介绍
 
 
-本项目为了便于国内用户访问，同时在Gitee与GitHub上传了项目，Gitee仓库用于存储obsidian-i18n插件的译文词典，请勿在Gitee仓库提交issue，如果您有任何问题与建议想反馈，请前往[Github](https://github.com/0011000000110010/obsidian-i18n)
+本项目为了便于国内用户访问，同时在Gitee与GitHub上传了项目，Gitee仓库用于存储obsidian-i18n插件的译文词典，请勿在Gitee仓库提交issue，如果您有任何问题与建议想反馈，请前往[Github](https://github.com/0011000000110010/obsidian-i18n)参与讨论
 
 （issue被用于自动化审核，非机器人账号提交的issue会导致审核流程卡住）
 
