@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1737461557418,
+        "translationVersion": 1739350832812,
         "pluginVersion": "0.2.11"
     },
     "description": {
@@ -13,7 +13,6 @@
         ".setName(\"Font Size\")": ".setName(\"字体大小\")",
         ".setName(\"Use Annotation Mode By Default\")": ".setName(\"默认使用注释模式\")",
         ".setName(\"Include Prefix\")": ".setName(\"包含前缀\")",
-        ".setName(\"Include Postfix\")": ".setName(\"好的，请提供需要翻译的英文文本。\")",
         ".setName(\"Highlight highlighted text\")": ".setName(\"高亮显示高亮的文本\")",
         ".setName(\"Use Dark Mode By Default\")": ".setName(\"默认使用深色模式\")",
         ".setName(\"Sepia\")": ".setName(\"棕褐色\")",
@@ -38,6 +37,7 @@
         ".createEl(\"h3\",{text:\"Annotation Markdown Settings\"})": ".createEl(\"h3\",{text:\"Annotation Markdown 设置\"})",
         ".createEl(\"h3\",{text:\"Dark Mode Settings\"})": ".createEl(\"h3\",{text:\"暗色模式设置\"})",
         ".createEl(\"h3\",{text:\"Annotate.TV settings\"})": ".createEl(\"h3\",{text:\"Annotate.TV 设置\"})",
-        ".createEl(\"h3\",{text:\"Developer Settings\"})": ".createEl(\"h3\",{text:\"开发者设置\"})"
+        ".createEl(\"h3\",{text:\"Developer Settings\"})": ".createEl(\"h3\",{text:\"开发者设置\"})",
+        ".setName(\"Include Postfix\")": ".setName(\"包含后缀\")"
     }
 }
