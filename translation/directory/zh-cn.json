@@ -1937,5 +1937,11 @@
         "translations": {
             "1.1.0": 1739670277632
         }
+    },
+    {
+        "id": "obsidian-file-cleaner",
+        "translations": {
+            "0.1.5": 1739692193732
+        }
     }
 ]
