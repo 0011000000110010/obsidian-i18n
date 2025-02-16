@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1739447574525,
+        "translationVersion": 1739670184079,
         "pluginVersion": "3.7.4"
     },
     "description": {
@@ -294,19 +294,9 @@
         "The default height of a text node.": "文本节点的默认高度。",
         "Default file node width": "默认文件节点宽度",
         "The default width of a file node.": "文件节点的默认宽度。",
-        "Notice(\"Exporting the canvas. Please wait...\")": "Notice(\"Exporting the canvas. Please wait...\")",
         "Notice(ERROR_MESSAGE)": "Notice(ERROR_MESSAGE)",
         " error(m)": " error(m)",
-        ".error(\"Error inserting rule from remote css\", {\n                  rule,\n                  error\n                })": ".error(\"Error inserting rule from remote css\", {\n                  rule,\n                  error\n                })",
-        ".error(\"Error loading remote css\", e.toString()": ".error(\"Error loading remote css\", e.toString()",
-        ".error(\"Error loading remote stylesheet\", err)": ".error(\"Error loading remote stylesheet\", err)",
-        ".error(\"Error inlining remote css file\", e)": ".error(\"Error inlining remote css file\", e)",
-        ".error(`Error while reading CSS rules from ${sheet.href}`, e)": ".error(`Error while reading CSS rules from ${sheet.href}`, e)",
         ".error(ERROR_MESSAGE)": ".error(ERROR_MESSAGE)",
-        "name: \"Zoom to fit\"": "name: \"Zoom to fit\"",
-        "name: \"Export canvas as image\"": "name: \"Export canvas as image\"",
-        "name: \"Export selected nodes as image\"": "name: \"Export selected nodes as image\"",
-        "description: \"When enabled, the zoom will not be clamped while presenting.\"": "description: \"When enabled, the zoom will not be clamped while presenting.\"",
         "text: \"\",\n      focus: false\n    });\n    node.setData({\n      ...node.getData(),\n      id: \"": "text: \"\",\n      focus: false\n    });\n    node.setData({\n      ...node.getData(),\n      id: \"",
         ".setButtonText(\"Save\")": ".setButtonText(\"保存\")",
         ".setName(\"Export file format\")": ".setName(\"导出文件格式\")",
@@ -321,8 +311,18 @@
         ".setDesc(\"This will add an Obsidian + Advanced Canvas logo to the bottom left.\")": ".setDesc(\"这将在左下角添加一个 Obsidian + 高级画布 的徽标。\")",
         ".setDesc(\"This will obscure any text on your canvas.\")": ".setDesc(\"这将隐藏画布上的所有文本。\")",
         ".setDesc(\"This will make the background of the image transparent.\")": ".setDesc(\"这将使图像的背景变为透明。\")",
-        ".setTitle(\"Export image settings\")": ".setTitle(\"Export image settings\")",
-        ".innerText = \"Generating image...\"": ".innerText = \"Generating image...\"",
-        "label: \"Use unclamped zoom while presenting\"": "label: \"Use unclamped zoom while presenting\""
+        "Notice(\"Exporting the canvas. Please wait...\")": "Notice(\"导出画布。请稍候...\")",
+        ".error(\"Error inserting rule from remote css\", {\n                  rule,\n                  error\n                })": ".error(\"从远程CSS插入规则时出错\", {\n                  rule,\n                  error\n                })",
+        ".error(\"Error loading remote css\", e.toString()": ".error(\"加载远程CSS失败\", e.toString()",
+        ".error(\"Error loading remote stylesheet\", err)": ".error(\"远程样式表加载失败\", err)",
+        ".error(\"Error inlining remote css file\", e)": ".error(\"内联远程CSS文件时出错\", e)",
+        ".error(`Error while reading CSS rules from ${sheet.href}`, e)": ".error(`从 ${sheet.href} 读取 CSS 规则时出错`, e)",
+        "name: \"Zoom to fit\"": "name: \"放大以适应\"",
+        "name: \"Export canvas as image\"": "name: \"导出画布为图片\"",
+        "name: \"Export selected nodes as image\"": "name: \"导出选中的节点为图片\"",
+        "description: \"When enabled, the zoom will not be clamped while presenting.\"": "description: \"启用后，呈现时不会限制缩放。\"",
+        ".setTitle(\"Export image settings\")": ".setTitle(\"导出图片设置\")",
+        ".innerText = \"Generating image...\"": ".innerText = \"生成图片...\"",
+        "label: \"Use unclamped zoom while presenting\"": "label: \"在演示时使用未限制的缩放\""
     }
 }
