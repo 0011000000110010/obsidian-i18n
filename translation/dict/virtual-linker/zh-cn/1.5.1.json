@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1739692180426,
+        "translationVersion": 1739976248593,
         "pluginVersion": "1.5.1"
     },
     "description": {
@@ -61,7 +61,6 @@
         ".setDesc(\"If activated, the beginnings of words are also linked, even if it is not a whole match.\")": ".setDesc(\"如果激活，单词的开头也会被链接，即使它不是一个完整的匹配。\")",
         ".setDesc(\"If activated, the ends of words are also linked, even if it is not a whole match.\")": ".setDesc(\"如果激活，即使不是完全匹配，也会链接单词的结尾。\")",
         ".setDesc(\"If activated, the suffix is not added to links for subwords, but only for complete matches.\")": ".setDesc(\"如果激活，子单词的链接不会添加后缀，而仅对完整匹配添加。\")",
-        ".setDesc(\"If activated, there will be no links in the current line start which is followed immediately by the Input Method Editor (IME). This is the recommended setting if you are using IME (input method editor) for typing, e.g. for chinese characters, because instant linking might interfere with IME.\")": ".setDesc(\"如果激活，当前行开头紧接输入法编辑器 (IME) 的地方将不会出现链接。如果您使用输入法编辑器（如输入中文字符）进行输入，这是推荐的设置，因为即时链接可能会干扰输入法。\")",
         ".setDesc(\"If activated, there will be no links in the current line.\")": ".setDesc(\"如果激活，当前行中不会有链接。\")",
         ".setDesc(\"If activated, the matching is case sensitive.\")": ".setDesc(\"如果激活，匹配是区分大小写的。\")",
         ".setDesc(\"The percentage (0 - 100) of capital letters in a file name or alias to be automatically considered as case sensitive.\")": ".setDesc(\"文件名或别名中大写字母的百分比（0-100），将自动被视为区分大小写。\")",
@@ -90,6 +89,7 @@
         ".setTitle(\"[Virtual Linker] Include this file\")": ".setTitle(\"[虚拟链接器] 包含此文件\")",
         ".setTitle(\"[Virtual Linker] Exclude this directory\")": ".setTitle(\"[虚拟链接器] 排除此目录\")",
         ".setTitle(\"[Virtual Linker] Include this directory\")": ".setTitle(\"[虚拟链接器] 包含此目录\")",
+        ".setDesc(\"If activated, there will be no links in the current line start which is followed immediately by the Input Method Editor (IME). This is the recommended setting if you are using IME (input method editor) for typing, e.g. for chinese characters, because instant linking might interfere with IME.\")": ".setDesc(\"如果激活，当前行开头紧接输入法编辑器 (IME) 的地方将不会出现链接。如果您使用输入法编辑器（如输入中文字符）进行输入，这是推荐的设置，因为即时链接可能会干扰输入法。\")",
         ".setName(\"Match only whole words\")": ".setName(\"仅匹配整个单词\")",
         ".setName(\"Match also beginning of words\")": ".setName(\"也匹配单词的开头\")",
         ".setDesc(\"If activated, only whole words are matched. Otherwise, every part of a word is found.\")": ".setDesc(\"如果激活，仅匹配整个单词。否则，会找到单词的每个部分。\")"
