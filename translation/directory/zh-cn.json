@@ -1980,5 +1980,11 @@
         "translations": {
             "1.2.0": 1739976219960
         }
+    },
+    {
+        "id": "obsidian-plugin-update-tracker",
+        "translations": {
+            "1.6.2": 1739976317802
+        }
     }
 ]
