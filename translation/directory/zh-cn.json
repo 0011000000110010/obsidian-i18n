@@ -2011,5 +2011,11 @@
         "translations": {
             "0.0.3": 1740490842033
         }
+    },
+    {
+        "id": "vault-full-statistics",
+        "translations": {
+            "1.2.3": 1740490944327
+        }
     }
 ]
