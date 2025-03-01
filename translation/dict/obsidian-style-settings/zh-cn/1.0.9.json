@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1737116434283,
+        "translationVersion": 1740803299534,
         "pluginVersion": "1.0.9"
     },
     "description": {
@@ -143,6 +143,9 @@
         "\"btn:save\":\"Save\",\"btn:cancel\":\"Cancel\"": "\"btn:save\":\"保存\",\"btn:cancel\":\"取消\"",
         "\"aria:btn:save\":\"save and close\",\"aria:btn:cancel\":\"cancel and close\",": "\"aria:btn:save\":\"保存并关闭\",\"aria:btn:cancel\":\"取消并关闭\",",
         "text:this.filterMode?`${this.filterResultCount} Results`": "text:this.filterMode?`${this.filterResultCount} 个结果`",
-        "\"Restore default\"": "\"恢复默认\""
+        "\"Restore default\"": "\"恢复默认\"",
+        "\"Import an entire or partial configuration. Warning: this may override existing settings\"": "\"导入完整或部分配置。警告：此操作可能会覆盖现有设置\"",
+        "\"Paste config here...\"": "\"请在此处粘贴配置...\"",
+        "\"Search Style Settings...\"": "\"搜索样式设置...\""
     }
 }
