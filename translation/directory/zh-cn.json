@@ -2037,5 +2037,11 @@
         "translations": {
             "1.2.5": 1740803390033
         }
+    },
+    {
+        "id": "obsidian-excalidraw-plugin",
+        "translations": {
+            "2.8.3": 1740803446837
+        }
     }
 ]
