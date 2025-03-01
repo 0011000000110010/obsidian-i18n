@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1738739040065,
+        "translationVersion": 1740803370661,
         "pluginVersion": "7.14.0"
     },
     "description": {
@@ -562,6 +562,7 @@
         "case\"next\":": "case\"下\":case\"next\":case\"next\":",
         "case\"last\":": "case\"上\":case\"last\":case\"last\":",
         "case\"past\":": "case\"past\":case\"past\":case\"past\":",
-        "${this.totalTasksCount()} tasks": "${this.totalTasksCount()} 个任务"
+        "${this.totalTasksCount()} tasks": "${this.totalTasksCount()} 个任务",
+        "\"Add all Query File Defaults properties\"": "\"添加所有查询文件默认值属性\""
     }
 }
