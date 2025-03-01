@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1729905365937,
+        "translationVersion": 1740803317238,
         "pluginVersion": "4.0.6"
     },
     "description": {
@@ -61,6 +61,19 @@
         "\"Replace last note\"": "\"替换最后一个笔记\"",
         "\"Keep open notes\"": "\"保持打开的笔记\"",
         "\"Replace all open notes\"": "\"替换所有打开的笔记\"",
-        ".addRibbonIcon(\"homepage\",\"Open homepage\"": ".addRibbonIcon(\"homepage\",\"打开主页\""
+        ".addRibbonIcon(\"homepage\",\"Open homepage\"": ".addRibbonIcon(\"homepage\",\"打开主页\"",
+        "\"Enter a folder. A random note or canvas from it will be selected.\"": "\"输入文件夹路径，系统将从中随机选择一个笔记或画布。\"",
+        "\"File\"": "\"文件\"",
+        "\"Workspace\"": "\"工作区\"",
+        "\"Random file\"": "\"随机文件\"",
+        "\"Random in folder\"": "\"随机选择文件夹内文件\"",
+        "\"Graph view\"": "\"图谱视图\"",
+        "\"Nothing\"": "\"无\"",
+        "\"Daily Note\"": "\"每日笔记\"",
+        "\"Weekly Note\"": "\"每周笔记\"",
+        "\"Monthly Note\"": "\"每月笔记\"",
+        "\"Yearly Note\"": "\"年度笔记\"",
+        "\"Open on startup\"": "\"启动时自动打开\"",
+        "\"When launching Obsidian, open the homepage.\"": "\"启动 Obsidian 时自动打开主页\""
     }
 }
