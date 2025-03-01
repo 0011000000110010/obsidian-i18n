@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731939329689,
+        "translationVersion": 1740803262965,
         "pluginVersion": "4.8.1"
     },
     "description": {
@@ -30,6 +30,13 @@
         "\"toggle-folding\": \"Toggle Folding\"": "\"toggle-folding\": \"切换折叠\"",
         "never: \"Never\"": "never: \"从不\"",
         "\"bullet-only\": \"Stick cursor out of bullets\"": "\"bullet-only\": \"将光标放在项目符号之外\"",
-        "\"bullet-and-checkbox\": \"Stick cursor out of bullets and checkboxes\"": "\"bullet-and-checkbox\": \"将光标放在项目符号和复选框之外\""
+        "\"bullet-and-checkbox\": \"Stick cursor out of bullets and checkboxes\"": "\"bullet-and-checkbox\": \"将光标放在项目符号和复选框之外\"",
+        "\"Fold the list\"": "\"折叠列表\"",
+        "\"Unfold the list\"": "\"展开列表\"",
+        "\"Move list and sublists up\"": "\"向上移动列表和子列表\"",
+        "\"Move list and sublists down\"": "\"向下移动列表和子列表\"",
+        "\"Indent the list and sublists\"": "\"缩进列表和子列表\"",
+        "\"Outdent the list and sublists\"": "\"删除列表和子列表\"",
+        "\"Show System Info\"": "\"显示系统信息\""
     }
 }
