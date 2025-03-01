@@ -2044,5 +2044,11 @@
         "translations": {
             "2.8.3": 1740803446837
         }
+    },
+    {
+        "id": "semantic-canvas",
+        "translations": {
+            "1.2.1": 1740803590608
+        }
     }
 ]
