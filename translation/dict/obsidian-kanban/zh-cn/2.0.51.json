@@ -1,11 +1,11 @@
 {
     "manifest": {
-        "translationVersion": 1740803349870,
+        "translationVersion": 1740821639437,
         "pluginVersion": "2.0.51"
     },
     "description": {
         "original": "Create markdown-backed Kanban boards in Obsidian.",
-        "translation": "Create markdown-backed Kanban boards in Obsidian."
+        "translation": "在 Obsidian 中创建支持 Markdown 的看板。"
     },
     "dict": {
         "Notice(\"Failed to read the daily note template\")": "Notice(\"无法读取日记模板.\")",
@@ -91,6 +91,9 @@
         "\"Search Kanban Board\"": "\"搜索看板\"",
         "\"Card body\"": "\"卡片正文\"",
         "\"Card footer\"": "\"卡片页脚\"",
-        "\"Merge with linked page metadata\"": "\"合并链接页面的元数据\""
+        "\"Merge with linked page metadata\"": "\"合并链接页面的元数据\"",
+        "\"View as board\"": "\"看板视图\"",
+        "\"View as list\"": "\"列表视图\"",
+        "\"View as table\"": "\"表格视图\""
     }
 }
