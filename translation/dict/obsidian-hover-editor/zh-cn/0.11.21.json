@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731766908488,
+        "translationVersion": 1740821710170,
         "pluginVersion": "0.11.21"
     },
     "description": {
@@ -59,6 +59,7 @@
         "screen. Dragging the popovers away from the edges will restore the popver to its original size.": "将弹出窗口从边缘拖离可以使其恢复到原始大小。",
         "重要提示：这个影响功能，不要翻译\"name:\"drag\"": "name:\"拖动\"",
         "重要提示：这个影响功能，不要翻译\"name:\"gesture\"": "name:\"手势\"",
-        "重要提示：这个影响功能，不要翻译\"name:\"resize\"": "name:\"调整大小\""
+        "重要提示：这个影响功能，不要翻译\"name:\"resize\"": "name:\"调整大小\"",
+        "Snap active Hover Editor to": "将活动的Hover Editor吸附到"
     }
 }
