@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1738733887788,
+        "translationVersion": 1740884268269,
         "pluginVersion": "1.17.4"
     },
     "description": {
@@ -136,6 +136,27 @@
         "label: \"is on and before\"": "label: \"在之前并包含\"",
         "label: \"is on and after\"": "label: \"在之后并包含\"",
         ".addRibbonIcon(\"layout\", \"Open projects\"": ".addRibbonIcon(\"layout\", \"打开项目\"",
-        "heading:\"Front matter\"": "heading:\"前置页\""
+        "heading:\"Front matter\"": "heading:\"前置页\"",
+        "\"Get started with Projects\"": "\"开始使用项目管理\"",
+        "`Projects lets you manage groups of related notes using": "`项目管理功能可通过",
+        "\"front matter\"": "\"Front Matter（元数据）\"",
+        "\". For example, a folder with the blog posts you're working on.\"": "\"管理关联文档，例如您正在撰写的博客文章文件夹\"",
+        "\"Start from scratch, or explore a demo project": "\"新建空白项目 或 体验演示项目",
+        "\"Create new project\"": "\"新建项目\"",
+        "\"Try a demo project\"": "\"试用演示项目\"",
+        "\"Projects view\"": "\"项目视图\"",
+        "\"Command palette\"": "\"命令面板\"",
+        "\"File explorer\"": "\"文件管理器\"",
+        "\"Creates a new folder at the root of your vault with example notes.\"": "\"将在知识库根目录创建含示例文档的新文件夹\"",
+        "`<li>In the top-right corner of the <strong>Projects</strong>": "`<li>在<strong>项目视图</strong>的右上角",
+        "view, click": "，点击",
+        "<strong>New</strong>.</li>": "<strong>新建</strong></li>",
+        "<li>Click <strong>New project</strong>.</li>`": "<li>点击<strong>新建项目</strong></li>`",
+        "`<li>Open the <strong>Command palette</strong>.</li>": "`<li>打开<strong>命令面板</strong></li>",
+        "<li>Search for <strong>Create new project</strong></li>": "<li>搜索<strong>新建项目</strong></li>",
+        "<li>Press <strong>Enter</strong>.</li>`": "<li>按下<strong>Enter</strong>键</li>`",
+        "`<li>Right-click a folder in <strong>File explorer</strong>.</li>": "`<li>在<strong>文件管理器</strong>右键文件夹</li>",
+        "<li>Click <strong>Create project in folder</strong>.</li>`": "<li>点击<strong>在文件夹创建项目</strong></li>`",
+        "Next time you can create your projects using any of": "您还可以通过以下方式创建项目："
     }
 }
