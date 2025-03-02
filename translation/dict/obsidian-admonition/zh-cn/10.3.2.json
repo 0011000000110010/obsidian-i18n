@@ -1,6 +1,6 @@
 {
     "manifest": {
-        "translationVersion": 1731311012806,
+        "translationVersion": 1740884039776,
         "pluginVersion": "10.3.2"
     },
     "description": {
@@ -110,6 +110,9 @@
         "\"Set the admonition color. Disable to set manually using CSS.\"": "\"设置admonition颜色。禁用使用CSS手动设置。\"",
         "\"Admonition color is disabled and must be manually set using CSS.\"": "\"Admonition颜色已禁用，必须使用CSS手动设置。\"",
         "\"Try to sync internal links to the metadata cache to display in graph view. This setting could have unintended consequences. Use at your own risk.\"": "\"尝试将内部链接同步到元数据缓存，以便在图形视图中显示。这种设置可能会产生意想不到的后果。使用风险自负。\"",
-        "\"Use Obsidian's markdown syntax highlighter in admonition code blocks. This setting is experimental and could cause errors.\"": "\"在admonition代码块中使用黑曜石的markdown语法高亮显示。此设置是实验性的，可能会导致错误。\""
+        "\"Use Obsidian's markdown syntax highlighter in admonition code blocks. This setting is experimental and could cause errors.\"": "\"在admonition代码块中使用黑曜石的markdown语法高亮显示。此设置是实验性的，可能会导致错误。\"",
+        "\"Open\"": "\"展开\"",
+        "\"Closed\"": "\"折叠\"",
+        "\"None\"": "\"无\""
     }
 }
